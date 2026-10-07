@@ -69,3 +69,34 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 
 ## D-016 · Gutter dan satuan ruang mengikuti rem
 - **Keputusan:** Karena ukuran dasar 18 px, spasi Tailwind berbasis rem ikut membesar (gutter mobile `px-4` = 18 px). Diterima: proporsi tetap konsisten dengan teks dan Mode Kelas ikut membesar otomatis.
+
+---
+
+# M1 · Pustaka inti
+
+## D-017 · Konvensi skala keyakinan
+- **Keputusan:** `confidence.levels` diurutkan dari paling yakin (indeks 0) ke paling ragu. "Yakin" bila indeks yang dipilih ≤ `threshold_index`. Kolom `item_responses.confidence_a/_r` menyimpan indeks ini. `threshold_index` harus menyisakan minimal satu level "ragu".
+- **Alasan:** Contoh PRD §6.1 (`["Yakin","Ragu-ragu"]`, `threshold_index: 0`) hanya konsisten dengan arah ini. Mendukung 2–4 level tanpa ubah kode.
+- **Tier keyakinan wajib per format:** `four_tier_standard` → keyakinan jawaban dan alasan; `modified_tier2` → hanya keyakinan atas alasan.
+
+## D-018 · Aturan klasifikasi = berkas JSON berversi
+- **Keputusan:** Aturan disimpan di `data/rule-sets/<rule_set_id>.json` dan divalidasi Zod (8 kombinasi, lengkap, saling lepas). `default-v1.json` = tabel PRD §6.2 apa adanya. Tiga `confidence_mode`: `all_tiers_at_or_above_threshold` (default), `answer_tier_only`, `reason_tier_only` — dua terakhir disediakan karena pertanyaan terbuka #5 (definisi "yakin" untuk tier modifikasi) belum terjawab.
+- **Respons tidak lengkap/tidak valid** tidak dipaksa masuk kategori: hasilnya `incomplete`/`invalid` dan tidak dihitung.
+- **Status:** ASUMSI. Wajib dicocokkan dengan Lampiran 4 proposal (PRD §16.1 #3) sebelum data nyata. Perubahan = berkas baru, bukan edit.
+
+## D-019 · Pilihan statistik
+- **N-Gain:** rerata dari N-Gain individual (bukan g dari rerata kelas). pre = 100 → `null`, dikeluarkan dan dihitung. Kategori: tinggi `g ≥ 0,70`; sedang `0,30 ≤ g < 0,70`; rendah `g < 0,30` (termasuk negatif).
+- **CI:** distribusi t, `n − 1`. Fixture artikel lolos: [47,34; 62,09] ±0,05.
+- **Uji-t berpasangan:** selisih = post − pre (setara `ttest_rel(post, pre)`). Ukuran efek: Cohen's d_z = d̄ ÷ s_d; Hedges' g_z = d_z × (1 − 3/(4·df − 1)).
+- **Wilcoxon:** mengikuti default `scipy.stats.wilcoxon` (zero_method `wilcox`, tanpa koreksi kontinuitas, method `auto`: eksak bila tanpa seri/nol dan n ≤ 50; permutasi eksak bila ada seri/nol dan n ≤ 13; selain itu asimtotik dengan koreksi seri). Dilaporkan W = min(R+, R−), z, p, dan r = |z|/√n.
+- **Shapiro-Wilk:** port dari implementasi Python SciPy (Royston), cabang n = 3 dan n ≤ 11 ikut.
+- **KR-20:** default varians total populasi (÷ N), konsisten dengan p·q populasi (setara Cronbach α untuk butir 0/1). Opsi `sample` tersedia.
+- **Tanpa dependensi statistik** (jstat tidak dipakai): fungsi distribusi diimplementasi sendiri dan diverifikasi ke SciPy dengan toleransi relatif 1e-6 sampai 1e-12.
+
+## D-020 · Analisis berpasangan dan transisi
+- **Inklusi:** persetujuan `granted` + pretest dan posttest selesai. Alasan pengecualian dilaporkan (withdrawn, pending, pre/post belum selesai).
+- **Persentase domain:** penyebut = respons yang ada; bila ≠ siswa × butir, `denominatorConsistent = false` → peringatan di dasbor (PRD §16.3).
+- **Transisi:** tabel pola sebagai data (`PATTERN_MAP`); kombinasi lain → `other` ("Lainnya"). Unit tanpa pre/post dilaporkan, tidak dibuang diam-diam. Invarian Σ pola = jumlah unit diuji pada data acak.
+
+## D-021 · Kunci jawaban tidak pernah ke klien
+- **Keputusan:** `toStudentItem()` membuang `correct`, `maps_to_misconception`, domain, dan target miskonsepsi. Test memastikan tidak ada kata kunci tersebut di JSON siswa. Endpoint tes (M6) wajib memakai fungsi ini.

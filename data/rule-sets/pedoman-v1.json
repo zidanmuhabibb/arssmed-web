@@ -1,0 +1,136 @@
+{
+  "rule_set_id": "pedoman-v1",
+  "kind": "per_tier",
+  "source": "in.docx, bagian D.2 Tabel Keputusan Kategori. Tier kosong → E (catatan di bawah tabel D.2).",
+  "incomplete_category": "E",
+  "rules": [
+    {
+      "no": 1,
+      "A": true,
+      "CA": true,
+      "R": true,
+      "CR": true,
+      "category": "SC"
+    },
+    {
+      "no": 2,
+      "A": true,
+      "CA": true,
+      "R": true,
+      "CR": false,
+      "category": "LC"
+    },
+    {
+      "no": 3,
+      "A": true,
+      "CA": false,
+      "R": true,
+      "CR": true,
+      "category": "LC"
+    },
+    {
+      "no": 4,
+      "A": true,
+      "CA": false,
+      "R": true,
+      "CR": false,
+      "category": "LC"
+    },
+    {
+      "no": 5,
+      "A": true,
+      "CA": true,
+      "R": false,
+      "CR": true,
+      "category": "M"
+    },
+    {
+      "no": 6,
+      "A": false,
+      "CA": true,
+      "R": true,
+      "CR": true,
+      "category": "M"
+    },
+    {
+      "no": 7,
+      "A": false,
+      "CA": true,
+      "R": false,
+      "CR": true,
+      "category": "M"
+    },
+    {
+      "no": 8,
+      "A": true,
+      "CA": false,
+      "R": false,
+      "CR": false,
+      "category": "LK"
+    },
+    {
+      "no": 9,
+      "A": false,
+      "CA": false,
+      "R": true,
+      "CR": false,
+      "category": "LK"
+    },
+    {
+      "no": 10,
+      "A": false,
+      "CA": false,
+      "R": false,
+      "CR": false,
+      "category": "LK"
+    },
+    {
+      "no": 11,
+      "A": true,
+      "CA": true,
+      "R": false,
+      "CR": false,
+      "category": "E"
+    },
+    {
+      "no": 12,
+      "A": true,
+      "CA": false,
+      "R": false,
+      "CR": true,
+      "category": "E"
+    },
+    {
+      "no": 13,
+      "A": false,
+      "CA": true,
+      "R": true,
+      "CR": false,
+      "category": "E"
+    },
+    {
+      "no": 14,
+      "A": false,
+      "CA": false,
+      "R": true,
+      "CR": true,
+      "category": "E"
+    },
+    {
+      "no": 15,
+      "A": false,
+      "CA": true,
+      "R": false,
+      "CR": false,
+      "category": "E"
+    },
+    {
+      "no": 16,
+      "A": false,
+      "CA": false,
+      "R": false,
+      "CR": true,
+      "category": "E"
+    }
+  ]
+}

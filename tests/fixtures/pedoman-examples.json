@@ -1,0 +1,50 @@
+{
+  "source": "in.docx bagian D.3",
+  "examples": [
+    {
+      "item_order": 7,
+      "tier1": "B",
+      "confidenceA": "Y",
+      "reason": "C",
+      "confidenceR": "Y",
+      "interpretation": "Jawaban dan alasan benar, yakin pada keduanya",
+      "category": "SC"
+    },
+    {
+      "item_order": 7,
+      "tier1": "A",
+      "confidenceA": "Y",
+      "reason": "A",
+      "confidenceR": "Y",
+      "interpretation": "Memilih Merkurius karena “paling dekat pasti paling panas”, dan yakin",
+      "category": "M"
+    },
+    {
+      "item_order": 7,
+      "tier1": "B",
+      "confidenceA": "TY",
+      "reason": "C",
+      "confidenceR": "Y",
+      "interpretation": "Jawaban dan alasan benar, tetapi ragu terhadap jawaban",
+      "category": "LC"
+    },
+    {
+      "item_order": 7,
+      "tier1": "A",
+      "confidenceA": "TY",
+      "reason": "D",
+      "confidenceR": "TY",
+      "interpretation": "Jawaban dan alasan salah, tidak yakin pada keduanya",
+      "category": "LK"
+    },
+    {
+      "item_order": 7,
+      "tier1": "B",
+      "confidenceA": "Y",
+      "reason": "A",
+      "confidenceR": "TY",
+      "interpretation": "Jawaban benar, alasan salah, keyakinan tidak konsisten",
+      "category": "E"
+    }
+  ]
+}

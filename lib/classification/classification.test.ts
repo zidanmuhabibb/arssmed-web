@@ -4,6 +4,7 @@ import {
   classifyResponse,
   DEFAULT_RULE_SET,
   enumerateItemOutcomes,
+  CombinedRuleSet,
   RuleSet,
   TestItemContent,
   toStudentItem,
@@ -19,7 +20,7 @@ function resp(tier1Key: string, reasonKey: string, confidenceR: number | null, c
   return { tier1Key, reasonKey, confidenceA, confidenceR };
 }
 
-function cat(item: TestItemContent, r: RawResponse, rs = DEFAULT_RULE_SET): Category {
+function cat(item: TestItemContent, r: RawResponse, rs: RuleSet = DEFAULT_RULE_SET): Category {
   const c = classifyResponse(item, r, rs);
   if (c.status !== "classified") throw new Error(JSON.stringify(c));
   return c.category;
@@ -90,15 +91,15 @@ describe("format four_tier_standard", () => {
   });
 
   it("mode answer_tier_only dan reason_tier_only", () => {
-    const answerOnly = RuleSet.parse({ ...DEFAULT_RULE_SET, rule_set_id: "a-only", confidence_mode: "answer_tier_only" });
-    const reasonOnly = RuleSet.parse({ ...DEFAULT_RULE_SET, rule_set_id: "r-only", confidence_mode: "reason_tier_only" });
+    const answerOnly = CombinedRuleSet.parse({ ...DEFAULT_RULE_SET, rule_set_id: "a-only", confidence_mode: "answer_tier_only" });
+    const reasonOnly = CombinedRuleSet.parse({ ...DEFAULT_RULE_SET, rule_set_id: "r-only", confidence_mode: "reason_tier_only" });
     const r = resp("A", "R1", RAGU, YAKIN); // alasan ragu, jawaban yakin
     expect(cat(ITEM_STANDARD, r, answerOnly)).toBe("M");
     expect(cat(ITEM_STANDARD, r, reasonOnly)).toBe("LK");
   });
 
   it("answer_tier_only tidak berlaku untuk modified_tier2", () => {
-    const answerOnly = RuleSet.parse({ ...DEFAULT_RULE_SET, rule_set_id: "a-only", confidence_mode: "answer_tier_only" });
+    const answerOnly = CombinedRuleSet.parse({ ...DEFAULT_RULE_SET, rule_set_id: "a-only", confidence_mode: "answer_tier_only" });
     expect(classifyResponse(ITEM_MODIFIED, resp("B", "R2", YAKIN), answerOnly).status).toBe("invalid");
   });
 });
@@ -134,10 +135,10 @@ describe("validasi rule set", () => {
     expect(a.complete).toBe(false);
     expect(a.missing).toEqual([{ A: false, R: false, C: false }]);
     expect(a.duplicates).toHaveLength(1);
-    expect(() => RuleSet.parse({ ...DEFAULT_RULE_SET, rules })).toThrow(/belum lengkap/);
+    expect(() => CombinedRuleSet.parse({ ...DEFAULT_RULE_SET, rules })).toThrow(/belum lengkap/);
   });
   it("menolak jumlah aturan ≠ 8", () => {
-    expect(() => RuleSet.parse({ ...DEFAULT_RULE_SET, rules: DEFAULT_RULE_SET.rules.slice(0, 7) })).toThrow();
+    expect(() => CombinedRuleSet.parse({ ...DEFAULT_RULE_SET, rules: DEFAULT_RULE_SET.rules.slice(0, 7) })).toThrow();
   });
   it("aturan alternatif sebagai data mengubah hasil tanpa mengubah kode", () => {
     const alt = RuleSet.parse({

@@ -1,5 +1,28 @@
 # PROGRESS.md
 
+## M1.1 · Impor instrumen peneliti — selesai (8 Oktober 2026)
+
+- `scripts/import_instrument.py` membaca .docx instrumen → `data/items.json` (20 butir), `data/rule-sets/pedoman-v1.json` (tabel D.2), `tests/fixtures/pedoman-examples.json` (D.3). Pemeriksaan bawaan: 20 butir, opsi A–D, skala Yakin/Tidak yakin, kunci rinci = ringkasan.
+- Mesin klasifikasi mendukung aturan `per_tier` (16 kombinasi A × CA × R × CR) dan kebijakan tier kosong (`incomplete_category`).
+- `data/analysis.json`: rule set `pedoman-v1`, skor `score_sc`, transisi `per_butir`, domain kisi-kisi.
+- Test: 354/354 lulus (16 baris D.2, 5 contoh D.3, tier kosong → E, 64 kombinasi × 20 butir, kunci vs ringkasan, konsistensi domain).
+
+### Terjawab dari dokumen instrumen (PRD §16.1)
+| # | Pertanyaan | Jawaban |
+|---|---|---|
+| 1 | Domain kisi-kisi vs pelaporan | Pakai 4 domain kisi-kisi untuk keduanya (D.5) |
+| 2 | Butir per domain | 5 butir per domain |
+| 3 | Aturan klasifikasi | Tabel D.2 → `pedoman-v1` |
+| 4 | Definisi skor | `score_sc` (D.4) |
+| 5 | Format tier | Four-tier baku, keyakinan jawaban & alasan terpisah |
+
+### Masih terbuka
+- **Validasi instrumen:** dokumen berstatus draf (bukan instrumen tervalidasi artikel). Ubah `source.status` ke `validated` setelah validasi ahli + uji reliabilitas.
+- **Pemetaan pengecoh → kode miskonsepsi per opsi** (untuk Peta Butir FR-43): perlu konfirmasi peneliti.
+- #6–#8 (aset 3D asli, izin etik, data residency) belum tersentuh.
+
+---
+
 ## M1 · Pustaka inti — selesai (7 Oktober 2026)
 
 ### Rencana M1

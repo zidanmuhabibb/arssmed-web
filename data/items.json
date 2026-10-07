@@ -1,5 +1,1501 @@
 {
   "test_name": "Tes diagnostik four-tier tata surya",
   "test_version": 1,
-  "items": []
+  "source": {
+    "document": "in.docx",
+    "author": "Zidan Muhabib",
+    "institution": "Program Studi Magister Pendidikan Dasar, Universitas Muhammadiyah Purwokerto",
+    "year": 2026,
+    "status": "draft_needs_validation",
+    "status_note": "Dokumen menyatakan butir, kunci, dan aturan pengkategorian adalah hasil penyusunan baru, bukan salinan instrumen asli artikel. CVI 0,87 dan KR-20 0,79 berlaku untuk instrumen asli; validasi isi oleh ahli dan uji reliabilitas perlu diulang sebelum dipakai."
+  },
+  "default_rule_set_id": "pedoman-v1",
+  "domains": [
+    {
+      "id": "benda_langit",
+      "label": "Karakteristik benda langit",
+      "item_orders": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "planet",
+      "label": "Susunan dan karakteristik planet",
+      "item_orders": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "rotasi_revolusi",
+      "label": "Rotasi dan revolusi Bumi",
+      "item_orders": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "gerhana",
+      "label": "Fenomena astronomi (gerhana)",
+      "item_orders": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  ],
+  "items": [
+    {
+      "item_order": 1,
+      "item_code": "B01",
+      "content": {
+        "stem": "Matahari termasuk jenis benda langit ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "planet"
+            },
+            {
+              "key": "B",
+              "text": "satelit"
+            },
+            {
+              "key": "C",
+              "text": "bintang"
+            },
+            {
+              "key": "D",
+              "text": "komet"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Matahari adalah benda langit terbesar dalam tata surya.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Matahari memancarkan cahaya dan panasnya sendiri.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Matahari bergerak mengelilingi Bumi setiap hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Bintang hanya tampak pada malam hari, sedangkan Matahari tampak pada siang hari.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "benda_langit",
+        "report_domain": "benda_langit",
+        "misconception_target": "MK-B01"
+      },
+      "meta": {
+        "indicator": "Mengidentifikasi Matahari sebagai bintang",
+        "alternative_conceptions": "Matahari bukan bintang karena bintang hanya tampak pada malam hari; ukuran sebagai ciri bintang; Matahari mengelilingi Bumi.",
+        "scientific_concept": "Matahari adalah bintang karena menghasilkan cahaya dan panas sendiri.",
+        "distractor_notes": "Matahari bukan bintang karena bintang hanya tampak pada malam hari (D); ukuran sebagai ciri bintang (A); Matahari mengelilingi Bumi (C)."
+      }
+    },
+    {
+      "item_order": 2,
+      "item_code": "B02",
+      "content": {
+        "stem": "Bulan termasuk jenis benda langit ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "planet"
+            },
+            {
+              "key": "B",
+              "text": "satelit alami"
+            },
+            {
+              "key": "C",
+              "text": "bintang"
+            },
+            {
+              "key": "D",
+              "text": "asteroid"
+            }
+          ],
+          "correct": "B",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Bulan beredar mengelilingi Matahari secara langsung seperti Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bulan memancarkan cahayanya sendiri pada malam hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Bulan beredar mengelilingi planet Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Bulan berbentuk bulat dan berukuran besar.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "C"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "benda_langit",
+        "report_domain": "benda_langit",
+        "misconception_target": "MK-B02"
+      },
+      "meta": {
+        "indicator": "Membedakan satelit alami dengan planet",
+        "alternative_conceptions": "Bulan adalah planet; Bulan bercahaya sendiri.",
+        "scientific_concept": "Bulan adalah satelit alami karena beredar mengelilingi Bumi; cahayanya merupakan pantulan cahaya Matahari.",
+        "distractor_notes": "Bulan adalah planet (opsi A, alasan A dan D); Bulan bercahaya sendiri (alasan B)."
+      }
+    },
+    {
+      "item_order": 3,
+      "item_code": "B03",
+      "content": {
+        "stem": "Ketika sebuah komet mendekati Matahari, ekornya akan terlihat ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "selalu berada di belakang arah gerak komet"
+            },
+            {
+              "key": "B",
+              "text": "mengarah ke Matahari"
+            },
+            {
+              "key": "C",
+              "text": "selalu menjauhi Matahari"
+            },
+            {
+              "key": "D",
+              "text": "hilang karena terbakar Matahari"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Ekor terbentuk seperti asap kendaraan yang tertinggal di belakang benda yang bergerak cepat.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Gaya tarik Matahari menarik gas dan debu komet ke arah Matahari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Panas Matahari membakar seluruh es komet sehingga ekornya lenyap.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Angin dan radiasi Matahari mendorong gas dan debu komet menjauhi Matahari.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "D"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "benda_langit",
+        "report_domain": "benda_langit",
+        "misconception_target": "MK-B03"
+      },
+      "meta": {
+        "indicator": "Menjelaskan arah ekor komet",
+        "alternative_conceptions": "Ekor komet selalu di belakang arah gerak seperti asap; ekor tertarik ke Matahari.",
+        "scientific_concept": "Ekor komet selalu mengarah menjauhi Matahari karena didorong angin dan radiasi Matahari.",
+        "distractor_notes": "Ekor komet selalu di belakang arah gerak seperti asap (A); ekor tertarik ke Matahari (B)."
+      }
+    },
+    {
+      "item_order": 4,
+      "item_code": "B04",
+      "content": {
+        "stem": "Garis cahaya terang yang tampak melintas cepat di langit malam ketika batuan antariksa masuk ke atmosfer Bumi disebut ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "meteoroid"
+            },
+            {
+              "key": "B",
+              "text": "meteor"
+            },
+            {
+              "key": "C",
+              "text": "meteorit"
+            },
+            {
+              "key": "D",
+              "text": "bintang jatuh yang padam"
+            }
+          ],
+          "correct": "B",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Batuan antariksa berpijar karena bergesekan dengan udara di atmosfer Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Ada bintang yang lepas dari tempatnya lalu jatuh ke arah Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Batuan itu masih berada di luar angkasa dan belum memasuki atmosfer.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Batuan itu sudah jatuh dan berada di permukaan Bumi.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "A"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "benda_langit",
+        "report_domain": "benda_langit",
+        "misconception_target": "MK-B04"
+      },
+      "meta": {
+        "indicator": "Membedakan meteoroid, meteor, dan meteorit",
+        "alternative_conceptions": "Meteor adalah bintang jatuh; tertukar dengan meteoroid atau meteorit.",
+        "scientific_concept": "Meteor adalah jejak cahaya batuan antariksa yang berpijar akibat gesekan dengan atmosfer Bumi.",
+        "distractor_notes": "Meteor adalah bintang jatuh (D, alasan B); tertukar dengan meteoroid (A, alasan C) atau meteorit (C, alasan D)."
+      }
+    },
+    {
+      "item_order": 5,
+      "item_code": "B05",
+      "content": {
+        "stem": "Batuan antariksa yang tidak habis terbakar di atmosfer dan akhirnya jatuh sampai ke permukaan Bumi disebut ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "meteorit"
+            },
+            {
+              "key": "B",
+              "text": "meteor"
+            },
+            {
+              "key": "C",
+              "text": "komet"
+            },
+            {
+              "key": "D",
+              "text": "asteroid"
+            }
+          ],
+          "correct": "A",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Semua batuan antariksa pasti sampai ke permukaan Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Meteorit berasal dari pecahan Bulan yang jatuh ke Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Sisa batuan yang tidak habis terbakar saat melewati atmosfer jatuh ke permukaan Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Meteorit adalah bintang yang telah padam lalu jatuh.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "C"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "benda_langit",
+        "report_domain": "benda_langit",
+        "misconception_target": "MK-B05"
+      },
+      "meta": {
+        "indicator": "Menjelaskan terbentuknya meteorit",
+        "alternative_conceptions": "Semua batuan antariksa mencapai Bumi; meteorit berasal dari Bulan atau bintang padam.",
+        "scientific_concept": "Meteorit adalah sisa meteoroid yang tidak habis terbakar di atmosfer dan mencapai permukaan Bumi.",
+        "distractor_notes": "Semua batuan antariksa mencapai Bumi (alasan A); meteorit berasal dari Bulan (B) atau bintang padam (D)."
+      }
+    },
+    {
+      "item_order": 6,
+      "item_code": "B06",
+      "content": {
+        "stem": "Urutan empat planet terdekat dari Matahari yang benar adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Venus – Merkurius – Bumi – Mars"
+            },
+            {
+              "key": "B",
+              "text": "Merkurius – Bumi – Venus – Mars"
+            },
+            {
+              "key": "C",
+              "text": "Mars – Bumi – Venus – Merkurius"
+            },
+            {
+              "key": "D",
+              "text": "Merkurius – Venus – Bumi – Mars"
+            }
+          ],
+          "correct": "D",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Planet diurutkan dari yang paling kecil ke yang paling besar.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Planet diurutkan berdasarkan jarak orbitnya dari Matahari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Planet diurutkan dari yang paling panas ke yang paling dingin.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Planet diurutkan dari yang paling terang di langit malam.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "planet",
+        "report_domain": "planet",
+        "misconception_target": "MK-B06"
+      },
+      "meta": {
+        "indicator": "Mengurutkan planet berdasarkan jarak dari Matahari",
+        "alternative_conceptions": "Urutan planet ditentukan oleh ukuran, suhu, atau kecerahan.",
+        "scientific_concept": "Susunan planet ditentukan oleh jarak orbitnya dari Matahari.",
+        "distractor_notes": "Urutan planet ditentukan oleh ukuran (A), suhu (C), atau kecerahan (D)."
+      }
+    },
+    {
+      "item_order": 7,
+      "item_code": "B07",
+      "content": {
+        "stem": "Planet yang memiliki suhu permukaan paling panas dalam tata surya adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Merkurius"
+            },
+            {
+              "key": "B",
+              "text": "Venus"
+            },
+            {
+              "key": "C",
+              "text": "Bumi"
+            },
+            {
+              "key": "D",
+              "text": "Mars"
+            }
+          ],
+          "correct": "B",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Planet yang paling dekat dengan Matahari pasti paling panas.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Planet itu tampak paling terang di langit sehingga paling panas.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Atmosfernya yang tebal dan kaya karbon dioksida menimbulkan efek rumah kaca yang memerangkap panas.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Planet itu tidak memiliki atmosfer sehingga panas Matahari langsung mengenai permukaannya.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "C"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "planet",
+        "report_domain": "planet",
+        "misconception_target": "MK-B07"
+      },
+      "meta": {
+        "indicator": "Menjelaskan planet terpanas dalam tata surya",
+        "alternative_conceptions": "Planet terdekat dengan Matahari pasti terpanas; kecerahan menentukan suhu.",
+        "scientific_concept": "Venus adalah planet terpanas karena atmosfer CO₂ yang tebal menimbulkan efek rumah kaca.",
+        "distractor_notes": "Planet terdekat dengan Matahari pasti terpanas (A, alasan A); kecerahan menentukan suhu (alasan B)."
+      }
+    },
+    {
+      "item_order": 8,
+      "item_code": "B08",
+      "content": {
+        "stem": "Planet terbesar dalam tata surya adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Saturnus"
+            },
+            {
+              "key": "B",
+              "text": "Neptunus"
+            },
+            {
+              "key": "C",
+              "text": "Jupiter"
+            },
+            {
+              "key": "D",
+              "text": "Uranus"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Planet yang memiliki cincin paling besar adalah planet terbesar.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Planet itu memiliki diameter dan massa paling besar di antara semua planet.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Semakin jauh dari Matahari, ukuran planet semakin besar.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Planet itu tampak paling besar ketika dilihat dari Bumi.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "planet",
+        "report_domain": "planet",
+        "misconception_target": "MK-B08"
+      },
+      "meta": {
+        "indicator": "Mengidentifikasi planet terbesar",
+        "alternative_conceptions": "Planet bercincin paling besar; planet terjauh paling besar.",
+        "scientific_concept": "Jupiter adalah planet terbesar berdasarkan diameter dan massanya.",
+        "distractor_notes": "Planet bercincin paling besar (A, alasan A); planet terjauh paling besar (B, alasan C)."
+      }
+    },
+    {
+      "item_order": 9,
+      "item_code": "B09",
+      "content": {
+        "stem": "Sabuk asteroid dalam tata surya terletak di antara orbit planet ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Bumi dan Mars"
+            },
+            {
+              "key": "B",
+              "text": "Mars dan Jupiter"
+            },
+            {
+              "key": "C",
+              "text": "Jupiter dan Saturnus"
+            },
+            {
+              "key": "D",
+              "text": "Merkurius dan Venus"
+            }
+          ],
+          "correct": "B",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Asteroid adalah batuan yang mengelilingi Bumi seperti Bulan.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Asteroid berada di luar tata surya, jauh setelah Neptunus.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Asteroid adalah pecahan Bumi yang terlempar ke luar angkasa.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Batuan sisa pembentukan tata surya beredar mengelilingi Matahari di antara kedua planet itu.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "D"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "planet",
+        "report_domain": "planet",
+        "misconception_target": "MK-B09"
+      },
+      "meta": {
+        "indicator": "Menentukan letak sabuk asteroid",
+        "alternative_conceptions": "Asteroid mengelilingi Bumi, berada di luar tata surya, atau berasal dari Bumi.",
+        "scientific_concept": "Sabuk asteroid berada di antara Mars dan Jupiter; asteroid beredar mengelilingi Matahari.",
+        "distractor_notes": "Asteroid mengelilingi Bumi (alasan A), berada di luar tata surya (B), atau berasal dari Bumi (C)."
+      }
+    },
+    {
+      "item_order": 10,
+      "item_code": "B10",
+      "content": {
+        "stem": "Kelompok planet yang tersusun dari batuan dan memiliki permukaan padat adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Jupiter, Saturnus, Uranus, Neptunus"
+            },
+            {
+              "key": "B",
+              "text": "Bumi, Mars, Jupiter, Saturnus"
+            },
+            {
+              "key": "C",
+              "text": "semua planet dalam tata surya"
+            },
+            {
+              "key": "D",
+              "text": "Merkurius, Venus, Bumi, Mars"
+            }
+          ],
+          "correct": "D",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Planet yang letaknya jauh dari Matahari membeku sehingga menjadi batuan padat.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Semua planet terbentuk dengan cara yang sama sehingga semuanya berbatu.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Planet yang berukuran besar pasti tersusun dari batuan.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Planet dalam yang dekat dengan Matahari tersusun dari batuan dan logam.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "D"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "planet",
+        "report_domain": "planet",
+        "misconception_target": "MK-B10"
+      },
+      "meta": {
+        "indicator": "Membedakan planet dalam (berbatu) dan planet luar (gas)",
+        "alternative_conceptions": "Planet jauh membeku menjadi batu; semua planet berbatu; planet besar pasti berbatu.",
+        "scientific_concept": "Planet dalam (Merkurius–Mars) adalah planet berbatu; planet luar (Jupiter–Neptunus) didominasi gas/es.",
+        "distractor_notes": "Planet jauh membeku menjadi batu (A, alasan A); semua planet berbatu (C, alasan B); planet besar pasti berbatu (B, alasan C)."
+      }
+    },
+    {
+      "item_order": 11,
+      "item_code": "B11",
+      "content": {
+        "stem": "Terjadinya siang dan malam di Bumi disebabkan oleh ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Matahari bergerak mengelilingi Bumi"
+            },
+            {
+              "key": "B",
+              "text": "revolusi Bumi"
+            },
+            {
+              "key": "C",
+              "text": "rotasi Bumi"
+            },
+            {
+              "key": "D",
+              "text": "Matahari tertutup awan atau gunung"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Matahari terbit dan terbenam karena bergerak mengitari Bumi setiap hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bagian Bumi yang menghadap Matahari mengalami siang dan yang membelakangi mengalami malam.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Bumi mengelilingi Matahari satu kali setiap hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Pada malam hari Matahari bersembunyi di balik gunung.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "rotasi_revolusi",
+        "report_domain": "rotasi_revolusi",
+        "misconception_target": "MK-B11"
+      },
+      "meta": {
+        "indicator": "Menjelaskan penyebab siang dan malam",
+        "alternative_conceptions": "Matahari mengelilingi Bumi; siang–malam akibat revolusi; Matahari bersembunyi di balik gunung.",
+        "scientific_concept": "Siang dan malam terjadi karena Bumi berotasi pada porosnya.",
+        "distractor_notes": "Matahari mengelilingi Bumi (A, alasan A); siang–malam akibat revolusi (B, alasan C); Matahari bersembunyi di balik gunung (D, alasan D)."
+      }
+    },
+    {
+      "item_order": 12,
+      "item_code": "B12",
+      "content": {
+        "stem": "Waktu yang diperlukan Bumi untuk berotasi satu kali adalah sekitar ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "24 jam"
+            },
+            {
+              "key": "B",
+              "text": "7 hari"
+            },
+            {
+              "key": "C",
+              "text": "30 hari"
+            },
+            {
+              "key": "D",
+              "text": "365 hari"
+            }
+          ],
+          "correct": "A",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Satu kali rotasi sama dengan waktu Bulan mengelilingi Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Satu kali rotasi sama dengan satu tahun.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Satu kali rotasi menghasilkan satu kali pergantian siang dan malam (satu hari).",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Satu kali rotasi sama dengan satu minggu.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "C"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "rotasi_revolusi",
+        "report_domain": "rotasi_revolusi",
+        "misconception_target": "MK-B12"
+      },
+      "meta": {
+        "indicator": "Menentukan waktu satu kali rotasi Bumi",
+        "alternative_conceptions": "Rotasi tertukar dengan revolusi atau periode Bulan.",
+        "scientific_concept": "Bumi berotasi satu kali sekitar 24 jam, menghasilkan satu siklus siang–malam.",
+        "distractor_notes": "Rotasi tertukar dengan revolusi (D, alasan B) atau periode Bulan (C, alasan A)."
+      }
+    },
+    {
+      "item_order": 13,
+      "item_code": "B13",
+      "content": {
+        "stem": "Matahari tampak terbit di timur dan terbenam di barat karena ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Matahari bergerak dari timur ke barat"
+            },
+            {
+              "key": "B",
+              "text": "Bumi berotasi dari timur ke barat"
+            },
+            {
+              "key": "C",
+              "text": "Bumi berevolusi mengelilingi Matahari"
+            },
+            {
+              "key": "D",
+              "text": "Bumi berotasi dari barat ke timur"
+            }
+          ],
+          "correct": "D",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Gerak Matahari yang kita lihat adalah gerak semu akibat perputaran Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Matahari benar-benar berpindah tempat di langit setiap hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Arah terbit Matahari sama dengan arah putaran Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Perpindahan Bumi mengelilingi Matahari membuat Matahari tampak bergerak setiap hari.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "A"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "rotasi_revolusi",
+        "report_domain": "rotasi_revolusi",
+        "misconception_target": "MK-B13"
+      },
+      "meta": {
+        "indicator": "Menjelaskan gerak semu harian Matahari",
+        "alternative_conceptions": "Matahari benar-benar bergerak; arah rotasi tertukar; gerak harian akibat revolusi.",
+        "scientific_concept": "Bumi berotasi dari barat ke timur sehingga Matahari tampak bergerak dari timur ke barat (gerak semu).",
+        "distractor_notes": "Matahari benar-benar bergerak (A, alasan B); arah rotasi tertukar (B, alasan C); gerak harian akibat revolusi (C, alasan D)."
+      }
+    },
+    {
+      "item_order": 14,
+      "item_code": "B14",
+      "content": {
+        "stem": "Pergantian musim di belahan Bumi utara dan selatan terutama disebabkan oleh ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "kemiringan sumbu rotasi Bumi selama revolusi"
+            },
+            {
+              "key": "B",
+              "text": "perubahan jarak Bumi ke Matahari"
+            },
+            {
+              "key": "C",
+              "text": "rotasi Bumi"
+            },
+            {
+              "key": "D",
+              "text": "perubahan jumlah awan di langit"
+            }
+          ],
+          "correct": "A",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Ketika Bumi dekat dengan Matahari terjadi musim panas, ketika jauh terjadi musim dingin.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bumi berputar pada porosnya sehingga musim berganti setiap hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Sumbu Bumi yang miring membuat tiap belahan Bumi bergantian menerima sinar Matahari lebih tegak dan lebih lama.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Awan menghalangi panas Matahari pada musim tertentu.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "C"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "rotasi_revolusi",
+        "report_domain": "rotasi_revolusi",
+        "misconception_target": "MK-B14"
+      },
+      "meta": {
+        "indicator": "Menjelaskan penyebab pergantian musim",
+        "alternative_conceptions": "Musim disebabkan jarak Bumi–Matahari; musim akibat rotasi; musim akibat awan.",
+        "scientific_concept": "Musim terjadi karena sumbu rotasi Bumi miring (±23,5°) selama Bumi berevolusi.",
+        "distractor_notes": "Musim disebabkan jarak Bumi–Matahari (B, alasan A); musim akibat rotasi (C, alasan B); musim akibat awan (D, alasan D)."
+      }
+    },
+    {
+      "item_order": 15,
+      "item_code": "B15",
+      "content": {
+        "stem": "Bumi mengelilingi Matahari satu kali dalam waktu sekitar 365¼ hari. Salah satu akibat dari gerak tersebut adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "terjadinya siang dan malam"
+            },
+            {
+              "key": "B",
+              "text": "adanya tahun kabisat setiap empat tahun"
+            },
+            {
+              "key": "C",
+              "text": "perbedaan waktu antarwilayah"
+            },
+            {
+              "key": "D",
+              "text": "terbit dan terbenamnya Matahari"
+            }
+          ],
+          "correct": "B",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Kelebihan seperempat hari setiap tahun dikumpulkan menjadi satu hari tambahan setiap empat tahun.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bumi berputar pada porosnya sehingga terjadi pergantian hari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Bumi berputar sehingga wilayah timur lebih dahulu terkena sinar Matahari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Matahari mengelilingi Bumi selama satu tahun.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "A"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "rotasi_revolusi",
+        "report_domain": "rotasi_revolusi",
+        "misconception_target": "MK-B15"
+      },
+      "meta": {
+        "indicator": "Menentukan kala revolusi Bumi dan akibatnya",
+        "alternative_conceptions": "Akibat rotasi tertukar dengan akibat revolusi; Matahari mengelilingi Bumi.",
+        "scientific_concept": "Kala revolusi ±365¼ hari menyebabkan adanya tahun kabisat setiap empat tahun.",
+        "distractor_notes": "Akibat rotasi tertukar dengan akibat revolusi (A, C, D; alasan B, C); Matahari mengelilingi Bumi (alasan D)."
+      }
+    },
+    {
+      "item_order": 16,
+      "item_code": "B16",
+      "content": {
+        "stem": "Posisi Matahari, Bulan, dan Bumi yang benar saat terjadi gerhana Matahari adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Matahari – Bumi – Bulan"
+            },
+            {
+              "key": "B",
+              "text": "Bumi – Matahari – Bulan"
+            },
+            {
+              "key": "C",
+              "text": "Matahari – Bulan – Bumi"
+            },
+            {
+              "key": "D",
+              "text": "Bulan – Matahari – Bumi"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Bumi menghalangi cahaya Matahari sehingga Matahari tidak terlihat.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bulan berada di antara Matahari dan Bumi sehingga bayangan Bulan jatuh ke permukaan Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Matahari padam untuk sementara waktu.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Awan tebal menutupi Matahari.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "gerhana",
+        "report_domain": "gerhana",
+        "misconception_target": "MK-B16"
+      },
+      "meta": {
+        "indicator": "Menentukan posisi benda langit saat gerhana Matahari",
+        "alternative_conceptions": "Gerhana Matahari tertukar dengan gerhana Bulan; Matahari padam.",
+        "scientific_concept": "Gerhana Matahari terjadi saat Bulan berada di antara Matahari dan Bumi.",
+        "distractor_notes": "Gerhana Matahari tertukar dengan gerhana Bulan (A, alasan A); Matahari padam (alasan C)."
+      }
+    },
+    {
+      "item_order": 17,
+      "item_code": "B17",
+      "content": {
+        "stem": "Gerhana Bulan terjadi ketika ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Bulan berada di antara Matahari dan Bumi"
+            },
+            {
+              "key": "B",
+              "text": "Matahari berada di antara Bumi dan Bulan"
+            },
+            {
+              "key": "C",
+              "text": "Bulan tertutup awan pada malam hari"
+            },
+            {
+              "key": "D",
+              "text": "Bumi berada di antara Matahari dan Bulan"
+            }
+          ],
+          "correct": "D",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Bulan masuk ke dalam bayangan Bumi sehingga tidak mendapat cahaya Matahari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bayangan Bulan menutupi Matahari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Bulan berhenti memancarkan cahayanya sendiri.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Awan menghalangi cahaya Bulan sampai ke Bumi.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "A"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "gerhana",
+        "report_domain": "gerhana",
+        "misconception_target": "MK-B17"
+      },
+      "meta": {
+        "indicator": "Menjelaskan terjadinya gerhana Bulan",
+        "alternative_conceptions": "Tertukar dengan gerhana Matahari; Bulan bercahaya sendiri; gerhana akibat awan.",
+        "scientific_concept": "Gerhana Bulan terjadi saat Bumi berada di antara Matahari dan Bulan sehingga Bulan masuk bayangan Bumi.",
+        "distractor_notes": "Tertukar dengan gerhana Matahari (A, alasan B); Bulan bercahaya sendiri (alasan C); gerhana akibat awan (C, alasan D)."
+      }
+    },
+    {
+      "item_order": 18,
+      "item_code": "B18",
+      "content": {
+        "stem": "Gerhana Bulan hanya mungkin terjadi pada saat fase ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "bulan baru"
+            },
+            {
+              "key": "B",
+              "text": "bulan sabit"
+            },
+            {
+              "key": "C",
+              "text": "bulan purnama"
+            },
+            {
+              "key": "D",
+              "text": "bulan separuh"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Pada fase ini Bulan tidak tampak sehingga mudah tertutup.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Pada fase ini Bumi berada di antara Matahari dan Bulan.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Pada fase ini Bulan berada paling dekat dengan Matahari.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Pada fase ini sebagian Bulan sudah tertutup bayangan Bumi.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "gerhana",
+        "report_domain": "gerhana",
+        "misconception_target": "MK-B18"
+      },
+      "meta": {
+        "indicator": "Mengaitkan gerhana Bulan dengan fase Bulan",
+        "alternative_conceptions": "Fase Bulan disebabkan bayangan Bumi; gerhana Bulan pada bulan baru.",
+        "scientific_concept": "Gerhana Bulan terjadi saat purnama, ketika Bumi berada di antara Matahari dan Bulan.",
+        "distractor_notes": "Fase Bulan disebabkan bayangan Bumi (D, alasan D); gerhana Bulan pada bulan baru (A, alasan A)."
+      }
+    },
+    {
+      "item_order": 19,
+      "item_code": "B19",
+      "content": {
+        "stem": "Bulan mengelilingi Bumi sekitar satu kali setiap bulan, tetapi gerhana tidak terjadi setiap bulan. Hal ini karena ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "orbit Bulan miring terhadap bidang orbit Bumi"
+            },
+            {
+              "key": "B",
+              "text": "Bulan terlalu kecil untuk menutupi Matahari"
+            },
+            {
+              "key": "C",
+              "text": "Bulan tidak selalu mengelilingi Bumi"
+            },
+            {
+              "key": "D",
+              "text": "gerhana terjadi setiap bulan tetapi tidak terlihat"
+            }
+          ],
+          "correct": "A",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Bulan kadang berhenti beredar sehingga tidak sejajar dengan Bumi.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Ukuran Bulan berubah-ubah setiap bulan.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Matahari, Bulan, dan Bumi jarang berada tepat pada satu garis lurus karena bidang orbit Bulan miring.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Gerhana selalu terjadi, tetapi terhalang oleh awan.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "C"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "gerhana",
+        "report_domain": "gerhana",
+        "misconception_target": "MK-B19"
+      },
+      "meta": {
+        "indicator": "Menjelaskan mengapa gerhana tidak terjadi setiap bulan",
+        "alternative_conceptions": "Ukuran Bulan berubah; Bulan tidak selalu beredar; gerhana selalu terjadi.",
+        "scientific_concept": "Bidang orbit Bulan miring (±5°) terhadap bidang orbit Bumi sehingga kesejajaran sempurna jarang terjadi.",
+        "distractor_notes": "Ukuran Bulan berubah (B, alasan B); Bulan tidak selalu beredar (C, alasan A); gerhana selalu terjadi (D, alasan D)."
+      }
+    },
+    {
+      "item_order": 20,
+      "item_code": "B20",
+      "content": {
+        "stem": "Cara yang aman untuk mengamati gerhana Matahari adalah ….",
+        "stem_image": null,
+        "format": "four_tier_standard",
+        "tier1": {
+          "options": [
+            {
+              "key": "A",
+              "text": "melihat langsung dengan mata telanjang"
+            },
+            {
+              "key": "B",
+              "text": "menggunakan kacamata hitam biasa"
+            },
+            {
+              "key": "C",
+              "text": "menggunakan kacamata khusus gerhana atau filter Matahari"
+            },
+            {
+              "key": "D",
+              "text": "tidak boleh diamati sama sekali karena sinar gerhana beracun"
+            }
+          ],
+          "correct": "C",
+          "fixed_order": false
+        },
+        "reason": {
+          "options": [
+            {
+              "key": "A",
+              "text": "Saat gerhana Matahari tertutup Bulan sehingga cahayanya tidak berbahaya.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "B",
+              "text": "Bagian Matahari yang masih terlihat tetap memancarkan cahaya kuat yang dapat merusak mata.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "C",
+              "text": "Gerhana memancarkan sinar khusus yang beracun bagi manusia.",
+              "maps_to_misconception": null
+            },
+            {
+              "key": "D",
+              "text": "Kacamata hitam sudah cukup menghalangi cahaya Matahari.",
+              "maps_to_misconception": null
+            }
+          ],
+          "correct": "B"
+        },
+        "confidence": {
+          "levels": [
+            "Yakin",
+            "Tidak yakin"
+          ],
+          "threshold_index": 0
+        },
+        "concept_domain": "gerhana",
+        "report_domain": "gerhana",
+        "misconception_target": "MK-B20"
+      },
+      "meta": {
+        "indicator": "Menentukan cara aman mengamati gerhana Matahari",
+        "alternative_conceptions": "Gerhana memancarkan sinar beracun; aman dilihat langsung; kacamata hitam cukup.",
+        "scientific_concept": "Cahaya Matahari tetap dapat merusak retina saat gerhana; pengamatan memerlukan filter khusus.",
+        "distractor_notes": "Gerhana memancarkan sinar beracun (D, alasan C); aman dilihat langsung (A, alasan A); kacamata hitam cukup (B, alasan D)."
+      }
+    }
+  ]
 }

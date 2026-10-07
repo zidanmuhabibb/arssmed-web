@@ -17,7 +17,8 @@
     "db:start": "supabase start",
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
-    "stats:reference": "python3 tests/fixtures/generate_scipy_reference.py"
+    "stats:reference": "python3 tests/fixtures/generate_scipy_reference.py",
+    "items:import": "python3 scripts/import_instrument.py"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.3.0",

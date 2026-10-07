@@ -1,4 +1,4 @@
-import type { Category } from "./categories";
+import { emptyCategoryCounts, type Category } from "./categories";
 import { requiredConfidenceTiers, type TestItemContent } from "./item";
 import { lookupCategory, type RuleSet } from "./rules";
 
@@ -12,18 +12,29 @@ export interface RawResponse {
   confidenceR: number | null;
 }
 
+export type MissingTier = "tier1" | "reason" | "confidenceA" | "confidenceR";
+
 export type Classification =
   | {
       status: "classified";
       aCorrect: boolean;
       rCorrect: boolean;
+      /** Keyakinan gabungan (semua tier keyakinan yang diisi ≥ ambang). */
       confident: boolean;
+      /** Keyakinan per tier; null bila tier tidak ada pada format atau kosong. */
+      confidentA: boolean | null;
+      confidentR: boolean | null;
       category: Category;
       ruleSetId: string;
+      /**
+       * Tier yang kosong saat dikumpulkan. Tidak kosong hanya bila rule set
+       * menetapkan `incomplete_category` (mis. Pedoman: kosong → E).
+       */
+      missing: MissingTier[];
     }
   | {
       status: "incomplete";
-      missing: ("tier1" | "reason" | "confidenceA" | "confidenceR")[];
+      missing: MissingTier[];
       ruleSetId: string;
     }
   | {
@@ -46,17 +57,18 @@ export function classifyResponse(item: TestItemContent, response: RawResponse, r
   const needA = required.includes("answer");
   const needR = required.includes("reason");
 
-  const missing: ("tier1" | "reason" | "confidenceA" | "confidenceR")[] = [];
-  if (response.tier1Key == null) missing.push("tier1");
-  if (response.reasonKey == null) missing.push("reason");
-  if (needA && response.confidenceA == null) missing.push("confidenceA");
-  if (needR && response.confidenceR == null) missing.push("confidenceR");
-  if (missing.length > 0) return { status: "incomplete", missing, ruleSetId };
+  if (ruleSet.kind === "per_tier" && item.format !== "four_tier_standard") {
+    return { status: "invalid", reason: "Aturan per_tier butuh format four_tier_standard", ruleSetId };
+  }
+  if (ruleSet.kind === "combined" && ruleSet.confidence_mode === "answer_tier_only" && !needA) {
+    return { status: "invalid", reason: "Mode answer_tier_only butuh format four_tier_standard", ruleSetId };
+  }
 
-  if (!item.tier1.options.some((o) => o.key === response.tier1Key)) {
+  // Kunci yang tidak dikenal = galat sistem/data, bukan jawaban siswa.
+  if (response.tier1Key != null && !item.tier1.options.some((o) => o.key === response.tier1Key)) {
     return { status: "invalid", reason: `Opsi tier 1 tidak dikenal: ${response.tier1Key}`, ruleSetId };
   }
-  if (!item.reason.options.some((o) => o.key === response.reasonKey)) {
+  if (response.reasonKey != null && !item.reason.options.some((o) => o.key === response.reasonKey)) {
     return { status: "invalid", reason: `Opsi alasan tidak dikenal: ${response.reasonKey}`, ruleSetId };
   }
   const nLevels = item.confidence.levels.length;
@@ -69,35 +81,63 @@ export function classifyResponse(item: TestItemContent, response: RawResponse, r
     }
   }
 
-  const t = item.confidence.threshold_index;
-  const confA = needA ? isConfident(response.confidenceA!, t) : null;
-  const confR = needR ? isConfident(response.confidenceR!, t) : null;
+  const missing: MissingTier[] = [];
+  if (response.tier1Key == null) missing.push("tier1");
+  if (response.reasonKey == null) missing.push("reason");
+  if (needA && response.confidenceA == null) missing.push("confidenceA");
+  if (needR && response.confidenceR == null) missing.push("confidenceR");
 
-  let confident: boolean;
-  switch (ruleSet.confidence_mode) {
-    case "all_tiers_at_or_above_threshold":
-      confident = [confA, confR].filter((c): c is boolean => c !== null).every(Boolean);
-      break;
-    case "answer_tier_only":
-      if (confA === null) {
-        return { status: "invalid", reason: "Mode answer_tier_only butuh format four_tier_standard", ruleSetId };
-      }
-      confident = confA;
-      break;
-    case "reason_tier_only":
-      confident = confR!;
-      break;
+  const aCorrect = response.tier1Key != null && response.tier1Key === item.tier1.correct;
+  const rCorrect = response.reasonKey != null && response.reasonKey === item.reason.correct;
+  const t = item.confidence.threshold_index;
+  const confidentA = needA && response.confidenceA != null ? isConfident(response.confidenceA, t) : null;
+  const confidentR = needR && response.confidenceR != null ? isConfident(response.confidenceR, t) : null;
+
+  if (missing.length > 0) {
+    if (ruleSet.incomplete_category == null) return { status: "incomplete", missing, ruleSetId };
+    return {
+      status: "classified",
+      aCorrect,
+      rCorrect,
+      confident: false,
+      confidentA,
+      confidentR,
+      category: ruleSet.incomplete_category,
+      ruleSetId,
+      missing,
+    };
   }
 
-  const aCorrect = response.tier1Key === item.tier1.correct;
-  const rCorrect = response.reasonKey === item.reason.correct;
+  const present = [confidentA, confidentR].filter((c): c is boolean => c !== null);
+  const confidentAll = present.every(Boolean);
+
+  let C: boolean;
+  if (ruleSet.kind === "per_tier") {
+    C = confidentAll;
+  } else {
+    switch (ruleSet.confidence_mode) {
+      case "all_tiers_at_or_above_threshold":
+        C = confidentAll;
+        break;
+      case "answer_tier_only":
+        C = confidentA!;
+        break;
+      case "reason_tier_only":
+        C = confidentR!;
+        break;
+    }
+  }
+
   return {
     status: "classified",
     aCorrect,
     rCorrect,
-    confident,
-    category: lookupCategory(ruleSet, aCorrect, rCorrect, confident),
+    confident: C,
+    confidentA,
+    confidentR,
+    category: lookupCategory(ruleSet, { A: aCorrect, R: rCorrect, C, CA: confidentA, CR: confidentR }),
     ruleSetId,
+    missing: [],
   };
 }
 
@@ -110,8 +150,8 @@ export interface OutcomeRow {
 }
 
 /**
- * "Uji aturan" (FR-54): jalankan SEMUA kombinasi jawaban untuk satu butir dan
- * laporkan kategori tiap kombinasi beserta rekapnya.
+ * "Uji aturan" (FR-54): jalankan SEMUA kombinasi jawaban lengkap untuk satu
+ * butir dan laporkan kategori tiap kombinasi beserta rekapnya.
  */
 export function enumerateItemOutcomes(item: TestItemContent, ruleSet: RuleSet) {
   const required = requiredConfidenceTiers(item.format);
@@ -133,7 +173,7 @@ export function enumerateItemOutcomes(item: TestItemContent, ruleSet: RuleSet) {
           rows.push({ tier1Key: o1.key, reasonKey: or.key, confidenceA: ca, confidenceR: cr, category: c.category });
         }
 
-  const totals = { SC: 0, M: 0, E: 0, LK: 0, LC: 0 } as Record<Category, number>;
+  const totals = emptyCategoryCounts();
   for (const r of rows) totals[r.category] += 1;
   return { rows, totals, combinations: rows.length };
 }

@@ -100,3 +100,28 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 
 ## D-021 · Kunci jawaban tidak pernah ke klien
 - **Keputusan:** `toStudentItem()` membuang `correct`, `maps_to_misconception`, domain, dan target miskonsepsi. Test memastikan tidak ada kata kunci tersebut di JSON siswa. Endpoint tes (M6) wajib memakai fungsi ini.
+
+---
+
+# M1.1 · Impor instrumen peneliti (8 Oktober 2026)
+
+## D-022 · Butir tes diambil dari dokumen instrumen peneliti
+- **Keputusan:** `data/items.json` diisi dari "Instrumen Tes Diagnostik Four-Tier Tata Surya" (Zidan Muhabib, UMP 2026) dengan skrip `scripts/import_instrument.py` (python-docx), bukan diketik ulang. Skrip memeriksa: 20 butir, opsi A–D, skala Yakin/Tidak yakin, kunci rinci = kunci ringkasan. Test juga membandingkan kunci dengan salinan tangan tabel ringkasan.
+- **Status:** dokumen menyebut dirinya **draf** — butir, kunci, dan aturan disusun baru, bukan salinan instrumen tervalidasi di artikel; CVI 0,87 dan KR-20 0,79 tidak berlaku untuknya. Dicatat sebagai `source.status = "draft_needs_validation"`. Aplikasi tetap bisa dipakai untuk uji coba, tetapi data penelitian sebaiknya baru dikumpulkan setelah validasi.
+- **Berkas .docx tidak di-commit** ke repo (dokumen penelitian belum terbit). Simpan di luar repo; jalankan ulang `pnpm items:import "<path>"` bila ada revisi.
+
+## D-023 · Format butir: four-tier baku → menjawab PRD §16.1 #5
+- **Keputusan:** Semua butir `four_tier_standard` (tier 2 = keyakinan jawaban, tier 4 = keyakinan alasan), keyakinan dua level `["Yakin", "Tidak yakin"]`, ambang indeks 0.
+- **Alasan:** Struktur butir dan catatan di dokumen ("keyakinan terhadap penjelasan siswa tercatat terpisah dari keyakinan terhadap jawabannya").
+
+## D-024 · Aturan `pedoman-v1` (16 baris, per tier) menggantikan asumsi PRD → menjawab #3
+- **Keputusan:** Mesin klasifikasi diperluas dengan `kind: "per_tier"` (variabel A, CA, R, CR) karena tabel D.2 membedakan keyakinan konsisten vs tidak konsisten — tidak bisa diwakili 8 baris A/R/C. `pedoman-v1` menjadi aturan aktif (`data/analysis.json`). `default-v1` tetap ada sebagai pembanding, diberi `kind: "combined"` (tanpa perubahan arti).
+- **Perbedaan penting dari asumsi PRD:** (1) jawaban/alasan ada yang salah + yakin pada keduanya → **M** (PRD: bisa E); (2) salah + keyakinan tidak konsisten → **E** (PRD: LK); (3) benar-benar + ragu salah satu → LC (sama).
+- **Tier kosong → E** (`incomplete_category: "E"`), sesuai catatan di bawah tabel D.2. Di default-v1, respons tidak lengkap tetap dikeluarkan. "Lebih dari satu pilihan" tidak mungkin terjadi di aplikasi (satu pilihan per tier).
+- **Verifikasi:** 16 baris D.2 dan 5 contoh D.3 dijadikan test; uji aturan semua 64 kombinasi pada tiap butir menghasilkan tepat 1 SC.
+
+## D-025 · Domain, skor, dan transisi dari instrumen → menjawab #1, #2, #4
+- **Domain:** 4 domain kisi-kisi × 5 butir: `benda_langit` (1–5), `planet` (6–10), `rotasi_revolusi` (11–15), `gerhana` (16–20). Rekap D.5 memakai domain yang sama, jadi `report_domain = concept_domain`. Domain pelaporan artikel (Benda Langit, Planet, **Zona Planet, Meteor**) tidak dipakai karena tidak ada pemetaannya di instrumen.
+- **Skor:** `score_sc` (D.4: jumlah SC ÷ 20 × 100).
+- **Transisi:** `per_butir` (D.6: "perpindahan kategori setiap siswa pada butir yang sama").
+- **Miskonsepsi:** setiap butir diberi kode `MK-Bnn`; teks konsepsi alternatif (kisi-kisi) dan catatan pengecoh (kunci) disimpan di `meta`. `maps_to_misconception` per opsi alasan sengaja dibiarkan kosong: kolom pengecoh di dokumen kadang tidak jelas merujuk opsi tier 1 atau tier 3, jadi pemetaannya perlu dikonfirmasi peneliti.

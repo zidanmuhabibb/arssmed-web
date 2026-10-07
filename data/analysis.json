@@ -1,0 +1,7 @@
+{
+  "rule_set_id": "pedoman-v1",
+  "score_method": "score_sc",
+  "transition_mode": "per_butir",
+  "domain_taxonomy": "concept_domain",
+  "source": "Instrumen bagian D.2 (aturan), D.4 (skor = jumlah SC ÷ 20 × 100), D.5 (rekap per domain kisi-kisi), D.6 (transisi per siswa per butir)."
+}

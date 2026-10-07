@@ -1,14 +1,57 @@
 {
   "rule_set_id": "default-v1",
+  "kind": "combined",
+  "source": "PRD ARSSMED Web v1.0 §6.2 (asumsi default, bukan pedoman peneliti)",
   "confidence_mode": "all_tiers_at_or_above_threshold",
+  "incomplete_category": null,
   "rules": [
-    { "A": true,  "R": true,  "C": true,  "category": "SC" },
-    { "A": true,  "R": true,  "C": false, "category": "LC" },
-    { "A": true,  "R": false, "C": true,  "category": "E" },
-    { "A": false, "R": true,  "C": true,  "category": "E" },
-    { "A": false, "R": false, "C": true,  "category": "M" },
-    { "A": true,  "R": false, "C": false, "category": "LK" },
-    { "A": false, "R": true,  "C": false, "category": "LK" },
-    { "A": false, "R": false, "C": false, "category": "LK" }
+    {
+      "A": true,
+      "R": true,
+      "C": true,
+      "category": "SC"
+    },
+    {
+      "A": true,
+      "R": true,
+      "C": false,
+      "category": "LC"
+    },
+    {
+      "A": true,
+      "R": false,
+      "C": true,
+      "category": "E"
+    },
+    {
+      "A": false,
+      "R": true,
+      "C": true,
+      "category": "E"
+    },
+    {
+      "A": false,
+      "R": false,
+      "C": true,
+      "category": "M"
+    },
+    {
+      "A": true,
+      "R": false,
+      "C": false,
+      "category": "LK"
+    },
+    {
+      "A": false,
+      "R": true,
+      "C": false,
+      "category": "LK"
+    },
+    {
+      "A": false,
+      "R": false,
+      "C": false,
+      "category": "LK"
+    }
   ]
 }

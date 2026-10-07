@@ -72,15 +72,60 @@ export const TestItemContent = z
 export type TestItemContent = z.infer<typeof TestItemContent>;
 
 /** Berkas data/items.json yang diisi peneliti (dibaca skrip seed di M6). */
-export const ItemsFile = z.object({
-  test_name: z.string().min(1),
-  test_version: z.number().int().min(1),
-  items: z
-    .array(z.object({ item_order: z.number().int().min(1), content: TestItemContent }))
-    .refine((items) => new Set(items.map((i) => i.item_order)).size === items.length, {
-      message: "item_order harus unik",
-    }),
-});
+export const ItemsFile = z
+  .object({
+    test_name: z.string().min(1),
+    test_version: z.number().int().min(1),
+    /** Asal instrumen; `status` menandai apakah butir sudah divalidasi ahli. */
+    source: z
+      .object({
+        document: z.string().min(1),
+        author: z.string().min(1),
+        institution: z.string().min(1).optional(),
+        year: z.number().int().optional(),
+        status: z.enum(["draft_needs_validation", "validated"]),
+        status_note: z.string().optional(),
+      })
+      .optional(),
+    default_rule_set_id: z.string().min(1).optional(),
+    domains: z
+      .array(z.object({ id: z.string().min(1), label: z.string().min(1), item_orders: z.array(z.number().int().min(1)) }))
+      .optional(),
+    items: z.array(
+      z.object({
+        item_order: z.number().int().min(1),
+        item_code: z.string().min(1).optional(),
+        content: TestItemContent,
+        /** Metadata peneliti (kisi-kisi, kunci). Tidak pernah dikirim ke siswa. */
+        meta: z
+          .object({
+            indicator: z.string().optional(),
+            alternative_conceptions: z.string().optional(),
+            scientific_concept: z.string().optional(),
+            distractor_notes: z.string().optional(),
+          })
+          .optional(),
+      }),
+    ),
+  })
+  .superRefine((f, ctx) => {
+    const orders = f.items.map((i) => i.item_order);
+    if (new Set(orders).size !== orders.length) {
+      ctx.addIssue({ code: "custom", path: ["items"], message: "item_order harus unik" });
+    }
+    if (f.domains) {
+      const ids = new Set(f.domains.map((d) => d.id));
+      for (const it of f.items) {
+        if (!ids.has(it.content.concept_domain)) {
+          ctx.addIssue({ code: "custom", path: ["items"], message: `Butir ${it.item_order}: concept_domain '${it.content.concept_domain}' tidak ada di domains` });
+        }
+        const listed = f.domains.find((d) => d.item_orders.includes(it.item_order));
+        if (listed && listed.id !== it.content.concept_domain) {
+          ctx.addIssue({ code: "custom", path: ["domains"], message: `Butir ${it.item_order} terdaftar di domain '${listed.id}' tetapi concept_domain-nya '${it.content.concept_domain}'` });
+        }
+      }
+    }
+  });
 export type ItemsFile = z.infer<typeof ItemsFile>;
 
 /** Versi butir untuk klien siswa: TANPA kunci jawaban (PRD §9.2 prinsip 4). */

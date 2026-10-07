@@ -1,10 +1,18 @@
+import { Suspense } from "react";
+import { AccountSlot, AccountSlotFallback } from "@/components/nav/AccountSlot";
 import { AppNav } from "@/components/nav/AppNav";
 
 /** Kerangka aplikasi siswa: navigasi + area isi. */
 export default function AppLayout({ children }: LayoutProps<"/">) {
   return (
     <div className="min-h-dvh lg:pl-(--rel-lebar)">
-      <AppNav />
+      <AppNav
+        account={
+          <Suspense fallback={<AccountSlotFallback />}>
+            <AccountSlot />
+          </Suspense>
+        }
+      />
       <main
         id="isi"
         tabIndex={-1}

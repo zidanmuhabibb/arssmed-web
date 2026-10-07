@@ -8,7 +8,7 @@ export default defineConfig({
     alias: { "@": fileURLToPath(new URL("./", import.meta.url)) },
   },
   test: {
-    include: ["lib/**/*.test.ts", "components/**/*.test.tsx", "tests/unit/**/*.test.ts"],
+    include: ["lib/**/*.test.ts", "components/**/*.test.tsx", "tests/unit/**/*.test.ts", "tests/db/**/*.test.ts"],
     environment: "node",
   },
 });

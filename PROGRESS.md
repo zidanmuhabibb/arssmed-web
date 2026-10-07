@@ -1,5 +1,35 @@
 # PROGRESS.md
 
+## M2 · Data dan autentikasi — selesai (8 Oktober 2026)
+
+### Selesai
+- **Migrasi Supabase** (`supabase/migrations/`): seluruh tabel PRD §10 + `student_login_attempts`; RLS aktif di semua tabel dengan fungsi bantu (`is_admin`, `teaches_class`, `current_student_id`, …); hak kolom (`pin_hash` tidak terbaca klien); fungsi `create_students`, `reset_student_pin`, `set_consent`, `student_login` (bcrypt + batas 5/10 menit), `link_student_auth_user`; pemicu profil guru otomatis, audit perubahan jawaban (FR-33), pembekuan butir (FR-38), audit hapus siswa tanpa data pribadi.
+- **Seed lokal** (`supabase/seed.sql`): guru `guru@contoh.id`, peneliti (admin) `peneliti@contoh.id` (sandi `rahasia123`), kelas 6A kode `K7M2QX`, siswa S01/1234 dan S02/5678.
+- **Masuk siswa** `/masuk` + `POST /api/auth/siswa`: tiga isian besar, PIN numerik, pesan tanpa kata "salah", batas percobaan dengan waktu tunggu.
+- **Masuk guru** `/guru/masuk` (email + sandi), keluar dari area siswa dan guru (navigasi penuh, D-030).
+- **Dasbor guru**: `/guru/kelas` (daftar kelas milik guru, buat kelas: nama, tahun ajaran, "Belajar saja"/"Ikut penelitian"), `/guru/kelas/[id]` (kode kelas besar, daftar siswa responsif, status persetujuan FR-60, PIN baru, hapus dengan konfirmasi, impor CSV/tempel dengan pratinjau dan galat per baris, unduh kartu masuk PDF).
+- **Pustaka murni + test**: `lib/students/csv.ts` (titik koma/koma/tab, BOM, kutip, judul kolom fleksibel, peringatan nama lengkap), `lib/cards/pdf.ts` (A4, 8 kartu/halaman), `lib/backend/student-login.ts` (orkestrasi masuk, termasuk balapan pembuatan akun).
+- **Status akun** di bilah atas/rel siswa ("Halo, Raka" + Keluar).
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan `TEST_DATABASE_URL`, Postgres 16 lokal) | 423/423 lulus (44 uji DB: RLS, fungsi, seed) |
+| `pnpm e2e` (backend memori; Pixel 5, iPhone 13*, desktop) | 102/102 lulus — masuk/keluar siswa & guru, batas percobaan, kartu siswa ditolak di area guru, buat kelas → impor → PDF → siswa baru masuk, persetujuan/PIN baru/hapus, guru lain tidak bisa membuka kelas, axe, tanpa geser horizontal |
+| Lighthouse mobile | Beranda: Performance 86, Accessibility 100 · `/masuk`: 91 / 100 |
+| JS awal Beranda | 156 KB (≤ 200 KB) |
+
+### Belum diuji (butuh Docker di komputer Anda)
+- `pnpm db:start` + `pnpm db:reset` dengan Supabase sungguhan: migrasi di Postgres 17 Supabase, pemicu pada `auth.users`, dan alur masuk siswa (`admin.createUser` → `generateLink` → `verifyOtp`). Langkah uji ada di README.
+- Masuk guru lewat Supabase Auth sungguhan.
+
+### Catatan
+- Butir tes belum dimuat ke tabel `tests/test_items` (M6, dari `data/items.json`).
+- Sesi siswa memakai bawaan Supabase (token 1 jam + refresh). Untuk perangkat bersama, pertimbangkan sesi lebih pendek di M6.
+
+---
+
 ## M1.1 · Impor instrumen peneliti — selesai (8 Oktober 2026)
 
 - `scripts/import_instrument.py` membaca .docx instrumen → `data/items.json` (20 butir), `data/rule-sets/pedoman-v1.json` (tabel D.2), `tests/fixtures/pedoman-examples.json` (D.3). Pemeriksaan bawaan: 20 butir, opsi A–D, skala Yakin/Tidak yakin, kunci rinci = ringkasan.

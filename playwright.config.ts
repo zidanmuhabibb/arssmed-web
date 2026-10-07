@@ -32,6 +32,8 @@ export default defineConfig({
     ? undefined
     : {
         command: `pnpm build && pnpm start --port ${PORT}`,
+        // Uji e2e memakai backend memori (tanpa Supabase) — DECISIONS D-026.
+        env: { ARSSMED_BACKEND: "memory", ARSSMED_ALLOW_MEMORY_BACKEND: "1" },
         url: BASE_URL,
         reuseExistingServer: !process.env.CI,
         timeout: 240_000,

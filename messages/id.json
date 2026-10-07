@@ -122,7 +122,25 @@
   },
   "masuk": {
     "title": "Masuk",
-    "pending": "Halaman masuk sedang disiapkan. Untuk sekarang, kamu bisa langsung belajar."
+    "lead": "Ketik kode dari kartu masukmu.",
+    "joinCode": "Kode kelas",
+    "joinCodeHint": "6 huruf atau angka, contoh K7M2QX",
+    "studentCode": "Kode siswa",
+    "studentCodeHint": "Contoh S01",
+    "pin": "PIN",
+    "pinHint": "4 angka",
+    "submit": "Masuk",
+    "submitting": "Memeriksa…",
+    "teacherLink": "Guru? Masuk di sini",
+    "noCard": "Belum punya kartu masuk? Tanyakan ke gurumu.",
+    "errors": {
+      "invalid_credentials": "Kode atau PIN belum cocok. Periksa lagi kartu masukmu.",
+      "invalid_input": "Isi ketiga kotak dulu. PIN berisi 4 angka.",
+      "rate_limited": "Terlalu banyak percobaan. Coba lagi dalam {minutes} menit, atau minta bantuan gurumu.",
+      "not_configured": "Layanan masuk belum siap. Beri tahu gurumu.",
+      "network": "Belum tersambung ke internet. Coba lagi sebentar lagi.",
+      "unknown": "Ada gangguan. Coba lagi, atau minta bantuan gurumu."
+    }
   },
   "offline": {
     "title": "Kamu sedang tidak terhubung internet",
@@ -137,5 +155,134 @@
   "common": {
     "back": "Kembali",
     "backHome": "Kembali ke Beranda"
+  },
+  "akun": {
+    "signIn": "Masuk",
+    "signOut": "Keluar",
+    "teacherDashboard": "Dasbor guru",
+    "hello": "Halo, {name}"
+  },
+  "guru": {
+    "brand": "ARSSMED Guru",
+    "navClasses": "Kelas saya",
+    "toStudentApp": "Lihat aplikasi siswa",
+    "login": {
+      "title": "Masuk sebagai guru",
+      "lead": "Gunakan email dan kata sandi yang diberikan peneliti.",
+      "email": "Email",
+      "password": "Kata sandi",
+      "submit": "Masuk",
+      "submitting": "Memeriksa…",
+      "studentLink": "Siswa? Masuk dengan kartu masuk",
+      "errors": {
+        "invalid_credentials": "Email atau kata sandi belum cocok.",
+        "invalid_input": "Isi email dan kata sandi.",
+        "not_configured": "Layanan masuk belum disiapkan di server ini.",
+        "unknown": "Ada gangguan. Coba lagi sebentar lagi."
+      }
+    },
+    "classes": {
+      "title": "Kelas saya",
+      "lead": "Buat kelas, impor daftar siswa, lalu cetak kartu masuk.",
+      "empty": "Belum ada kelas. Buat kelas pertama untuk mulai.",
+      "students": "{count, plural, =0 {Belum ada siswa} other {# siswa}}",
+      "joinCode": "Kode kelas",
+      "create": {
+        "title": "Buat kelas",
+        "name": "Nama kelas",
+        "namePlaceholder": "Contoh: 6A",
+        "academicYear": "Tahun ajaran (opsional)",
+        "academicYearPlaceholder": "2026/2027",
+        "mode": "Jenis kelas",
+        "submit": "Buat kelas",
+        "submitting": "Membuat…",
+        "errors": {
+          "name": "Isi nama kelas (maks. 60 huruf).",
+          "academicYear": "Tulis tahun ajaran seperti 2026/2027.",
+          "unknown": "Kelas belum tersimpan. Coba lagi."
+        }
+      }
+    },
+    "mode": {
+      "learn_only": "Belajar saja",
+      "learn_onlyHint": "Materi 3D/AR dan kuis. Jawaban tes tidak disimpan untuk penelitian.",
+      "research": "Ikut penelitian",
+      "researchHint": "Tes diagnostik disimpan untuk siswa yang persetujuannya sudah diberikan."
+    },
+    "class": {
+      "back": "Kelas saya",
+      "notFound": "Kelas tidak ditemukan atau bukan kelas Anda.",
+      "joinCodeLabel": "Kode kelas untuk siswa",
+      "studentsTitle": "Siswa",
+      "empty": "Belum ada siswa di kelas ini. Impor daftar siswa untuk mulai.",
+      "columns": {
+        "code": "Kode",
+        "nickname": "Nama panggilan",
+        "consent": "Persetujuan",
+        "actions": "Aksi"
+      },
+      "noNickname": "—",
+      "consent": {
+        "pending": "Menunggu",
+        "granted": "Diberikan",
+        "withdrawn": "Ditarik",
+        "label": "Persetujuan orang tua untuk {code}",
+        "note": "Hanya siswa dengan persetujuan \"Diberikan\" yang datanya masuk penelitian. Isi setelah formulir orang tua diterima."
+      },
+      "resetPin": "Buat PIN baru",
+      "resetPinConfirm": "Buat PIN baru untuk {code}? PIN lama tidak berlaku lagi.",
+      "delete": "Hapus",
+      "deleteConfirm": "Hapus {code} beserta semua jawabannya? Tindakan ini tidak bisa dibatalkan.",
+      "cancel": "Batal",
+      "newPinTitle": "PIN baru untuk {code}",
+      "pinOnce": "PIN hanya ditampilkan sekali. Cetak kartunya sekarang.",
+      "downloadCards": "Unduh kartu masuk (PDF)",
+      "done": "Selesai",
+      "saved": "Tersimpan",
+      "errors": {
+        "forbidden": "Anda tidak punya akses untuk tindakan ini.",
+        "not_found": "Siswa tidak ditemukan.",
+        "unknown": "Belum tersimpan. Coba lagi."
+      }
+    },
+    "import": {
+      "title": "Impor daftar siswa",
+      "lead": "Tempel dari Excel/Google Sheets atau pilih berkas CSV. Kolom: kode (boleh kosong) dan nama panggilan.",
+      "paste": "Daftar siswa",
+      "pastePlaceholder": "kode;nama panggilan\nS01;Raka\nS02;Sinta",
+      "file": "Pilih berkas CSV",
+      "preview": "Pratinjau",
+      "previewCount": "{count, plural, other {# siswa siap disimpan}}",
+      "autoCode": "otomatis",
+      "submit": "Simpan {count, plural, other {# siswa}}",
+      "submitting": "Menyimpan…",
+      "successTitle": "{count, plural, other {# siswa}} tersimpan",
+      "privacy": "Pakai nama panggilan saja, bukan nama lengkap.",
+      "issues": {
+        "invalid_code": "Baris {line}: kode \"{value}\" tidak valid. Pakai huruf, angka, atau tanda hubung (maks. 12).",
+        "duplicate_code": "Baris {line}: kode {value} sudah dipakai di baris {firstLine}.",
+        "nickname_too_long": "Baris {line}: nama panggilan terlalu panjang (maks. 30 huruf).",
+        "too_many": "Terlalu banyak siswa ({count}). Satu kelas paling banyak {max}.",
+        "empty": "Belum ada siswa di daftar.",
+        "unknown_header": "Kolom \"{value}\" tidak dikenali dan akan diabaikan. Hapus kolom itu atau ganti judulnya.",
+        "looks_like_full_name": "Baris {line}: \"{value}\" tampak seperti nama lengkap. Sebaiknya nama panggilan saja."
+      },
+      "serverErrors": {
+        "duplicate_code": "Ada kode yang sudah dipakai di kelas ini.",
+        "too_many": "Kelas ini akan melebihi 60 siswa.",
+        "forbidden": "Anda tidak punya akses ke kelas ini.",
+        "unknown": "Daftar belum tersimpan. Coba lagi."
+      }
+    },
+    "cards": {
+      "title": "Kartu masuk ARSSMED",
+      "joinCode": "Kode kelas",
+      "studentCode": "Kode siswa",
+      "pin": "PIN",
+      "openAt": "Buka",
+      "keepSafe": "Simpan kartu ini. Jangan beri tahu PIN ke teman.",
+      "className": "Kelas",
+      "fileName": "kartu-masuk-{className}.pdf"
+    }
   }
 }

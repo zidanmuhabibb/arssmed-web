@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { BookOpen, ClipboardList, Compass, LogIn, type LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
+import { BookOpen, ClipboardList, Compass, type LucideIcon } from "lucide-react";
 import { activeNavKey, PRIMARY_NAV, type NavKey } from "@/lib/nav/routes";
 import { LogoMark } from "@/components/ui/Logo";
 
@@ -19,7 +20,7 @@ const ICONS: Record<NavKey, LucideIcon> = {
  * - ≥ 1024px: rel kiri.
  * Tab adalah tujuan setara: tanpa animasi geser antar-tab.
  */
-export function AppNav() {
+export function AppNav({ account }: { account: ReactNode }) {
   const t = useTranslations();
   const pathname = usePathname();
   const active = activeNavKey(pathname);
@@ -33,13 +34,7 @@ export function AppNav() {
           <span className="font-judul text-[1.25rem] font-extrabold leading-none">{t("app.name")}</span>
           <span className="sr-only">{t("app.home")}</span>
         </Link>
-        <Link
-          href="/masuk"
-          className="flex min-h-12 items-center gap-1.5 rounded-kontrol px-2 font-semibold text-laut-teks no-underline"
-        >
-          <LogIn aria-hidden="true" className="size-5" />
-          {t("home.signIn")}
-        </Link>
+        {account}
       </header>
 
       {/* Rel kiri (desktop) */}
@@ -72,15 +67,7 @@ export function AppNav() {
             );
           })}
         </ul>
-        <div className="mt-auto">
-          <Link
-            href="/masuk"
-            className="flex min-h-12 items-center gap-3 rounded-kontrol px-3 font-semibold text-laut-teks no-underline"
-          >
-            <LogIn aria-hidden="true" className="size-6" />
-            {t("home.signIn")}
-          </Link>
-        </div>
+        <div className="mt-auto">{account}</div>
       </nav>
 
       {/* Bilah tab bawah (mobile/tablet) */}

@@ -125,3 +125,34 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 - **Skor:** `score_sc` (D.4: jumlah SC ÷ 20 × 100).
 - **Transisi:** `per_butir` (D.6: "perpindahan kategori setiap siswa pada butir yang sama").
 - **Miskonsepsi:** setiap butir diberi kode `MK-Bnn`; teks konsepsi alternatif (kisi-kisi) dan catatan pengecoh (kunci) disimpan di `meta`. `maps_to_misconception` per opsi alasan sengaja dibiarkan kosong: kolom pengecoh di dokumen kadang tidak jelas merujuk opsi tier 1 atau tier 3, jadi pemetaannya perlu dikonfirmasi peneliti.
+
+---
+
+# M2 · Data dan autentikasi (8 Oktober 2026)
+
+## D-026 · Lapisan akses data (DAL) dengan dua implementasi
+- **Keputusan:** Semua halaman dan aksi server memakai antarmuka `Backend` (`lib/backend`). Implementasi `supabase` untuk produksi; implementasi `memory` hanya untuk uji e2e/demo tanpa Supabase (`ARSSMED_BACKEND=memory`, dan di build produksi wajib `ARSSMED_ALLOW_MEMORY_BACKEND=1`).
+- **Alasan:** Lingkungan agen tidak punya Docker/GoTrue/PostgREST, jadi alur UI (masuk, kelola kelas, impor, kartu) tidak bisa diuji ujung ke ujung melawan Supabase. Backend memori meniru aturan DB (kepemilikan kelas, kode unik, PIN, pembatasan laju) dan memakai fungsi orkestrasi masuk siswa yang sama.
+- **Batas:** Otorisasi sesungguhnya ada di basis data (RLS + fungsi SECURITY DEFINER) dan diuji terpisah di Postgres nyata (D-028). Backend memori tidak aman untuk produksi.
+
+## D-027 · Masuk siswa: PIN di DB, sesi lewat Supabase Auth
+- **Alur:** `POST /api/auth/siswa` → `student_login()` (service role) memverifikasi kode kelas + kode siswa + PIN (bcrypt) dengan batas 5 kegagalan / 10 menit per pasangan kode, tanpa membedakan "kelas salah" dan "PIN salah". Saat masuk pertama, server membuat akun Auth siswa tanpa kata sandi (`<student_id>@siswa.arssmed.invalid`, `app_metadata.kind = "student"`), menautkannya, lalu menerbitkan sesi dengan token magiclink sekali pakai yang langsung ditukar di server (tidak ada surel terkirim).
+- **Alasan:** RLS bisa memakai `auth.uid()` untuk siswa seperti untuk guru — satu model keamanan. PIN 4 digit hanya cukup karena digabung dua kode dan dibatasi lajunya (PRD §10).
+- **Kartu masuk:** PIN hanya ada dalam bentuk teks saat dibuat/di-reset; yang disimpan hanya hash. PDF kartu dibuat di browser (pdf-lib) sehingga PIN tidak dikirim ulang ke server. Guru yang kehilangan kartu membuat PIN baru.
+- **Perlu diuji di Supabase lokal:** `generateLink` + `verifyOtp` dan pembuatan akun admin belum bisa dijalankan di lingkungan agen.
+
+## D-028 · Migrasi diuji di Postgres biasa dengan tiruan Supabase
+- **Keputusan:** `tests/db/supabase-shim.sql` meniru peran `anon/authenticated/service_role`, skema `auth` (`users`, `identities`, `uid()`, `jwt()`), skema `extensions`, dan hak bawaan Supabase. `tests/db/*.test.ts` membuat database baru, menjalankan semua migrasi + seed, lalu menguji RLS dan fungsi sebagai tiap peran. Berjalan bila `TEST_DATABASE_URL` diisi; CI memakai layanan `postgres:17`.
+- **Cakupan:** 44 uji — RLS aktif di semua tabel; siswa hanya melihat dirinya, tidak bisa membaca `pin_hash`, butir tes (kunci), atau hasil klasifikasi; guru hanya kelasnya; admin semuanya; pembatasan laju; perubahan jawaban tercatat (FR-33); butir beku (FR-38); hapus siswa = kaskade + audit tanpa data pribadi.
+
+## D-029 · Skema lengkap PRD §10 sejak M2, dengan penyesuaian
+- `classes.research_mode` dijadikan kolom turunan dari `mode` agar tidak bisa bertentangan.
+- `students.auth_user_id` dan tabel `student_login_attempts` ditambahkan (D-027).
+- `rule_sets` menyimpan `rule_set_id` teks, `kind`, `incomplete_category` agar sama dengan `data/rule-sets/*.json`.
+- Tulis jawaban/klasifikasi dari klien ditutup; dibuka lewat fungsi server di M6.
+- Unduhan PDF di emulasi HP Playwright tidak memicu event unduhan; diuji di profil desktop.
+
+## D-030 · Navigasi penuh saat masuk/keluar
+- **Keputusan:** Setelah masuk atau keluar, klien memakai `window.location.replace(...)`, bukan router klien.
+- **Alasan:** (1) pintu satu arah — "kembali" tidak membuka formulir masuk lagi; (2) cache router berisi halaman pra-muat dari sebelum masuk (mis. redirect ke halaman masuk) dan, di perangkat bersama, data pengguna sebelumnya — keduanya terbuang.
+- **Terkait:** `getViewer()` memanggil `connection()` agar halaman yang membaca sesi selalu dirender per permintaan; sebelumnya halaman guru bisa terprarender saat build sebagai "anon" dan redirect-nya terbekukan.

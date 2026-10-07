@@ -6,6 +6,7 @@ import "@fontsource/baloo-2/latin-800.css";
 import "@fontsource-variable/lexend/wght.css";
 import "./globals.css";
 import { ServiceWorkerRegistrar } from "@/components/pwa/ServiceWorkerRegistrar";
+import { pickMessages } from "@/lib/i18n-pick";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("app");
@@ -34,13 +35,15 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const t = await getTranslations("app");
+  // Namespace untuk komponen klien area siswa; area guru menambah miliknya sendiri.
+  const messages = await pickMessages(["app", "nav", "masuk", "akun"]);
   return (
     <html lang="id" className="h-full antialiased">
       <body className="min-h-full">
         <a href="#isi" className="lewati">
           {t("skipToContent")}
         </a>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         <ServiceWorkerRegistrar />
       </body>
     </html>

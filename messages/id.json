@@ -1,0 +1,141 @@
+{
+  "app": {
+    "name": "ARSSMED",
+    "fullName": "ARSSMED: Media Tata Surya Augmented Reality",
+    "description": "Belajar tata surya dalam 3D dan AR untuk siswa kelas VI.",
+    "skipToContent": "Langsung ke isi",
+    "home": "Beranda"
+  },
+  "nav": {
+    "label": "Navigasi utama",
+    "belajar": "Belajar",
+    "tes": "Tes",
+    "panduan": "Panduan"
+  },
+  "home": {
+    "greeting": "Halo! Siap menjelajah tata surya?",
+    "lead": "Lihat Matahari, planet, dan benda langit lain dari dekat. Putar, perbesar, lalu tebak apa yang terjadi.",
+    "start": "Mulai belajar",
+    "takeTest": "Kerjakan tes",
+    "stageLabel": "Delapan planet berurutan dari Matahari",
+    "scaleNote": "Ukuran dan jarak tidak sesuai skala",
+    "moreTitle": "Lainnya",
+    "guide": "Panduan",
+    "guideHint": "Cara memakai 3D dan AR",
+    "materi": "Identitas materi",
+    "materiHint": "Capaian dan tujuan belajar",
+    "creator": "Profil pembuat",
+    "creatorHint": "Peneliti, pembimbing, dan atribusi",
+    "signIn": "Masuk"
+  },
+  "planets": {
+    "sun": "Matahari",
+    "mercury": "Merkurius",
+    "venus": "Venus",
+    "earth": "Bumi",
+    "mars": "Mars",
+    "jupiter": "Jupiter",
+    "saturn": "Saturnus",
+    "uranus": "Uranus",
+    "neptune": "Neptunus"
+  },
+  "belajar": {
+    "title": "Belajar",
+    "lead": "Pilih satu unit. Di tiap unit kamu akan menebak, mengamati, membandingkan, lalu menjelaskan.",
+    "unitLabel": "Unit {number}",
+    "status": {
+      "notStarted": "Belum dimulai",
+      "inProgress": "Sedang dipelajari",
+      "done": "Selesai"
+    },
+    "comingSoon": "Isi unit ini sedang disiapkan."
+  },
+  "units": {
+    "u1": {
+      "title": "Benda langit",
+      "summary": "Matahari, planet, planet kerdil, komet, dan asteroid."
+    },
+    "u2": {
+      "title": "Planet dan karakteristiknya",
+      "summary": "Delapan planet: atmosfer, suhu, ukuran, dan permukaan."
+    },
+    "u3": {
+      "title": "Zona planet",
+      "summary": "Planet dalam yang berbatu dan planet luar yang raksasa."
+    },
+    "u4": {
+      "title": "Meteoroid, meteor, meteorit",
+      "summary": "Perjalanan batuan angkasa sampai ke permukaan Bumi."
+    },
+    "u5": {
+      "title": "Rotasi dan revolusi Bumi",
+      "summary": "Kenapa ada siang, malam, dan musim."
+    },
+    "u6": {
+      "title": "Gerhana",
+      "summary": "Posisi Matahari, Bulan, dan Bumi saat gerhana."
+    }
+  },
+  "tes": {
+    "title": "Tes",
+    "closedTitle": "Tes belum dibuka",
+    "closedBody": "Tanyakan ke gurumu. Sambil menunggu, kamu bisa mulai belajar."
+  },
+  "panduan": {
+    "title": "Panduan",
+    "lead": "Langkah singkat supaya kamu bisa memakai ARSSMED sendiri.",
+    "steps": {
+      "masuk": {
+        "title": "Masuk",
+        "body": "Ketik kode kelas, kode siswa, dan PIN dari kartu masukmu."
+      },
+      "tigaD": {
+        "title": "Memakai 3D",
+        "body": "Geser dengan satu jari untuk memutar. Cubit untuk memperbesar atau memperkecil."
+      },
+      "ar": {
+        "title": "Memulai AR",
+        "body": "Tekan Lihat di ruanganmu, lalu arahkan HP ke lantai atau meja."
+      },
+      "kamera": {
+        "title": "Kamera tidak mau hidup?",
+        "body": "Buka pengaturan browser lalu izinkan kamera, atau pilih Pakai 3D saja."
+      }
+    }
+  },
+  "materi": {
+    "title": "Identitas materi",
+    "lead": "Capaian pembelajaran IPAS Fase C tentang tata surya dan tujuan belajar tiap unit.",
+    "pending": "Isi halaman ini sedang disiapkan oleh peneliti."
+  },
+  "pembuat": {
+    "title": "Profil pembuat",
+    "researcher": "Peneliti",
+    "attribution": "Atribusi aset",
+    "attributionPending": "Daftar atribusi aset 3D akan muncul di sini setelah aset ditambahkan.",
+    "iconsCredit": "Ikon: Lucide (lisensi ISC)",
+    "fontsCredit": "Huruf: Baloo 2 dan Lexend (SIL Open Font License)"
+  },
+  "privasi": {
+    "title": "Privasi dan informasi penelitian",
+    "pending": "Isi halaman ini sedang disiapkan bersama komite etik."
+  },
+  "masuk": {
+    "title": "Masuk",
+    "pending": "Halaman masuk sedang disiapkan. Untuk sekarang, kamu bisa langsung belajar."
+  },
+  "offline": {
+    "title": "Kamu sedang tidak terhubung internet",
+    "body": "Halaman ini belum tersimpan di perangkatmu. Halaman yang sudah pernah dibuka tetap bisa dipakai.",
+    "action": "Coba lagi"
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "body": "Alamat ini tidak ada. Kembali ke Beranda untuk mulai lagi.",
+    "action": "Kembali ke Beranda"
+  },
+  "common": {
+    "back": "Kembali",
+    "backHome": "Kembali ke Beranda"
+  }
+}

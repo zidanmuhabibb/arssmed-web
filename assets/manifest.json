@@ -1,0 +1,28 @@
+{
+  "$comment": "Wajib: setiap aset 3D/tekstur/marker punya catatan lisensi di sini (PRD §0.7, §13). Aset tanpa lisensi jelas tidak boleh dipakai.",
+  "schemaVersion": 1,
+  "assets": [],
+  "thirdPartyUi": [
+    {
+      "name": "Lucide icons",
+      "package": "lucide-react",
+      "license": "ISC",
+      "source_url": "https://lucide.dev",
+      "attribution": "Ikon: Lucide (lisensi ISC)"
+    },
+    {
+      "name": "Baloo 2",
+      "package": "@fontsource/baloo-2",
+      "license": "OFL-1.1",
+      "source_url": "https://github.com/EkType/Baloo2",
+      "attribution": "Huruf Baloo 2 oleh Ek Type (SIL Open Font License 1.1)"
+    },
+    {
+      "name": "Lexend",
+      "package": "@fontsource-variable/lexend",
+      "license": "OFL-1.1",
+      "source_url": "https://github.com/googlefonts/lexend",
+      "attribution": "Huruf Lexend (SIL Open Font License 1.1)"
+    }
+  ]
+}

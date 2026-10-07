@@ -44,3 +44,4 @@ test-results/
 playwright-report/
 supabase/.temp/
 .env*.local
+!.env.example

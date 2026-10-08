@@ -152,8 +152,100 @@
   },
   "tes": {
     "title": "Tes",
+    "lead": "Tes ini membantu gurumu mengetahui apa yang sudah kamu pahami. Tidak memengaruhi nilai rapor.",
     "closedTitle": "Tes belum dibuka",
-    "closedBody": "Tanyakan ke gurumu. Sambil menunggu, kamu bisa mulai belajar."
+    "closedBody": "Tanyakan ke gurumu. Sambil menunggu, kamu bisa mulai belajar.",
+    "toLearn": "Mulai belajar",
+    "signIn": "Masuk",
+    "note": "Jawablah dengan jujur sesuai pemahamanmu. Tidak ada yang perlu dikhawatirkan.",
+    "phase": {
+      "pre": "Tes awal",
+      "post": "Tes akhir"
+    },
+    "guest": {
+      "title": "Masuk dulu untuk mengerjakan tes",
+      "body": "Tes dikerjakan dengan kartu masuk dari gurumu supaya jawabanmu tersimpan."
+    },
+    "card": {
+      "notOpen": "Belum dibuka gurumu.",
+      "closed": "Sudah ditutup.",
+      "open": "Sudah dibuka. 20 soal, tanpa batas waktu.",
+      "inProgress": "Sudah {done} dari {total} soal. Kamu bisa melanjutkan.",
+      "submitted": "Sudah kamu selesaikan. Terima kasih.",
+      "start": "Mulai tes",
+      "continue": "Lanjutkan tes",
+      "blocked": {
+        "consent_pending": "Gurumu perlu mencatat persetujuan orang tuamu dulu.",
+        "consent_withdrawn": "Kamu tidak mengikuti tes ini. Kamu tetap bisa belajar.",
+        "learn_only": "Kelasmu memakai mode belajar saja, tanpa tes."
+      }
+    },
+    "blocked": {
+      "closed": {
+        "title": "Tes belum dibuka",
+        "body": "Tanyakan ke gurumu. Sambil menunggu, kamu bisa mulai belajar."
+      },
+      "consent": {
+        "title": "Tes belum bisa kamu kerjakan",
+        "body": "Gurumu perlu mencatat persetujuan orang tuamu dulu. Kamu tetap bisa belajar."
+      },
+      "learn_only": {
+        "title": "Kelasmu memakai mode belajar saja",
+        "body": "Tes diagnostik tidak dipakai di kelasmu. Kamu tetap bisa belajar."
+      },
+      "forbidden": {
+        "title": "Masuk dulu untuk mengerjakan tes",
+        "body": "Pakai kode kelas, kode siswa, dan PIN dari kartu masukmu."
+      },
+      "network": {
+        "title": "Belum tersambung ke internet",
+        "body": "Tes belum pernah dibuka di perangkat ini. Sambungkan ke internet, lalu muat ulang halaman."
+      },
+      "unknown": {
+        "title": "Tes belum bisa dibuka",
+        "body": "Ada gangguan. Coba lagi sebentar lagi."
+      }
+    },
+    "runner": {
+      "loading": "Menyiapkan tes…",
+      "progress": "Soal {n} dari {total}",
+      "prev": "Sebelumnya",
+      "next": "Lanjut",
+      "toReview": "Periksa jawaban",
+      "answerAll": "Jawab semua bagian di soal ini untuk lanjut.",
+      "pause": "Berhenti dulu (jawabanmu tetap tersimpan)",
+      "offlineCopy": "Kamu sedang tidak tersambung. Jawabanmu disimpan di perangkat ini dan dikirim saat internet kembali.",
+      "closedWhileWorking": "Tes sudah ditutup gurumu. Jawaban terakhir tidak bisa disimpan lagi."
+    },
+    "tiers": {
+      "tier1": "Pilih jawabanmu.",
+      "confidenceA": "Seberapa yakin kamu dengan jawabanmu?",
+      "reason": "Pilih alasan yang paling tepat untuk jawabanmu.",
+      "confidenceR": "Seberapa yakin kamu dengan alasanmu?",
+      "confidenceROnly": "Seberapa yakin kamu dengan alasanmu?"
+    },
+    "sync": {
+      "saved": "Tersimpan",
+      "saving": "Menyimpan…",
+      "waiting": "Menunggu internet. Jawabanmu aman di perangkat ini."
+    },
+    "review": {
+      "title": "Periksa jawabanmu",
+      "lead": "Sudah {done} dari {total} soal terjawab lengkap. Ketuk nomor untuk melihat atau mengubah jawaban.",
+      "grid": "Nomor soal",
+      "itemDone": "Soal {n}, sudah lengkap",
+      "itemTodo": "Soal {n}, belum lengkap",
+      "missing": "Soal nomor {list} belum lengkap. Lengkapi dulu, lalu selesaikan tes.",
+      "needAll": "Tombol Selesaikan tes aktif setelah semua soal terjawab lengkap.",
+      "submit": "Selesaikan tes",
+      "submitting": "Mengirim…",
+      "waiting": "Menunggu internet untuk mengirim. Biarkan halaman ini terbuka; tes akan terkirim otomatis.",
+      "back": "Kembali ke soal"
+    },
+    "done": {
+      "title": "Tes selesai",
+      "body": "Terima kasih sudah mengerjakan dengan sungguh-sungguh. Gurumu akan membahasnya bersama kelas."
+    }
   },
   "panduan": {
     "title": "Panduan",
@@ -395,6 +487,40 @@
       "keepSafe": "Simpan kartu ini. Jangan beri tahu PIN ke teman.",
       "className": "Kelas",
       "fileName": "kartu-masuk-{className}.pdf"
+    },
+    "tests": {
+      "title": "Tes diagnostik",
+      "phase": {
+        "pre": "Tes awal (pretest)",
+        "post": "Tes akhir (posttest)"
+      },
+      "status": {
+        "draft": "Belum dibuka",
+        "open": "Dibuka — siswa bisa mengerjakan",
+        "closed": "Ditutup"
+      },
+      "open": "Buka tes",
+      "reopen": "Buka lagi",
+      "close": "Tutup tes",
+      "cancel": "Batal",
+      "doneCount": "Selesai: {done} dari {total} siswa yang sudah ada persetujuan",
+      "row": {
+        "noConsent": "Belum ada persetujuan",
+        "notStarted": "Belum mulai",
+        "working": "Mengerjakan ({n}/{total})",
+        "submitted": "Selesai"
+      },
+      "confirmOpen": "Buka {phase}?",
+      "confirmClose": "Tutup {phase}?",
+      "confirmOpenBody": "Siswa yang persetujuannya sudah diberikan bisa langsung mengerjakan. Setelah dibuka, soal tes tidak bisa diubah lagi.",
+      "confirmCloseBody": "Siswa yang belum selesai tidak bisa melanjutkan sampai tes dibuka lagi. Jawaban yang sudah masuk tetap tersimpan.",
+      "note": "Daftar diperbarui otomatis setiap 10 detik saat tes dibuka. Hasil tidak ditampilkan kepada siswa.",
+      "learnOnly": "Kelas ini memakai mode Belajar saja, jadi tes diagnostik penelitian tidak tersedia. Siswa tetap bisa memakai materi 3D/AR.",
+      "errors": {
+        "learn_only": "Tes hanya untuk kelas yang ikut penelitian.",
+        "no_test": "Bank soal belum dimuat di server. Hubungi peneliti.",
+        "unknown": "Pengaturan tes belum tersimpan. Coba lagi."
+      }
     }
   },
   "viewer": {

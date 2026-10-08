@@ -1,6 +1,10 @@
 import "server-only";
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient, createSupabaseServerClient } from "@/lib/supabase/server";
+import { RuleSet } from "@/lib/classification";
+import { classifyAttempt, deliverItems, type StoredItem } from "@/lib/tes/deliver";
+import type { Answer } from "@/lib/tes/session";
+import type { ClassTestOverview, StudentTestStatus } from "@/lib/tes/types";
 import { loginStudent, type LoginRpcResult } from "./student-login";
 import {
   BackendError,
@@ -24,6 +28,11 @@ const DB_DETAIL_CODES: Record<string, BackendErrorCode> = {
   empty: "empty",
   locked: "locked",
   invalid_input: "invalid_input",
+  closed: "closed",
+  consent: "consent",
+  learn_only: "learn_only",
+  submitted: "submitted",
+  no_test: "no_test",
 };
 
 /** Petakan galat Postgres/PostgREST ke kode aman; pesan Indonesia dari fungsi DB dipertahankan. */
@@ -264,4 +273,113 @@ export const supabaseBackend: Backend = {
     const { error } = await c.rpc("mark_discussed", { p_unit: unit });
     if (error) throw fromDb(error);
   },
+
+  // ---------------------------------------------------------------- tes diagnostik (M6)
+
+  async studentTests() {
+    const c = await server();
+    const { data, error } = await c.rpc("student_tests");
+    if (error) throw fromDb(error);
+    return data as StudentTestStatus[];
+  },
+
+  async startAttempt(phase, device) {
+    const c = await server();
+    const { data, error } = await c.rpc("start_attempt", { p_phase: phase, p_device: device });
+    if (error) throw fromDb(error);
+    const row = (data as { attempt_id: string; test_id: string; submitted: boolean }[])[0]!;
+    if (row.submitted) return { attemptId: row.attempt_id, phase, submitted: true, items: [], answers: {} };
+    // Butir dibaca dengan kunci layanan (siswa tidak punya akses ke test_items), lalu kuncinya dibuang.
+    const items = await loadItems(row.test_id);
+    const { data: resp, error: rErr } = await c
+      .from("item_responses")
+      .select("item_id, tier1_key, confidence_a, reason_key, confidence_r")
+      .eq("attempt_id", row.attempt_id);
+    if (rErr) throw fromDb(rErr);
+    return { attemptId: row.attempt_id, phase, submitted: false, items: deliverItems(row.attempt_id, items), answers: toAnswers(resp as ResponseRow[]) };
+  },
+
+  async saveResponse(attemptId, r) {
+    const c = await server();
+    const { data, error } = await c.rpc("save_response", {
+      p_attempt: attemptId,
+      p_item: r.itemId,
+      p_tier1: r.answer.tier1,
+      p_conf_a: r.answer.confidenceA,
+      p_reason: r.answer.reason,
+      p_conf_r: r.answer.confidenceR,
+      p_client_ts: r.clientTs,
+      p_time_ms: r.responseTimeMs,
+      p_option_order: r.optionOrder,
+    });
+    if (error) throw fromDb(error);
+    return data as "saved" | "stale";
+  },
+
+  async submitAttempt(attemptId) {
+    const c = await server();
+    const { data, error } = await c.rpc("submit_attempt", { p_attempt: attemptId });
+    if (error) throw fromDb(error);
+    const res = data as { ok: boolean; missing: number[] };
+    if (!res.ok) return { ok: false, missing: res.missing };
+    await classifyStored(attemptId);
+    return { ok: true };
+  },
+
+  async classTestOverview(classId) {
+    const c = await server();
+    const { data, error } = await c.rpc("class_test_overview", { p_class_id: classId });
+    if (error) throw fromDb(error);
+    type Row = { phase: ClassTestOverview["phase"]; status: ClassTestOverview["status"]; opened_at: string | null; closed_at: string | null; total: number; students: ClassTestOverview["students"] };
+    return (data as Row[]).map((r) => ({ phase: r.phase, status: r.status, openedAt: r.opened_at, closedAt: r.closed_at, total: r.total, students: r.students }));
+  },
+
+  async openClassTest(classId, phase) {
+    const c = await server();
+    const { error } = await c.rpc("open_class_test", { p_class_id: classId, p_phase: phase });
+    if (error) throw fromDb(error);
+  },
+
+  async closeClassTest(classId, phase) {
+    const c = await server();
+    const { error } = await c.rpc("close_class_test", { p_class_id: classId, p_phase: phase });
+    if (error) throw fromDb(error);
+  },
 };
+
+type ResponseRow = { item_id: string; tier1_key: string | null; confidence_a: number | null; reason_key: string | null; confidence_r: number | null };
+function toAnswers(rows: ResponseRow[]): Record<string, Answer> {
+  return Object.fromEntries(rows.map((r) => [r.item_id, { tier1: r.tier1_key, confidenceA: r.confidence_a, reason: r.reason_key, confidenceR: r.confidence_r }]));
+}
+
+async function loadItems(testId: string): Promise<StoredItem[]> {
+  const { data, error } = await admin().from("test_items").select("id, item_order, content").eq("test_id", testId).order("item_order");
+  if (error) throw fromDb(error);
+  return (data as { id: string; item_order: number; content: unknown }[]).map((i) => ({ id: i.id, order: i.item_order, content: i.content }));
+}
+
+/** Klasifikasi server (PRD §10) dengan aturan milik tes, disimpan lewat service role. */
+async function classifyStored(attemptId: string) {
+  const a = admin();
+  const { data: att, error } = await a
+    .from("test_attempts")
+    .select("id, class_tests(test_id, tests(rule_sets(rule_set_id, kind, rules, confidence_mode, incomplete_category)))")
+    .eq("id", attemptId)
+    .single<{ class_tests: { test_id: string; tests: { rule_sets: { rule_set_id: string; kind: string; rules: unknown; confidence_mode: string | null; incomplete_category: string | null } } } }>();
+  if (error) throw fromDb(error);
+  const rsRow = att.class_tests.tests.rule_sets;
+  // Aturan dari DB divalidasi ulang (lengkap & saling lepas) sebelum dipakai.
+  const ruleSet = RuleSet.parse({
+    rule_set_id: rsRow.rule_set_id,
+    kind: rsRow.kind,
+    rules: rsRow.rules,
+    ...(rsRow.kind === "combined" ? { confidence_mode: rsRow.confidence_mode } : {}),
+    incomplete_category: rsRow.incomplete_category,
+  });
+  const items = await loadItems(att.class_tests.test_id);
+  const { data: resp, error: rErr } = await a.from("item_responses").select("item_id, tier1_key, confidence_a, reason_key, confidence_r").eq("attempt_id", attemptId);
+  if (rErr) throw fromDb(rErr);
+  const rows = classifyAttempt(items, toAnswers(resp as ResponseRow[]), ruleSet);
+  const { error: sErr } = await a.rpc("store_classifications", { p_attempt: attemptId, p_rule_set: ruleSet.rule_set_id, p_rows: rows });
+  if (sErr) throw fromDb(sErr);
+}

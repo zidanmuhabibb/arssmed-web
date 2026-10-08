@@ -44,3 +44,8 @@ pnpm build     # service worker + build produksi
 
 - `pnpm assets:build` membangun ulang `public/models/*.glb` dan `*.usdz` dari konten (jalankan setelah mengubah `content/celestial.json` atau tekstur), lalu `pnpm content:sql`.
 - AR hanya berjalan dari alamat **HTTPS** di HP (Android Chrome → Scene Viewer, iPhone Safari → Quick Look). Untuk uji, deploy ke Vercel atau layanan HTTPS lain.
+
+## Tes diagnostik (M6)
+
+- Bank soal: `data/items.json` → `pnpm seed:items` (menulis migrasi `supabase/migrations/*_items.sql`).
+- Coba dengan backend memori: masuk sebagai guru (`guru@contoh.id` / `rahasia123`) → kelas 6A → **Buka tes** pada Tes awal; lalu masuk sebagai siswa `K7M2QX` / `S01` / `1234` → **Kerjakan tes**.

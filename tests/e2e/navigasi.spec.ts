@@ -66,11 +66,10 @@ test.describe("Navigasi (FR-02)", () => {
   }
 });
 
-test.describe("Tes tertutup (skenario penerimaan PRD §14)", () => {
-  test("menampilkan pesan dan tidak ada butir", async ({ page }) => {
+test.describe("Tes untuk tamu", () => {
+  test("diminta masuk dan tidak ada butir (skenario tertutup diuji di tes.spec.ts)", async ({ page }) => {
     await page.goto("/tes");
-    await expect(page.getByRole("heading", { name: "Tes belum dibuka" })).toBeVisible();
-    await expect(page.getByText("Tanyakan ke gurumu.")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Masuk dulu untuk mengerjakan tes" })).toBeVisible();
     await expect(page.getByRole("radio")).toHaveCount(0);
   });
 });

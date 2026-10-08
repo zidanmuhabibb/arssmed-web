@@ -5,6 +5,11 @@ import { MAX_NICKNAME, MAX_STUDENTS, STUDENT_CODE_RE } from "@/lib/students/csv"
 import { unitObjects } from "@/lib/content/celestial";
 import { findPrediction, unitLearning } from "@/lib/learning/content";
 import { blockingStep, canFinishObserve, predictionsComplete, STEPS, type Step } from "@/lib/learning/flow";
+import { PEDOMAN_V1_RULE_SET, getRuleSet } from "@/lib/classification";
+import { classifyAttempt, deliverItems, itemShape, type ClassificationRow, type StoredItem } from "@/lib/tes/deliver";
+import { ITEMS } from "@/lib/tes/items-sql-data";
+import { EMPTY_ANSWER, isComplete, validateAnswer, type Answer } from "@/lib/tes/session";
+import type { ClassTestStatus, Phase, StudentTestStatus } from "@/lib/tes/types";
 import { loginStudent, studentAuthEmail } from "./student-login";
 import { BackendError, type Backend, type ClassMode, type ConsentStatus, type CreatedStudent, type LearningSnapshot, type Viewer } from "./types";
 
@@ -49,8 +54,22 @@ function seed() {
     ] as MemStudent[],
     attempts: [] as Attempt[],
     learning: {} as Record<string, MemLearning>,
+    classTests: [] as MemClassTest[],
+    testAttempts: [] as MemAttempt[],
+    responses: {} as Record<string, MemResponse>,
+    events: [] as { key: string; field: string; old: string | null; new: string | null; at: number }[],
+    classifications: {} as Record<string, ClassificationRow[]>,
+    itemsFrozen: false,
   };
 }
+
+interface MemClassTest { classId: string; phase: Phase; status: ClassTestStatus; openedAt: string | null; closedAt: string | null }
+interface MemAttempt { id: string; studentId: string; classId: string; phase: Phase; submittedAt: string | null; device: string | null }
+interface MemResponse { answer: Answer; clientTs: number; changes: number; timeMs: number | null; optionOrder: unknown }
+
+/** Bank soal dari data/items.json (sama dengan migrasi *_items.sql). */
+const MEM_ITEMS: StoredItem[] = ITEMS.items.map((i) => ({ id: `item-${i.item_order}`, order: i.item_order, content: i.content }));
+const MEM_RULE_SET = ITEMS.default_rule_set_id ? getRuleSet(ITEMS.default_rule_set_id) : PEDOMAN_V1_RULE_SET;
 
 type Store = ReturnType<typeof seed>;
 const g = globalThis as unknown as { __arssmedMemStore?: Store };
@@ -112,6 +131,31 @@ function requireUnit(unit: string) {
   if (!u) throw new BackendError("not_found", "Unit tidak ditemukan.");
   return u;
 }
+const rkey = (attemptId: string, itemId: string) => `${attemptId}:${itemId}`;
+function answersOf(attemptId: string): Record<string, Answer> {
+  const out: Record<string, Answer> = {};
+  for (const it of MEM_ITEMS) {
+    const r = store().responses[rkey(attemptId, it.id)];
+    if (r) out[it.id] = r.answer;
+  }
+  return out;
+}
+function answeredCount(attemptId: string) {
+  const a = answersOf(attemptId);
+  return MEM_ITEMS.filter((it) => isComplete(itemShape(it.content).format, a[it.id])).length;
+}
+function classTest(classId: string, phase: Phase) {
+  return store().classTests.find((c) => c.classId === classId && c.phase === phase);
+}
+async function openAttempt(attemptId: string) {
+  const { st } = await requireStudent();
+  const a = store().testAttempts.find((x) => x.id === attemptId && x.studentId === st.id);
+  if (!a) throw new BackendError("not_found", "Percobaan tes tidak ditemukan.");
+  if (a.submittedAt) throw new BackendError("submitted", "Tes sudah diselesaikan.");
+  if (classTest(a.classId, a.phase)?.status !== "open") throw new BackendError("closed", "Tes sudah ditutup gurumu.");
+  return a;
+}
+
 function summarize(c: MemClass) {
   return {
     id: c.id,
@@ -311,5 +355,125 @@ export const memoryBackend: Backend = {
     await this.completeStep(unit, "jelaskan");
     const { l } = await requireStudent();
     if (!l.discussed.includes(unit)) l.discussed.push(unit);
+  },
+
+  // ---------------------------------------------------------------- tes diagnostik (M6)
+
+  async studentTests(): Promise<StudentTestStatus[]> {
+    const { st } = await requireStudent();
+    const cls = store().classes.find((c) => c.id === st.classId)!;
+    return (["pre", "post"] as Phase[]).map((phase) => {
+      const ct = classTest(cls.id, phase);
+      const a = store().testAttempts.find((x) => x.studentId === st.id && x.phase === phase);
+      return {
+        phase,
+        status: ct?.status ?? "draft",
+        blocked: cls.mode !== "research" ? "learn_only" : st.consent === "withdrawn" ? "consent_withdrawn" : st.consent !== "granted" ? "consent_pending" : null,
+        attempt: a ? { answered: answeredCount(a.id), total: MEM_ITEMS.length, submitted: !!a.submittedAt } : null,
+      };
+    });
+  },
+
+  async startAttempt(phase, device) {
+    const { st } = await requireStudent();
+    const cls = store().classes.find((c) => c.id === st.classId)!;
+    let a = store().testAttempts.find((x) => x.studentId === st.id && x.phase === phase);
+    if (a?.submittedAt) return { attemptId: a.id, phase, submitted: true, items: [], answers: {} };
+    if (classTest(cls.id, phase)?.status !== "open") throw new BackendError("closed", "Tes belum dibuka. Tanyakan ke gurumu.");
+    if (cls.mode !== "research") throw new BackendError("learn_only", "Tes diagnostik hanya untuk kelas penelitian.");
+    if (st.consent !== "granted") throw new BackendError("consent", "Gurumu perlu mencatat persetujuan orang tuamu dulu.");
+    if (!a) {
+      a = { id: randomUUID(), studentId: st.id, classId: cls.id, phase, submittedAt: null, device };
+      store().testAttempts.push(a);
+    }
+    return { attemptId: a.id, phase, submitted: false, items: deliverItems(a.id, MEM_ITEMS), answers: answersOf(a.id) };
+  },
+
+  async saveResponse(attemptId, r) {
+    const a = await openAttempt(attemptId);
+    const item = MEM_ITEMS.find((i) => i.id === r.itemId);
+    if (!item) throw new BackendError("not_found", "Butir tidak ditemukan.");
+    const shape = itemShape(item.content);
+    const v = validateAnswer(shape, r.answer);
+    // DB memeriksa kunci & skala; urutan tier ditegakkan di klien (D-049). Samakan perilakunya.
+    if (v && v !== "order") throw new BackendError("invalid_input", "Jawaban tidak valid.");
+    const key = rkey(a.id, item.id);
+    const ts = Date.parse(r.clientTs);
+    const prev = store().responses[key];
+    if (prev && prev.clientTs > ts) return "stale";
+    if (prev) {
+      let changed = false;
+      for (const f of ["tier1", "confidenceA", "reason", "confidenceR"] as const) {
+        if (prev.answer[f] !== r.answer[f]) {
+          changed = true;
+          store().events.push({ key, field: f, old: prev.answer[f] === null ? null : String(prev.answer[f]), new: r.answer[f] === null ? null : String(r.answer[f]), at: Date.now() });
+        }
+      }
+      if (changed) prev.changes++;
+      prev.answer = { ...EMPTY_ANSWER, ...r.answer };
+      prev.clientTs = ts;
+      prev.timeMs = r.responseTimeMs ?? prev.timeMs;
+    } else {
+      store().responses[key] = { answer: { ...EMPTY_ANSWER, ...r.answer }, clientTs: ts, changes: 0, timeMs: r.responseTimeMs, optionOrder: r.optionOrder };
+    }
+    return "saved";
+  },
+
+  async submitAttempt(attemptId) {
+    const a = await openAttempt(attemptId);
+    const answers = answersOf(a.id);
+    const missing = MEM_ITEMS.filter((it) => !isComplete(itemShape(it.content).format, answers[it.id])).map((it) => it.order);
+    if (missing.length) return { ok: false, missing };
+    a.submittedAt = new Date().toISOString();
+    store().classifications[a.id] = classifyAttempt(MEM_ITEMS, answers, MEM_RULE_SET);
+    return { ok: true };
+  },
+
+  async classTestOverview(classId) {
+    const t = await requireStaff();
+    const c = ownsClass(t, classId);
+    if (!c) throw new BackendError("not_found", "Kelas tidak ditemukan.");
+    return (["pre", "post"] as Phase[]).map((phase) => {
+      const ct = classTest(c.id, phase);
+      return {
+        phase,
+        status: ct?.status ?? "draft",
+        openedAt: ct?.openedAt ?? null,
+        closedAt: ct?.closedAt ?? null,
+        total: MEM_ITEMS.length,
+        students: store()
+          .students.filter((s) => s.classId === c.id)
+          .sort((x, y) => x.code.localeCompare(y.code))
+          .map((s) => {
+            const a = store().testAttempts.find((x) => x.studentId === s.id && x.phase === phase);
+            return { id: s.id, code: s.code, nickname: s.nickname, consent: s.consent, started: !!a, submitted: !!a?.submittedAt, answered: a ? answeredCount(a.id) : 0 };
+          }),
+      };
+    });
+  },
+
+  async openClassTest(classId, phase) {
+    const t = await requireStaff();
+    const c = ownsClass(t, classId);
+    if (!c) throw new BackendError("not_found", "Kelas tidak ditemukan.");
+    if (c.mode !== "research") throw new BackendError("learn_only", "Tes diagnostik hanya untuk kelas yang ikut penelitian.");
+    const ct = classTest(c.id, phase);
+    if (ct) {
+      ct.status = "open";
+      ct.openedAt ??= new Date().toISOString();
+      ct.closedAt = null;
+    } else store().classTests.push({ classId: c.id, phase, status: "open", openedAt: new Date().toISOString(), closedAt: null });
+    store().itemsFrozen = true;
+  },
+
+  async closeClassTest(classId, phase) {
+    const t = await requireStaff();
+    const c = ownsClass(t, classId);
+    if (!c) throw new BackendError("not_found", "Kelas tidak ditemukan.");
+    const ct = classTest(c.id, phase);
+    if (ct?.status === "open") {
+      ct.status = "closed";
+      ct.closedAt = new Date().toISOString();
+    }
   },
 };

@@ -247,3 +247,29 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 ## D-048 · Formulir masuk siswa tetap aman sebelum skrip siap
 - **Temuan:** di HP lambat, tombol Masuk yang ditekan sebelum JavaScript siap mengirim formulir sebagai GET, sehingga PIN bisa masuk ke alamat halaman (`/masuk?pin=…`). Uji e2e yang kadang gagal saat beban tinggi ternyata menangkap kondisi ini.
 - **Keputusan:** formulir punya `action="/api/auth/siswa" method="post"`; API menerima JSON (dari skrip) dan formulir biasa (redirect 303 ke `/belajar` atau `/masuk?galat=…`). Diuji dengan JavaScript dimatikan.
+
+---
+
+# M6 · Mesin tes diagnostik (8 Oktober 2026)
+
+## D-049 · Siapa menegakkan apa
+- **Basis data** (fungsi `start_attempt`, `save_response`, `submit_attempt`, `open/close_class_test`): tes harus dibuka guru, kelas mode penelitian, persetujuan `granted` (FR-60), percobaan milik siswa, belum selesai, tes belum ditutup; kunci opsi dan skala keyakinan valid; butir dibekukan saat tes pertama kali dibuka (FR-38); pre dan post memakai versi tes yang sama; buka/tutup tercatat di audit.
+- **Klien**: tier tampil bertahap dan "Lanjut" baru aktif bila butir lengkap (FR-32). Server tidak menolak urutan tier, karena antrean luring bisa mengirim keadaan sementara.
+- **Selesai** ditolak bila ada butir belum lengkap; nomornya dikembalikan agar siswa bisa melengkapi.
+
+## D-050 · Klasifikasi di server aplikasi, bukan di SQL
+- **Keputusan:** saat selesai, server menghitung kategori dengan `lib/classification` (fungsi murni yang sudah diverifikasi terhadap pedoman D.2) memakai aturan milik tes (dibaca dari DB lalu divalidasi ulang: lengkap & saling lepas), lalu menyimpannya lewat `store_classifications` yang **hanya** bisa dipanggil service role. Siswa tidak bisa membaca `classifications` (FR-36).
+- **Alasan:** satu implementasi aturan (TypeScript) untuk aplikasi, ekspor, dan uji — tidak ada salinan aturan dalam SQL yang bisa menyimpang.
+
+## D-051 · Antrean luring dan cap waktu klien
+- **Keputusan:** setiap tier yang dipilih masuk antrean IndexedDB (satu entri per butir, jawaban terbaru menggantikan), lalu dikirim ke `PUT /api/tes/attempt/[id]/respons`. Server menyimpan idempoten per (percobaan, butir) dan menolak kiriman dengan cap waktu klien lebih lama (`stale`), jadi kiriman tertunda tidak menimpa jawaban yang lebih baru. Perubahan jawaban tercatat di `response_events` (FR-33). Salinan butir (tanpa kunci) disimpan di perangkat agar tes tetap bisa dilanjutkan bila halaman dimuat ulang saat luring.
+- **Temuan saat uji:** dua ketukan cepat (jawaban lalu keyakinan) bisa saling timpa di IndexedDB karena baca dan tulis terpisah; operasi antrean kini berurutan (diuji).
+- **Status tenang (FR-34):** "Tersimpan" / "Menyimpan…" / "Menunggu internet. Jawabanmu aman di perangkat ini." Selesaikan tes saat luring → menunggu dan terkirim otomatis.
+
+## D-052 · Kelas "Belajar saja" tanpa tes penelitian
+- **Keputusan:** tes diagnostik hanya bisa dibuka di kelas mode penelitian (FR-62); di kelas Belajar saja panel tes menjelaskan hal ini. Alternatif (tes latihan tanpa penyimpanan) dapat ditambah bila guru memintanya.
+
+## D-053 · Tampilan butir
+- Satu butir per layar, "Soal n dari 20", bilah kemajuan, kembali ke butir sebelumnya, layar periksa dengan nomor butir, layar penutup netral tanpa hasil. Opsi diacak per siswa (FR-35) dengan benih tetap (id percobaan + butir) dan diberi huruf A–D sesuai posisi tampil; urutan yang dilihat tersimpan di `option_order`. Butir `fixed_order` tidak diacak.
+- Keadaan biasa (tes belum dibuka, belum ada persetujuan, belum masuk) dijawab API sebagai 200 + `blocked`, bukan status galat, agar konsol bersih.
+- **Belum:** pembatasan laju endpoint tes (PRD §12.4) dan pengatur waktu lembut (FR-31 opsional) → M8.

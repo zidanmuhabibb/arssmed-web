@@ -121,3 +121,19 @@ export async function setFreeExploreAction(classId: string, value: boolean): Pro
     return fail(e);
   }
 }
+
+// ---------------------------------------------------------------- tes diagnostik (FR-41)
+
+export async function setClassTestAction(classId: string, phase: string, open: boolean): Promise<{ ok: true } | Fail> {
+  const id = Uuidish.safeParse(classId);
+  const ph = z.enum(["pre", "post"]).safeParse(phase);
+  if (!id.success || !ph.success || typeof open !== "boolean") return { ok: false, error: "invalid_input" };
+  try {
+    if (open) await getBackend().openClassTest(id.data, ph.data);
+    else await getBackend().closeClassTest(id.data, ph.data);
+    refresh();
+    return { ok: true };
+  } catch (e) {
+    return fail(e);
+  }
+}

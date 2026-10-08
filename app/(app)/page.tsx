@@ -1,5 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, BookMarked, ClipboardList, Compass, UserRound } from "lucide-react";
+import { NextIntlClientProvider } from "next-intl";
+import { ArrowRight, BookMarked, Compass, UserRound } from "lucide-react";
+import { HomeTestButton } from "@/components/tes/TestList";
+import { pickMessages } from "@/lib/i18n-pick";
 import { OrbitStage } from "@/components/home/OrbitStage";
 import { LinkButton } from "@/components/ui/Button";
 import { ListGroup, ListRow } from "@/components/ui/ListGroup";
@@ -17,11 +20,9 @@ const PLANET_MESSAGE_KEY: Record<PlanetKey, string> = {
   neptunus: "neptune",
 };
 
-// Status tes kelas baru tersedia di M6 (FR-30). Sampai saat itu tombol tes tidak tampil.
-const TEST_OPEN = false;
-
 export default async function BerandaPage() {
   const t = await getTranslations();
+  const messages = await pickMessages(["home"]);
   const names = Object.fromEntries(
     Object.entries(PLANET_MESSAGE_KEY).map(([k, msg]) => [k, t(`planets.${msg}`)]),
   ) as Record<PlanetKey, string>;
@@ -45,11 +46,10 @@ export default async function BerandaPage() {
             <LinkButton href="/belajar" icon={<ArrowRight aria-hidden="true" className="size-5" />}>
               {t("home.start")}
             </LinkButton>
-            {TEST_OPEN ? (
-              <LinkButton href="/tes" variant="kedua" icon={<ClipboardList aria-hidden="true" className="size-5" />}>
-                {t("home.takeTest")}
-              </LinkButton>
-            ) : null}
+            {/* FR-01: tampil hanya bila guru membuka tes untuk siswa ini */}
+            <NextIntlClientProvider messages={messages}>
+              <HomeTestButton />
+            </NextIntlClientProvider>
           </div>
         </div>
       </section>

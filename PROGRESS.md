@@ -1,5 +1,34 @@
 # PROGRESS.md
 
+## M6 · Mesin tes diagnostik — selesai (8 Oktober 2026)
+
+### Selesai
+- **Bank soal** `pnpm seed:items`: 20 butir dari `data/items.json` + aturan `pedoman-v1` (bawaan) dan `default-v1` → migrasi `*_items.sql` (diuji sama dengan berkas data).
+- **Guru (FR-41):** panel "Tes diagnostik" di halaman kelas — buka/tutup tes awal & akhir dengan konfirmasi, daftar siswa (Belum mulai / Mengerjakan n/20 / Selesai / Belum ada persetujuan), diperbarui tiap 10 detik. Membuka tes membekukan butir (FR-38). Kelas Belajar saja tidak bisa membuka tes (FR-62).
+- **Siswa:**
+  - `/tes`: status tes awal & akhir; tombol "Kerjakan tes" di Beranda hanya saat tes dibuka (FR-01).
+  - `/tes/pre`, `/tes/post`: satu butir per layar, tier bertahap (jawaban → keyakinan → alasan → keyakinan), opsi teracak per siswa, kembali ke butir sebelumnya, periksa jawaban, layar penutup netral tanpa hasil (FR-31…36).
+  - Simpan otomatis tiap tier lewat antrean IndexedDB; status tenang; jaringan putus → tetap bisa menjawab, terkirim otomatis saat tersambung (FR-34).
+  - Tanpa persetujuan orang tua → tidak bisa memulai (FR-60).
+- **API (PRD §11):** `GET /api/tes/[fase]/mulai` (butir tanpa kunci), `PUT /api/tes/attempt/[id]/respons` (idempoten, cap waktu klien terbaru menang), `POST /api/tes/attempt/[id]/selesai` (klasifikasi server).
+- **Klasifikasi server** dengan aturan milik tes; disimpan lewat service role; tidak terbaca siswa.
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan DB) | 517/517 lulus — 12 uji DB tes (tertutup, persetujuan, kelas Belajar saja, bekukan butir, validasi, cap waktu klien, audit perubahan, selesai belum lengkap, klasifikasi hanya service role, tutup tes, versi pre=post), antrean luring, acak opsi, butir tanpa kunci |
+| `pnpm e2e` (Pixel 5, iPhone 13*, desktop) | 188/188 lulus — **pretest 20 butir selesai dengan jaringan putus di butir 12–15** (kriteria M6), tes tertutup tanpa butir terkirim (PRD §14), persetujuan, lanjut setelah muat ulang, tutup tes oleh guru |
+
+### Belum diuji
+- Alur dengan Supabase sungguhan (`pnpm db:start`) — fungsi DB sudah diuji di Postgres, jalur aplikasi diuji dengan backend memori.
+- Uji di HP nyata dengan sinyal sekolah.
+
+### Perlu dari Anda
+- Instrumen masih berstatus **draf** (`draft_needs_validation`). Setelah validasi ahli, ubah status di `data/items.json`. Bila ada butir yang diubah setelah tes pernah dibuka, naikkan `test_version` lalu `pnpm seed:items --new`.
+
+---
+
 ## M5 · AR permukaan — selesai di sisi kode, menunggu uji HP nyata (8 Oktober 2026)
 
 ### Selesai

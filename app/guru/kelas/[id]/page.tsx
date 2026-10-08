@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { Users } from "lucide-react";
 import { FreeExploreToggle } from "@/components/guru/FreeExploreToggle";
 import { ImportPanel } from "@/components/guru/ImportPanel";
+import { TestControl } from "@/components/guru/TestControl";
 import { StudentTable } from "@/components/guru/StudentTable";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -32,6 +33,7 @@ async function ClassDetail({ params }: { params: PageProps<"/guru/kelas/[id]">["
   const cls = await backend.getClass(id);
   if (!cls) notFound();
   const students = await backend.listStudents(cls.id);
+  const tests = cls.mode === "research" ? await backend.classTestOverview(cls.id) : [];
 
   return (
     <>
@@ -42,6 +44,7 @@ async function ClassDetail({ params }: { params: PageProps<"/guru/kelas/[id]">["
           {cls.joinCode}
         </span>
       </div>
+      <TestControl classId={cls.id} mode={cls.mode} initial={tests} />
       <FreeExploreToggle classId={cls.id} initial={cls.freeExplore} />
       <div className="grid grid-cols-[minmax(0,1fr)] gap-8 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] xl:items-start">
         <section aria-labelledby="daftar-siswa" className="flex min-w-0 flex-col gap-4">

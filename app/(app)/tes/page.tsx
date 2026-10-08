@@ -1,31 +1,25 @@
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, LockKeyhole } from "lucide-react";
+import { TestList } from "@/components/tes/TestList";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { EmptyState } from "@/components/ui/EmptyState";
-import { LinkButton } from "@/components/ui/Button";
+import { pickMessages } from "@/lib/i18n-pick";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("tes");
   return { title: t("title") };
 }
 
-/** Sampai M6, tes selalu tertutup (skenario penerimaan PRD §14). */
+/** FR-30: tes hanya bisa dikerjakan bila guru membukanya untuk kelas siswa. */
 export default async function TesPage() {
   const t = await getTranslations();
+  const messages = await pickMessages(["tes"]);
   return (
     <>
-      <PageHeader title={t("tes.title")} />
-      <EmptyState
-        icon={<LockKeyhole className="size-7" />}
-        title={t("tes.closedTitle")}
-        body={t("tes.closedBody")}
-        action={
-          <LinkButton href="/belajar" icon={<ArrowRight aria-hidden="true" className="size-5" />}>
-            {t("home.start")}
-          </LinkButton>
-        }
-      />
+      <PageHeader title={t("tes.title")} lead={t("tes.lead")} />
+      <NextIntlClientProvider messages={messages}>
+        <TestList />
+      </NextIntlClientProvider>
     </>
   );
 }

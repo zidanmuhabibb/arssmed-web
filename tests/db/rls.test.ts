@@ -56,7 +56,7 @@ run("basis data: RLS dan fungsi", () => {
     F.A2 = await mk(F.classA, "A02", "5678", ID.studentUserA2);
     F.B1 = await mk(F.classB, "B01", "4321", ID.studentUserB1);
 
-    F.rules = (await q(`insert into public.rule_sets (rule_set_id, name, kind, rules, is_default) values ('pedoman-v1', 'Pedoman', 'per_tier', '[]', true) returning id`)).rows[0].id;
+    F.rules = (await q("select id from public.rule_sets where rule_set_id = 'pedoman-v1'")).rows[0].id;
     F.test = (await q("insert into public.tests (name, rule_set_id) values ('Tes tata surya', $1) returning id", [F.rules])).rows[0].id;
     F.item = (
       await q(

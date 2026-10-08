@@ -22,7 +22,8 @@
     "test:db": "vitest run tests/db",
     "build:textures": "node scripts/build-textures.mjs",
     "content:sql": "node scripts/build-content-sql.mjs",
-    "assets:build": "node scripts/build-ar-models.mjs"
+    "assets:build": "node scripts/build-ar-models.mjs",
+    "seed:items": "node scripts/seed-items.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.3.0",

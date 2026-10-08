@@ -5,6 +5,8 @@
  */
 import type { DeviceKind } from "@/lib/ar/capabilities";
 import type { Step } from "@/lib/learning/flow";
+import type { Answer } from "@/lib/tes/session";
+import type { AttemptPayload, ClassTestOverview, Phase, StudentTestStatus } from "@/lib/tes/types";
 
 export type ViewMode = "3d" | "ar_surface" | "ar_marker";
 
@@ -56,6 +58,11 @@ export type BackendErrorCode =
   | "empty"
   | "invalid_input"
   | "locked"
+  | "closed"
+  | "consent"
+  | "learn_only"
+  | "submitted"
+  | "no_test"
   | "unknown";
 
 /** Kemajuan belajar siswa yang sedang masuk (M4). */
@@ -101,4 +108,25 @@ export interface Backend {
   recordObjectView(unit: string, objectId: string, mode?: ViewMode, device?: DeviceKind | null): Promise<void>;
   completeStep(unit: string, step: Step): Promise<void>;
   markDiscussed(unit: string): Promise<void>;
+
+  // Tes diagnostik (M6). Siswa:
+  studentTests(): Promise<StudentTestStatus[]>;
+  /** Mulai/lanjutkan; butir TANPA kunci. Galat: closed | consent | learn_only. */
+  startAttempt(phase: Phase, device: DeviceKind | null): Promise<AttemptPayload>;
+  saveResponse(attemptId: string, r: SaveResponseInput): Promise<"saved" | "stale">;
+  /** Selesai + klasifikasi server. Butir belum lengkap dikembalikan. */
+  submitAttempt(attemptId: string): Promise<{ ok: true } | { ok: false; missing: number[] }>;
+  // Guru:
+  classTestOverview(classId: string): Promise<ClassTestOverview[]>;
+  openClassTest(classId: string, phase: Phase): Promise<void>;
+  closeClassTest(classId: string, phase: Phase): Promise<void>;
+}
+
+export interface SaveResponseInput {
+  itemId: string;
+  answer: Answer;
+  /** Cap waktu klien (ISO). */
+  clientTs: string;
+  responseTimeMs: number | null;
+  optionOrder: { tier1: string[]; reason: string[] } | null;
 }

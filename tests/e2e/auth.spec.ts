@@ -25,6 +25,7 @@ test.describe("Masuk siswa", () => {
 
   test("PIN belum cocok lalu dibatasi setelah 5 percobaan", async ({ page }) => {
     await page.goto("/masuk");
+    await page.waitForLoadState("networkidle"); // tunggu skrip siap agar setiap kiriman lewat JSON
     const code = `X${rand()}`;
     for (let i = 0; i < 5; i++) {
       await page.getByLabel("Kode kelas").fill("K7M2QX");
@@ -35,6 +36,28 @@ test.describe("Masuk siswa", () => {
     }
     await page.getByRole("button", { name: "Masuk" }).click();
     await expect(page.getByRole("main").getByRole("alert")).toContainText("Terlalu banyak percobaan. Coba lagi dalam 10 menit");
+  });
+
+  test("tombol ditekan sebelum skrip siap: PIN tidak masuk alamat, galat tetap tampil", async ({ browser, page }, info) => {
+    const ctx = await browser.newContext({ ...info.project.use, javaScriptEnabled: false });
+    const p = await ctx.newPage();
+    await p.goto("/masuk");
+    await p.getByLabel("Kode kelas").fill("K7M2QX");
+    await p.getByLabel("Kode siswa").fill(`Y${rand()}`);
+    await p.getByLabel("PIN", { exact: true }).fill("9999");
+    await p.getByLabel("PIN", { exact: true }).press("Enter"); // kiriman formulir biasa
+    await expect(p).toHaveURL(/\/masuk\?galat=invalid_credentials$/);
+    expect(p.url()).not.toContain("9999");
+    // Siswa contoh berhasil masuk tanpa skrip
+    await p.getByLabel("Kode kelas").fill("K7M2QX");
+    await p.getByLabel("Kode siswa").fill("S02");
+    await p.getByLabel("PIN", { exact: true }).fill("5678");
+    await p.getByLabel("PIN", { exact: true }).press("Enter");
+    await expect(p).toHaveURL(/\/belajar$/);
+    await ctx.close();
+    // Dengan skrip, galat dari alamat ditampilkan
+    await page.goto("/masuk?galat=invalid_credentials");
+    await expect(page.getByRole("main").getByRole("alert")).toContainText("belum cocok");
   });
 
   test("siswa contoh bisa masuk, melihat namanya, lalu keluar", async ({ page }) => {

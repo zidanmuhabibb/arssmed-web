@@ -137,6 +137,16 @@ run("basis data: alur belajar (M4)", () => {
     expect(r.rowCount).toBe(0);
   });
 
+  it("AR permukaan dicatat dengan jenis perangkat (FR-14, FR-17)", async () => {
+    await db.as(as(ID.s2), (c) => c.query("select public.record_object_view('u2', 'bumi', 'ar_surface', 'android')"), commit);
+    const r = await db.sql("select mode, device_kind from public.object_views v join public.students s on s.id = v.student_id where s.id = $1 and v.mode = 'ar_surface'", [F.s2]);
+    expect(r.rows).toEqual([{ mode: "ar_surface", device_kind: "android" }]);
+    const e = await pgError(db.as(as(ID.s2), (c) => c.query("select public.record_object_view('u2', 'bumi', 'ar_surface', 'konsol')")));
+    expect(e.detail).toBe("invalid_input");
+    const urls = await db.sql("select glb_url, usdz_url from public.ar_objects where slug = 'bumi' limit 1");
+    expect(urls.rows[0]).toEqual({ glb_url: "/models/bumi.glb", usdz_url: "/models/bumi.usdz" });
+  });
+
   it("unit/objek/langkah tak dikenal ditolak dengan kode yang jelas", async () => {
     expect((await pgError(db.as(as(ID.s1), (c) => c.query("select public.complete_step('u9', 'tebak')")))).detail).toBe("not_found");
     expect((await pgError(db.as(as(ID.s1), (c) => c.query("select public.complete_step('u1', 'main')")))).detail).toBe("invalid_input");

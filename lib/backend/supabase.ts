@@ -247,9 +247,9 @@ export const supabaseBackend: Backend = {
     return data as string;
   },
 
-  async recordObjectView(unit, objectId) {
+  async recordObjectView(unit, objectId, mode = "3d", device = null) {
     const c = await server();
-    const { error } = await c.rpc("record_object_view", { p_unit: unit, p_object: objectId, p_mode: "3d" });
+    const { error } = await c.rpc("record_object_view", { p_unit: unit, p_object: objectId, p_mode: mode, p_device: device });
     if (error) throw fromDb(error);
   },
 

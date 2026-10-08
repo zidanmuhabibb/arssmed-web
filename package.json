@@ -21,7 +21,8 @@
     "items:import": "python3 scripts/import_instrument.py",
     "test:db": "vitest run tests/db",
     "build:textures": "node scripts/build-textures.mjs",
-    "content:sql": "node scripts/build-content-sql.mjs"
+    "content:sql": "node scripts/build-content-sql.mjs",
+    "assets:build": "node scripts/build-ar-models.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.3.0",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@gltf-transform/core": "^4.5.1",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/turbopack": "^4",
     "@testing-library/dom": "^10.4.2",
@@ -56,6 +58,7 @@
     "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
+    "fflate": "^0.8.3",
     "jsdom": "^30.1.2",
     "pg": "^8.23.1",
     "supabase": "^2.120.0",

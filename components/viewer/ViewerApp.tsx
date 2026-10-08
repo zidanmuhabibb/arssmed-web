@@ -30,6 +30,8 @@ import { progressOf } from "@/lib/viewer/progress";
 import { locate } from "@/lib/viewer/timeline";
 import type { SceneHandle } from "./Scene";
 import { AnimationBar, useStepAnimation } from "./AnimationBar";
+import { ArButton } from "./ArButton";
+import { arModelUrls } from "@/lib/ar/spec";
 import { ExplainPanel } from "./ExplainPanel";
 import { InfoSheet } from "./InfoSheet";
 import { RelOrbit } from "./RelOrbit";
@@ -316,6 +318,7 @@ export function ViewerApp({
 
       <div className="flex flex-col gap-3 px-4 pt-4 sm:px-6 lg:border-l lg:border-garis lg:px-5 lg:pt-5">
         <RelOrbit objects={objects} currentId={currentId} viewed={viewed} progress={progress} onSelect={select} />
+        <ArButton title={current.name} {...arModelUrls(current)} onLaunch={() => learning.arView(unitSlug, currentId)} />
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
           <button
             type="button"

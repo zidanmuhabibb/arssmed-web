@@ -173,6 +173,11 @@ export const learning = {
     const r = await send({ kind: "view", unit, object });
     if (r?.ok && !r.local) applyServer((s) => ({ ...s, viewed: { ...s.viewed, [unit]: addUnique(s.viewed[unit], object) } }));
   },
+  /** AR permukaan dibuka (FR-14): selalu dicatat sebagai tampilan "ar_surface". */
+  arView(unit: string, object: string) {
+    update((s) => ({ ...s, viewed: { ...s.viewed, [unit]: addUnique(s.viewed[unit], object) } }));
+    void send({ kind: "view", unit, object, mode: "ar_surface" });
+  },
   /** Mengembalikan galat server (mis. "locked") bila ada, agar UI bisa menjelaskan. */
   async complete(unit: string, step: Step): Promise<string | null> {
     update((s) => ({ ...s, steps: { ...s.steps, [unit]: STEPS.filter((x) => addUnique(s.steps[unit], step).includes(x)) } }));

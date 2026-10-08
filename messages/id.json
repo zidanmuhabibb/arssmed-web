@@ -177,7 +177,7 @@
       },
       "ar": {
         "title": "Memulai AR",
-        "body": "Tekan Lihat di ruanganmu, lalu arahkan HP ke lantai atau meja. Tombol ini hanya muncul di HP yang mendukung AR."
+        "body": "Tekan Lihat di ruanganmu, baca penjelasan tentang kamera, lalu arahkan HP ke lantai atau meja sampai benda muncul. Di laptop tombol ini tidak aktif; pakai 3D saja."
       },
       "kamera": {
         "title": "Kamera tidak mau hidup?",
@@ -191,8 +191,7 @@
       "titik": "Titik info bernomor pada planet",
       "ar": "HP diarahkan ke meja, planet muncul di atasnya",
       "kamera": "Kamera dengan tanda izin"
-    },
-    "arSoon": "Mode AR sedang disiapkan dan akan hadir di pembaruan berikutnya."
+    }
   },
   "materi": {
     "title": "Identitas materi",
@@ -522,6 +521,25 @@
       "next": "Lanjut ke Bandingkan",
       "locked": "Lihat semua benda di Rel Orbit dulu, lalu coba lagi.",
       "error": "Kemajuan belum tersimpan. Periksa sinyal, lalu coba lagi."
+    },
+    "ar": {
+      "open": "Lihat di ruanganmu",
+      "unavailable": {
+        "desktop": "AR hanya bisa di HP Android atau iPhone. Di laptop, kamu tetap bisa memutar benda dalam 3D di atas.",
+        "browser": "Browser ini belum bisa membuka AR. Coba buka di Chrome (Android) atau Safari (iPhone), atau pakai 3D di atas.",
+        "failed": "AR belum bisa dibuka di HP ini. Kamu tetap bisa memakai 3D di atas."
+      },
+      "failedNow": "AR belum bisa dibuka. Mungkin HP ini belum mendukung AR atau aplikasi Google Play Services for AR belum terpasang. Kamu tetap bisa memakai 3D.",
+      "ok": "Mengerti",
+      "consent": {
+        "title": "Kamera akan dipakai",
+        "why": "Kamera dipakai untuk menaruh benda di lantai atau meja di depanmu.",
+        "privacy": "Tidak ada foto atau video yang disimpan atau dikirim. Gambar kamera hanya diolah di HP ini.",
+        "howAndroid": "Setelah ini, HP akan meminta izin kamera. Arahkan HP ke lantai atau meja sampai benda muncul.",
+        "howIos": "Setelah ini, ketuk AR lalu arahkan iPhone ke lantai atau meja sampai benda muncul.",
+        "allow": "Izinkan kamera",
+        "skip": "Lewati, pakai 3D saja"
+      }
     }
   }
 }

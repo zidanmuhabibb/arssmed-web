@@ -1,6 +1,8 @@
 "use server";
 
+import { headers } from "next/headers";
 import { z } from "zod";
+import { deviceKind } from "@/lib/ar/capabilities";
 import { BackendError, getBackend, getViewer } from "@/lib/backend";
 import { STEPS } from "@/lib/learning/flow";
 
@@ -14,7 +16,7 @@ const Slug = z.string().regex(/^u[0-9]{1,2}$/);
 const Id = z.string().regex(/^[a-z0-9-]{1,60}$/);
 const Op = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("prediction"), key: Id, option: z.enum(["A", "B", "C"]) }),
-  z.object({ kind: z.literal("view"), unit: Slug, object: Id }),
+  z.object({ kind: z.literal("view"), unit: Slug, object: Id, mode: z.enum(["3d", "ar_surface"]).optional() }),
   z.object({ kind: z.literal("step"), unit: Slug, step: z.enum(STEPS) }),
   z.object({ kind: z.literal("discussed"), unit: Slug }),
 ]);
@@ -31,9 +33,13 @@ export async function learningAction(input: LearningOp): Promise<LearningResult>
     switch (op.kind) {
       case "prediction":
         return { ok: true, selected: await b.savePrediction(op.key, op.option) };
-      case "view":
-        await b.recordObjectView(op.unit, op.object);
+      case "view": {
+        // Jenis perangkat diturunkan di server dari User-Agent; hanya kategorinya yang disimpan (FR-17).
+        const h = await headers();
+        const device = deviceKind({ userAgent: h.get("user-agent") ?? "", uaDataPlatform: h.get("sec-ch-ua-platform")?.replace(/"/g, ""), uaDataMobile: h.get("sec-ch-ua-mobile") === "?1" });
+        await b.recordObjectView(op.unit, op.object, op.mode ?? "3d", device);
         return { ok: true };
+      }
       case "step":
         await b.completeStep(op.unit, op.step);
         return { ok: true };

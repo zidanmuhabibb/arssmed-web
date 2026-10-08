@@ -224,3 +224,26 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 ## D-044 · Kinerja Viewer (lanjutan D-034)
 - **Pengukuran ulang:** Lighthouse mobile Viewer di lingkungan ini 46–48 (LCP 5,8–6,5 s). Untuk pembanding, build M3 yang sama diukur ulang hari ini: 46 dan 63. Variasi berasal dari GPU emulasi (SwiftShader), bukan regresi M4. Halaman non-3D: Beranda 86, unit 89, Tebak 91 (Accessibility 100 semua).
 - **Status:** tetap menunggu uji HP nyata (D-034).
+
+---
+
+# M5 · AR permukaan (8 Oktober 2026)
+
+## D-045 · AR lewat aplikasi bawaan HP, tanpa memuat model-viewer
+- **Keputusan:** iPhone/iPad memakai **AR Quick Look** (tautan `rel="ar"` ke USDZ), Android memakai **Scene Viewer** (intent ke GLB, cadangan kembali ke halaman dengan `#tanpa-ar`). Format tautan dan deteksi perangkat mengikuti @google/model-viewer 4.x, tetapi pustakanya (±1 MB, membawa three.js versi lain) tidak dimuat.
+- **Alasan:** PRD §9.1 menyarankan model-viewer; untuk mode Quick Look/Scene Viewer ia hanya membuat tautan yang sama. Tanpa pustaka: 0 KB tambahan, tidak ada konflik versi three.js, dan tautan bisa diuji otomatis.
+- **Belum:** AR WebXR di dalam halaman (tanpa aplikasi Google) tidak dipakai. Bila uji HP nyata menunjukkan Scene Viewer sering gagal, model-viewer bisa ditambahkan sebagai cadangan.
+
+## D-046 · Model AR dibangun dari kode, dicek dengan pustaka USD resmi
+- **Keputusan:** `pnpm assets:build` membuat `public/models/<id>.glb` + `.usdz` untuk semua objek Rel Orbit (21 model, 6,7 MB total, terbesar 1,2 MB; PRD §12.1 ≤ 3 MB/objek, ≤ 15 MB/unit). Bentuk dasar + tekstur prosedural yang sama dengan Viewer; adegan U3–U6 memakai tata letak yang sama (`lib/viewer/dioramas.ts`). Transformasi dipanggang ke titik, model diangkat ke lantai, ukuran nyata di meja: benda ±30 cm, adegan ±55–77 cm.
+- **Verifikasi:** semua USDZ lolos validator `pxr.UsdValidation` (usd-core 0.26.8): 0 galat, semua jaring punya material, Y-up, meter. Test: arsip tanpa kompresi, data sejajar 64 byte, GLB terbaca glTF-Transform, hasil bangun ulang identik byte demi byte, ukuran dalam batas.
+- **Isi AR adegan (statis):** U4 batu di tiga tempat (meteor bercahaya + jejak), U5 rotasi = Bumi miring + sumbu + titik Indonesia, U5 revolusi = Bumi di 4 posisi dengan sumbu searah (penyebab musim), U6 tiga benda segaris + kerucut bayangan. Animasi tetap di mode 3D.
+
+## D-047 · Layar izin kamera dan deteksi perangkat
+- **FR-16:** sebelum AR dibuka pertama kali dalam satu sesi, muncul "Kamera akan dipakai" (alasan, jaminan tidak ada foto/video disimpan atau dikirim) dengan "Izinkan kamera" / "Lewati, pakai 3D saja". Izin kamera sesungguhnya diminta oleh aplikasi AR HP.
+- **FR-17:** WebGL, WebXR immersive-ar, Quick Look, keberadaan kamera (tanpa meminta izin), dan jenis perangkat dideteksi sekali per sesi (`sessionStorage`). Jenis perangkat **dicatat di server dari User-Agent sebagai kategori saja** (`object_views.device_kind`: android/ios/desktop/other); User-Agent tidak disimpan. Membuka AR dicatat sebagai tampilan `ar_surface`.
+- **Laptop / browser tidak didukung:** tombol nonaktif dengan penjelasan dan saran (Chrome di Android, Safari di iPhone); 3D tetap tersedia (PRD §9.2 degradasi anggun).
+
+## D-048 · Formulir masuk siswa tetap aman sebelum skrip siap
+- **Temuan:** di HP lambat, tombol Masuk yang ditekan sebelum JavaScript siap mengirim formulir sebagai GET, sehingga PIN bisa masuk ke alamat halaman (`/masuk?pin=…`). Uji e2e yang kadang gagal saat beban tinggi ternyata menangkap kondisi ini.
+- **Keputusan:** formulir punya `action="/api/auth/siswa" method="post"`; API menerima JSON (dari skrip) dan formulir biasa (redirect 303 ke `/belajar` atau `/masuk?galat=…`). Diuji dengan JavaScript dimatikan.

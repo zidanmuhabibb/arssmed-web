@@ -1,5 +1,32 @@
 # PROGRESS.md
 
+## M5 · AR permukaan — selesai di sisi kode, menunggu uji HP nyata (8 Oktober 2026)
+
+### Selesai
+- **"Lihat di ruanganmu" (FR-14)** di Viewer semua unit, di bawah Rel Orbit:
+  - iPhone/iPad (Safari) → AR Quick Look dengan berkas USDZ.
+  - Android (Chrome) → Scene Viewer dengan berkas GLB; bila gagal, kembali ke 3D dengan pesan ramah dan tombol dinonaktifkan selama sesi.
+  - Laptop/browser lain → tombol nonaktif + penjelasan; 3D tetap jalan.
+- **Layar izin kamera (FR-16)** sekali per sesi: alasan, jaminan privasi, "Izinkan kamera" / "Lewati, pakai 3D saja".
+- **Deteksi perangkat (FR-17)**: WebGL, WebXR, Quick Look, kamera; jenis perangkat dicatat anonim per tampilan (`object_views.device_kind`), AR dicatat sebagai `ar_surface`.
+- **21 model AR** (`pnpm assets:build`): GLB + USDZ untuk semua benda U1–U2 dan adegan statis U3–U6; tercatat di `assets/manifest.json`; URL di `ar_objects.glb_url/usdz_url`. Server menyajikan tipe MIME yang benar.
+- Panduan langkah AR diperbarui. Formulir masuk siswa aman dikirim sebelum skrip siap (D-048).
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan DB) | 490/490 lulus — deteksi perangkat, pilihan mode AR, intent Scene Viewer, struktur & ukuran berkas AR, bangun ulang identik, DB `ar_surface` + `device_kind` |
+| Validator USD resmi (`pxr.UsdValidation`) | 21 USDZ, 0 galat, 0 peringatan |
+| `pnpm e2e` | 176/176 lulus — laptop nonaktif, Android: izin → intent GLB, izin diingat, gagal → kembali 3D; iPhone: tautan rel=ar + gambar → USDZ; tanpa Quick Look → nonaktif; tipe MIME; masuk tanpa JavaScript |
+| Lighthouse Viewer | Accessibility 100 |
+
+### Belum diuji (butuh perangkat dan HTTPS)
+- **AR sungguhan di HP**: kriteria M5 "AR jalan di perangkat nyata". Scene Viewer dan Quick Look hanya berjalan dari alamat **HTTPS** yang bisa dijangkau HP (mis. Vercel). Uji di ≥ 3 HP Android (RAM 3/4/6 GB) dan 1 iPhone: tombol muncul, benda tampil di meja, ukuran wajar, tekstur benar, kembali ke halaman.
+- AR penanda/marker (FR-15, P1) → M8 sesuai rencana.
+
+---
+
 ## M4 · Alur belajar — selesai (8 Oktober 2026)
 
 ### Selesai

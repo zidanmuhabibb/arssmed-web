@@ -118,6 +118,384 @@
       "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
       "attribution": "Tekstur ilustratif ARSSMED",
       "review_status": "reviewed"
+    },
+    {
+      "id": "model-matahari-glb",
+      "kind": "model",
+      "file": "public/models/matahari.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-matahari-usdz",
+      "kind": "model",
+      "file": "public/models/matahari.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-bumi-glb",
+      "kind": "model",
+      "file": "public/models/bumi.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-bumi-usdz",
+      "kind": "model",
+      "file": "public/models/bumi.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-bulan-glb",
+      "kind": "model",
+      "file": "public/models/bulan.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-bulan-usdz",
+      "kind": "model",
+      "file": "public/models/bulan.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-pluto-glb",
+      "kind": "model",
+      "file": "public/models/pluto.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-pluto-usdz",
+      "kind": "model",
+      "file": "public/models/pluto.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-komet-glb",
+      "kind": "model",
+      "file": "public/models/komet.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-komet-usdz",
+      "kind": "model",
+      "file": "public/models/komet.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-asteroid-glb",
+      "kind": "model",
+      "file": "public/models/asteroid.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-asteroid-usdz",
+      "kind": "model",
+      "file": "public/models/asteroid.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-merkurius-glb",
+      "kind": "model",
+      "file": "public/models/merkurius.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-merkurius-usdz",
+      "kind": "model",
+      "file": "public/models/merkurius.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-venus-glb",
+      "kind": "model",
+      "file": "public/models/venus.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-venus-usdz",
+      "kind": "model",
+      "file": "public/models/venus.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-mars-glb",
+      "kind": "model",
+      "file": "public/models/mars.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-mars-usdz",
+      "kind": "model",
+      "file": "public/models/mars.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-jupiter-glb",
+      "kind": "model",
+      "file": "public/models/jupiter.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-jupiter-usdz",
+      "kind": "model",
+      "file": "public/models/jupiter.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-saturnus-glb",
+      "kind": "model",
+      "file": "public/models/saturnus.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-saturnus-usdz",
+      "kind": "model",
+      "file": "public/models/saturnus.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-uranus-glb",
+      "kind": "model",
+      "file": "public/models/uranus.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-uranus-usdz",
+      "kind": "model",
+      "file": "public/models/uranus.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-neptunus-glb",
+      "kind": "model",
+      "file": "public/models/neptunus.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-neptunus-usdz",
+      "kind": "model",
+      "file": "public/models/neptunus.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-zona-planet-glb",
+      "kind": "model",
+      "file": "public/models/zona-planet.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-zona-planet-usdz",
+      "kind": "model",
+      "file": "public/models/zona-planet.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-meteoroid-glb",
+      "kind": "model",
+      "file": "public/models/meteoroid.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-meteoroid-usdz",
+      "kind": "model",
+      "file": "public/models/meteoroid.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-meteor-glb",
+      "kind": "model",
+      "file": "public/models/meteor.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-meteor-usdz",
+      "kind": "model",
+      "file": "public/models/meteor.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-meteorit-glb",
+      "kind": "model",
+      "file": "public/models/meteorit.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-meteorit-usdz",
+      "kind": "model",
+      "file": "public/models/meteorit.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-rotasi-glb",
+      "kind": "model",
+      "file": "public/models/rotasi.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-rotasi-usdz",
+      "kind": "model",
+      "file": "public/models/rotasi.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-revolusi-glb",
+      "kind": "model",
+      "file": "public/models/revolusi.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-revolusi-usdz",
+      "kind": "model",
+      "file": "public/models/revolusi.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-gerhana-matahari-glb",
+      "kind": "model",
+      "file": "public/models/gerhana-matahari.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-gerhana-matahari-usdz",
+      "kind": "model",
+      "file": "public/models/gerhana-matahari.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-gerhana-bulan-glb",
+      "kind": "model",
+      "file": "public/models/gerhana-bulan.glb",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "model-gerhana-bulan-usdz",
+      "kind": "model",
+      "file": "public/models/gerhana-bulan.usdz",
+      "license": "Karya sendiri — dibuat dari bentuk dasar dan tekstur prosedural oleh scripts/build-ar-models.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Model ilustratif ARSSMED",
+      "review_status": "reviewed"
     }
   ],
   "thirdPartyUi": [

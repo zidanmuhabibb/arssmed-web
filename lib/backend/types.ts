@@ -3,7 +3,10 @@
  * antarmuka ini; implementasinya Supabase (produksi) atau memori (uji e2e).
  * Otorisasi tetap ditegakkan di basis data (RLS + fungsi) — lihat DECISIONS D-026.
  */
+import type { DeviceKind } from "@/lib/ar/capabilities";
 import type { Step } from "@/lib/learning/flow";
+
+export type ViewMode = "3d" | "ar_surface" | "ar_marker";
 
 export type ConsentStatus = "pending" | "granted" | "withdrawn";
 export type ClassMode = "learn_only" | "research";
@@ -95,7 +98,7 @@ export interface Backend {
   getLearningState(): Promise<LearningSnapshot>;
   /** Jawaban pertama berlaku; mengembalikan jawaban yang tersimpan. */
   savePrediction(key: string, option: string): Promise<string>;
-  recordObjectView(unit: string, objectId: string): Promise<void>;
+  recordObjectView(unit: string, objectId: string, mode?: ViewMode, device?: DeviceKind | null): Promise<void>;
   completeStep(unit: string, step: Step): Promise<void>;
   markDiscussed(unit: string): Promise<void>;
 }

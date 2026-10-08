@@ -27,6 +27,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      // Model AR (FR-14): Quick Look butuh tipe MIME USDZ yang tepat; Scene Viewer mengambil GLB dari server.
+      {
+        source: "/models/:file*.usdz",
+        headers: [
+          { key: "Content-Type", value: "model/vnd.usdz+zip" },
+          { key: "Cache-Control", value: "public, max-age=604800" },
+        ],
+      },
+      {
+        source: "/models/:file*.glb",
+        headers: [
+          { key: "Content-Type", value: "model/gltf-binary" },
+          { key: "Cache-Control", value: "public, max-age=604800" },
+          // Scene Viewer (aplikasi Google) mengambil berkas lintas asal.
+          { key: "Access-Control-Allow-Origin", value: "*" },
+        ],
+      },
       {
         source: "/sw.js",
         headers: [

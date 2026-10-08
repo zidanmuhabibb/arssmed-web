@@ -28,7 +28,7 @@ mkdirSync(join(root, "public/textures"), { recursive: true });
 const seen = new Set();
 for (const unit of Object.values(content.units)) {
   for (const o of unit.objects) {
-    if (seen.has(o.id)) continue;
+    if (o.scene || seen.has(o.id)) continue; // adegan U3–U6 memakai tekstur benda yang ada
     seen.add(o.id);
     const small = o.look === "asteroid" || o.look === "comet";
     const w = small ? 256 : 1024;

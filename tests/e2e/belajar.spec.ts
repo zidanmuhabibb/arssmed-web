@@ -197,6 +197,7 @@ test.describe("Viewer U3–U6 (FR-13)", () => {
 
   test("gerhana: semua adegan U3 dan U6 dirender tanpa galat, lolos axe", async ({ page, consoleErrors }) => {
     void consoleErrors;
+    test.slow(); // dua halaman 3D penuh di GPU emulasi
     for (const u of ["u3", "u6"]) {
       await page.goto(`/belajar/${u}/viewer`);
       await expect(page.locator("canvas")).toBeVisible();

@@ -30,6 +30,8 @@ export interface ContentInput {
     sources: Record<string, { label: string; url: string }>;
     units: Record<string, { objects: { id: string; name: string; annotations: { source: string }[] }[] }>;
   };
+  /** Berkas AR per id objek (FR-14). */
+  models?: Record<string, { glb: string; usdz: string }>;
 }
 
 const q = (s: string) => `'${s.replace(/'/g, "''")}'`;
@@ -64,15 +66,16 @@ export function buildContentSql(c: ContentInput): string {
   for (const u of c.units) {
     (c.celestial.units[u.slug]?.objects ?? []).forEach((o, i) => {
       const src = c.celestial.sources[o.annotations[0]?.source ?? ""];
+      const m = c.models?.[o.id];
       objects.push(
-        `  (${unitId(u.slug)}, ${q(o.id)}, ${q(o.name)}, ${i}, true, ${q("Karya sendiri — prosedural (lihat assets/manifest.json)")}, ${q("Ilustrasi ARSSMED")}, ${src ? q(src.url) : "null"}, ${q(c.celestial.review_status)})`,
+        `  (${unitId(u.slug)}, ${q(o.id)}, ${q(o.name)}, ${i}, true, ${q("Karya sendiri — prosedural (lihat assets/manifest.json)")}, ${q("Ilustrasi ARSSMED")}, ${src ? q(src.url) : "null"}, ${q(c.celestial.review_status)}, ${m ? q(m.glb) : "null"}, ${m ? q(m.usdz) : "null"})`,
       );
     });
   }
-  out.push("insert into public.ar_objects (unit_id, slug, title, sort_order, required, license, attribution, source_url, review_status) values");
+  out.push("insert into public.ar_objects (unit_id, slug, title, sort_order, required, license, attribution, source_url, review_status, glb_url, usdz_url) values");
   out.push(
     objects.join(",\n") +
-      "\non conflict (unit_id, slug) do update set title = excluded.title, sort_order = excluded.sort_order,\n  required = excluded.required, license = excluded.license, attribution = excluded.attribution,\n  source_url = excluded.source_url, review_status = excluded.review_status;",
+      "\non conflict (unit_id, slug) do update set title = excluded.title, sort_order = excluded.sort_order,\n  required = excluded.required, license = excluded.license, attribution = excluded.attribution,\n  source_url = excluded.source_url, review_status = excluded.review_status,\n  glb_url = excluded.glb_url, usdz_url = excluded.usdz_url;",
   );
   out.push("");
 

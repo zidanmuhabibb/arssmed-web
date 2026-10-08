@@ -20,7 +20,14 @@ const ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 
 interface MemTeacher { id: string; email: string; password: string; role: "teacher" | "admin"; fullName: string }
 interface MemClass { id: string; teacherId: string; name: string; joinCode: string; mode: ClassMode; academicYear: string | null; createdAt: number; freeExplore?: boolean }
-interface MemLearning { steps: Record<string, Step[]>; predictions: Record<string, string>; viewed: Record<string, string[]>; discussed: string[] }
+interface MemLearning {
+  steps: Record<string, Step[]>;
+  predictions: Record<string, string>;
+  viewed: Record<string, string[]>;
+  discussed: string[];
+  /** Log tampilan (mode + jenis perangkat), seperti tabel object_views. */
+  views?: { unit: string; object: string; mode: string; device: string | null }[];
+}
 interface MemStudent { id: string; classId: string; code: string; nickname: string | null; pin: string; pseudoId: string; consent: ConsentStatus }
 interface Attempt { key: string; at: number; ok: boolean }
 
@@ -263,7 +270,9 @@ export const memoryBackend: Backend = {
 
   async getLearningState(): Promise<LearningSnapshot> {
     const { l, free } = await requireStudent();
-    return structuredClone({ freeMode: free, ...l });
+    const { views: _views, ...rest } = l;
+    void _views;
+    return structuredClone({ freeMode: free, ...rest });
   },
 
   async savePrediction(key, option) {
@@ -275,10 +284,11 @@ export const memoryBackend: Backend = {
     return l.predictions[key]!;
   },
 
-  async recordObjectView(unit, objectId) {
+  async recordObjectView(unit, objectId, mode = "3d", device = null) {
     const { l } = await requireStudent();
     requireUnit(unit);
     if (!unitObjects(unit).some((o) => o.id === objectId)) throw new BackendError("not_found", "Objek tidak ditemukan.");
+    (l.views ??= []).push({ unit, object: objectId, mode, device });
     const v = (l.viewed[unit] ??= []);
     if (!v.includes(objectId)) v.push(objectId);
   },

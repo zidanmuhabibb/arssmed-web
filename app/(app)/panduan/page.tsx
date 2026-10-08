@@ -31,7 +31,6 @@ export default async function PanduanPage() {
               <div>
                 <h2 className="text-[1.3rem] font-bold">{t(`steps.${key}.title`)}</h2>
                 <p className="mt-1 max-w-[60ch] text-tinta-2">{t(`steps.${key}.body`)}</p>
-                {key === "ar" ? <p className="mt-2 text-[0.9rem] font-semibold text-tinta-2">{t("arSoon")}</p> : null}
               </div>
             </div>
           </li>

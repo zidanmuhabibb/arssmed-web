@@ -39,3 +39,8 @@ pnpm build     # service worker + build produksi
 - Isi ilmiah dan soal "Tebak dulu" ada di `content/celestial.json` dan `content/learning.json`; profil pembuat di `content/profile.json`.
 - Setelah mengubah konten, jalankan `pnpm content:sql` agar migrasi konten Supabase ikut diperbarui (test akan gagal bila lupa).
 - Coba alur belajar: masuk sebagai siswa contoh (kode kelas `K7M2QX`, siswa `S01`, PIN `1234`), buka **Belajar → Unit 1 → Mulai: Tebak dulu**.
+
+## Model AR (M5)
+
+- `pnpm assets:build` membangun ulang `public/models/*.glb` dan `*.usdz` dari konten (jalankan setelah mengubah `content/celestial.json` atau tekstur), lalu `pnpm content:sql`.
+- AR hanya berjalan dari alamat **HTTPS** di HP (Android Chrome → Scene Viewer, iPhone Safari → Quick Look). Untuk uji, deploy ke Vercel atau layanan HTTPS lain.

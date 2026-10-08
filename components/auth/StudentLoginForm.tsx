@@ -1,16 +1,29 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useRef, useState, type FormEvent } from "react";
+import { useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { Field, FormAlert } from "@/components/ui/Field";
 
 type ErrorCode = "invalid_credentials" | "invalid_input" | "rate_limited" | "not_configured" | "network" | "unknown";
+const CODES = ["invalid_credentials", "invalid_input", "rate_limited", "not_configured", "unknown"];
+
+/** Galat dari kiriman formulir tanpa skrip (redirect /masuk?galat=…). */
+function useUrlError(): { code: ErrorCode; minutes?: number } | null {
+  const search = useSyncExternalStore(() => () => {}, () => window.location.search, () => "");
+  const p = new URLSearchParams(search);
+  const code = p.get("galat");
+  if (!code || !CODES.includes(code)) return null;
+  return { code: code as ErrorCode, minutes: Number(p.get("menit")) || undefined };
+}
 
 export function StudentLoginForm() {
   const t = useTranslations("masuk");
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState<{ code: ErrorCode; minutes?: number } | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [ownError, setError] = useState<{ code: ErrorCode; minutes?: number } | null>(null);
+  const urlError = useUrlError();
+  const error = submitted ? ownError : (ownError ?? urlError);
   const [fields, setFields] = useState<string[]>([]);
   const alertRef = useRef<HTMLDivElement>(null);
 
@@ -24,6 +37,7 @@ export function StudentLoginForm() {
       pin: String(form.get("pin") ?? ""),
     };
     setPending(true);
+    setSubmitted(true);
     setError(null);
     setFields([]);
     try {
@@ -52,7 +66,8 @@ export function StudentLoginForm() {
   const fieldError = (name: string) => (fields.includes(name) ? " " : null);
 
   return (
-    <form onSubmit={onSubmit} noValidate className="flex flex-col gap-5" aria-busy={pending}>
+    // action/method: tetap aman bila ditekan sebelum skrip siap (tanpa PIN di alamat halaman).
+    <form action="/api/auth/siswa" method="post" onSubmit={onSubmit} noValidate className="flex flex-col gap-5" aria-busy={pending}>
       <div ref={alertRef} tabIndex={-1} className="outline-none">
         {error ? <FormAlert>{t(`errors.${error.code}`, { minutes: error.minutes ?? 10 })}</FormAlert> : null}
       </div>

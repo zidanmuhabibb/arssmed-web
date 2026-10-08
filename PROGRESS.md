@@ -1,5 +1,33 @@
 # PROGRESS.md
 
+## M3 · Viewer 3D — selesai, dengan catatan kinerja (8 Oktober 2026)
+
+### Selesai
+- **Viewer** `/belajar/u1/viewer` (Benda langit: Matahari, Bumi, Bulan, Pluto, komet, asteroid) dan `/belajar/u2/viewer` (8 planet). Tombol "Buka 3D" di halaman unit.
+- **Kanvas 3D** (three.js + React Three Fiber): putar dengan geser, perbesar dengan cubit/gulir, rotasi pelan pembuka yang berhenti saat disentuh (mati bila "gerak dikurangi"), kemiringan sumbu Bumi/Saturnus/Uranus, cincin Saturnus, ekor komet selalu menjauhi Matahari.
+- **Anotasi** (FR-11): titik bernomor di benda + daftar tombol; lembar info naik dari bawah (HP) / panel kanan (desktop), kamera berpindah halus ke titik, sumber NASA ditautkan, "Info berikutnya", Esc menutup.
+- **Rel Orbit** (FR-12): navigasi + tanda sudah dilihat + "Dilihat n dari N" (tersimpan di perangkat), label "Ukuran dan jarak tidak sesuai skala".
+- **Kontrol**: tombol layar (perbesar/perkecil/putar/kembalikan) dan papan ketik (panah, +/−, 0); layar penuh; Mode Kelas (teks 20 px).
+- **Animasi berlangkah** (FR-13) untuk efek rumah kaca Venus; **Bandingkan ukuran sesuai skala** (U2).
+- **Baca penjelasan**: alternatif teks tanpa 3D (PRD §8.7). **Tanpa WebGL** → gambar statis + deskripsi.
+- **Konten ilmiah** terverifikasi ke NASA, menunggu tinjauan ahli materi (D-032).
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan DB) | 444/444 lulus |
+| `pnpm e2e` (Pixel 5, iPhone 13*, desktop) | 135/135 lulus — termasuk 12 uji Viewer: rel & kemajuan tersimpan, lembar info + sumber + fokus, titik di kanvas, tombol & papan ketik, penjelasan teks, skala, animasi Venus, cadangan tanpa WebGL, axe |
+| Lighthouse mobile Viewer | Accessibility 100 · Performance 63–64 (LCP 2,9 s; TBT 3–4 s di GPU emulasi) — **di bawah target 85**, lihat D-034 |
+| Lighthouse mobile Beranda | Performance 86–87 · Accessibility 100 (tidak berubah) |
+| 30 FPS di HP uji | **belum diukur** — butuh HP Android nyata |
+
+### Perlu dari Anda
+- Uji Viewer di HP Android kelas menengah dan iPhone: kelancaran putar, waktu tampil, panas/baterai. Hasilnya menentukan D-034.
+- Tinjauan ahli materi untuk teks anotasi (`content/celestial.json`).
+
+---
+
 ## M2 · Data dan autentikasi — selesai (8 Oktober 2026)
 
 ### Selesai

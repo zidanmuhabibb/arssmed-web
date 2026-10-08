@@ -57,3 +57,21 @@ describe("messages/id.json", () => {
     }
   });
 });
+
+describe("tekstur Viewer", () => {
+  it("setiap objek punya tekstur WebP dan tercatat di manifest aset", async () => {
+    const { existsSync } = await import("node:fs");
+    const { CELESTIAL } = await import("@/lib/content/celestial");
+    const manifest = AssetManifest.parse(JSON.parse(readFileSync("assets/manifest.json", "utf8")));
+    for (const u of Object.values(CELESTIAL.units))
+      for (const o of u.objects) {
+        expect(existsSync(`public/textures/${o.id}.webp`), o.id).toBe(true);
+        expect(manifest.assets.some((a) => a.file === `public/textures/${o.id}.webp`), o.id).toBe(true);
+      }
+  });
+  it("warna skrip tekstur sama dengan token desain", async () => {
+    const colors = (await import("../../scripts/planet-colors.mjs")).default as Record<string, string>;
+    const { planet } = await import("@/lib/design/tokens");
+    expect(colors).toEqual(planet);
+  });
+});

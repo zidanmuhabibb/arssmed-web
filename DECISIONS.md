@@ -156,3 +156,31 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 - **Keputusan:** Setelah masuk atau keluar, klien memakai `window.location.replace(...)`, bukan router klien.
 - **Alasan:** (1) pintu satu arah — "kembali" tidak membuka formulir masuk lagi; (2) cache router berisi halaman pra-muat dari sebelum masuk (mis. redirect ke halaman masuk) dan, di perangkat bersama, data pengguna sebelumnya — keduanya terbuang.
 - **Terkait:** `getViewer()` memanggil `connection()` agar halaman yang membaca sesi selalu dirender per permintaan; sebelumnya halaman guru bisa terprarender saat build sebagai "anon" dan redirect-nya terbekukan.
+
+---
+
+# M3 · Viewer 3D (8 Oktober 2026)
+
+## D-031 · Benda langit prosedural, tekstur dibuat saat build
+- **Keputusan:** Tidak memakai model/tekstur pihak ketiga. Tekstur dibuat prosedural oleh `lib/viewer/textures.ts` dan dirender menjadi WebP kecil (`public/textures/*.webp`, total ±108 KB) oleh `pnpm build:textures`. Dicatat di `assets/manifest.json` sebagai karya sendiri.
+- **Alasan:** PRD §13 mengizinkan prosedural dan melarang aset berlisensi tidak jelas. Membuat tekstur di HP siswa memakan 0,6 s per objek di CPU desktop (jauh lebih lama di HP), jadi dipindah ke waktu build.
+- **Terbuka (PRD §16.1 #6):** model asli Assemblr/Sketchfab bisa menggantikan ini bila lisensinya jelas.
+
+## D-032 · Konten ilmiah Viewer diverifikasi ke NASA
+- **Keputusan:** Semua angka di `content/celestial.json` diambil dari NASA NSSDCA Planetary/Sun/Venus Fact Sheet (diperbarui 18 Maret 2025) dan halaman NASA Science (Bulan, komet, asteroid, definisi planet IAU 2006). Setiap anotasi menyimpan `source`; seluruh berkas `review_status: needs_review` sampai diperiksa ahli materi.
+- **Konsistensi:** test memastikan angka di teks sama dengan `facts`, Venus terpanas meski lebih jauh dari Merkurius, Jupiter terbesar, perbandingan "11 kali", "setengah", "kurang dari sepertiga", "109 kali" cocok dengan angka.
+
+## D-033 · Titik anotasi = tombol DOM di atas kanvas
+- **Keputusan:** Posisi titik diproyeksikan dari 3D setiap bingkai, tetapi tombolnya elemen DOM biasa (bisa difokus, berlabel, `inert` saat di balik benda). Titik yang sama juga tersedia sebagai daftar tombol di bawah kanvas.
+- **Alasan:** Komponen `Html` dari drei memicu galat `removeChild` saat berganti objek di React 19, dan daftar terpisah membuat anotasi bisa dipilih tanpa menyentuh kanvas. drei dilepas; OrbitControls diambil langsung dari three.
+
+## D-034 · Kinerja Viewer
+- **Keputusan:** Material Lambert (shader kecil), DPR maks. 1,5, antialias hanya di layar DPR rendah, render "on demand" kecuali saat rotasi otomatis/animasi, tekstur WebP prabuat, rangka halaman dirender server (LCP tidak menunggu three.js).
+- **Hasil Lighthouse mobile `/belajar/u2/viewer`:** Accessibility 100; Performance 63–64 (LCP 2,9 s, TBT 3–4 s). Di bawah target PRD (≥ 85).
+- **Penyebab:** Lighthouse di lingkungan ini memakai SwiftShader (GPU diemulasikan CPU); satu tugas panjang 2,7–3,8 s terjadi saat kanvas WebGL pertama dirender. Profil CPU dengan throttling 4× menunjukkan kerja JavaScript sebenarnya ±0,6 s. Perlu diukur di HP Android nyata (PRD §14) sebelum memutuskan.
+- **Pilihan bila HP nyata juga lambat:** tampilkan gambar statis dulu dan buat 3D setelah siswa menyentuh ("Ketuk untuk memutar") — skor naik, tetapi ada satu ketukan tambahan dan rotasi pembuka hilang. Keputusan menunggu uji perangkat.
+
+## D-035 · Animasi berlangkah dan "Bandingkan ukuran"
+- **Keputusan:** Kontrol animasi (putar/jeda, langkah maju/mundur, 0,5×/1×/2×, sakelar atmosfer) dibuat generik (`lib/viewer/timeline.ts`, `AnimationBar`) untuk dipakai ulang di U4–U6; contoh pertama: efek rumah kaca Venus (3 langkah, keterangan dibacakan pembaca layar). Animasi tidak berjalan sendiri; dengan "gerak dikurangi", Putar langsung menampilkan akhir langkah.
+- **Skala:** Rel Orbit sengaja tidak proporsional dengan label jelas; U2 punya "Bandingkan ukuran sesuai skala" (diameter proporsional + "×Bumi") agar tidak menimbulkan miskonsepsi baru (PRD §13).
+- **Belum:** U3–U6 belum punya konten 3D (dikerjakan bersama alur belajar M4); AR (M5).

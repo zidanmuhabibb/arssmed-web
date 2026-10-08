@@ -1,0 +1,155 @@
+{
+  "$comment": "Konten ilmiah Viewer (PRD §4.3, §13). Setiap angka punya source; review_status 'needs_review' sampai diperiksa ahli materi.",
+  "sources": {
+    "nasa-factsheet": { "label": "NASA NSSDCA Planetary Fact Sheet (diperbarui 18 Maret 2025)", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/" },
+    "nasa-sun": { "label": "NASA NSSDCA Sun Fact Sheet", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html" },
+    "nasa-venus": { "label": "NASA NSSDCA Venus Fact Sheet", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html" },
+    "nasa-moon": { "label": "NASA Science — Moon Facts", "url": "https://science.nasa.gov/moon/facts/" },
+    "nasa-moon-phases": { "label": "NASA Science — Moon Phases", "url": "https://science.nasa.gov/moon/moon-phases/" },
+    "nasa-planet-def": { "label": "NASA Science — What Is a Planet? (Resolusi IAU 2006)", "url": "https://science.nasa.gov/solar-system/planets/what-is-a-planet/" },
+    "nasa-comets": { "label": "NASA Science — Comets", "url": "https://science.nasa.gov/solar-system/comets/" },
+    "nasa-asteroids": { "label": "NASA Science — Asteroids", "url": "https://science.nasa.gov/solar-system/asteroids/" }
+  },
+  "units": {
+    "u1": {
+      "objects": [
+        {
+          "id": "matahari", "name": "Matahari", "kind": "bintang", "color": "matahari", "look": "sun", "radius": 1.25,
+          "description": "Matahari adalah bintang terdekat dari Bumi. Ia membuat cahaya dan panasnya sendiri.",
+          "facts": { "diameter_km": 1391400 },
+          "annotations": [
+            { "id": "bintang", "lat": 25, "lon": 20, "title": "Matahari adalah bintang", "body": "Matahari membuat cahaya dan panasnya sendiri, sama seperti bintang lain. Bintang lain tampak kecil karena letaknya sangat jauh.", "source": "nasa-sun" },
+            { "id": "ukuran", "lat": -20, "lon": -40, "title": "Sangat besar", "body": "Diameter Matahari sekitar 109 kali diameter Bumi.", "source": "nasa-sun" },
+            { "id": "suhu", "lat": 5, "lon": 90, "title": "Permukaan sangat panas", "body": "Suhu permukaan Matahari sekitar 5.500 °C.", "source": "nasa-sun" }
+          ]
+        },
+        {
+          "id": "bumi", "name": "Bumi", "kind": "planet", "color": "bumi", "look": "earth", "radius": 1,
+          "description": "Bumi adalah planet ketiga dari Matahari dan tempat kita tinggal.",
+          "facts": { "diameter_km": 12756, "distance_mkm": 149.6, "mean_temp_c": 15 },
+          "annotations": [
+            { "id": "urutan", "lat": 20, "lon": 10, "title": "Planet ketiga", "body": "Bumi adalah planet ketiga dari Matahari, jaraknya sekitar 149,6 juta km.", "source": "nasa-factsheet" },
+            { "id": "planet", "lat": -25, "lon": -60, "title": "Mengapa disebut planet?", "body": "Bumi berbentuk bulat dan beredar mengelilingi Matahari. Bumi tidak membuat cahayanya sendiri.", "source": "nasa-planet-def" }
+          ]
+        },
+        {
+          "id": "bulan", "name": "Bulan", "kind": "satelit_alami", "color": "merkurius", "look": "moon", "radius": 0.55,
+          "description": "Bulan adalah satelit alami Bumi. Bulan beredar mengelilingi Bumi.",
+          "facts": { "diameter_km": 3475 },
+          "annotations": [
+            { "id": "satelit", "lat": 20, "lon": 0, "title": "Satelit, bukan planet", "body": "Bulan beredar mengelilingi Bumi, bukan langsung mengelilingi Matahari. Karena itu Bulan disebut satelit alami.", "source": "nasa-moon" },
+            { "id": "cahaya", "lat": -15, "lon": 70, "title": "Tidak bercahaya sendiri", "body": "Bulan tidak membuat cahayanya sendiri. Cahaya Bulan adalah cahaya Matahari yang dipantulkan.", "source": "nasa-moon-phases" },
+            { "id": "ukuran", "lat": 10, "lon": -80, "title": "Lebih kecil dari Bumi", "body": "Lebar Bulan kurang dari sepertiga lebar Bumi.", "source": "nasa-moon" }
+          ]
+        },
+        {
+          "id": "pluto", "name": "Pluto", "kind": "planet_kerdil", "color": "saturnus", "look": "dwarf", "radius": 0.45,
+          "description": "Pluto adalah planet kerdil di bagian luar tata surya.",
+          "facts": { "diameter_km": 2376 },
+          "annotations": [
+            { "id": "kerdil", "lat": 20, "lon": 10, "title": "Planet kerdil", "body": "Sejak 2006, Pluto digolongkan sebagai planet kerdil. Pluto bulat dan mengelilingi Matahari, tetapi jalur orbitnya masih dipenuhi benda langit lain.", "source": "nasa-planet-def" },
+            { "id": "ukuran", "lat": -20, "lon": -70, "title": "Lebih kecil dari Bulan", "body": "Diameter Pluto sekitar 2.376 km, lebih kecil daripada Bulan kita.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "komet", "name": "Komet", "kind": "komet", "color": "uranus", "look": "comet", "radius": 0.4,
+          "description": "Komet adalah bongkahan es, batu, dan debu yang mengelilingi Matahari. Saat dekat Matahari, komet punya ekor.",
+          "facts": {},
+          "annotations": [
+            { "id": "bahan", "lat": 30, "lon": 0, "title": "Bola salju angkasa", "body": "Komet terbuat dari es, batu, dan debu yang mengelilingi Matahari.", "source": "nasa-comets" },
+            { "id": "ekor", "lat": 0, "lon": 90, "title": "Ekor menjauhi Matahari", "body": "Saat dekat Matahari, es komet menguap. Gas dan debunya membentuk ekor yang mengarah menjauhi Matahari.", "source": "nasa-comets" }
+          ]
+        },
+        {
+          "id": "asteroid", "name": "Asteroid", "kind": "asteroid", "color": "jupiter", "look": "asteroid", "radius": 0.5,
+          "description": "Asteroid adalah batuan tanpa udara yang mengelilingi Matahari.",
+          "facts": {},
+          "annotations": [
+            { "id": "batuan", "lat": 25, "lon": 20, "title": "Batuan sisa", "body": "Asteroid adalah batuan tanpa udara, sisa pembentukan tata surya.", "source": "nasa-asteroids" },
+            { "id": "sabuk", "lat": -20, "lon": -60, "title": "Sabuk asteroid", "body": "Sebagian besar asteroid berada di sabuk asteroid, di antara Mars dan Jupiter.", "source": "nasa-asteroids" }
+          ]
+        }
+      ]
+    },
+    "u2": {
+      "objects": [
+        {
+          "id": "merkurius", "name": "Merkurius", "kind": "planet", "color": "merkurius", "look": "rocky", "radius": 0.6,
+          "description": "Merkurius adalah planet terkecil dan paling dekat dengan Matahari.",
+          "facts": { "diameter_km": 4879, "distance_mkm": 57.9, "mean_temp_c": 167 },
+          "annotations": [
+            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Merkurius 4.879 km. Merkurius adalah planet terkecil.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Merkurius 167 °C.", "source": "nasa-factsheet" },
+            { "id": "atmosfer", "lat": 5, "lon": 80, "title": "Hampir tanpa atmosfer", "body": "Merkurius paling dekat dengan Matahari, tetapi hampir tidak punya atmosfer. Panasnya mudah lepas ke angkasa, jadi Merkurius bukan planet terpanas.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "venus", "name": "Venus", "kind": "planet", "color": "venus", "look": "venus", "radius": 0.95, "animation": "greenhouse",
+          "description": "Venus adalah planet kedua dari Matahari dan planet terpanas.",
+          "facts": { "diameter_km": 12104, "distance_mkm": 108.2, "mean_temp_c": 464 },
+          "annotations": [
+            { "id": "suhu", "lat": 25, "lon": 15, "title": "Planet terpanas", "body": "Suhu rata-rata Venus 464 °C. Venus lebih jauh dari Matahari daripada Merkurius, tetapi lebih panas.", "source": "nasa-factsheet" },
+            { "id": "atmosfer", "lat": -15, "lon": -55, "title": "Atmosfer tebal", "body": "Atmosfer Venus 96,5% karbon dioksida dan sangat tebal. Tekanannya 92 kali tekanan udara di Bumi.", "source": "nasa-venus" },
+            { "id": "rumah-kaca", "lat": 0, "lon": 85, "title": "Panas terperangkap", "body": "Atmosfer yang tebal menahan panas sehingga tidak bisa keluar. Peristiwa ini disebut efek rumah kaca.", "source": "nasa-venus" }
+          ]
+        },
+        {
+          "id": "bumi", "name": "Bumi", "kind": "planet", "color": "bumi", "look": "earth", "radius": 1,
+          "description": "Bumi adalah planet ketiga dari Matahari.",
+          "facts": { "diameter_km": 12756, "distance_mkm": 149.6, "mean_temp_c": 15 },
+          "annotations": [
+            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Bumi 12.756 km.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Bumi 15 °C. Udara di Bumi membantu menjaga suhunya.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "mars", "name": "Mars", "kind": "planet", "color": "mars", "look": "mars", "radius": 0.75,
+          "description": "Mars adalah planet keempat dari Matahari, berwarna kemerahan.",
+          "facts": { "diameter_km": 6792, "distance_mkm": 228.0, "mean_temp_c": -65 },
+          "annotations": [
+            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Mars 6.792 km, kira-kira setengah diameter Bumi.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Mars −65 °C. Atmosfernya sangat tipis.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "jupiter", "name": "Jupiter", "kind": "planet", "color": "jupiter", "look": "jupiter", "radius": 1.5,
+          "description": "Jupiter adalah planet terbesar di tata surya.",
+          "facts": { "diameter_km": 142984, "distance_mkm": 778.5, "mean_temp_c": -110 },
+          "annotations": [
+            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Planet terbesar", "body": "Diameter Jupiter 142.984 km, sekitar 11 kali diameter Bumi.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Jupiter −110 °C.", "source": "nasa-factsheet" },
+            { "id": "gas", "lat": 0, "lon": 80, "title": "Planet raksasa gas", "body": "Jupiter sebagian besar tersusun dari gas. Jupiter juga punya cincin tipis yang sulit terlihat.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "saturnus", "name": "Saturnus", "kind": "planet", "color": "saturnus", "look": "saturn", "radius": 1.3, "ring": true,
+          "description": "Saturnus adalah planet keenam dari Matahari dengan cincin yang terkenal.",
+          "facts": { "diameter_km": 120536, "distance_mkm": 1432.0, "mean_temp_c": -140 },
+          "annotations": [
+            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Saturnus 120.536 km. Cincinnya besar, tetapi Saturnus tetap lebih kecil daripada Jupiter.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Saturnus −140 °C.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "uranus", "name": "Uranus", "kind": "planet", "color": "uranus", "look": "icy", "radius": 1.1,
+          "description": "Uranus adalah planet ketujuh dari Matahari.",
+          "facts": { "diameter_km": 51118, "distance_mkm": 2867.0, "mean_temp_c": -195 },
+          "annotations": [
+            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Uranus 51.118 km.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Uranus −195 °C.", "source": "nasa-factsheet" }
+          ]
+        },
+        {
+          "id": "neptunus", "name": "Neptunus", "kind": "planet", "color": "neptunus", "look": "icy", "radius": 1.08,
+          "description": "Neptunus adalah planet kedelapan dan paling jauh dari Matahari.",
+          "facts": { "diameter_km": 49528, "distance_mkm": 4515.0, "mean_temp_c": -200 },
+          "annotations": [
+            { "id": "jarak", "lat": 25, "lon": 15, "title": "Planet terjauh", "body": "Neptunus berjarak sekitar 4.515 juta km dari Matahari.", "source": "nasa-factsheet" },
+            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Neptunus −200 °C.", "source": "nasa-factsheet" }
+          ]
+        }
+      ]
+    }
+  },
+  "review_status": "needs_review"
+}

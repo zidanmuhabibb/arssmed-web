@@ -19,11 +19,13 @@
     "db:reset": "supabase db reset",
     "stats:reference": "python3 tests/fixtures/generate_scipy_reference.py",
     "items:import": "python3 scripts/import_instrument.py",
-    "test:db": "vitest run tests/db"
+    "test:db": "vitest run tests/db",
+    "build:textures": "node scripts/build-textures.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.3.0",
     "@fontsource/baloo-2": "^5.3.0",
+    "@react-three/fiber": "^9.8.1",
     "@serwist/turbopack": "^9.5.13",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
@@ -35,6 +37,7 @@
     "react-dom": "19.3.0",
     "server-only": "^0.0.1",
     "serwist": "^9.5.13",
+    "three": "^0.186.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
@@ -47,6 +50,7 @@
     "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^6.1.2",
     "esbuild": "^0.28.2",
     "eslint": "^9",

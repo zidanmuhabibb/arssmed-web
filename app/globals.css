@@ -187,3 +187,18 @@ p {
     scroll-behavior: auto !important;
   }
 }
+
+/* Lembar info naik dari bawah (gerak yang menjawab aksi, PRD §8.5) */
+@keyframes naik {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.lembar {
+  animation: naik 220ms var(--ease-keluar);
+}

@@ -1,7 +1,125 @@
 {
   "$comment": "Wajib: setiap aset 3D/tekstur/marker punya catatan lisensi di sini (PRD §0.7, §13). Aset tanpa lisensi jelas tidak boleh dipakai.",
   "schemaVersion": 1,
-  "assets": [],
+  "assets": [
+    {
+      "id": "tekstur-matahari",
+      "kind": "texture",
+      "file": "public/textures/matahari.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-bumi",
+      "kind": "texture",
+      "file": "public/textures/bumi.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-bulan",
+      "kind": "texture",
+      "file": "public/textures/bulan.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-pluto",
+      "kind": "texture",
+      "file": "public/textures/pluto.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-komet",
+      "kind": "texture",
+      "file": "public/textures/komet.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-asteroid",
+      "kind": "texture",
+      "file": "public/textures/asteroid.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-merkurius",
+      "kind": "texture",
+      "file": "public/textures/merkurius.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-venus",
+      "kind": "texture",
+      "file": "public/textures/venus.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-mars",
+      "kind": "texture",
+      "file": "public/textures/mars.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-jupiter",
+      "kind": "texture",
+      "file": "public/textures/jupiter.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-saturnus",
+      "kind": "texture",
+      "file": "public/textures/saturnus.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-uranus",
+      "kind": "texture",
+      "file": "public/textures/uranus.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "tekstur-neptunus",
+      "kind": "texture",
+      "file": "public/textures/neptunus.webp",
+      "license": "Karya sendiri — dibuat prosedural oleh scripts/build-textures.mjs (bukan foto/peta asli)",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Tekstur ilustratif ARSSMED",
+      "review_status": "reviewed"
+    }
+  ],
   "thirdPartyUi": [
     {
       "name": "Lucide icons",

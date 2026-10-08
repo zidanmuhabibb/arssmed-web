@@ -284,5 +284,76 @@
       "className": "Kelas",
       "fileName": "kartu-masuk-{className}.pdf"
     }
+  },
+  "viewer": {
+    "open3d": "Buka 3D",
+    "back": "Kembali",
+    "canvasLabel": "Tampilan 3D {name}. Geser untuk memutar, cubit untuk memperbesar. Pakai tombol panah dan + atau − di papan ketik.",
+    "loading": "Menyiapkan tampilan 3D…",
+    "rail": "Rel Orbit",
+    "railProgress": "Dilihat {seen} dari {total}",
+    "railComplete": "Semua sudah dilihat",
+    "viewed": "sudah dilihat",
+    "scaleNote": "Ukuran dan jarak tidak sesuai skala",
+    "controls": {
+      "group": "Kontrol tampilan",
+      "rotateLeft": "Putar ke kiri",
+      "rotateRight": "Putar ke kanan",
+      "zoomIn": "Perbesar",
+      "zoomOut": "Perkecil",
+      "reset": "Kembalikan tampilan",
+      "fullscreen": "Layar penuh",
+      "exitFullscreen": "Keluar layar penuh",
+      "classMode": "Mode Kelas",
+      "classModeOn": "Mode Kelas aktif",
+      "annotations": "Titik info"
+    },
+    "annotation": "Titik info {number}: {title}",
+    "sheet": {
+      "close": "Tutup",
+      "source": "Sumber",
+      "next": "Info berikutnya"
+    },
+    "explain": {
+      "open": "Baca penjelasan",
+      "close": "Tutup penjelasan",
+      "title": "Penjelasan {name}"
+    },
+    "kinds": {
+      "bintang": "Bintang",
+      "planet": "Planet",
+      "satelit_alami": "Satelit alami",
+      "planet_kerdil": "Planet kerdil",
+      "komet": "Komet",
+      "asteroid": "Asteroid"
+    },
+    "scale": {
+      "open": "Bandingkan ukuran sesuai skala",
+      "close": "Kembali ke 3D",
+      "title": "Ukuran planet sesuai skala",
+      "lead": "Lingkaran digambar sesuai diameter sebenarnya. Jarak antarplanet tidak digambar.",
+      "times": "{value}× Bumi"
+    },
+    "anim": {
+      "group": "Kontrol animasi",
+      "play": "Putar",
+      "pause": "Jeda",
+      "back": "Langkah sebelumnya",
+      "forward": "Langkah berikutnya",
+      "speed": "Kecepatan",
+      "step": "Langkah {current} dari {total}",
+      "atmosphere": "Tampilkan atmosfer",
+      "greenhouse": {
+        "title": "Efek rumah kaca di Venus",
+        "s1": "Cahaya Matahari masuk menembus atmosfer Venus.",
+        "s2": "Permukaan Venus menyerap cahaya dan menjadi panas.",
+        "s3": "Panas ingin keluar, tetapi atmosfer yang tebal menahannya."
+      }
+    },
+    "fallback": {
+      "title": "Tampilan 3D belum bisa dibuka di perangkat ini",
+      "body": "Kamu tetap bisa belajar dari gambar dan penjelasan di bawah."
+    },
+    "notAvailable": "Tampilan 3D untuk unit ini sedang disiapkan."
   }
 }

@@ -6,7 +6,9 @@ const BASE_URL = process.env.E2E_BASE_URL ?? `http://127.0.0.1:${PORT}`;
 // Di lingkungan tanpa unduhan browser (sandbox), pakai Chromium yang sudah terpasang
 // dan emulasikan iPhone di Chromium. Di CI, iPhone memakai WebKit (DECISIONS.md D-011).
 const executablePath = process.env.PW_CHROMIUM_PATH;
-const chromiumLaunch = executablePath ? { launchOptions: { executablePath } } : {};
+// WebGL lewat SwiftShader agar Viewer 3D bisa dirender di mesin tanpa GPU (CI/sandbox).
+const glArgs = ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"];
+const chromiumLaunch = { launchOptions: { args: glArgs, ...(executablePath ? { executablePath } : {}) } };
 const iphone = executablePath
   ? { ...devices["iPhone 13"], browserName: "chromium" as const, defaultBrowserType: "chromium" as const, ...chromiumLaunch }
   : devices["iPhone 13"];

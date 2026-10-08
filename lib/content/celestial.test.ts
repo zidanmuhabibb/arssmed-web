@@ -5,7 +5,7 @@ const id = (n: number) => n.toLocaleString("id-ID", { maximumFractionDigits: 1 }
 
 describe("konten Viewer", () => {
   it("lolos skema; semua sumber dikenal", () => {
-    expect(Object.keys(CELESTIAL.units).sort()).toEqual(["u1", "u2"]);
+    expect(Object.keys(CELESTIAL.units).sort()).toEqual(["u1", "u2", "u3", "u4", "u5", "u6"]);
   });
 
   it("U2 memuat 8 planet berurutan dari Matahari", () => {

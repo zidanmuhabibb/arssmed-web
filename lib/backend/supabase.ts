@@ -9,6 +9,7 @@ import {
   type ClassSummary,
   type ConsentStatus,
   type CreatedStudent,
+  type LearningSnapshot,
   type StudentRow,
   type Viewer,
 } from "./types";
@@ -21,6 +22,8 @@ const DB_DETAIL_CODES: Record<string, BackendErrorCode> = {
   nickname_too_long: "nickname_too_long",
   too_many: "too_many",
   empty: "empty",
+  locked: "locked",
+  invalid_input: "invalid_input",
 };
 
 /** Petakan galat Postgres/PostgREST ke kode aman; pesan Indonesia dari fungsi DB dipertahankan. */
@@ -41,7 +44,15 @@ function admin(): SupabaseClient {
   return c;
 }
 
-type ClassRow = { id: string; name: string; join_code: string; mode: ClassSummary["mode"]; academic_year: string | null; students: { count: number }[] };
+type ClassRow = {
+  id: string;
+  name: string;
+  join_code: string;
+  mode: ClassSummary["mode"];
+  academic_year: string | null;
+  free_explore: boolean;
+  students: { count: number }[];
+};
 
 function toSummary(r: ClassRow): ClassSummary {
   return {
@@ -51,6 +62,7 @@ function toSummary(r: ClassRow): ClassSummary {
     mode: r.mode,
     academicYear: r.academic_year,
     studentCount: r.students?.[0]?.count ?? 0,
+    freeExplore: r.free_explore ?? false,
   };
 }
 
@@ -141,7 +153,7 @@ export const supabaseBackend: Backend = {
     const c = await server();
     const { data, error } = await c
       .from("classes")
-      .select("id, name, join_code, mode, academic_year, students(count)")
+      .select("id, name, join_code, mode, academic_year, free_explore, students(count)")
       .order("created_at", { ascending: true });
     if (error) throw fromDb(error);
     return (data as unknown as ClassRow[]).map(toSummary);
@@ -164,7 +176,7 @@ export const supabaseBackend: Backend = {
     const c = await server();
     const { data, error } = await c
       .from("classes")
-      .select("id, name, join_code, mode, academic_year, students(count)")
+      .select("id, name, join_code, mode, academic_year, free_explore, students(count)")
       .eq("id", id)
       .maybeSingle();
     if (error) throw fromDb(error);
@@ -211,5 +223,45 @@ export const supabaseBackend: Backend = {
     const { error, count } = await c.from("students").delete({ count: "exact" }).eq("id", studentId);
     if (error) throw fromDb(error);
     if (!count) throw new BackendError("not_found");
+  },
+
+  async setFreeExplore(classId, value) {
+    const c = await server();
+    const { error, count } = await c.from("classes").update({ free_explore: value }, { count: "exact" }).eq("id", classId);
+    if (error) throw fromDb(error);
+    if (!count) throw new BackendError("not_found");
+  },
+
+  async getLearningState() {
+    const c = await server();
+    const { data, error } = await c.rpc("learning_state");
+    if (error) throw fromDb(error);
+    const d = data as { free_explore: boolean; steps: LearningSnapshot["steps"]; predictions: Record<string, string>; viewed: Record<string, string[]>; discussed: string[] };
+    return { freeMode: d.free_explore, steps: d.steps, predictions: d.predictions, viewed: d.viewed, discussed: d.discussed };
+  },
+
+  async savePrediction(key, option) {
+    const c = await server();
+    const { data, error } = await c.rpc("save_prediction", { p_key: key, p_option: option });
+    if (error) throw fromDb(error);
+    return data as string;
+  },
+
+  async recordObjectView(unit, objectId) {
+    const c = await server();
+    const { error } = await c.rpc("record_object_view", { p_unit: unit, p_object: objectId, p_mode: "3d" });
+    if (error) throw fromDb(error);
+  },
+
+  async completeStep(unit, step) {
+    const c = await server();
+    const { error } = await c.rpc("complete_step", { p_unit: unit, p_step: step });
+    if (error) throw fromDb(error);
+  },
+
+  async markDiscussed(unit) {
+    const c = await server();
+    const { error } = await c.rpc("mark_discussed", { p_unit: unit });
+    if (error) throw fromDb(error);
   },
 };

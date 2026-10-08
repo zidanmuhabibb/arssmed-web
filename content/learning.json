@@ -1,0 +1,254 @@
+{
+  "$comment": "Konten alur belajar Tebak → Amati → Bandingkan → Jelaskan (PRD §4.2, FR-20…24). Pertanyaan 'Tebak dulu' SENGAJA berbeda dari 20 butir tes (data/items.json) dan diuji otomatis. Status needs_review sampai ditinjau peneliti dan ahli materi.",
+  "review_status": "needs_review",
+  "curriculum": {
+    "phase": "Fase C (kelas V–VI)",
+    "subject": "Ilmu Pengetahuan Alam dan Sosial (IPAS)",
+    "element": "Pemahaman IPAS",
+    "cp_text": "Peserta didik mendemonstrasikan bagaimana sistem tata surya bekerja dan kaitannya dengan gerak rotasi dan revolusi bumi.",
+    "cp_source": "Capaian Pembelajaran IPAS Fase C, Kurikulum Merdeka (Keputusan Kepala BSKAP Kemendikbudristek). Periksa kembali terhadap keputusan CP terbaru yang berlaku di sekolah.",
+    "how_to_learn": [
+      "Pilih satu unit dan kerjakan langkahnya berurutan.",
+      "Tebak dulu sebelum melihat. Tidak ada nilai di langkah ini.",
+      "Amati semua benda di Rel Orbit dan buka titik infonya.",
+      "Bandingkan tebakanmu dengan yang kamu lihat.",
+      "Baca penjelasan, lalu diskusikan pertanyaannya dengan teman."
+    ]
+  },
+  "misconceptions": [
+    { "code": "MK-U1-A", "unit": "u1", "statement": "Bulan membuat cahayanya sendiri, seperti Matahari.", "scientific": "Bulan tidak membuat cahaya. Bulan memantulkan cahaya Matahari." },
+    { "code": "MK-U1-B", "unit": "u1", "statement": "Bintang adalah benda kecil, berbeda dengan Matahari.", "scientific": "Matahari adalah bintang. Bintang lain tampak kecil karena letaknya sangat jauh." },
+    { "code": "MK-U2-A", "unit": "u2", "statement": "Planet yang paling dekat dengan Matahari pasti paling panas.", "scientific": "Venus paling panas karena atmosfernya yang tebal menahan panas, walaupun Merkurius lebih dekat ke Matahari." },
+    { "code": "MK-U3-A", "unit": "u3", "statement": "Semua planet punya permukaan berbatu seperti Bumi.", "scientific": "Hanya planet dalam yang berbatu. Planet luar adalah raksasa gas dan es tanpa permukaan keras." },
+    { "code": "MK-U3-B", "unit": "u3", "statement": "Planet dalam dan planet luar ukurannya sama atau tercampur.", "scientific": "Planet dalam berukuran kecil dan berbatu; planet luar berukuran raksasa. Sabuk asteroid memisahkan keduanya." },
+    { "code": "MK-U4-A", "unit": "u4", "statement": "Semua batuan dari luar angkasa jatuh sampai ke tanah.", "scientific": "Hampir semua meteoroid habis terbakar di atmosfer. Hanya sisa yang sampai ke tanah yang disebut meteorit." },
+    { "code": "MK-U5-A", "unit": "u5", "statement": "Siang dan malam terjadi karena Matahari mengelilingi Bumi; Matahari menyinari seluruh Bumi sekaligus.", "scientific": "Bumi berotasi. Sisi yang menghadap Matahari mengalami siang, sisi yang membelakangi mengalami malam." },
+    { "code": "MK-U5-B", "unit": "u5", "statement": "Musim panas terjadi saat Bumi paling dekat dengan Matahari.", "scientific": "Musim disebabkan kemiringan sumbu Bumi. Bumi justru paling dekat ke Matahari saat belahan utara mengalami musim dingin." },
+    { "code": "MK-U6-A", "unit": "u6", "statement": "Gerhana Bulan terjadi karena awan atau benda lain menutupi Bulan.", "scientific": "Saat gerhana Bulan, bayangan Bumi jatuh ke Bulan karena Bumi berada di antara Matahari dan Bulan." },
+    { "code": "MK-U6-B", "unit": "u6", "statement": "Saat gerhana Matahari, Bumi yang menghalangi cahaya Matahari.", "scientific": "Saat gerhana Matahari, Bulan yang berada di antara Matahari dan Bumi menghalangi cahaya." }
+  ],
+  "units": {
+    "u1": {
+      "objectives": [
+        "Membedakan bintang, planet, satelit alami, planet kerdil, komet, dan asteroid.",
+        "Menjelaskan bahwa Matahari adalah bintang yang membuat cahaya sendiri.",
+        "Menjelaskan bahwa Bulan memantulkan cahaya Matahari."
+      ],
+      "predictions": [
+        {
+          "key": "u1-cahaya-bulan",
+          "stem": "Bulan tampak terang di langit malam. Menurutmu, dari mana cahaya Bulan berasal?",
+          "options": [
+            { "key": "A", "text": "Bulan membuat cahayanya sendiri." },
+            { "key": "B", "text": "Bulan memantulkan cahaya Matahari." },
+            { "key": "C", "text": "Bulan memantulkan cahaya bintang-bintang." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U1-A",
+          "observe": "Buka Bulan, lalu titik info Cahaya.",
+          "reveal": "Ternyata Bulan tidak membuat cahaya sendiri. Bulan bersinar karena memantulkan cahaya Matahari."
+        },
+        {
+          "key": "u1-bintang-dekat",
+          "stem": "Bayangkan kamu terbang mendekati sebuah bintang yang tampak kecil di langit malam. Bintang itu akan tampak seperti apa?",
+          "options": [
+            { "key": "A", "text": "Tetap kecil seperti titik." },
+            { "key": "B", "text": "Sangat besar dan terang, seperti Matahari." },
+            { "key": "C", "text": "Tidak bercahaya lagi." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U1-B",
+          "observe": "Buka Matahari, lalu titik info Matahari adalah bintang.",
+          "reveal": "Ternyata Matahari juga bintang. Bintang lain tampak kecil hanya karena letaknya sangat jauh."
+        }
+      ],
+      "explanation": {
+        "text": "Matahari adalah bintang karena membuat cahaya dan panasnya sendiri. Bulan adalah satelit alami Bumi yang hanya memantulkan cahaya Matahari. Planet, planet kerdil, komet, dan asteroid juga tidak membuat cahaya sendiri.",
+        "sources": ["nasa-sun", "nasa-moon"]
+      },
+      "reflection": "Kalau Matahari tiba-tiba padam, apakah kita masih bisa melihat Bulan? Diskusikan alasanmu dengan teman."
+    },
+    "u2": {
+      "objectives": [
+        "Membandingkan ukuran, suhu, atmosfer, dan permukaan delapan planet.",
+        "Menjelaskan mengapa Venus lebih panas daripada Merkurius."
+      ],
+      "predictions": [
+        {
+          "key": "u2-merkurius-venus",
+          "stem": "Merkurius adalah planet terdekat dari Matahari, sedangkan Venus ada di urutan kedua. Menurutmu, bagaimana suhu rata-rata permukaan keduanya?",
+          "options": [
+            { "key": "A", "text": "Merkurius lebih panas karena lebih dekat ke Matahari." },
+            { "key": "B", "text": "Venus lebih panas." },
+            { "key": "C", "text": "Suhu keduanya sama." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U2-A",
+          "observe": "Buka Merkurius dan Venus, lalu bandingkan titik info Suhu. Putar animasi efek rumah kaca di Venus.",
+          "reveal": "Ternyata Venus lebih panas, sekitar 464 °C, walaupun Merkurius lebih dekat. Atmosfer Venus yang tebal menahan panas."
+        }
+      ],
+      "explanation": {
+        "text": "Suhu planet tidak hanya ditentukan jaraknya dari Matahari. Venus punya atmosfer karbon dioksida yang sangat tebal sehingga panas tertahan, seperti di dalam rumah kaca. Merkurius hampir tidak punya atmosfer, jadi panasnya mudah lepas.",
+        "sources": ["nasa-venus", "nasa-factsheet"]
+      },
+      "reflection": "Mobil yang diparkir di bawah terik Matahari dengan jendela tertutup terasa sangat panas di dalamnya. Apa miripnya dengan Venus?"
+    },
+    "u3": {
+      "objectives": [
+        "Mengurutkan planet dari yang terdekat sampai terjauh dari Matahari.",
+        "Mengelompokkan planet menjadi planet dalam dan planet luar beserta cirinya.",
+        "Menunjukkan letak sabuk asteroid sebagai pembatas kedua kelompok."
+      ],
+      "predictions": [
+        {
+          "key": "u3-mendarat-jupiter",
+          "stem": "Seandainya sebuah wahana mendarat di Jupiter, di atas apa wahana itu akan berada?",
+          "options": [
+            { "key": "A", "text": "Tanah berbatu yang keras, seperti di Bumi." },
+            { "key": "B", "text": "Tidak ada tanah keras; yang ada lapisan gas tebal." },
+            { "key": "C", "text": "Lautan air seperti di Bumi." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U3-A",
+          "observe": "Buka Planet luar, lalu titik info Raksasa gas.",
+          "reveal": "Ternyata Jupiter tidak punya permukaan keras. Jupiter dan Saturnus adalah raksasa gas."
+        },
+        {
+          "key": "u3-ukuran-kelompok",
+          "stem": "Dibandingkan planet-planet yang jauh dari Matahari, planet-planet yang dekat dengan Matahari ukurannya…",
+          "options": [
+            { "key": "A", "text": "lebih besar." },
+            { "key": "B", "text": "lebih kecil." },
+            { "key": "C", "text": "sama besar." }
+          ],
+          "correct": "B",
+          "misconception_option": "C",
+          "misconception_code": "MK-U3-B",
+          "observe": "Buka Planet dalam dan Planet luar, lalu bandingkan ukurannya.",
+          "reveal": "Ternyata planet dalam jauh lebih kecil. Bumi, planet dalam terbesar, masih lebih kecil daripada Neptunus, planet luar terkecil."
+        }
+      ],
+      "explanation": {
+        "text": "Planet dalam, yaitu Merkurius, Venus, Bumi, dan Mars, berukuran kecil dan berbatu. Planet luar, yaitu Jupiter, Saturnus, Uranus, dan Neptunus, berukuran raksasa dan tidak punya permukaan keras. Sabuk asteroid di antara Mars dan Jupiter memisahkan kedua kelompok.",
+        "sources": ["nasa-planets", "nasa-asteroids"]
+      },
+      "reflection": "Kalau kamu menemukan planet baru yang berbatu dan kecil, di kelompok mana kira-kira letaknya? Mengapa?"
+    },
+    "u4": {
+      "objectives": [
+        "Membedakan meteoroid, meteor, dan meteorit berdasarkan tempatnya.",
+        "Menjelaskan bahwa 'bintang jatuh' adalah meteor, bukan bintang."
+      ],
+      "predictions": [
+        {
+          "key": "u4-nasib-batuan",
+          "stem": "Setiap hari banyak batuan kecil dari luar angkasa masuk ke lapisan udara Bumi. Menurutmu, apa yang terjadi pada kebanyakan batuan itu?",
+          "options": [
+            { "key": "A", "text": "Semuanya jatuh ke tanah." },
+            { "key": "B", "text": "Kebanyakan habis terbakar di udara." },
+            { "key": "C", "text": "Memantul kembali ke luar angkasa." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U4-A",
+          "observe": "Putar animasinya langkah demi langkah dari Meteoroid sampai Meteorit.",
+          "reveal": "Ternyata hampir semua batuan itu habis terbakar di atmosfer dan tampak sebagai meteor. Hanya sisanya yang sampai ke tanah yang disebut meteorit."
+        }
+      ],
+      "explanation": {
+        "text": "Batuan yang masih di luar angkasa disebut meteoroid. Saat masuk atmosfer dan terbakar, cahayanya disebut meteor, yang sering disebut bintang jatuh. Sisa yang tidak habis terbakar dan sampai ke tanah disebut meteorit.",
+        "sources": ["nasa-meteors"]
+      },
+      "reflection": "Temanmu bilang ia melihat bintang jatuh tadi malam. Bagaimana kamu menjelaskan kepadanya apa yang sebenarnya ia lihat?"
+    },
+    "u5": {
+      "objectives": [
+        "Menjelaskan bahwa siang dan malam terjadi karena rotasi Bumi.",
+        "Menjelaskan bahwa revolusi Bumi memerlukan sekitar 365¼ hari.",
+        "Menjelaskan bahwa musim disebabkan oleh kemiringan sumbu Bumi, bukan jarak ke Matahari."
+      ],
+      "predictions": [
+        {
+          "key": "u5-sisi-berlawanan",
+          "stem": "Saat di Indonesia siang hari, bagaimana keadaan di tempat yang letaknya tepat di sisi Bumi yang berlawanan?",
+          "options": [
+            { "key": "A", "text": "Juga siang, karena Matahari menyinari seluruh Bumi sekaligus." },
+            { "key": "B", "text": "Malam hari." },
+            { "key": "C", "text": "Sore hari, Matahari sedang terbenam." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U5-A",
+          "observe": "Buka Rotasi Bumi. Ikuti titik oranye tempatmu dan lihat sisi siang dan sisi malam.",
+          "reveal": "Ternyata cahaya Matahari hanya mengenai separuh Bumi. Saat Indonesia siang, sisi yang berlawanan sedang malam."
+        },
+        {
+          "key": "u5-dekat-januari",
+          "stem": "Bumi berada paling dekat dengan Matahari setiap awal Januari. Menurutmu, musim apa yang sedang terjadi di belahan Bumi utara, misalnya di Jepang?",
+          "options": [
+            { "key": "A", "text": "Musim panas, karena Bumi paling dekat ke Matahari." },
+            { "key": "B", "text": "Musim dingin." },
+            { "key": "C", "text": "Tidak ada musim." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U5-B",
+          "observe": "Buka Revolusi Bumi. Lihat ke mana kutub utara condong di langkah Desember, lalu buka titik info Jarak hampir sama.",
+          "reveal": "Ternyata saat itu belahan utara mengalami musim dingin. Musim disebabkan kemiringan sumbu Bumi, bukan jaraknya ke Matahari."
+        }
+      ],
+      "explanation": {
+        "text": "Bumi berputar pada sumbunya sekitar 24 jam sekali, sehingga sisi yang menghadap Matahari mengalami siang dan sisi lainnya malam. Bumi juga mengelilingi Matahari sekitar 365¼ hari sekali. Karena sumbunya miring, belahan utara dan selatan bergantian lebih condong ke Matahari sehingga terjadi musim.",
+        "sources": ["nasa-earth", "nasa-seasons", "iau-daynight"]
+      },
+      "reflection": "Kalau sumbu Bumi tegak lurus tidak miring, apakah masih ada musim panas dan musim dingin? Coba matikan sakelar Sumbu miring, lalu diskusikan."
+    },
+    "u6": {
+      "objectives": [
+        "Menunjukkan posisi Matahari, Bulan, dan Bumi saat gerhana Matahari dan gerhana Bulan.",
+        "Menjelaskan bayangan siapa yang jatuh ke mana pada setiap gerhana.",
+        "Menyebutkan cara aman mengamati gerhana Matahari."
+      ],
+      "predictions": [
+        {
+          "key": "u6-penutup-bulan",
+          "stem": "Saat gerhana Bulan, Bulan purnama menjadi gelap atau kemerahan. Menurutmu, apa yang menutupi Bulan?",
+          "options": [
+            { "key": "A", "text": "Awan tebal di langit." },
+            { "key": "B", "text": "Bayangan Bumi." },
+            { "key": "C", "text": "Bayangan Matahari." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U6-A",
+          "observe": "Buka Gerhana Bulan, putar animasinya, dan nyalakan sakelar Bayangan.",
+          "reveal": "Ternyata yang menutupi Bulan adalah bayangan Bumi. Bumi berada di antara Matahari dan Bulan."
+        },
+        {
+          "key": "u6-penghalang-matahari",
+          "stem": "Saat gerhana Matahari total, siang hari mendadak gelap sebentar. Menurutmu, benda apa yang menghalangi cahaya Matahari?",
+          "options": [
+            { "key": "A", "text": "Bumi." },
+            { "key": "B", "text": "Bulan." },
+            { "key": "C", "text": "Awan hitam." }
+          ],
+          "correct": "B",
+          "misconception_option": "A",
+          "misconception_code": "MK-U6-B",
+          "observe": "Buka Gerhana Matahari, putar animasinya sampai langkah 2.",
+          "reveal": "Ternyata yang menghalangi adalah Bulan. Bulan lewat di antara Matahari dan Bumi, lalu bayangannya jatuh ke Bumi."
+        }
+      ],
+      "explanation": {
+        "text": "Gerhana Matahari terjadi saat Bulan berada di antara Matahari dan Bumi, sehingga bayangan Bulan jatuh ke Bumi. Gerhana Bulan terjadi saat Bumi berada di antara Matahari dan Bulan, sehingga bayangan Bumi jatuh ke Bulan. Jangan pernah menatap Matahari langsung; pakai kacamata gerhana khusus atau proyeksi lubang jarum.",
+        "sources": ["nasa-eclipse-types", "nasa-eclipse-safety"]
+      },
+      "reflection": "Mengapa gerhana Bulan bisa dilihat oleh banyak orang di sisi Bumi yang sedang malam, sedangkan gerhana Matahari total hanya terlihat di daerah yang sempit?"
+    }
+  }
+}

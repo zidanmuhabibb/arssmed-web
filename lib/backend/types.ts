@@ -3,6 +3,8 @@
  * antarmuka ini; implementasinya Supabase (produksi) atau memori (uji e2e).
  * Otorisasi tetap ditegakkan di basis data (RLS + fungsi) — lihat DECISIONS D-026.
  */
+import type { Step } from "@/lib/learning/flow";
+
 export type ConsentStatus = "pending" | "granted" | "withdrawn";
 export type ClassMode = "learn_only" | "research";
 
@@ -18,6 +20,8 @@ export interface ClassSummary {
   mode: ClassMode;
   academicYear: string | null;
   studentCount: number;
+  /** FR-22: mode bebas — siswa boleh lanjut dari Amati tanpa melihat semua objek. */
+  freeExplore: boolean;
 }
 
 export interface StudentRow {
@@ -48,7 +52,17 @@ export type BackendErrorCode =
   | "too_many"
   | "empty"
   | "invalid_input"
+  | "locked"
   | "unknown";
+
+/** Kemajuan belajar siswa yang sedang masuk (M4). */
+export interface LearningSnapshot {
+  freeMode: boolean;
+  steps: Record<string, Step[]>;
+  predictions: Record<string, string>;
+  viewed: Record<string, string[]>;
+  discussed: string[];
+}
 
 export class BackendError extends Error {
   constructor(
@@ -75,4 +89,13 @@ export interface Backend {
   resetPin(studentId: string): Promise<string>;
   setConsent(studentId: string, status: ConsentStatus): Promise<void>;
   deleteStudent(studentId: string): Promise<void>;
+  setFreeExplore(classId: string, value: boolean): Promise<void>;
+
+  // Alur belajar — hanya untuk siswa yang masuk; selain itu BackendError("forbidden").
+  getLearningState(): Promise<LearningSnapshot>;
+  /** Jawaban pertama berlaku; mengembalikan jawaban yang tersimpan. */
+  savePrediction(key: string, option: string): Promise<string>;
+  recordObjectView(unit: string, objectId: string): Promise<void>;
+  completeStep(unit: string, step: Step): Promise<void>;
+  markDiscussed(unit: string): Promise<void>;
 }

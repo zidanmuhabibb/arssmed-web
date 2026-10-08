@@ -1,0 +1,10 @@
+{
+  "$comment": "Profil pembuat (FR-05). Diambil dari halaman judul dokumen instrumen peneliti. Kolom bernilai null ditampilkan sebagai 'belum diisi' — isi oleh peneliti.",
+  "researcher": "Zidan Muhabib",
+  "program": "Program Studi Magister Pendidikan Dasar, Program Pascasarjana",
+  "institution": "Universitas Muhammadiyah Purwokerto",
+  "year": "2026",
+  "supervisors": null,
+  "contact": null,
+  "previous_version": "ARSSMED versi Assemblr EDU (Android) dikembangkan dengan model ADDIE (Muhabib, Anggoro, & Fukui, 2025, Jurnal Elementaria Edukasia, 8(3), 522–536)."
+}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import { Users } from "lucide-react";
+import { FreeExploreToggle } from "@/components/guru/FreeExploreToggle";
 import { ImportPanel } from "@/components/guru/ImportPanel";
 import { StudentTable } from "@/components/guru/StudentTable";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -41,6 +42,7 @@ async function ClassDetail({ params }: { params: PageProps<"/guru/kelas/[id]">["
           {cls.joinCode}
         </span>
       </div>
+      <FreeExploreToggle classId={cls.id} initial={cls.freeExplore} />
       <div className="grid grid-cols-[minmax(0,1fr)] gap-8 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] xl:items-start">
         <section aria-labelledby="daftar-siswa" className="flex min-w-0 flex-col gap-4">
           <h2 id="daftar-siswa" className="text-[1.5rem] font-bold">

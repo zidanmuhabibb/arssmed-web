@@ -1,9 +1,9 @@
 import { expect, expectNoA11yViolations, expectNoHorizontalScroll, test } from "./fixtures";
 
 test.describe("Viewer 3D (FR-10 … FR-13)", () => {
-  test("unit memiliki tombol Buka 3D", async ({ page }) => {
+  test("unit memiliki tautan jelajah 3D bebas", async ({ page }) => {
     await page.goto("/belajar/u2");
-    await page.getByRole("link", { name: "Buka 3D" }).click();
+    await page.getByRole("link", { name: "Jelajah 3D bebas" }).click();
     await expect(page).toHaveURL(/\/belajar\/u2\/viewer$/);
     await expect(page.getByRole("heading", { level: 1, name: "Merkurius" })).toBeVisible();
   });
@@ -97,7 +97,7 @@ test.describe("Viewer 3D (FR-10 … FR-13)", () => {
     await expect(controls.getByRole("radio", { name: "2×" })).toBeChecked();
     await controls.getByRole("button", { name: "Putar" }).click();
     await expect(controls.getByRole("button", { name: "Jeda" })).toBeVisible();
-    await controls.getByRole("checkbox", { name: "Tampilkan atmosfer" }).uncheck();
+    await page.getByRole("group", { name: "Sakelar tampilan" }).getByRole("checkbox", { name: "Tampilkan atmosfer" }).uncheck();
   });
 
   test("tanpa WebGL: gambar statis + deskripsi (degradasi anggun)", async ({ page }) => {
@@ -122,9 +122,9 @@ test.describe("Viewer 3D (FR-10 … FR-13)", () => {
     await expectNoA11yViolations(page);
   });
 
-  test("unit tanpa konten 3D → halaman tidak ditemukan", async ({ page }) => {
+  test("unit tidak dikenal → halaman tidak ditemukan", async ({ page }) => {
     // Dengan prarender parsial, status bisa 200 bila kerangka sudah terkirim; yang diuji adalah isinya.
-    await page.goto("/belajar/u5/viewer");
+    await page.goto("/belajar/u9/viewer");
     await expect(page.getByRole("heading", { name: "Halaman tidak ditemukan" })).toBeVisible();
   });
 });

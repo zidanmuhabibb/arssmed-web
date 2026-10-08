@@ -2,8 +2,11 @@ import "server-only";
 import { randomBytes, randomInt, randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
 import { MAX_NICKNAME, MAX_STUDENTS, STUDENT_CODE_RE } from "@/lib/students/csv";
+import { unitObjects } from "@/lib/content/celestial";
+import { findPrediction, unitLearning } from "@/lib/learning/content";
+import { blockingStep, canFinishObserve, predictionsComplete, STEPS, type Step } from "@/lib/learning/flow";
 import { loginStudent, studentAuthEmail } from "./student-login";
-import { BackendError, type Backend, type ClassMode, type ConsentStatus, type CreatedStudent, type Viewer } from "./types";
+import { BackendError, type Backend, type ClassMode, type ConsentStatus, type CreatedStudent, type LearningSnapshot, type Viewer } from "./types";
 
 /**
  * Backend di memori untuk uji e2e dan demo lokal TANPA Supabase (DECISIONS D-026).
@@ -16,7 +19,8 @@ const COOKIE = "arssmed_mem_session";
 const ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 
 interface MemTeacher { id: string; email: string; password: string; role: "teacher" | "admin"; fullName: string }
-interface MemClass { id: string; teacherId: string; name: string; joinCode: string; mode: ClassMode; academicYear: string | null; createdAt: number }
+interface MemClass { id: string; teacherId: string; name: string; joinCode: string; mode: ClassMode; academicYear: string | null; createdAt: number; freeExplore?: boolean }
+interface MemLearning { steps: Record<string, Step[]>; predictions: Record<string, string>; viewed: Record<string, string[]>; discussed: string[] }
 interface MemStudent { id: string; classId: string; code: string; nickname: string | null; pin: string; pseudoId: string; consent: ConsentStatus }
 interface Attempt { key: string; at: number; ok: boolean }
 
@@ -37,6 +41,7 @@ function seed() {
       { id: "mem-stu-3", classId: otherCls.id, code: "S01", nickname: "Budi", pin: "4321", pseudoId: "P-BUDI0003", consent: "pending" },
     ] as MemStudent[],
     attempts: [] as Attempt[],
+    learning: {} as Record<string, MemLearning>,
   };
 }
 
@@ -85,6 +90,32 @@ async function studentInOwnedClass(studentId: string) {
 }
 
 const WINDOW_MS = 10 * 60 * 1000;
+
+/** Meniru fungsi DB alur belajar (supabase/migrations/*_learning.sql): urutan & validasi sama. */
+async function requireStudent() {
+  const s = await readSession();
+  const st = s?.kind === "student" ? store().students.find((x) => x.id === s.id) : undefined;
+  if (!st) throw new BackendError("forbidden", "Masuk sebagai siswa untuk menyimpan kemajuan.");
+  const l = (store().learning[st.id] ??= { steps: {}, predictions: {}, viewed: {}, discussed: [] });
+  const cls = store().classes.find((c) => c.id === st.classId);
+  return { st, l, free: cls?.freeExplore ?? false };
+}
+function requireUnit(unit: string) {
+  const u = unitLearning(unit);
+  if (!u) throw new BackendError("not_found", "Unit tidak ditemukan.");
+  return u;
+}
+function summarize(c: MemClass) {
+  return {
+    id: c.id,
+    name: c.name,
+    joinCode: c.joinCode,
+    mode: c.mode,
+    academicYear: c.academicYear,
+    studentCount: store().students.filter((s) => s.classId === c.id).length,
+    freeExplore: c.freeExplore ?? false,
+  };
+}
 
 export const memoryBackend: Backend = {
   name: "memory",
@@ -151,14 +182,7 @@ export const memoryBackend: Backend = {
     return store()
       .classes.filter((c) => t.role === "admin" || c.teacherId === t.id)
       .sort((a, b) => a.createdAt - b.createdAt)
-      .map((c) => ({
-        id: c.id,
-        name: c.name,
-        joinCode: c.joinCode,
-        mode: c.mode,
-        academicYear: c.academicYear,
-        studentCount: store().students.filter((s) => s.classId === c.id).length,
-      }));
+      .map(summarize);
   },
 
   async createClass(input) {
@@ -172,7 +196,7 @@ export const memoryBackend: Backend = {
     const t = await requireStaff();
     const c = ownsClass(t, id);
     if (!c) return null;
-    return { id: c.id, name: c.name, joinCode: c.joinCode, mode: c.mode, academicYear: c.academicYear, studentCount: store().students.filter((s) => s.classId === c.id).length };
+    return summarize(c);
   },
 
   async listStudents(classId) {
@@ -227,5 +251,55 @@ export const memoryBackend: Backend = {
   async deleteStudent(studentId) {
     const s = await studentInOwnedClass(studentId);
     store().students = store().students.filter((x) => x.id !== s.id);
+    delete store().learning[s.id];
+  },
+
+  async setFreeExplore(classId, value) {
+    const t = await requireStaff();
+    const c = ownsClass(t, classId);
+    if (!c) throw new BackendError("not_found");
+    c.freeExplore = value;
+  },
+
+  async getLearningState(): Promise<LearningSnapshot> {
+    const { l, free } = await requireStudent();
+    return structuredClone({ freeMode: free, ...l });
+  },
+
+  async savePrediction(key, option) {
+    const { l } = await requireStudent();
+    const found = findPrediction(key);
+    if (!found) throw new BackendError("not_found", "Pertanyaan tidak ditemukan.");
+    if (!found.prediction.options.some((o) => o.key === option)) throw new BackendError("invalid_input", "Pilihan tidak dikenal.");
+    l.predictions[key] ??= option;
+    return l.predictions[key]!;
+  },
+
+  async recordObjectView(unit, objectId) {
+    const { l } = await requireStudent();
+    requireUnit(unit);
+    if (!unitObjects(unit).some((o) => o.id === objectId)) throw new BackendError("not_found", "Objek tidak ditemukan.");
+    const v = (l.viewed[unit] ??= []);
+    if (!v.includes(objectId)) v.push(objectId);
+  },
+
+  async completeStep(unit, step) {
+    const { l, free } = await requireStudent();
+    const u = requireUnit(unit);
+    if (!STEPS.includes(step)) throw new BackendError("invalid_input", "Langkah tidak dikenal.");
+    const done = (l.steps[unit] ??= []);
+    if (done.includes(step)) return;
+    if (blockingStep(done, step)) throw new BackendError("locked", "Selesaikan langkah sebelumnya dulu.");
+    if (step === "tebak" && !predictionsComplete(l.predictions, u.predictions.map((p) => p.key)))
+      throw new BackendError("locked", "Jawab semua pertanyaan Tebak dulu.");
+    if (step === "amati" && !canFinishObserve(l.viewed[unit] ?? [], unitObjects(unit).map((o) => o.id), free))
+      throw new BackendError("locked", "Lihat semua benda di Rel Orbit dulu.");
+    done.push(step);
+  },
+
+  async markDiscussed(unit) {
+    await this.completeStep(unit, "jelaskan");
+    const { l } = await requireStudent();
+    if (!l.discussed.includes(unit)) l.discussed.push(unit);
   },
 };

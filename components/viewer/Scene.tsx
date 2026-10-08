@@ -1,17 +1,28 @@
 "use client";
 
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useImperativeHandle, useMemo, useRef, type Ref, type RefObject } from "react";
 import * as THREE from "three";
 import { OrbitControls as OrbitControlsImpl } from "three/examples/jsm/controls/OrbitControls.js";
 import { planet as planetColors, type PlanetKey } from "@/lib/design/tokens";
-import type { CelestialObject } from "@/lib/content/celestial";
+import type { AnimationId, CelestialObject } from "@/lib/content/celestial";
+import { anchorPoint, sceneFocus } from "@/lib/viewer/dioramas";
+import { Glow, Ring, useRadialTexture, useSurface } from "./three-parts";
+import { Diorama } from "./Dioramas";
 import { cameraForPoint, defaultDistance, latLonToVector, orbitY, zoomTo, type Vec3 } from "@/lib/viewer/geometry";
 
 export interface SceneHandle {
   rotate(deg: number): void;
   zoom(factor: number): void;
   reset(): void;
+}
+
+/** Status animasi yang dibutuhkan kanvas (posisi 0…langkah dan sakelar visual). */
+export interface SceneAnim {
+  id: AnimationId;
+  position: number;
+  playing: boolean;
+  toggles: Record<string, boolean>;
 }
 
 export interface SceneProps {
@@ -25,46 +36,109 @@ export interface SceneProps {
   autoRotate: boolean;
   onInteract: () => void;
   reducedMotion: boolean;
-  /** Animasi efek rumah kaca (Venus): posisi 0…3, atau null bila tidak aktif. */
-  greenhouse: { position: number; showAtmosphere: boolean } | null;
+  anim: SceneAnim | null;
   handleRef: Ref<SceneHandle>;
 }
 
 const SUN_DIR = new THREE.Vector3(-1, 0.25, 0.6).normalize();
 
+/** Posisi kamera awal: jarak d, terangkat `elevation` derajat, diputar `azimuth` derajat ke kiri (−x). */
+function homePosition(d: number, elevation: number, azimuth = 0): Vec3 {
+  const e = (elevation * Math.PI) / 180;
+  const a = (azimuth * Math.PI) / 180;
+  return [-d * Math.cos(e) * Math.sin(a), d * Math.sin(e), d * Math.cos(e) * Math.cos(a)];
+}
+
+function cameraSetup(object: CelestialObject) {
+  if (object.view) {
+    const d = object.view.distance;
+    return { home: homePosition(d, object.view.elevation, object.view.azimuth), min: d * 0.35, max: d * 1.9 };
+  }
+  const r = object.radius;
+  const d = defaultDistance(r * (object.ring ? 1.7 : object.look === "comet" ? 2.6 : 1));
+  return { home: [0, 0, d] as Vec3, min: r * 1.6, max: d * 2.2 };
+}
+
 export default function Scene(props: SceneProps) {
-  const r = props.object.radius;
-  const dist = defaultDistance(r * (props.object.ring ? 1.7 : props.object.look === "comet" ? 2.6 : 1));
-  const continuous = props.autoRotate || props.greenhouse !== null;
+  const cam = cameraSetup(props.object);
+  const isDiorama = props.object.scene !== undefined;
+  const continuous = props.autoRotate || (props.anim?.playing ?? false) || props.anim?.id === "greenhouse";
   return (
     <Canvas
       // DPR dibatasi 1,5 (PRD §12.1: maks. 2) dan antialias hanya di layar DPR rendah:
       // menghemat GPU HP kelas menengah tanpa mengurangi ketajaman yang terlihat.
       dpr={[1, 1.5]}
       frameloop={continuous ? "always" : "demand"}
-      camera={{ fov: 40, position: [0, 0, dist], near: 0.05, far: 200 }}
+      camera={{ fov: 40, position: cam.home, near: 0.05, far: 400 }}
       // Material Lambert: shader kecil → kompilasi cepat di HP kelas menengah (PRD §12.1).
       gl={{ antialias: typeof window !== "undefined" && window.devicePixelRatio < 1.5, powerPreference: "low-power" }}
       aria-hidden="true"
     >
       <color attach="background" args={["#0b1626"]} />
-      <ambientLight intensity={props.object.look === "sun" ? 1 : 0.18} />
-      <directionalLight position={SUN_DIR.clone().multiplyScalar(10)} intensity={2.6} />
-      <Suspense fallback={null}>
-        <Body object={props.object} greenhouse={props.greenhouse} />
-      </Suspense>
-      {props.greenhouse ? <Greenhouse radius={r} position={props.greenhouse.position} showAtmosphere={props.greenhouse.showAtmosphere} /> : null}
-      <Projector object={props.object} markerRefs={props.markerRefs} />
-      <Rig {...props} defaultDist={dist} />
+      {isDiorama ? (
+        <Suspense fallback={null}>
+          <Diorama object={props.object} anim={props.anim} />
+        </Suspense>
+      ) : (
+        <>
+          <ambientLight intensity={props.object.look === "sun" ? 1 : 0.18} />
+          <directionalLight position={SUN_DIR.clone().multiplyScalar(10)} intensity={2.6} />
+          <Suspense fallback={null}>
+            <Body object={props.object} anim={props.anim} />
+          </Suspense>
+          {props.anim?.id === "greenhouse" ? (
+            <Greenhouse radius={props.object.radius} position={props.anim.position} showAtmosphere={props.anim.toggles.atmosphere ?? true} />
+          ) : null}
+        </>
+      )}
+      <Projector object={props.object} anim={props.anim} markerRefs={props.markerRefs} />
+      <Rig {...props} home={cam.home} min={cam.min} max={cam.max} />
+      <Invalidator anim={props.anim} />
     </Canvas>
   );
 }
 
+/** Kanvas "sesuai permintaan": gambar ulang setiap kali langkah/sakelar berubah. */
+function Invalidator({ anim }: { anim: SceneAnim | null }) {
+  const { invalidate } = useThree();
+  const key = anim ? `${anim.id}:${anim.position}:${JSON.stringify(anim.toggles)}` : "";
+  useEffect(() => invalidate(), [key, invalidate]);
+  return null;
+}
+
+/** Titik dunia sebuah anotasi, relatif terhadap titik fokus kamera. */
+function annotationPoint(object: CelestialObject, a: CelestialObject["annotations"][number], anim: SceneAnim | null, lift = 1.02): Vec3 {
+  if (a.anchor && object.scene) {
+    const p = anchorPoint(object.scene, a.anchor, { position: anim?.position ?? 0, toggles: anim?.toggles ?? {}, variant: object.variant });
+    const f = sceneFocus(object.scene);
+    return [p[0] - f[0], p[1] - f[1], p[2] - f[2]];
+  }
+  return latLonToVector(a.lat ?? 0, a.lon ?? 0, object.radius * lift);
+}
+
 // ---------------------------------------------------------------- kamera & kontrol
 
-function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, handleRef, defaultDist }: SceneProps & { defaultDist: number }) {
-  const { camera, invalidate, gl } = useThree();
+function Rig({
+  object,
+  anim,
+  activeAnnotation,
+  autoRotate,
+  onInteract,
+  reducedMotion,
+  handleRef,
+  home,
+  min,
+  max,
+}: SceneProps & { home: Vec3; min: number; max: number }) {
+  const { camera, invalidate, gl, size } = useThree();
   const controls = useRef<OrbitControlsImpl | null>(null);
+
+  // Tombol kontrol menutupi tepi kanan kanvas: geser pusat gambar sedikit ke kiri.
+  useEffect(() => {
+    if (!(camera instanceof THREE.PerspectiveCamera)) return;
+    camera.setViewOffset(size.width, size.height, Math.min(32, size.width * 0.07), 0, size.width, size.height);
+    invalidate();
+  }, [camera, size.width, size.height, invalidate]);
   const onInteractRef = useRef(onInteract);
   useEffect(() => {
     onInteractRef.current = onInteract;
@@ -95,10 +169,7 @@ function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, 
     c.autoRotateSpeed = 0.5;
     invalidate();
   });
-  const anim = useRef<{ from: THREE.Vector3; to: THREE.Vector3; t: number } | null>(null);
-  const r = object.radius;
-  const min = r * 1.6;
-  const max = defaultDist * 2.2;
+  const animRef = useRef<{ from: THREE.Vector3; to: THREE.Vector3; t: number } | null>(null);
 
   const moveTo = (to: Vec3) => {
     const target = new THREE.Vector3(...to);
@@ -108,7 +179,7 @@ function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, 
       invalidate();
       return;
     }
-    anim.current = { from: camera.position.clone(), to: target, t: 0 };
+    animRef.current = { from: camera.position.clone(), to: target, t: 0 };
     invalidate();
   };
 
@@ -123,23 +194,39 @@ function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, 
       const p = camera.position;
       moveTo(zoomTo([p.x, p.y, p.z], f, min, max));
     },
-    reset: () => moveTo([0, 0, defaultDist]),
+    reset: () => moveTo(home),
   }));
 
-  // Objek baru → kamera kembali ke posisi awal
+  // Objek/adegan baru → kamera kembali ke posisi awal
+  const homeKey = home.join(",");
   useEffect(() => {
-    anim.current = null;
-    camera.position.set(0, 0, defaultDist);
-    controls.current?.update();
+    animRef.current = null;
+    const c = controls.current;
+    // Batas zoom baru dipasang DULU, agar posisi awal tidak terpotong batas objek sebelumnya.
+    if (c) {
+      c.minDistance = min;
+      c.maxDistance = max;
+    }
+    camera.position.set(...home);
+    c?.update();
     invalidate();
-  }, [object.id, defaultDist, camera, invalidate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [object.id, homeKey, camera, invalidate, min, max]);
 
   // Fokus ke anotasi aktif (FR-11): kamera berpindah halus ke arah titik itu.
   useEffect(() => {
     const a = object.annotations.find((x) => x.id === activeAnnotation);
     if (!a) return;
-    const d = Math.min(camera.position.length(), defaultDist);
-    moveTo(cameraForPoint(latLonToVector(a.lat, a.lon, r), d));
+    const p = annotationPoint(object, a, anim);
+    const d = Math.min(camera.position.length(), Math.hypot(...home));
+    if (object.scene) {
+      // Adegan: geser arah pandang sebagian ke titik, tetap dari atas agar konteks terlihat.
+      const cur = camera.position.clone().normalize();
+      const dir = new THREE.Vector3(...p).normalize().multiplyScalar(0.45).add(cur).normalize();
+      moveTo([dir.x * d, Math.max(dir.y, 0.25) * d, dir.z * d]);
+    } else {
+      moveTo(cameraForPoint(p, d));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeAnnotation, object.id]);
 
@@ -149,9 +236,9 @@ function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, 
       c.minDistance = min;
       c.maxDistance = max;
       // Peredaman dan rotasi otomatis butuh update setiap bingkai.
-      if (c.update(dt) && !anim.current) invalidate();
+      if (c.update(dt) && !animRef.current) invalidate();
     }
-    const a = anim.current;
+    const a = animRef.current;
     if (!a) return;
     a.t = Math.min(1, a.t + dt / 0.6);
     const e = 1 - Math.pow(1 - a.t, 3); // ease-out
@@ -159,7 +246,7 @@ function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, 
     const len = THREE.MathUtils.lerp(a.from.length(), a.to.length(), e);
     camera.position.copy(a.from.clone().normalize().lerp(a.to.clone().normalize(), e).normalize().multiplyScalar(len));
     controls.current?.update();
-    if (a.t >= 1) anim.current = null;
+    if (a.t >= 1) animRef.current = null;
     else invalidate();
   });
 
@@ -168,27 +255,33 @@ function Rig({ object, activeAnnotation, autoRotate, onInteract, reducedMotion, 
 
 // ---------------------------------------------------------------- titik anotasi
 
-function Projector({ object, markerRefs }: { object: CelestialObject; markerRefs: RefObject<(HTMLElement | null)[]> }) {
+function Projector({ object, anim, markerRefs }: { object: CelestialObject; anim: SceneAnim | null; markerRefs: RefObject<(HTMLElement | null)[]> }) {
   const { size } = useThree();
-  const pts = useMemo(
-    () => object.annotations.map((a) => new THREE.Vector3(...latLonToVector(a.lat, a.lon, object.radius * 1.02))),
-    [object],
-  );
+  const animRef = useRef(anim);
+  useEffect(() => {
+    animRef.current = anim;
+  }, [anim]);
   const v = useMemo(() => new THREE.Vector3(), []);
+  const p = useMemo(() => new THREE.Vector3(), []);
   const toCam = useMemo(() => new THREE.Vector3(), []);
   useFrame(({ camera }) => {
-    pts.forEach((p, i) => {
+    object.annotations.forEach((a, i) => {
       const el = markerRefs.current?.[i];
       if (!el) return;
-      // Sisi belakang benda: sembunyikan dan keluarkan dari urutan fokus.
-      const facing = toCam.copy(camera.position).sub(p).normalize().dot(v.copy(p).normalize()) > 0.08;
+      p.set(...annotationPoint(object, a, animRef.current));
+      // Benda: titik di sisi belakang disembunyikan. Adegan: sembunyikan bila di belakang kamera.
+      const facing = object.scene
+        ? v.copy(p).project(camera).z < 1
+        : toCam.copy(camera.position).sub(p).normalize().dot(v.copy(p).normalize()) > 0.08;
       v.copy(p).project(camera);
       const x = ((v.x + 1) / 2) * size.width;
       const y = ((1 - v.y) / 2) * size.height;
+      const inside = x > -20 && x < size.width + 20 && y > -20 && y < size.height + 20;
+      const show = facing && inside;
       el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-      el.style.opacity = facing ? "1" : "0";
-      el.style.pointerEvents = facing ? "auto" : "none";
-      el.toggleAttribute("inert", !facing);
+      el.style.opacity = show ? "1" : "0";
+      el.style.pointerEvents = show ? "auto" : "none";
+      el.toggleAttribute("inert", !show);
     });
   });
   return null;
@@ -196,26 +289,7 @@ function Projector({ object, markerRefs }: { object: CelestialObject; markerRefs
 
 // ---------------------------------------------------------------- benda langit
 
-/** Tekstur dibuat saat build (scripts/build-textures.mjs) → WebP kecil, di-cache service worker. */
-function configureSurface(tex: THREE.Texture) {
-  if (tex.colorSpace === THREE.SRGBColorSpace) return;
-  tex.colorSpace = THREE.SRGBColorSpace;
-  tex.wrapS = THREE.RepeatWrapping;
-  tex.anisotropy = 4;
-  tex.needsUpdate = true;
-}
-
-function useSurface(id: string) {
-  const tex = useLoader(THREE.TextureLoader, `/textures/${id}.webp`);
-  const { invalidate } = useThree();
-  useEffect(() => {
-    configureSurface(tex);
-    invalidate();
-  }, [tex, invalidate]);
-  return tex;
-}
-
-function Body({ object, greenhouse }: { object: CelestialObject; greenhouse: SceneProps["greenhouse"] }) {
+function Body({ object, anim }: { object: CelestialObject; anim: SceneAnim | null }) {
   const color = planetColors[object.color as PlanetKey];
   const map = useSurface(object.id);
   const r = object.radius;
@@ -224,7 +298,7 @@ function Body({ object, greenhouse }: { object: CelestialObject; greenhouse: Sce
   // Venus memanas pada langkah 2–3 animasi
   useFrame(() => {
     if (!mat.current) return;
-    const heat = greenhouse ? Math.min(1, Math.max(0, greenhouse.position - 1)) : 0;
+    const heat = anim?.id === "greenhouse" ? Math.min(1, Math.max(0, anim.position - 1)) : 0;
     mat.current.emissive.setRGB(0.55 * heat, 0.12 * heat, 0.02 * heat);
   });
 
@@ -254,59 +328,6 @@ function Body({ object, greenhouse }: { object: CelestialObject; greenhouse: Sce
   );
 }
 
-function Glow({ radius }: { radius: number }) {
-  const tex = useMemo(() => {
-    const c = document.createElement("canvas");
-    c.width = c.height = 128;
-    const g = c.getContext("2d")!;
-    const grad = g.createRadialGradient(64, 64, 20, 64, 64, 64);
-    grad.addColorStop(0, "rgba(245,166,35,0.55)");
-    grad.addColorStop(1, "rgba(245,166,35,0)");
-    g.fillStyle = grad;
-    g.fillRect(0, 0, 128, 128);
-    return new THREE.CanvasTexture(c);
-  }, []);
-  return (
-    <sprite scale={[radius * 3.4, radius * 3.4, 1]}>
-      <spriteMaterial map={tex} transparent depthWrite={false} blending={THREE.AdditiveBlending} />
-    </sprite>
-  );
-}
-
-function Ring({ radius, color }: { radius: number; color: string }) {
-  const tex = useMemo(() => {
-    const c = document.createElement("canvas");
-    c.width = 256;
-    c.height = 1;
-    const g = c.getContext("2d")!;
-    for (let x = 0; x < 256; x++) {
-      const t = x / 255;
-      const a = (0.35 + 0.45 * Math.abs(Math.sin(t * 23))) * (t > 0.62 && t < 0.68 ? 0.1 : 1);
-      g.fillStyle = `rgba(230,214,170,${a.toFixed(3)})`;
-      g.fillRect(x, 0, 1, 1);
-    }
-    const t = new THREE.CanvasTexture(c);
-    t.colorSpace = THREE.SRGBColorSpace;
-    return t;
-  }, []);
-  const geo = useMemo(() => {
-    const inner = radius * 1.25, outer = radius * 2.25;
-    const g = new THREE.RingGeometry(inner, outer, 128, 1);
-    const pos = g.attributes.position!;
-    const uv = g.attributes.uv!;
-    for (let i = 0; i < pos.count; i++) {
-      const d = Math.hypot(pos.getX(i), pos.getY(i));
-      uv.setXY(i, (d - inner) / (outer - inner), 0.5);
-    }
-    return g;
-  }, [radius]);
-  return (
-    <mesh geometry={geo} rotation={[-Math.PI / 2, 0, 0]}>
-      <meshLambertMaterial map={tex} color={color} transparent side={THREE.DoubleSide} depthWrite={false} />
-    </mesh>
-  );
-}
-
 function Asteroid({ radius, map }: { radius: number; map: THREE.Texture }) {
   const geo = useMemo(() => {
     const g = new THREE.IcosahedronGeometry(radius, 4);
@@ -327,21 +348,6 @@ function Asteroid({ radius, map }: { radius: number; map: THREE.Texture }) {
       <meshLambertMaterial map={map} flatShading />
     </mesh>
   );
-}
-
-function useRadialTexture(rgb: string) {
-  return useMemo(() => {
-    const c = document.createElement("canvas");
-    c.width = c.height = 64;
-    const g = c.getContext("2d")!;
-    const grad = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-    grad.addColorStop(0, `rgba(${rgb},1)`);
-    grad.addColorStop(0.4, `rgba(${rgb},0.45)`);
-    grad.addColorStop(1, `rgba(${rgb},0)`);
-    g.fillStyle = grad;
-    g.fillRect(0, 0, 64, 64);
-    return new THREE.CanvasTexture(c);
-  }, [rgb]);
 }
 
 const TAIL = 16;

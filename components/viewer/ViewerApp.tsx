@@ -2,9 +2,11 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
+  ArrowRight,
   ChevronLeft,
   Expand,
   FileText,
@@ -20,10 +22,14 @@ import {
 } from "lucide-react";
 import type { CelestialObject } from "@/lib/content/celestial";
 import { planet as planetColors, type PlanetKey } from "@/lib/design/tokens";
-import { useReducedMotion, useViewed, useWebGL } from "@/lib/viewer/browser-stores";
+import { learning, useLearning } from "@/lib/learning/client";
+import { canFinishObserve, stepStatus } from "@/lib/learning/flow";
+import { ANIMATIONS, initialPosition } from "@/lib/viewer/animations";
+import { useReducedMotion, useWebGL } from "@/lib/viewer/browser-stores";
 import { progressOf } from "@/lib/viewer/progress";
+import { locate } from "@/lib/viewer/timeline";
 import type { SceneHandle } from "./Scene";
-import { AnimationBar, useGreenhouse } from "./AnimationBar";
+import { AnimationBar, useStepAnimation } from "./AnimationBar";
 import { ExplainPanel } from "./ExplainPanel";
 import { InfoSheet } from "./InfoSheet";
 import { RelOrbit } from "./RelOrbit";
@@ -47,12 +53,15 @@ export function ViewerApp({
 }) {
   const t = useTranslations("viewer");
   const ids = useMemo(() => objects.map((o) => o.id), [objects]);
-  const storageKey = `arssmed:viewed:${unitSlug}`;
+  const router = useRouter();
 
   // Dirender server untuk tampilan awal yang cepat; nilai khusus browser dibaca lewat external store.
-  const [currentId, setCurrentId] = useState(ids[0]!);
-  const [viewed, markSeen] = useViewed(storageKey);
+  const [selectedId, setSelectedId] = useState(ids[0]!);
+  const learn = useLearning();
+  const viewed = useMemo(() => learn.state.viewed[unitSlug] ?? [], [learn.state.viewed, unitSlug]);
   const [annotation, setAnnotation] = useState<string | null>(null);
+  const [finishing, setFinishing] = useState(false);
+  const [finishError, setFinishError] = useState<string | null>(null);
   const webgl = useWebGL();
   const reduced = useReducedMotion();
   // Satu-satunya gerak tanpa pemicu: rotasi pelan di layar pembuka, berhenti saat disentuh (PRD §8.5).
@@ -66,11 +75,21 @@ export function ViewerApp({
   const scene = useRef<SceneHandle>(null);
   const markerRefs = useRef<(HTMLElement | null)[]>([]);
 
-  const current = objects.find((o) => o.id === currentId)!;
-  const greenhouse = useGreenhouse(current.animation === "greenhouse", reduced);
+  const selected = objects.find((o) => o.id === selectedId)!;
+  const spec = selected.animation ? ANIMATIONS[selected.animation] : null;
+  const anim = useStepAnimation(spec, selected.sceneStep, reduced);
+  // Objek yang berbagi satu animasi (U4: meteoroid → meteor → meteorit) mengikuti langkah yang diputar.
+  const current = useMemo(() => {
+    if (!anim || selected.sceneStep === undefined) return selected;
+    const { step } = locate(anim.spec, anim.position);
+    return objects.find((o) => o.animation === selected.animation && o.sceneStep === step) ?? selected;
+  }, [anim, objects, selected]);
+  const currentId = current.id;
 
-  // Objek pertama langsung terhitung dilihat (penyimpanan eksternal, bukan state React).
-  useEffect(() => markSeen(ids[0]!), [markSeen, ids]);
+  // Objek yang tampil terhitung dilihat (FR-12/FR-22) — setelah tahu siapa penggunanya.
+  useEffect(() => {
+    if (learn.ready) void learning.view(unitSlug, currentId);
+  }, [learn.ready, unitSlug, currentId]);
 
   useEffect(() => {
     const onFs = () => setFullscreen(document.fullscreenElement === stage.current);
@@ -89,12 +108,15 @@ export function ViewerApp({
 
   const select = useCallback(
     (id: string) => {
-      setCurrentId(id);
+      const target = objects.find((o) => o.id === id)!;
+      setSelectedId(id);
       setAnnotation(null);
       setScaleView(false);
-      markSeen(id);
+      if (anim && target.animation === anim.spec.id && target.sceneStep !== undefined) {
+        anim.setPosition(initialPosition(anim.spec, target.sceneStep));
+      }
     },
-    [markSeen],
+    [objects, anim],
   );
 
   const stopAuto = useCallback(() => setAutoRotate(false), []);
@@ -129,6 +151,19 @@ export function ViewerApp({
   }
 
   const progress = progressOf(viewed, ids);
+  const unitSteps = learn.state.steps[unitSlug] ?? [];
+  const guessed = stepStatus(unitSteps, "tebak") === "done";
+  const observed = unitSteps.includes("amati");
+  const canFinish = canFinishObserve(viewed, ids, learn.freeMode);
+
+  async function finishObserve() {
+    setFinishing(true);
+    setFinishError(null);
+    const err = observed ? null : await learning.complete(unitSlug, "amati");
+    setFinishing(false);
+    if (err) setFinishError(err);
+    else router.push(`/belajar/${unitSlug}/bandingkan`);
+  }
   const color = planetColors[current.color as PlanetKey];
   const activeIndex = current.annotations.findIndex((a) => a.id === annotation);
   const activeAnn = activeIndex >= 0 ? current.annotations[activeIndex]! : null;
@@ -194,7 +229,7 @@ export function ViewerApp({
               autoRotate={autoRotate && annotation === null}
               onInteract={stopAuto}
               reducedMotion={reduced}
-              greenhouse={greenhouse.active ? { position: greenhouse.position, showAtmosphere: greenhouse.showAtmosphere } : null}
+              anim={anim ? { id: anim.spec.id, position: anim.position, playing: anim.playing, toggles: anim.toggles } : null}
               handleRef={scene}
             />
           )}
@@ -254,7 +289,7 @@ export function ViewerApp({
           ) : null}
         </div>
 
-        {greenhouse.active && !scaleView ? <AnimationBar state={greenhouse} /> : null}
+        {anim && !scaleView ? <AnimationBar state={anim} /> : null}
 
         {/* Titik info sebagai daftar juga, agar bisa dipilih tanpa menyentuh kanvas */}
         <div className="flex flex-wrap items-center gap-2 px-3 py-2" role="group" aria-label={t("controls.annotations")}>
@@ -309,6 +344,41 @@ export function ViewerApp({
           ) : null}
         </div>
         {explain ? <ExplainPanel object={current} sources={sources} /> : null}
+
+        {/* Langkah Amati (FR-22): lanjut setelah semua objek dibuka, atau mode bebas dari guru. */}
+        <section aria-labelledby="amati-judul" className="mb-4 flex flex-col gap-2 rounded-panel border border-garis bg-permukaan p-4" data-testid="amati-panel">
+          <h2 id="amati-judul" className="font-isi text-[1rem] font-semibold">
+            {t("flow.title")}
+          </h2>
+          {learn.ready && !guessed ? (
+            <p className="text-[0.9rem] text-tinta-2">
+              {t("flow.guessFirst")}{" "}
+              <Link href={`/belajar/${unitSlug}/tebak`} className="font-semibold text-laut-teks underline">
+                {t("flow.toGuess")}
+              </Link>
+            </p>
+          ) : (
+            <>
+              <p className="text-[0.9rem] text-tinta-2" aria-live="polite">
+                {observed ? t("flow.done") : canFinish ? (learn.freeMode && !progress.complete ? t("flow.freeMode") : t("flow.ready")) : t("flow.notYet", { left: progress.total - progress.seen })}
+              </p>
+              <button
+                type="button"
+                onClick={finishObserve}
+                disabled={!learn.ready || !canFinish || finishing}
+                className="tekan inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-matahari px-5 font-semibold text-matahari-tinta active:bg-matahari-tekan disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {t("flow.next")}
+                <ArrowRight aria-hidden="true" className="size-5" />
+              </button>
+              {finishError ? (
+                <p role="alert" className="text-[0.9rem] text-m">
+                  {finishError === "locked" ? t("flow.locked") : t("flow.error")}
+                </p>
+              ) : null}
+            </>
+          )}
+        </section>
       </div>
 
       <InfoSheet

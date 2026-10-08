@@ -23,7 +23,7 @@ export default async function ViewerPage({ params }: PageProps<"/belajar/[unit]/
   const unit = findUnit((await params).unit);
   if (!unit || !hasViewer(unit.slug)) notFound();
   const t = await getTranslations();
-  const messages = await pickMessages(["viewer"]);
+  const messages = await pickMessages(["viewer", "belajar"]);
   return (
     <NextIntlClientProvider messages={messages}>
       <ViewerApp

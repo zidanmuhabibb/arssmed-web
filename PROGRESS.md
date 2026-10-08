@@ -1,5 +1,39 @@
 # PROGRESS.md
 
+## M4 · Alur belajar — selesai (8 Oktober 2026)
+
+### Selesai
+- **Alur Tebak → Amati → Bandingkan → Jelaskan untuk keenam unit** (FR-20…24):
+  - `/belajar/[unit]`: tujuan belajar, empat langkah dengan status (Selesai / Bisa dikerjakan / Terkunci), tombol Mulai/Lanjut, jelajah 3D bebas.
+  - `/belajar/[unit]/tebak`: 1–2 pertanyaan prediksi (3 opsi), tanpa nilai, "Tersimpan", tebakan pertama dikunci.
+  - Amati = Viewer: panel "Langkah 2 · Amati", tombol "Lanjut ke Bandingkan" aktif setelah semua objek di Rel Orbit dibuka atau mode bebas guru.
+  - `/belajar/[unit]/bandingkan`: "Tebakanmu" di samping "Yang kamu lihat", kalimat netral ("Ternyata…", tanpa kata salah/benar).
+  - `/belajar/[unit]/jelaskan`: penjelasan ilmiah (maks. 3 kalimat) + sumber, pertanyaan diskusi, "Sudah kudiskusikan", layar "Unit n selesai".
+  - Daftar unit menampilkan status Sedang dipelajari / Selesai.
+- **Viewer U3–U6** dengan animasi berlangkah (FR-13): zona planet, meteoroid→meteor→meteorit (Rel Orbit mengikuti langkah), rotasi (pagi–malam), revolusi (Maret–Desember, sakelar sumbu miring), gerhana Matahari dan Bulan (sakelar bayangan & orbit).
+- **Data**: migrasi `…_learning.sql` (fungsi `learning_state`, `save_prediction`, `record_object_view`, `complete_step`, `mark_discussed`; `classes.free_explore`), migrasi konten buatan `pnpm content:sql`, backend memori + Supabase, API `GET /api/belajar/kemajuan`, server action.
+- **Guru**: sakelar "Mode bebas" di halaman kelas.
+- **Halaman**: Panduan (6 langkah berilustrasi), Identitas materi (CP IPAS Fase C, tujuan tiap unit, petunjuk belajar), Profil pembuat (data dari dokumen instrumen, atribusi, daftar sumber).
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan DB) | 480/480 lulus — termasuk 11 uji DB alur belajar, uji kemiripan soal Tebak vs butir tes, geometri adegan |
+| `pnpm e2e` (Pixel 5, iPhone 13*, desktop) | 165/165 lulus — **siswa menamatkan U1 end-to-end** dan status terbaca dari server di perangkat lain; langkah terkunci; tamu; mode bebas; animasi U4/U5; adegan U3/U6; axe |
+| Lighthouse mobile | Beranda 86 · Unit 89 · Tebak 91 (Accessibility 100) · Viewer 46–48 (lihat D-044) |
+
+### Perlu dari Anda
+- Tinjau 10 soal "Tebak dulu" dan kunci ilmiahnya (`content/learning.json`), terutama U2 (D-038).
+- Tinjau tujuan belajar tiap unit dan teks anotasi U3–U6 (status `needs_review`).
+- Isi nama pembimbing (`content/profile.json`) dan cek nomor keputusan CP yang berlaku (D-043).
+- Masih dari M3: uji Viewer di HP nyata (D-034/D-044).
+
+### Belum (sesuai rencana)
+- Kartu diskusi guru (FR-25) dan kuis latihan (FR-26) → M8. AR → M5.
+
+---
+
 ## M3 · Viewer 3D — selesai, dengan catatan kinerja (8 Oktober 2026)
 
 ### Selesai

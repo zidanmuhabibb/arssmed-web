@@ -1,72 +1,266 @@
 {
   "$comment": "Konten ilmiah Viewer (PRD §4.3, §13). Setiap angka punya source; review_status 'needs_review' sampai diperiksa ahli materi.",
   "sources": {
-    "nasa-factsheet": { "label": "NASA NSSDCA Planetary Fact Sheet (diperbarui 18 Maret 2025)", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/" },
-    "nasa-sun": { "label": "NASA NSSDCA Sun Fact Sheet", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html" },
-    "nasa-venus": { "label": "NASA NSSDCA Venus Fact Sheet", "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html" },
-    "nasa-moon": { "label": "NASA Science — Moon Facts", "url": "https://science.nasa.gov/moon/facts/" },
-    "nasa-moon-phases": { "label": "NASA Science — Moon Phases", "url": "https://science.nasa.gov/moon/moon-phases/" },
-    "nasa-planet-def": { "label": "NASA Science — What Is a Planet? (Resolusi IAU 2006)", "url": "https://science.nasa.gov/solar-system/planets/what-is-a-planet/" },
-    "nasa-comets": { "label": "NASA Science — Comets", "url": "https://science.nasa.gov/solar-system/comets/" },
-    "nasa-asteroids": { "label": "NASA Science — Asteroids", "url": "https://science.nasa.gov/solar-system/asteroids/" }
+    "nasa-factsheet": {
+      "label": "NASA NSSDCA Planetary Fact Sheet (diperbarui 18 Maret 2025)",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/"
+    },
+    "nasa-sun": {
+      "label": "NASA NSSDCA Sun Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html"
+    },
+    "nasa-venus": {
+      "label": "NASA NSSDCA Venus Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/venusfact.html"
+    },
+    "nasa-moon": {
+      "label": "NASA Science — Moon Facts",
+      "url": "https://science.nasa.gov/moon/facts/"
+    },
+    "nasa-moon-phases": {
+      "label": "NASA Science — Moon Phases",
+      "url": "https://science.nasa.gov/moon/moon-phases/"
+    },
+    "nasa-planet-def": {
+      "label": "NASA Science — What Is a Planet? (Resolusi IAU 2006)",
+      "url": "https://science.nasa.gov/solar-system/planets/what-is-a-planet/"
+    },
+    "nasa-comets": {
+      "label": "NASA Science — Comets",
+      "url": "https://science.nasa.gov/solar-system/comets/"
+    },
+    "nasa-asteroids": {
+      "label": "NASA Science — Asteroids",
+      "url": "https://science.nasa.gov/solar-system/asteroids/"
+    },
+    "nasa-planets": {
+      "label": "NASA Science — Planets",
+      "url": "https://science.nasa.gov/solar-system/planets/"
+    },
+    "nasa-meteors": {
+      "label": "NASA Science — Meteors & Meteorites",
+      "url": "https://science.nasa.gov/solar-system/meteors-meteorites/"
+    },
+    "nasa-earth": {
+      "label": "NASA NSSDCA Earth Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+    },
+    "nasa-seasons": {
+      "label": "NASA Space Place — What Causes the Seasons?",
+      "url": "https://spaceplace.nasa.gov/seasons/en/"
+    },
+    "iau-daynight": {
+      "label": "IAU astroEDU — Why Do We Have Day and Night?",
+      "url": "https://astroedu.iau.org/en/activities/why-do-we-have-day-and-night/"
+    },
+    "nasa-moonfact": {
+      "label": "NASA NSSDCA Moon Fact Sheet",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html"
+    },
+    "nasa-eclipse-types": {
+      "label": "NASA Science — Types of Eclipses",
+      "url": "https://science.nasa.gov/eclipses/types/"
+    },
+    "nasa-eclipse-safety": {
+      "label": "NASA Science — Eclipse Safety",
+      "url": "https://science.nasa.gov/eclipses/safety/"
+    }
   },
   "units": {
     "u1": {
       "objects": [
         {
-          "id": "matahari", "name": "Matahari", "kind": "bintang", "color": "matahari", "look": "sun", "radius": 1.25,
+          "id": "matahari",
+          "name": "Matahari",
+          "kind": "bintang",
+          "color": "matahari",
+          "look": "sun",
+          "radius": 1.25,
           "description": "Matahari adalah bintang terdekat dari Bumi. Ia membuat cahaya dan panasnya sendiri.",
-          "facts": { "diameter_km": 1391400 },
+          "facts": {
+            "diameter_km": 1391400
+          },
           "annotations": [
-            { "id": "bintang", "lat": 25, "lon": 20, "title": "Matahari adalah bintang", "body": "Matahari membuat cahaya dan panasnya sendiri, sama seperti bintang lain. Bintang lain tampak kecil karena letaknya sangat jauh.", "source": "nasa-sun" },
-            { "id": "ukuran", "lat": -20, "lon": -40, "title": "Sangat besar", "body": "Diameter Matahari sekitar 109 kali diameter Bumi.", "source": "nasa-sun" },
-            { "id": "suhu", "lat": 5, "lon": 90, "title": "Permukaan sangat panas", "body": "Suhu permukaan Matahari sekitar 5.500 °C.", "source": "nasa-sun" }
+            {
+              "id": "bintang",
+              "lat": 25,
+              "lon": 20,
+              "title": "Matahari adalah bintang",
+              "body": "Matahari membuat cahaya dan panasnya sendiri, sama seperti bintang lain. Bintang lain tampak kecil karena letaknya sangat jauh.",
+              "source": "nasa-sun"
+            },
+            {
+              "id": "ukuran",
+              "lat": -20,
+              "lon": -40,
+              "title": "Sangat besar",
+              "body": "Diameter Matahari sekitar 109 kali diameter Bumi.",
+              "source": "nasa-sun"
+            },
+            {
+              "id": "suhu",
+              "lat": 5,
+              "lon": 90,
+              "title": "Permukaan sangat panas",
+              "body": "Suhu permukaan Matahari sekitar 5.500 °C.",
+              "source": "nasa-sun"
+            }
           ]
         },
         {
-          "id": "bumi", "name": "Bumi", "kind": "planet", "color": "bumi", "look": "earth", "radius": 1,
+          "id": "bumi",
+          "name": "Bumi",
+          "kind": "planet",
+          "color": "bumi",
+          "look": "earth",
+          "radius": 1,
           "description": "Bumi adalah planet ketiga dari Matahari dan tempat kita tinggal.",
-          "facts": { "diameter_km": 12756, "distance_mkm": 149.6, "mean_temp_c": 15 },
+          "facts": {
+            "diameter_km": 12756,
+            "distance_mkm": 149.6,
+            "mean_temp_c": 15
+          },
           "annotations": [
-            { "id": "urutan", "lat": 20, "lon": 10, "title": "Planet ketiga", "body": "Bumi adalah planet ketiga dari Matahari, jaraknya sekitar 149,6 juta km.", "source": "nasa-factsheet" },
-            { "id": "planet", "lat": -25, "lon": -60, "title": "Mengapa disebut planet?", "body": "Bumi berbentuk bulat dan beredar mengelilingi Matahari. Bumi tidak membuat cahayanya sendiri.", "source": "nasa-planet-def" }
+            {
+              "id": "urutan",
+              "lat": 20,
+              "lon": 10,
+              "title": "Planet ketiga",
+              "body": "Bumi adalah planet ketiga dari Matahari, jaraknya sekitar 149,6 juta km.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "planet",
+              "lat": -25,
+              "lon": -60,
+              "title": "Mengapa disebut planet?",
+              "body": "Bumi berbentuk bulat dan beredar mengelilingi Matahari. Bumi tidak membuat cahayanya sendiri.",
+              "source": "nasa-planet-def"
+            }
           ]
         },
         {
-          "id": "bulan", "name": "Bulan", "kind": "satelit_alami", "color": "merkurius", "look": "moon", "radius": 0.55,
+          "id": "bulan",
+          "name": "Bulan",
+          "kind": "satelit_alami",
+          "color": "merkurius",
+          "look": "moon",
+          "radius": 0.55,
           "description": "Bulan adalah satelit alami Bumi. Bulan beredar mengelilingi Bumi.",
-          "facts": { "diameter_km": 3475 },
+          "facts": {
+            "diameter_km": 3475
+          },
           "annotations": [
-            { "id": "satelit", "lat": 20, "lon": 0, "title": "Satelit, bukan planet", "body": "Bulan beredar mengelilingi Bumi, bukan langsung mengelilingi Matahari. Karena itu Bulan disebut satelit alami.", "source": "nasa-moon" },
-            { "id": "cahaya", "lat": -15, "lon": 70, "title": "Tidak bercahaya sendiri", "body": "Bulan tidak membuat cahayanya sendiri. Cahaya Bulan adalah cahaya Matahari yang dipantulkan.", "source": "nasa-moon-phases" },
-            { "id": "ukuran", "lat": 10, "lon": -80, "title": "Lebih kecil dari Bumi", "body": "Lebar Bulan kurang dari sepertiga lebar Bumi.", "source": "nasa-moon" }
+            {
+              "id": "satelit",
+              "lat": 20,
+              "lon": 0,
+              "title": "Satelit, bukan planet",
+              "body": "Bulan beredar mengelilingi Bumi, bukan langsung mengelilingi Matahari. Karena itu Bulan disebut satelit alami.",
+              "source": "nasa-moon"
+            },
+            {
+              "id": "cahaya",
+              "lat": -15,
+              "lon": 70,
+              "title": "Tidak bercahaya sendiri",
+              "body": "Bulan tidak membuat cahayanya sendiri. Cahaya Bulan adalah cahaya Matahari yang dipantulkan.",
+              "source": "nasa-moon-phases"
+            },
+            {
+              "id": "ukuran",
+              "lat": 10,
+              "lon": -80,
+              "title": "Lebih kecil dari Bumi",
+              "body": "Lebar Bulan kurang dari sepertiga lebar Bumi.",
+              "source": "nasa-moon"
+            }
           ]
         },
         {
-          "id": "pluto", "name": "Pluto", "kind": "planet_kerdil", "color": "saturnus", "look": "dwarf", "radius": 0.45,
+          "id": "pluto",
+          "name": "Pluto",
+          "kind": "planet_kerdil",
+          "color": "saturnus",
+          "look": "dwarf",
+          "radius": 0.45,
           "description": "Pluto adalah planet kerdil di bagian luar tata surya.",
-          "facts": { "diameter_km": 2376 },
+          "facts": {
+            "diameter_km": 2376
+          },
           "annotations": [
-            { "id": "kerdil", "lat": 20, "lon": 10, "title": "Planet kerdil", "body": "Sejak 2006, Pluto digolongkan sebagai planet kerdil. Pluto bulat dan mengelilingi Matahari, tetapi jalur orbitnya masih dipenuhi benda langit lain.", "source": "nasa-planet-def" },
-            { "id": "ukuran", "lat": -20, "lon": -70, "title": "Lebih kecil dari Bulan", "body": "Diameter Pluto sekitar 2.376 km, lebih kecil daripada Bulan kita.", "source": "nasa-factsheet" }
+            {
+              "id": "kerdil",
+              "lat": 20,
+              "lon": 10,
+              "title": "Planet kerdil",
+              "body": "Sejak 2006, Pluto digolongkan sebagai planet kerdil. Pluto bulat dan mengelilingi Matahari, tetapi jalur orbitnya masih dipenuhi benda langit lain.",
+              "source": "nasa-planet-def"
+            },
+            {
+              "id": "ukuran",
+              "lat": -20,
+              "lon": -70,
+              "title": "Lebih kecil dari Bulan",
+              "body": "Diameter Pluto sekitar 2.376 km, lebih kecil daripada Bulan kita.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "komet", "name": "Komet", "kind": "komet", "color": "uranus", "look": "comet", "radius": 0.4,
+          "id": "komet",
+          "name": "Komet",
+          "kind": "komet",
+          "color": "uranus",
+          "look": "comet",
+          "radius": 0.4,
           "description": "Komet adalah bongkahan es, batu, dan debu yang mengelilingi Matahari. Saat dekat Matahari, komet punya ekor.",
           "facts": {},
           "annotations": [
-            { "id": "bahan", "lat": 30, "lon": 0, "title": "Bola salju angkasa", "body": "Komet terbuat dari es, batu, dan debu yang mengelilingi Matahari.", "source": "nasa-comets" },
-            { "id": "ekor", "lat": 0, "lon": 90, "title": "Ekor menjauhi Matahari", "body": "Saat dekat Matahari, es komet menguap. Gas dan debunya membentuk ekor yang mengarah menjauhi Matahari.", "source": "nasa-comets" }
+            {
+              "id": "bahan",
+              "lat": 30,
+              "lon": 0,
+              "title": "Bola salju angkasa",
+              "body": "Komet terbuat dari es, batu, dan debu yang mengelilingi Matahari.",
+              "source": "nasa-comets"
+            },
+            {
+              "id": "ekor",
+              "lat": 0,
+              "lon": 90,
+              "title": "Ekor menjauhi Matahari",
+              "body": "Saat dekat Matahari, es komet menguap. Gas dan debunya membentuk ekor yang mengarah menjauhi Matahari.",
+              "source": "nasa-comets"
+            }
           ]
         },
         {
-          "id": "asteroid", "name": "Asteroid", "kind": "asteroid", "color": "jupiter", "look": "asteroid", "radius": 0.5,
+          "id": "asteroid",
+          "name": "Asteroid",
+          "kind": "asteroid",
+          "color": "jupiter",
+          "look": "asteroid",
+          "radius": 0.5,
           "description": "Asteroid adalah batuan tanpa udara yang mengelilingi Matahari.",
           "facts": {},
           "annotations": [
-            { "id": "batuan", "lat": 25, "lon": 20, "title": "Batuan sisa", "body": "Asteroid adalah batuan tanpa udara, sisa pembentukan tata surya.", "source": "nasa-asteroids" },
-            { "id": "sabuk", "lat": -20, "lon": -60, "title": "Sabuk asteroid", "body": "Sebagian besar asteroid berada di sabuk asteroid, di antara Mars dan Jupiter.", "source": "nasa-asteroids" }
+            {
+              "id": "batuan",
+              "lat": 25,
+              "lon": 20,
+              "title": "Batuan sisa",
+              "body": "Asteroid adalah batuan tanpa udara, sisa pembentukan tata surya.",
+              "source": "nasa-asteroids"
+            },
+            {
+              "id": "sabuk",
+              "lat": -20,
+              "lon": -60,
+              "title": "Sabuk asteroid",
+              "body": "Sebagian besar asteroid berada di sabuk asteroid, di antara Mars dan Jupiter.",
+              "source": "nasa-asteroids"
+            }
           ]
         }
       ]
@@ -74,79 +268,699 @@
     "u2": {
       "objects": [
         {
-          "id": "merkurius", "name": "Merkurius", "kind": "planet", "color": "merkurius", "look": "rocky", "radius": 0.6,
+          "id": "merkurius",
+          "name": "Merkurius",
+          "kind": "planet",
+          "color": "merkurius",
+          "look": "rocky",
+          "radius": 0.6,
           "description": "Merkurius adalah planet terkecil dan paling dekat dengan Matahari.",
-          "facts": { "diameter_km": 4879, "distance_mkm": 57.9, "mean_temp_c": 167 },
+          "facts": {
+            "diameter_km": 4879,
+            "distance_mkm": 57.9,
+            "mean_temp_c": 167
+          },
           "annotations": [
-            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Merkurius 4.879 km. Merkurius adalah planet terkecil.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Merkurius 167 °C.", "source": "nasa-factsheet" },
-            { "id": "atmosfer", "lat": 5, "lon": 80, "title": "Hampir tanpa atmosfer", "body": "Merkurius paling dekat dengan Matahari, tetapi hampir tidak punya atmosfer. Panasnya mudah lepas ke angkasa, jadi Merkurius bukan planet terpanas.", "source": "nasa-factsheet" }
+            {
+              "id": "ukuran",
+              "lat": 25,
+              "lon": 15,
+              "title": "Ukuran",
+              "body": "Diameter Merkurius 4.879 km. Merkurius adalah planet terkecil.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Merkurius 167 °C.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "atmosfer",
+              "lat": 5,
+              "lon": 80,
+              "title": "Hampir tanpa atmosfer",
+              "body": "Merkurius paling dekat dengan Matahari, tetapi hampir tidak punya atmosfer. Panasnya mudah lepas ke angkasa, jadi Merkurius bukan planet terpanas.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "venus", "name": "Venus", "kind": "planet", "color": "venus", "look": "venus", "radius": 0.95, "animation": "greenhouse",
+          "id": "venus",
+          "name": "Venus",
+          "kind": "planet",
+          "color": "venus",
+          "look": "venus",
+          "radius": 0.95,
+          "animation": "greenhouse",
           "description": "Venus adalah planet kedua dari Matahari dan planet terpanas.",
-          "facts": { "diameter_km": 12104, "distance_mkm": 108.2, "mean_temp_c": 464 },
+          "facts": {
+            "diameter_km": 12104,
+            "distance_mkm": 108.2,
+            "mean_temp_c": 464
+          },
           "annotations": [
-            { "id": "suhu", "lat": 25, "lon": 15, "title": "Planet terpanas", "body": "Suhu rata-rata Venus 464 °C. Venus lebih jauh dari Matahari daripada Merkurius, tetapi lebih panas.", "source": "nasa-factsheet" },
-            { "id": "atmosfer", "lat": -15, "lon": -55, "title": "Atmosfer tebal", "body": "Atmosfer Venus 96,5% karbon dioksida dan sangat tebal. Tekanannya 92 kali tekanan udara di Bumi.", "source": "nasa-venus" },
-            { "id": "rumah-kaca", "lat": 0, "lon": 85, "title": "Panas terperangkap", "body": "Atmosfer yang tebal menahan panas sehingga tidak bisa keluar. Peristiwa ini disebut efek rumah kaca.", "source": "nasa-venus" }
+            {
+              "id": "suhu",
+              "lat": 25,
+              "lon": 15,
+              "title": "Planet terpanas",
+              "body": "Suhu rata-rata Venus 464 °C. Venus lebih jauh dari Matahari daripada Merkurius, tetapi lebih panas.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "atmosfer",
+              "lat": -15,
+              "lon": -55,
+              "title": "Atmosfer tebal",
+              "body": "Atmosfer Venus 96,5% karbon dioksida dan sangat tebal. Tekanannya 92 kali tekanan udara di Bumi.",
+              "source": "nasa-venus"
+            },
+            {
+              "id": "rumah-kaca",
+              "lat": 0,
+              "lon": 85,
+              "title": "Panas terperangkap",
+              "body": "Atmosfer yang tebal menahan panas sehingga tidak bisa keluar. Peristiwa ini disebut efek rumah kaca.",
+              "source": "nasa-venus"
+            }
           ]
         },
         {
-          "id": "bumi", "name": "Bumi", "kind": "planet", "color": "bumi", "look": "earth", "radius": 1,
+          "id": "bumi",
+          "name": "Bumi",
+          "kind": "planet",
+          "color": "bumi",
+          "look": "earth",
+          "radius": 1,
           "description": "Bumi adalah planet ketiga dari Matahari.",
-          "facts": { "diameter_km": 12756, "distance_mkm": 149.6, "mean_temp_c": 15 },
+          "facts": {
+            "diameter_km": 12756,
+            "distance_mkm": 149.6,
+            "mean_temp_c": 15
+          },
           "annotations": [
-            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Bumi 12.756 km.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Bumi 15 °C. Udara di Bumi membantu menjaga suhunya.", "source": "nasa-factsheet" }
+            {
+              "id": "ukuran",
+              "lat": 25,
+              "lon": 15,
+              "title": "Ukuran",
+              "body": "Diameter Bumi 12.756 km.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Bumi 15 °C. Udara di Bumi membantu menjaga suhunya.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "mars", "name": "Mars", "kind": "planet", "color": "mars", "look": "mars", "radius": 0.75,
+          "id": "mars",
+          "name": "Mars",
+          "kind": "planet",
+          "color": "mars",
+          "look": "mars",
+          "radius": 0.75,
           "description": "Mars adalah planet keempat dari Matahari, berwarna kemerahan.",
-          "facts": { "diameter_km": 6792, "distance_mkm": 228.0, "mean_temp_c": -65 },
+          "facts": {
+            "diameter_km": 6792,
+            "distance_mkm": 228.0,
+            "mean_temp_c": -65
+          },
           "annotations": [
-            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Mars 6.792 km, kira-kira setengah diameter Bumi.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Mars −65 °C. Atmosfernya sangat tipis.", "source": "nasa-factsheet" }
+            {
+              "id": "ukuran",
+              "lat": 25,
+              "lon": 15,
+              "title": "Ukuran",
+              "body": "Diameter Mars 6.792 km, kira-kira setengah diameter Bumi.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Mars −65 °C. Atmosfernya sangat tipis.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "jupiter", "name": "Jupiter", "kind": "planet", "color": "jupiter", "look": "jupiter", "radius": 1.5,
+          "id": "jupiter",
+          "name": "Jupiter",
+          "kind": "planet",
+          "color": "jupiter",
+          "look": "jupiter",
+          "radius": 1.5,
           "description": "Jupiter adalah planet terbesar di tata surya.",
-          "facts": { "diameter_km": 142984, "distance_mkm": 778.5, "mean_temp_c": -110 },
+          "facts": {
+            "diameter_km": 142984,
+            "distance_mkm": 778.5,
+            "mean_temp_c": -110
+          },
           "annotations": [
-            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Planet terbesar", "body": "Diameter Jupiter 142.984 km, sekitar 11 kali diameter Bumi.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Jupiter −110 °C.", "source": "nasa-factsheet" },
-            { "id": "gas", "lat": 0, "lon": 80, "title": "Planet raksasa gas", "body": "Jupiter sebagian besar tersusun dari gas. Jupiter juga punya cincin tipis yang sulit terlihat.", "source": "nasa-factsheet" }
+            {
+              "id": "ukuran",
+              "lat": 25,
+              "lon": 15,
+              "title": "Planet terbesar",
+              "body": "Diameter Jupiter 142.984 km, sekitar 11 kali diameter Bumi.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Jupiter −110 °C.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "gas",
+              "lat": 0,
+              "lon": 80,
+              "title": "Planet raksasa gas",
+              "body": "Jupiter sebagian besar tersusun dari gas. Jupiter juga punya cincin tipis yang sulit terlihat.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "saturnus", "name": "Saturnus", "kind": "planet", "color": "saturnus", "look": "saturn", "radius": 1.3, "ring": true,
+          "id": "saturnus",
+          "name": "Saturnus",
+          "kind": "planet",
+          "color": "saturnus",
+          "look": "saturn",
+          "radius": 1.3,
+          "ring": true,
           "description": "Saturnus adalah planet keenam dari Matahari dengan cincin yang terkenal.",
-          "facts": { "diameter_km": 120536, "distance_mkm": 1432.0, "mean_temp_c": -140 },
+          "facts": {
+            "diameter_km": 120536,
+            "distance_mkm": 1432.0,
+            "mean_temp_c": -140
+          },
           "annotations": [
-            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Saturnus 120.536 km. Cincinnya besar, tetapi Saturnus tetap lebih kecil daripada Jupiter.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Saturnus −140 °C.", "source": "nasa-factsheet" }
+            {
+              "id": "ukuran",
+              "lat": 25,
+              "lon": 15,
+              "title": "Ukuran",
+              "body": "Diameter Saturnus 120.536 km. Cincinnya besar, tetapi Saturnus tetap lebih kecil daripada Jupiter.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Saturnus −140 °C.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "uranus", "name": "Uranus", "kind": "planet", "color": "uranus", "look": "icy", "radius": 1.1,
+          "id": "uranus",
+          "name": "Uranus",
+          "kind": "planet",
+          "color": "uranus",
+          "look": "icy",
+          "radius": 1.1,
           "description": "Uranus adalah planet ketujuh dari Matahari.",
-          "facts": { "diameter_km": 51118, "distance_mkm": 2867.0, "mean_temp_c": -195 },
+          "facts": {
+            "diameter_km": 51118,
+            "distance_mkm": 2867.0,
+            "mean_temp_c": -195
+          },
           "annotations": [
-            { "id": "ukuran", "lat": 25, "lon": 15, "title": "Ukuran", "body": "Diameter Uranus 51.118 km.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Uranus −195 °C.", "source": "nasa-factsheet" }
+            {
+              "id": "ukuran",
+              "lat": 25,
+              "lon": 15,
+              "title": "Ukuran",
+              "body": "Diameter Uranus 51.118 km.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Uranus −195 °C.",
+              "source": "nasa-factsheet"
+            }
           ]
         },
         {
-          "id": "neptunus", "name": "Neptunus", "kind": "planet", "color": "neptunus", "look": "icy", "radius": 1.08,
+          "id": "neptunus",
+          "name": "Neptunus",
+          "kind": "planet",
+          "color": "neptunus",
+          "look": "icy",
+          "radius": 1.08,
           "description": "Neptunus adalah planet kedelapan dan paling jauh dari Matahari.",
-          "facts": { "diameter_km": 49528, "distance_mkm": 4515.0, "mean_temp_c": -200 },
+          "facts": {
+            "diameter_km": 49528,
+            "distance_mkm": 4515.0,
+            "mean_temp_c": -200
+          },
           "annotations": [
-            { "id": "jarak", "lat": 25, "lon": 15, "title": "Planet terjauh", "body": "Neptunus berjarak sekitar 4.515 juta km dari Matahari.", "source": "nasa-factsheet" },
-            { "id": "suhu", "lat": -15, "lon": -50, "title": "Suhu rata-rata", "body": "Suhu rata-rata Neptunus −200 °C.", "source": "nasa-factsheet" }
+            {
+              "id": "jarak",
+              "lat": 25,
+              "lon": 15,
+              "title": "Planet terjauh",
+              "body": "Neptunus berjarak sekitar 4.515 juta km dari Matahari.",
+              "source": "nasa-factsheet"
+            },
+            {
+              "id": "suhu",
+              "lat": -15,
+              "lon": -50,
+              "title": "Suhu rata-rata",
+              "body": "Suhu rata-rata Neptunus −200 °C.",
+              "source": "nasa-factsheet"
+            }
           ]
+        }
+      ]
+    },
+    "u3": {
+      "objects": [
+        {
+          "id": "zona-dalam",
+          "name": "Planet dalam",
+          "kind": "kelompok_planet",
+          "color": "mars",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "zones",
+          "description": "Empat planet terdekat dari Matahari: Merkurius, Venus, Bumi, dan Mars. Semuanya planet berbatu.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "urutan",
+              "anchor": "merkurius",
+              "title": "Urutan dari Matahari",
+              "body": "Dari yang terdekat: Merkurius, Venus, Bumi, lalu Mars.",
+              "source": "nasa-planets"
+            },
+            {
+              "id": "batuan",
+              "anchor": "bumi",
+              "title": "Planet berbatu",
+              "body": "Planet dalam punya permukaan padat dari batuan. Kita bisa berdiri di atasnya.",
+              "source": "nasa-planets"
+            },
+            {
+              "id": "ukuran",
+              "anchor": "mars",
+              "title": "Lebih kecil",
+              "body": "Planet dalam jauh lebih kecil daripada planet luar. Bumi adalah planet dalam yang paling besar.",
+              "source": "nasa-factsheet"
+            }
+          ],
+          "view": {
+            "focus": "dalam",
+            "distance": 8,
+            "elevation": 62
+          }
+        },
+        {
+          "id": "sabuk-asteroid",
+          "name": "Sabuk asteroid",
+          "kind": "asteroid",
+          "color": "merkurius",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "zones",
+          "description": "Sabuk asteroid berisi banyak batuan yang mengelilingi Matahari. Letaknya di antara Mars dan Jupiter.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "letak",
+              "anchor": "sabuk",
+              "title": "Pembatas dua kelompok",
+              "body": "Sabuk asteroid ada di antara orbit Mars dan Jupiter. Ia memisahkan planet dalam dan planet luar.",
+              "source": "nasa-asteroids"
+            },
+            {
+              "id": "isi",
+              "anchor": "sabuk-jauh",
+              "title": "Banyak batuan",
+              "body": "Di sabuk ini ada sangat banyak asteroid. Ukurannya berbeda-beda, dari kecil sampai ratusan kilometer.",
+              "source": "nasa-asteroids"
+            }
+          ],
+          "view": {
+            "focus": "sabuk",
+            "distance": 13,
+            "elevation": 55
+          }
+        },
+        {
+          "id": "zona-luar",
+          "name": "Planet luar",
+          "kind": "kelompok_planet",
+          "color": "neptunus",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "zones",
+          "description": "Empat planet terjauh: Jupiter, Saturnus, Uranus, dan Neptunus. Semuanya planet raksasa.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "gas",
+              "anchor": "jupiter",
+              "title": "Raksasa gas",
+              "body": "Jupiter dan Saturnus disebut raksasa gas. Planet ini tidak punya permukaan keras untuk dipijak.",
+              "source": "nasa-planets"
+            },
+            {
+              "id": "es",
+              "anchor": "uranus",
+              "title": "Raksasa es",
+              "body": "Uranus dan Neptunus disebut raksasa es. Keduanya juga tidak punya permukaan keras.",
+              "source": "nasa-planets"
+            },
+            {
+              "id": "urutan",
+              "anchor": "neptunus",
+              "title": "Urutan dari Matahari",
+              "body": "Setelah sabuk asteroid: Jupiter, Saturnus, Uranus, lalu Neptunus yang paling jauh.",
+              "source": "nasa-planets"
+            }
+          ],
+          "view": {
+            "focus": "luar",
+            "distance": 25,
+            "elevation": 55
+          }
+        }
+      ]
+    },
+    "u4": {
+      "objects": [
+        {
+          "id": "meteoroid",
+          "name": "Meteoroid",
+          "kind": "batuan_antariksa",
+          "color": "merkurius",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "meteor",
+          "description": "Meteoroid adalah batuan kecil yang masih berada di luar angkasa.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "luar-angkasa",
+              "anchor": "batu",
+              "title": "Masih di luar angkasa",
+              "body": "Batuan ini disebut meteoroid selama masih di luar angkasa. Ukurannya dari sebesar butir debu sampai asteroid kecil.",
+              "source": "nasa-meteors"
+            },
+            {
+              "id": "udara",
+              "anchor": "atmosfer",
+              "title": "Lapisan udara Bumi",
+              "body": "Bumi diselimuti lapisan udara yang disebut atmosfer. Meteoroid yang masuk ke sini bergerak sangat cepat.",
+              "source": "nasa-meteors"
+            }
+          ],
+          "animation": "meteor",
+          "sceneStep": 0,
+          "view": {
+            "focus": "meteor",
+            "distance": 8,
+            "elevation": 8
+          }
+        },
+        {
+          "id": "meteor",
+          "name": "Meteor",
+          "kind": "batuan_antariksa",
+          "color": "matahari",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "meteor",
+          "description": "Meteor adalah cahaya terang saat meteoroid terbakar di atmosfer. Orang sering menyebutnya bintang jatuh.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "terbakar",
+              "anchor": "batu",
+              "title": "Terbakar di udara",
+              "body": "Saat masuk atmosfer dengan sangat cepat, meteoroid terbakar dan bercahaya. Cahaya ini disebut meteor.",
+              "source": "nasa-meteors"
+            },
+            {
+              "id": "bintang-jatuh",
+              "anchor": "jejak",
+              "title": "Bukan bintang",
+              "body": "Meteor sering disebut bintang jatuh. Padahal cahaya itu berasal dari batuan kecil yang terbakar, bukan dari bintang.",
+              "source": "nasa-meteors"
+            },
+            {
+              "id": "habis",
+              "anchor": "atmosfer",
+              "title": "Kebanyakan habis",
+              "body": "Hampir semua bahannya habis terbakar di atmosfer sebelum sampai ke tanah.",
+              "source": "nasa-meteors"
+            }
+          ],
+          "animation": "meteor",
+          "sceneStep": 1,
+          "view": {
+            "focus": "meteor",
+            "distance": 8,
+            "elevation": 8
+          }
+        },
+        {
+          "id": "meteorit",
+          "name": "Meteorit",
+          "kind": "batuan_antariksa",
+          "color": "mars",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "meteor",
+          "description": "Meteorit adalah sisa meteoroid yang tidak habis terbakar dan jatuh sampai ke permukaan Bumi.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "sampai-tanah",
+              "anchor": "tanah",
+              "title": "Sampai ke tanah",
+              "body": "Jika meteoroid tidak habis terbakar dan jatuh ke tanah, sisanya disebut meteorit.",
+              "source": "nasa-meteors"
+            },
+            {
+              "id": "tiga-nama",
+              "anchor": "batu",
+              "title": "Satu batu, tiga nama",
+              "body": "Namanya berubah sesuai tempatnya: meteoroid di luar angkasa, meteor saat terbakar di udara, meteorit di tanah.",
+              "source": "nasa-meteors"
+            }
+          ],
+          "animation": "meteor",
+          "sceneStep": 2,
+          "view": {
+            "focus": "meteor",
+            "distance": 8,
+            "elevation": 8
+          }
+        }
+      ]
+    },
+    "u5": {
+      "objects": [
+        {
+          "id": "rotasi",
+          "name": "Rotasi Bumi",
+          "kind": "gerak_bumi",
+          "color": "bumi",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "rotation",
+          "description": "Rotasi adalah Bumi berputar pada sumbunya. Satu kali putaran memerlukan sekitar 24 jam.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "siang",
+              "anchor": "siang",
+              "title": "Sisi siang",
+              "body": "Sisi Bumi yang menghadap Matahari mendapat cahaya. Di sana sedang siang.",
+              "source": "iau-daynight"
+            },
+            {
+              "id": "malam",
+              "anchor": "malam",
+              "title": "Sisi malam",
+              "body": "Sisi yang membelakangi Matahari tidak mendapat cahaya. Di sana sedang malam.",
+              "source": "iau-daynight"
+            },
+            {
+              "id": "tempatmu",
+              "anchor": "tempatmu",
+              "title": "Titik tempatmu",
+              "body": "Titik oranye menandai Indonesia. Karena Bumi berputar, titik ini bergantian masuk ke sisi siang dan sisi malam.",
+              "source": "iau-daynight"
+            },
+            {
+              "id": "sumbu",
+              "anchor": "sumbu",
+              "title": "Sumbu Bumi",
+              "body": "Bumi berputar pada sumbu yang miring sekitar 23,4°. Satu putaran memerlukan sekitar 24 jam.",
+              "source": "nasa-earth"
+            }
+          ],
+          "animation": "rotation",
+          "view": {
+            "focus": "rotasi",
+            "distance": 10,
+            "elevation": 20
+          }
+        },
+        {
+          "id": "revolusi",
+          "name": "Revolusi Bumi",
+          "kind": "gerak_bumi",
+          "color": "matahari",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "revolution",
+          "description": "Revolusi adalah Bumi bergerak mengelilingi Matahari. Satu kali putaran memerlukan sekitar 365¼ hari.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "lama",
+              "anchor": "bumi",
+              "title": "Satu tahun",
+              "body": "Bumi mengelilingi Matahari satu kali dalam sekitar 365¼ hari.",
+              "source": "nasa-earth"
+            },
+            {
+              "id": "miring",
+              "anchor": "kutub",
+              "title": "Sumbu tetap miring",
+              "body": "Sumbu Bumi selalu miring ke arah yang sama. Jadi belahan utara dan selatan bergantian lebih condong ke Matahari.",
+              "source": "nasa-seasons"
+            },
+            {
+              "id": "musim",
+              "anchor": "matahari",
+              "title": "Penyebab musim",
+              "body": "Belahan yang condong ke Matahari mendapat cahaya lebih banyak dan mengalami musim panas. Kemiringan sumbu inilah penyebab musim.",
+              "source": "nasa-seasons"
+            },
+            {
+              "id": "jarak",
+              "anchor": "jarak",
+              "title": "Jarak hampir sama",
+              "body": "Jarak Bumi ke Matahari hanya sedikit berubah, sekitar 147 sampai 152 juta km. Bumi justru paling dekat saat belahan utara musim dingin.",
+              "source": "nasa-earth"
+            }
+          ],
+          "animation": "revolution",
+          "view": {
+            "focus": "revolusi",
+            "distance": 12.5,
+            "elevation": 50
+          }
+        }
+      ]
+    },
+    "u6": {
+      "objects": [
+        {
+          "id": "gerhana-matahari",
+          "name": "Gerhana Matahari",
+          "kind": "gerhana",
+          "color": "matahari",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "eclipse",
+          "description": "Gerhana Matahari terjadi saat Bulan lewat di antara Matahari dan Bumi.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "posisi",
+              "anchor": "bulan",
+              "title": "Bulan di tengah",
+              "body": "Saat gerhana Matahari, urutannya Matahari, Bulan, lalu Bumi dalam satu garis.",
+              "source": "nasa-eclipse-types"
+            },
+            {
+              "id": "bayangan",
+              "anchor": "bayangan",
+              "title": "Bayangan Bulan",
+              "body": "Bayangan Bulan jatuh ke sebagian kecil permukaan Bumi. Orang di daerah itu melihat Matahari tertutup.",
+              "source": "nasa-eclipse-types"
+            },
+            {
+              "id": "aman",
+              "anchor": "matahari",
+              "title": "Amati dengan aman",
+              "body": "Jangan menatap Matahari langsung, juga dengan kacamata hitam biasa. Pakai kacamata gerhana khusus atau proyeksi lubang jarum.",
+              "source": "nasa-eclipse-safety"
+            }
+          ],
+          "animation": "eclipse-solar",
+          "variant": "solar",
+          "view": {
+            "focus": "gerhana",
+            "distance": 14,
+            "elevation": 25,
+            "azimuth": 28
+          }
+        },
+        {
+          "id": "gerhana-bulan",
+          "name": "Gerhana Bulan",
+          "kind": "gerhana",
+          "color": "mars",
+          "look": "diorama",
+          "radius": 1,
+          "scene": "eclipse",
+          "description": "Gerhana Bulan terjadi saat Bumi berada di antara Matahari dan Bulan.",
+          "facts": {},
+          "annotations": [
+            {
+              "id": "posisi",
+              "anchor": "bumi",
+              "title": "Bumi di tengah",
+              "body": "Saat gerhana Bulan, urutannya Matahari, Bumi, lalu Bulan dalam satu garis.",
+              "source": "nasa-eclipse-types"
+            },
+            {
+              "id": "bayangan",
+              "anchor": "bulan",
+              "title": "Bulan masuk bayangan Bumi",
+              "body": "Bayangan Bumi jatuh ke Bulan. Bulan menjadi gelap dan bisa tampak kemerahan.",
+              "source": "nasa-eclipse-types"
+            },
+            {
+              "id": "purnama",
+              "anchor": "orbit",
+              "title": "Saat Bulan purnama",
+              "body": "Gerhana Bulan hanya terjadi saat Bulan purnama. Orbit Bulan agak miring sekitar 5°, jadi gerhana tidak terjadi setiap bulan.",
+              "source": "nasa-moonfact"
+            }
+          ],
+          "animation": "eclipse-lunar",
+          "variant": "lunar",
+          "view": {
+            "focus": "gerhana",
+            "distance": 14,
+            "elevation": 25,
+            "azimuth": 28
+          }
         }
       ]
     }

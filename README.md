@@ -33,3 +33,9 @@ pnpm test:db   # uji migrasi/RLS — butuh TEST_DATABASE_URL (Postgres superuser
 pnpm e2e       # Playwright (Pixel 5, iPhone 13, desktop) + axe, memakai backend memori
 pnpm build     # service worker + build produksi
 ```
+
+## Konten belajar (M4)
+
+- Isi ilmiah dan soal "Tebak dulu" ada di `content/celestial.json` dan `content/learning.json`; profil pembuat di `content/profile.json`.
+- Setelah mengubah konten, jalankan `pnpm content:sql` agar migrasi konten Supabase ikut diperbarui (test akan gagal bila lupa).
+- Coba alur belajar: masuk sebagai siswa contoh (kode kelas `K7M2QX`, siswa `S01`, PIN `1234`), buka **Belajar → Unit 1 → Mulai: Tebak dulu**.

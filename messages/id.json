@@ -48,7 +48,81 @@
       "inProgress": "Sedang dipelajari",
       "done": "Selesai"
     },
-    "comingSoon": "Isi unit ini sedang disiapkan."
+    "objectives": "Tujuan belajar",
+    "stepsTitle": "Langkah belajar",
+    "steps": {
+      "tebak": {
+        "title": "Tebak dulu",
+        "hint": "Jawab tebakan singkat. Tidak ada nilai."
+      },
+      "amati": {
+        "title": "Amati",
+        "hint": "Jelajahi benda dalam 3D dan buka titik infonya."
+      },
+      "bandingkan": {
+        "title": "Bandingkan",
+        "hint": "Lihat tebakanmu di samping yang kamu amati."
+      },
+      "jelaskan": {
+        "title": "Jelaskan",
+        "hint": "Baca penjelasan, lalu diskusikan dengan teman."
+      }
+    },
+    "stepNumber": "Langkah {number}",
+    "stepStatus": {
+      "done": "Selesai",
+      "current": "Bisa dikerjakan",
+      "locked": "Terkunci"
+    },
+    "start": "Mulai: {step}",
+    "continue": "Lanjut: {step}",
+    "review": "Ulangi langkah",
+    "unitDone": "Unit ini sudah selesai.",
+    "free3d": "Jelajah 3D bebas",
+    "guestNote": "Kamu belum masuk. Kemajuanmu hanya tersimpan di perangkat ini.",
+    "signIn": "Masuk",
+    "tebak": {
+      "title": "Tebak dulu",
+      "lead": "Pilih jawaban yang paling kamu yakini. Tidak ada nilai di langkah ini.",
+      "question": "Pertanyaan {number} dari {total}",
+      "save": "Simpan tebakan",
+      "saved": "Tersimpan",
+      "alreadySaved": "Tebakanmu sudah tersimpan. Tebakan pertama yang dipakai, jadi tidak bisa diubah.",
+      "next": "Lanjut ke Amati",
+      "chooseAll": "Pilih satu jawaban di setiap pertanyaan.",
+      "yourAnswer": "Tebakanmu"
+    },
+    "bandingkan": {
+      "title": "Bandingkan",
+      "lead": "Lihat lagi tebakanmu, lalu bandingkan dengan yang kamu amati.",
+      "yours": "Tebakanmu",
+      "seen": "Yang kamu lihat",
+      "same": "Tebakanmu sama dengan yang kamu lihat.",
+      "different": "Bandingkan dengan tebakanmu.",
+      "missing": "Kamu belum menebak pertanyaan ini.",
+      "lookAgain": "Lihat lagi di 3D",
+      "next": "Lanjut ke Jelaskan"
+    },
+    "jelaskan": {
+      "title": "Jelaskan",
+      "lead": "Penjelasan ilmiah singkat dan satu pertanyaan untuk didiskusikan.",
+      "explanation": "Penjelasan",
+      "reflection": "Diskusikan dengan teman",
+      "discussed": "Sudah kudiskusikan",
+      "discussedDone": "Ditandai sudah didiskusikan.",
+      "doneTitle": "Unit {number} selesai",
+      "doneBody": "Kamu sudah menebak, mengamati, membandingkan, dan menjelaskan.",
+      "nextUnit": "Lanjut ke unit {number}",
+      "backToUnits": "Kembali ke daftar unit",
+      "sources": "Sumber"
+    },
+    "lockedPage": {
+      "title": "Langkah ini belum terbuka",
+      "body": "Langkah sebelumnya belum selesai: {step}.",
+      "go": "Ke langkah {step}"
+    },
+    "saveError": "Belum tersimpan di server. Periksa sinyal, lalu coba lagi. Jawabanmu tetap tersimpan di perangkat ini.",
+    "loading": "Memuat kemajuanmu…"
   },
   "units": {
     "u1": {
@@ -87,34 +161,66 @@
     "steps": {
       "masuk": {
         "title": "Masuk",
-        "body": "Ketik kode kelas, kode siswa, dan PIN dari kartu masukmu."
+        "body": "Ketik kode kelas, kode siswa, dan PIN dari kartu masukmu. Kalau belum punya kartu, kamu tetap bisa belajar, tetapi kemajuanmu hanya tersimpan di perangkat ini."
+      },
+      "belajar": {
+        "title": "Ikuti empat langkah",
+        "body": "Di setiap unit: Tebak dulu, Amati dalam 3D, Bandingkan dengan tebakanmu, lalu Jelaskan bersama teman."
       },
       "tigaD": {
         "title": "Memakai 3D",
-        "body": "Geser dengan satu jari untuk memutar. Cubit untuk memperbesar atau memperkecil."
+        "body": "Geser dengan satu jari untuk memutar. Cubit untuk memperbesar atau memperkecil. Di laptop, pakai tetikus atau tombol panah dan + atau −."
+      },
+      "titik": {
+        "title": "Buka titik info",
+        "body": "Ketuk titik bernomor pada benda untuk membaca penjelasannya. Pilih benda lain di Rel Orbit di bawah tampilan 3D."
       },
       "ar": {
         "title": "Memulai AR",
-        "body": "Tekan Lihat di ruanganmu, lalu arahkan HP ke lantai atau meja."
+        "body": "Tekan Lihat di ruanganmu, lalu arahkan HP ke lantai atau meja. Tombol ini hanya muncul di HP yang mendukung AR."
       },
       "kamera": {
         "title": "Kamera tidak mau hidup?",
-        "body": "Buka pengaturan browser lalu izinkan kamera, atau pilih Pakai 3D saja."
+        "body": "Buka pengaturan browser lalu izinkan kamera, atau pilih Pakai 3D saja. Tidak ada foto atau video yang disimpan."
       }
-    }
+    },
+    "illustrations": {
+      "masuk": "Kartu masuk dengan kode kelas, kode siswa, dan PIN",
+      "belajar": "Empat langkah: tebak, amati, bandingkan, jelaskan",
+      "tigaD": "Jari menggeser untuk memutar planet",
+      "titik": "Titik info bernomor pada planet",
+      "ar": "HP diarahkan ke meja, planet muncul di atasnya",
+      "kamera": "Kamera dengan tanda izin"
+    },
+    "arSoon": "Mode AR sedang disiapkan dan akan hadir di pembaruan berikutnya."
   },
   "materi": {
     "title": "Identitas materi",
     "lead": "Capaian pembelajaran IPAS Fase C tentang tata surya dan tujuan belajar tiap unit.",
-    "pending": "Isi halaman ini sedang disiapkan oleh peneliti."
+    "cpTitle": "Capaian pembelajaran",
+    "cpMeta": "{subject} · {phase} · Elemen {element}",
+    "objectivesTitle": "Tujuan belajar tiap unit",
+    "howTitle": "Petunjuk belajar",
+    "review": "Rumusan tujuan belajar masih menunggu tinjauan ahli materi.",
+    "unitLabel": "Unit {number}"
   },
   "pembuat": {
     "title": "Profil pembuat",
     "researcher": "Peneliti",
-    "attribution": "Atribusi aset",
-    "attributionPending": "Daftar atribusi aset 3D akan muncul di sini setelah aset ditambahkan.",
+    "program": "Program studi",
+    "institution": "Institusi",
+    "year": "Tahun",
+    "supervisors": "Pembimbing",
+    "notFilled": "Belum diisi peneliti",
+    "previous": "Versi sebelumnya",
+    "attribution": "Atribusi",
+    "textures": "Tekstur benda langit: ilustrasi buatan sendiri, dibuat dengan program (bukan foto).",
+    "science": "Angka dan fakta ilmiah: NASA dan IAU. Sumber tertulis di setiap titik info.",
+    "sourcesTitle": "Sumber konten ilmiah",
     "iconsCredit": "Ikon: Lucide (lisensi ISC)",
-    "fontsCredit": "Huruf: Baloo 2 dan Lexend (SIL Open Font License)"
+    "fontsCredit": "Huruf: Baloo 2 dan Lexend (SIL Open Font License)",
+    "threeCredit": "Tampilan 3D: three.js dan React Three Fiber (lisensi MIT)",
+    "noCausal": "Aplikasi ini adalah alat bantu belajar dan alat pengumpul data penelitian. Hasilnya menggambarkan perubahan yang teramati, bukan bukti sebab-akibat."
   },
   "privasi": {
     "title": "Privasi dan informasi penelitian",
@@ -243,6 +349,13 @@
         "forbidden": "Anda tidak punya akses untuk tindakan ini.",
         "not_found": "Siswa tidak ditemukan.",
         "unknown": "Belum tersimpan. Coba lagi."
+      },
+      "freeExplore": {
+        "title": "Mode bebas",
+        "hint": "Aktifkan bila siswa boleh lanjut dari langkah Amati tanpa membuka semua benda, misalnya saat waktu pelajaran terbatas.",
+        "on": "Aktif",
+        "off": "Tidak aktif",
+        "error": "Pengaturan belum tersimpan. Coba lagi."
       }
     },
     "import": {
@@ -325,7 +438,11 @@
       "satelit_alami": "Satelit alami",
       "planet_kerdil": "Planet kerdil",
       "komet": "Komet",
-      "asteroid": "Asteroid"
+      "asteroid": "Asteroid",
+      "kelompok_planet": "Kelompok planet",
+      "batuan_antariksa": "Batuan antariksa",
+      "gerak_bumi": "Gerak Bumi",
+      "gerhana": "Gerhana"
     },
     "scale": {
       "open": "Bandingkan ukuran sesuai skala",
@@ -342,18 +459,69 @@
       "forward": "Langkah berikutnya",
       "speed": "Kecepatan",
       "step": "Langkah {current} dari {total}",
-      "atmosphere": "Tampilkan atmosfer",
       "greenhouse": {
         "title": "Efek rumah kaca di Venus",
         "s1": "Cahaya Matahari masuk menembus atmosfer Venus.",
         "s2": "Permukaan Venus menyerap cahaya dan menjadi panas.",
         "s3": "Panas ingin keluar, tetapi atmosfer yang tebal menahannya."
+      },
+      "toggles": {
+        "group": "Sakelar tampilan",
+        "atmosphere": "Tampilkan atmosfer",
+        "tilt": "Sumbu miring",
+        "axis": "Tampilkan sumbu",
+        "orbit": "Garis orbit",
+        "shadow": "Tampilkan bayangan"
+      },
+      "meteor": {
+        "title": "Dari meteoroid sampai meteorit",
+        "s1": "Meteoroid: batuan kecil melayang di luar angkasa menuju Bumi.",
+        "s2": "Meteor: batuan masuk atmosfer, terbakar, dan bercahaya terang.",
+        "s3": "Meteorit: sisa yang tidak habis terbakar jatuh sampai ke tanah."
+      },
+      "rotation": {
+        "title": "Bumi berputar pada sumbunya",
+        "s1": "Pagi: titik tempatmu mulai masuk ke sisi terang. Matahari tampak terbit di timur.",
+        "s2": "Siang: titik tempatmu menghadap Matahari.",
+        "s3": "Sore: titik tempatmu mulai masuk ke sisi gelap. Matahari tampak terbenam di barat.",
+        "s4": "Malam: titik tempatmu membelakangi Matahari. Satu putaran penuh sekitar 24 jam."
+      },
+      "revolution": {
+        "title": "Bumi mengelilingi Matahari",
+        "s1": "Sekitar Maret: kedua belahan Bumi mendapat cahaya hampir sama.",
+        "s2": "Sekitar Juni: belahan utara condong ke Matahari. Di utara musim panas, di selatan musim dingin.",
+        "s3": "Sekitar September: kedua belahan Bumi kembali mendapat cahaya hampir sama.",
+        "s4": "Sekitar Desember: belahan selatan condong ke Matahari. Di selatan musim panas, di utara musim dingin."
+      },
+      "eclipse-solar": {
+        "title": "Gerhana Matahari",
+        "s1": "Bulan bergerak mendekati garis antara Matahari dan Bumi.",
+        "s2": "Matahari, Bulan, dan Bumi segaris. Bayangan Bulan jatuh ke Bumi.",
+        "s3": "Bulan bergerak menjauh. Cahaya Matahari kembali sampai ke Bumi."
+      },
+      "eclipse-lunar": {
+        "title": "Gerhana Bulan",
+        "s1": "Bulan purnama bergerak mendekati bayangan Bumi.",
+        "s2": "Matahari, Bumi, dan Bulan segaris. Bulan masuk bayangan Bumi dan tampak kemerahan.",
+        "s3": "Bulan keluar dari bayangan Bumi dan kembali terang."
       }
     },
     "fallback": {
       "title": "Tampilan 3D belum bisa dibuka di perangkat ini",
       "body": "Kamu tetap bisa belajar dari gambar dan penjelasan di bawah."
     },
-    "notAvailable": "Tampilan 3D untuk unit ini sedang disiapkan."
+    "notAvailable": "Tampilan 3D untuk unit ini sedang disiapkan.",
+    "flow": {
+      "title": "Langkah 2 · Amati",
+      "guessFirst": "Kamu belum menebak. Tebak dulu supaya nanti bisa membandingkan.",
+      "toGuess": "Ke langkah Tebak",
+      "notYet": "Lihat {left, plural, other {# benda lagi}} di Rel Orbit untuk lanjut.",
+      "ready": "Semua benda sudah kamu lihat.",
+      "freeMode": "Gurumu mengaktifkan mode bebas. Kamu boleh lanjut kapan saja.",
+      "done": "Langkah Amati selesai.",
+      "next": "Lanjut ke Bandingkan",
+      "locked": "Lihat semua benda di Rel Orbit dulu, lalu coba lagi.",
+      "error": "Kemajuan belum tersimpan. Periksa sinyal, lalu coba lagi."
+    }
   }
 }

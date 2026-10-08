@@ -73,7 +73,7 @@ run("basis data: RLS dan fungsi", () => {
       await q("insert into public.classifications (item_response_id, rule_set_id, a_correct, r_correct, confident, category) values ($1, $2, true, true, true, 'SC')", [resp, F.rules]);
       F[`resp_${s}`] = resp;
     }
-    F.unit = (await q("insert into public.units (slug, title, sort_order) values ('u1', 'Benda langit', 1) returning id")).rows[0].id;
+    F.unit = (await q("select id from public.units where slug = 'u1'")).rows[0].id;
   }, 60_000);
 
   afterAll(async () => {
@@ -116,8 +116,8 @@ run("basis data: RLS dan fungsi", () => {
       }
     });
     it("bisa membaca konten belajar publik", async () => {
-      const r = await db.as(anon, (c) => c.query("select slug from public.units"));
-      expect(r.rows).toEqual([{ slug: "u1" }]);
+      const r = await db.as(anon, (c) => c.query("select slug from public.units order by sort_order"));
+      expect(r.rows.map((x) => x.slug)).toEqual(["u1", "u2", "u3", "u4", "u5", "u6"]);
     });
     it("tidak bisa memanggil student_login atau create_students", async () => {
       expect((await pgError(db.as(anon, (c) => c.query("select * from public.student_login('X','Y','1234')")))).code).toBe("42501");
@@ -162,12 +162,14 @@ run("basis data: RLS dan fungsi", () => {
       const e = await pgError(db.as(me, (c) => c.query("update public.item_responses set tier1_key = 'A'")));
       expect(e.code).toBe("42501");
     });
-    it("bisa mencatat kemajuan belajarnya sendiri, tidak untuk siswa lain", async () => {
-      await db.as(me, (c) => c.query("insert into public.unit_progress (student_id, unit_id, step) values ($1, $2, 'tebak')", [F.A1, F.unit]));
-      const e = await pgError(
-        db.as(me, (c) => c.query("insert into public.unit_progress (student_id, unit_id, step) values ($1, $2, 'tebak')", [F.A2, F.unit])),
-      );
-      expect(e.code).toBe("42501");
+    it("tidak bisa menulis kemajuan belajar langsung (wajib lewat fungsi, M4)", async () => {
+      for (const sql of [
+        "insert into public.unit_progress (student_id, unit_id, step) values ($1, $2, 'tebak')",
+        "insert into public.discussion_marks (student_id, unit_id) values ($1, $2)",
+      ]) {
+        const e = await pgError(db.as(me, (c) => c.query(sql, [F.A1, F.unit])));
+        expect(e.code).toBe("42501");
+      }
     });
     it("tidak bisa mengubah status persetujuannya sendiri (FR-60)", async () => {
       const e = await pgError(db.as(me, (c) => c.query("update public.students set consent_status = 'granted'")));

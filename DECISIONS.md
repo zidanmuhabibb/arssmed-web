@@ -184,3 +184,43 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 - **Keputusan:** Kontrol animasi (putar/jeda, langkah maju/mundur, 0,5×/1×/2×, sakelar atmosfer) dibuat generik (`lib/viewer/timeline.ts`, `AnimationBar`) untuk dipakai ulang di U4–U6; contoh pertama: efek rumah kaca Venus (3 langkah, keterangan dibacakan pembaca layar). Animasi tidak berjalan sendiri; dengan "gerak dikurangi", Putar langsung menampilkan akhir langkah.
 - **Skala:** Rel Orbit sengaja tidak proporsional dengan label jelas; U2 punya "Bandingkan ukuran sesuai skala" (diameter proporsional + "×Bumi") agar tidak menimbulkan miskonsepsi baru (PRD §13).
 - **Belum:** U3–U6 belum punya konten 3D (dikerjakan bersama alur belajar M4); AR (M5).
+
+---
+
+# M4 · Alur belajar (8 Oktober 2026)
+
+## D-036 · Urutan langkah ditegakkan, termasuk di basis data
+- **Keputusan:** Tebak → Amati → Bandingkan → Jelaskan dibuka berurutan (`lib/learning/flow.ts`). Untuk siswa yang masuk, urutan juga ditegakkan oleh fungsi DB `complete_step` (Tebak butuh semua prediksi terjawab; Amati butuh semua objek wajib dilihat atau mode bebas). Tulis langsung ke `unit_progress`, `prediction_responses`, `object_views`, `discussion_marks` dicabut; siswa menulis lewat fungsi.
+- **Alasan:** PRD §4.2 — tebakan harus ada sebelum siswa melihat jawaban (konflik kognitif). Halaman Bandingkan dan Jelaskan tidak menampilkan isi sebelum status diketahui.
+
+## D-037 · Tebakan pertama yang berlaku
+- **Keputusan:** `prediction_responses` unik per siswa per pertanyaan; `save_prediction` mengembalikan jawaban yang sudah tersimpan. Di layar, pilihan dikunci setelah "Simpan tebakan".
+- **Alasan:** Data penelitian = konsepsi awal sebelum mengamati. **Bisa diubah** bila peneliti ingin siswa boleh mengubah tebakan (cukup hapus batasan unik).
+
+## D-038 · Soal "Tebak dulu" disusun agen, berbeda dari butir tes
+- **Keputusan:** 10 pertanyaan prediksi (1–2 per unit, 3 opsi, satu opsi miskonsepsi) di `content/learning.json`, terpisah dari bank soal tes. Test otomatis menolak soal yang sama atau terlalu mirip dengan 20 butir instrumen (kemiripan kata < 0,4; tertinggi saat ini 0,31: `u2-merkurius-venus` vs B06).
+- **Perlu dari peneliti:** tinjau isi dan kemiripan konsep. Soal U2 (Merkurius vs Venus) menyentuh konsep yang sama dengan butir 7; bentuknya berbeda, tetapi peneliti yang memutuskan apakah cukup aman dari efek pengulangan.
+
+## D-039 · Kemajuan: perangkat dulu, lalu server
+- **Keputusan:** Halaman belajar tetap statis (cepat). Klien membaca `GET /api/belajar/kemajuan` dan menggabungkannya dengan simpanan perangkat per siswa (`arssmed:belajar:<id siswa>` atau `tamu`). Tulis ke perangkat dulu, lalu ke server lewat server action; yang belum terkirim dikirim ulang saat halaman dibuka lagi. Bila server menolak (mis. `locked`), tanda di perangkat dibatalkan.
+- **Tamu** (belum masuk) tetap bisa belajar; kemajuannya hanya di perangkat dan ini diberitahukan di layar.
+
+## D-040 · Mode bebas guru (FR-22)
+- **Keputusan:** Kolom `classes.free_explore` + sakelar "Mode bebas" di halaman kelas guru. Bila aktif, tombol "Lanjut ke Bandingkan" langsung aktif.
+
+## D-041 · Konten di repo, disalin ke DB oleh migrasi buatan
+- **Keputusan:** `content/*.json` tetap satu sumber kebenaran. `pnpm content:sql` menulis `supabase/migrations/*_content.sql` (upsert idempoten unit, miskonsepsi, objek 3D, soal Tebak). Test gagal bila migrasi konten tidak sama dengan isi JSON. Setelah rilis produksi, perubahan konten = `pnpm content:sql --new` (migrasi baru, bukan menyunting yang lama).
+- **Catatan:** teks anotasi tidak disalin ke tabel `annotations` (belum ada pemakai di DB); dipertimbangkan saat CMS `/riset/konten`.
+
+## D-042 · Adegan 3D U3–U6
+- **Keputusan:** Satu komponen `Dioramas` dengan tata letak murni teruji (`lib/viewer/dioramas.ts`): zona planet (planet dalam, sabuk asteroid, planet luar), meteoroid → meteor → meteorit, rotasi (titik "tempatmu" pagi/siang/sore/malam, sumbu miring 23,44°), revolusi (Maret/Juni/September/Desember, sakelar sumbu miring untuk membuktikan penyebab musim), gerhana Matahari dan Bulan (bayangan inti digambar abu-abu agar terlihat). Animasi berlangkah (FR-13) generik untuk semua.
+- **Skala:** semua adegan tidak sesuai skala, label tetap tampil. Fakta yang ditulis diverifikasi ke NASA/IAU (Earth & Moon Fact Sheet, Seasons, Eclipse Types & Safety, Meteors) dan bertanda `needs_review`.
+- **Tata letak HP:** kamera digeser sedikit ke kiri (`setViewOffset`) karena tombol kontrol menutupi tepi kanan kanvas.
+
+## D-043 · Profil pembuat dan identitas materi
+- **Keputusan:** Profil diambil dari halaman judul dokumen instrumen (Zidan Muhabib, Magister Pendidikan Dasar, Pascasarjana UMP, 2026) di `content/profile.json`. Pembimbing ditampilkan "Belum diisi peneliti" (tidak menebak dari daftar penulis artikel).
+- **CP IPAS Fase C:** kalimat "Peserta didik mendemonstrasikan bagaimana sistem tata surya bekerja dan kaitannya dengan gerak rotasi dan revolusi bumi." diperiksa pada dokumen CP 2022; nomor keputusan CP 2024 tidak bisa diverifikasi dari sini, jadi sumber ditulis umum dan diberi catatan untuk dicek.
+
+## D-044 · Kinerja Viewer (lanjutan D-034)
+- **Pengukuran ulang:** Lighthouse mobile Viewer di lingkungan ini 46–48 (LCP 5,8–6,5 s). Untuk pembanding, build M3 yang sama diukur ulang hari ini: 46 dan 63. Variasi berasal dari GPU emulasi (SwiftShader), bukan regresi M4. Halaman non-3D: Beranda 86, unit 89, Tebak 91 (Accessibility 100 semua).
+- **Status:** tetap menunggu uji HP nyata (D-034).

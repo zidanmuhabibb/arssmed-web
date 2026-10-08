@@ -20,7 +20,8 @@
     "stats:reference": "python3 tests/fixtures/generate_scipy_reference.py",
     "items:import": "python3 scripts/import_instrument.py",
     "test:db": "vitest run tests/db",
-    "build:textures": "node scripts/build-textures.mjs"
+    "build:textures": "node scripts/build-textures.mjs",
+    "content:sql": "node scripts/build-content-sql.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.3.0",

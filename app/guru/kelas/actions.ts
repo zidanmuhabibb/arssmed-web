@@ -106,3 +106,18 @@ export async function deleteStudentAction(studentId: string): Promise<{ ok: true
     return fail(e);
   }
 }
+
+// ---------------------------------------------------------------- alur belajar
+
+/** FR-22: mode bebas — siswa boleh lanjut dari Amati tanpa membuka semua objek. */
+export async function setFreeExploreAction(classId: string, value: boolean): Promise<{ ok: true } | Fail> {
+  const id = Uuidish.safeParse(classId);
+  if (!id.success || typeof value !== "boolean") return { ok: false, error: "invalid_input" };
+  try {
+    await getBackend().setFreeExplore(id.data, value);
+    refresh();
+    return { ok: true };
+  } catch (e) {
+    return fail(e);
+  }
+}

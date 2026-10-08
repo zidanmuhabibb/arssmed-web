@@ -65,9 +65,19 @@ describe("tekstur Viewer", () => {
     const manifest = AssetManifest.parse(JSON.parse(readFileSync("assets/manifest.json", "utf8")));
     for (const u of Object.values(CELESTIAL.units))
       for (const o of u.objects) {
+        if (o.scene) continue; // adegan U3–U6 memakai tekstur benda yang sudah ada (lihat test berikut)
         expect(existsSync(`public/textures/${o.id}.webp`), o.id).toBe(true);
         expect(manifest.assets.some((a) => a.file === `public/textures/${o.id}.webp`), o.id).toBe(true);
       }
+  });
+  it("tekstur yang dipakai adegan U3–U6 tersedia", async () => {
+    const { existsSync } = await import("node:fs");
+    const src = readFileSync("components/viewer/Dioramas.tsx", "utf8");
+    const ids = new Set([...src.matchAll(/(?:id|useSurface\()["=]\{?"?([a-z]+)"/g)].map((m) => m[1]!));
+    const { ZONES } = await import("@/lib/viewer/dioramas");
+    for (const p of ZONES.planets) ids.add(p.id);
+    expect(ids.size).toBeGreaterThan(5);
+    for (const id of ids) expect(existsSync(`public/textures/${id}.webp`), id).toBe(true);
   });
   it("warna skrip tekstur sama dengan token desain", async () => {
     const colors = (await import("../../scripts/planet-colors.mjs")).default as Record<string, string>;

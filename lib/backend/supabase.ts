@@ -2,6 +2,8 @@ import "server-only";
 import type { PostgrestError, SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { RuleSet } from "@/lib/classification";
+import { datasetFromRpc, type DatasetRpcRow } from "@/lib/analysis";
+import { ITEMS } from "@/lib/tes/items-sql-data";
 import { classifyAttempt, deliverItems, type StoredItem } from "@/lib/tes/deliver";
 import type { Answer } from "@/lib/tes/session";
 import type { ClassTestOverview, StudentTestStatus } from "@/lib/tes/types";
@@ -345,7 +347,24 @@ export const supabaseBackend: Backend = {
     const { error } = await c.rpc("close_class_test", { p_class_id: classId, p_phase: phase });
     if (error) throw fromDb(error);
   },
+
+  async analysisDataset(classId) {
+    const c = await server();
+    // Otorisasi (guru: kelas sendiri; admin: semua) ditegakkan di fungsi DB.
+    const { data, error } = await c.rpc("analysis_dataset", { p_class_id: classId });
+    if (error) throw fromDb(error);
+    const row = data as DatasetRpcRow;
+    return datasetFromRpc(row, await loadItems(row.test_id), ITEMS);
+  },
+
+  async logExport(classId, format) {
+    const c = await server();
+    const { error } = await c.rpc("log_export", { p_class_id: classId, p_format: format });
+    if (error) throw fromDb(error);
+  },
 };
+
+
 
 type ResponseRow = { item_id: string; tier1_key: string | null; confidence_a: number | null; reason_key: string | null; confidence_r: number | null };
 function toAnswers(rows: ResponseRow[]): Record<string, Answer> {

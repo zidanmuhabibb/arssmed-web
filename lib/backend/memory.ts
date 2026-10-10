@@ -10,6 +10,8 @@ import { classifyAttempt, deliverItems, itemShape, type ClassificationRow, type 
 import { ITEMS } from "@/lib/tes/items-sql-data";
 import { EMPTY_ANSWER, isComplete, validateAnswer, type Answer } from "@/lib/tes/session";
 import type { ClassTestStatus, Phase, StudentTestStatus } from "@/lib/tes/types";
+import { analysisItems, domainLabels, type AnalysisDataset, type AnalysisResponse } from "@/lib/analysis";
+import { SYNTHETIC_RAW } from "@/lib/analysis/synthetic";
 import { loginStudent, studentAuthEmail } from "./student-login";
 import { BackendError, type Backend, type ClassMode, type ConsentStatus, type CreatedStudent, type LearningSnapshot, type Viewer } from "./types";
 
@@ -42,10 +44,12 @@ const pin = () => String(randomInt(0, 10000)).padStart(4, "0");
 function seed() {
   const teacher: MemTeacher = { id: "mem-teacher-1", email: "guru@contoh.id", password: "rahasia123", role: "teacher", fullName: "Bu Dewi" };
   const other: MemTeacher = { id: "mem-teacher-2", email: "guru2@contoh.id", password: "rahasia123", role: "teacher", fullName: "Pak Arif" };
+  const dataTeacher: MemTeacher = { id: "mem-teacher-3", email: "guru3@contoh.id", password: "rahasia123", role: "teacher", fullName: "Bu Sari" };
+  const researcher: MemTeacher = { id: "mem-admin-1", email: "peneliti@contoh.id", password: "rahasia123", role: "admin", fullName: "Peneliti" };
   const cls: MemClass = { id: "mem-class-6a", teacherId: teacher.id, name: "6A", joinCode: "K7M2QX", mode: "research", academicYear: "2026/2027", createdAt: 1 };
   const otherCls: MemClass = { id: "mem-class-6b", teacherId: other.id, name: "6B", joinCode: "P3RT9W", mode: "learn_only", academicYear: null, createdAt: 2 };
-  return {
-    teachers: [teacher, other],
+  const s = {
+    teachers: [teacher, other, dataTeacher, researcher],
     classes: [cls, otherCls],
     students: [
       { id: "mem-stu-1", classId: cls.id, code: "S01", nickname: "Raka", pin: "1234", pseudoId: "P-RAKA0001", consent: "granted" },
@@ -60,7 +64,44 @@ function seed() {
     events: [] as { key: string; field: string; old: string | null; new: string | null; at: number }[],
     classifications: {} as Record<string, ClassificationRow[]>,
     itemsFrozen: false,
+    audit: [] as { actor: string; action: string; classId: string | null; format: string; at: number }[],
   };
+  seedSynthetic(s, dataTeacher.id);
+  return s;
+}
+
+/**
+ * Kelas contoh berisi dataset SINTETIS M7 (tests/fixtures/analysis-synthetic.json) untuk dasbor
+ * dan uji e2e: pretest/posttest sudah ditutup, jawaban mentah diklasifikasi seperti di server.
+ */
+interface SeedTarget {
+  classes: MemClass[];
+  classTests: MemClassTest[];
+  students: MemStudent[];
+  responses: Record<string, MemResponse>;
+  testAttempts: MemAttempt[];
+  classifications: Record<string, ClassificationRow[]>;
+}
+function seedSynthetic(s: SeedTarget, teacherId: string) {
+  SYNTHETIC_RAW.classes.forEach((c, i) => {
+    s.classes.push({ id: c.id, teacherId, name: c.name, joinCode: `SINT${i + 1}A`, mode: "research", academicYear: "2026/2027", createdAt: 10 + i });
+    for (const phase of ["pre", "post"] as Phase[]) s.classTests.push({ classId: c.id, phase, status: "closed", openedAt: "2026-08-03T07:00:00.000Z", closedAt: "2026-09-14T10:00:00.000Z" });
+  });
+  for (const st of SYNTHETIC_RAW.students) {
+    s.students.push({ id: st.id, classId: st.class_id, code: st.code, nickname: st.nickname, pin: pin(), pseudoId: st.pseudo_id, consent: st.consent });
+    for (const phase of ["pre", "post"] as Phase[]) {
+      if (!(phase === "pre" ? st.pre_submitted : st.post_submitted)) continue;
+      const id = `${st.id}-${phase}`;
+      const answers: Record<string, Answer> = {};
+      for (const r of SYNTHETIC_RAW.responses.filter((x) => x.student_id === st.id && x.phase === phase)) {
+        const itemId = `item-${r.item_order}`;
+        answers[itemId] = { tier1: r.tier1, confidenceA: r.conf_a, reason: r.reason, confidenceR: r.conf_r };
+        s.responses[`${id}:${itemId}`] = { answer: answers[itemId]!, clientTs: Date.parse(r.answered_at), changes: r.answer_changes, timeMs: r.response_time_ms, optionOrder: null };
+      }
+      s.testAttempts.push({ id, studentId: st.id, classId: st.class_id, phase, submittedAt: phase === "pre" ? "2026-08-03T09:00:00.000Z" : "2026-09-14T09:00:00.000Z", device: null });
+      s.classifications[id] = classifyAttempt(MEM_ITEMS, answers, MEM_RULE_SET);
+    }
+  }
 }
 
 interface MemClassTest { classId: string; phase: Phase; status: ClassTestStatus; openedAt: string | null; closedAt: string | null }
@@ -475,5 +516,64 @@ export const memoryBackend: Backend = {
       ct.status = "closed";
       ct.closedAt = new Date().toISOString();
     }
+  },
+
+  // ---------------------------------------------------------------- dasbor & statistik (M7)
+
+  async analysisDataset(classId) {
+    const t = await requireStaff();
+    let classes: MemClass[];
+    if (classId === null) {
+      if (t.role !== "admin") throw new BackendError("forbidden", "Hanya peneliti yang bisa melihat semua kelas.");
+      classes = store().classes.filter((c) => c.mode === "research");
+    } else {
+      const c = ownsClass(t, classId);
+      if (!c) throw new BackendError("not_found", "Kelas tidak ditemukan.");
+      classes = [c];
+    }
+    const classIds = new Set(classes.map((c) => c.id));
+    const students = store().students.filter((s) => classIds.has(s.classId));
+    const attempts = store().testAttempts.filter((a) => a.submittedAt && students.some((s) => s.id === a.studentId));
+    const responses: AnalysisResponse[] = [];
+    for (const a of attempts) {
+      for (const c of store().classifications[a.id] ?? []) {
+        const r = store().responses[rkey(a.id, c.item_id)]!;
+        responses.push({
+          studentId: a.studentId,
+          phase: a.phase,
+          itemId: c.item_id,
+          tier1Key: r.answer.tier1,
+          reasonKey: r.answer.reason,
+          confidenceA: r.answer.confidenceA,
+          confidenceR: r.answer.confidenceR,
+          aCorrect: c.a_correct,
+          rCorrect: c.r_correct,
+          confident: c.confident,
+          category: c.category as AnalysisResponse["category"],
+          answeredAt: new Date(r.clientTs).toISOString(),
+          responseTimeMs: r.timeMs,
+          answerChanges: r.changes,
+        });
+      }
+    }
+    const items = analysisItems(MEM_ITEMS, ITEMS);
+    const submitted = (sid: string, phase: Phase) => attempts.some((a) => a.studentId === sid && a.phase === phase);
+    const ds: AnalysisDataset = {
+      testName: ITEMS.test_name,
+      testVersion: ITEMS.test_version,
+      ruleSetId: MEM_RULE_SET.rule_set_id,
+      classes: classes.map((c) => ({ id: c.id, name: c.name })),
+      domains: domainLabels(items, ITEMS),
+      items,
+      students: students.map((s) => ({ id: s.id, pseudoId: s.pseudoId, code: s.code, nickname: s.nickname, classId: s.classId, consent: s.consent, preSubmitted: submitted(s.id, "pre"), postSubmitted: submitted(s.id, "post") })),
+      responses,
+    };
+    return ds;
+  },
+
+  async logExport(classId, format) {
+    const t = await requireStaff();
+    if (classId === null ? t.role !== "admin" : !ownsClass(t, classId)) throw new BackendError("forbidden");
+    store().audit.push({ actor: t.id, action: "export", classId, format, at: Date.now() });
   },
 };

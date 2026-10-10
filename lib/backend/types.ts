@@ -3,6 +3,7 @@
  * antarmuka ini; implementasinya Supabase (produksi) atau memori (uji e2e).
  * Otorisasi tetap ditegakkan di basis data (RLS + fungsi) — lihat DECISIONS D-026.
  */
+import type { AnalysisDataset } from "@/lib/analysis/types";
 import type { DeviceKind } from "@/lib/ar/capabilities";
 import type { Step } from "@/lib/learning/flow";
 import type { Answer } from "@/lib/tes/session";
@@ -120,6 +121,15 @@ export interface Backend {
   classTestOverview(classId: string): Promise<ClassTestOverview[]>;
   openClassTest(classId: string, phase: Phase): Promise<void>;
   closeClassTest(classId: string, phase: Phase): Promise<void>;
+
+  // Dasbor & statistik (M7).
+  /**
+   * Data mentah percobaan yang SUDAH selesai + klasifikasinya. `classId` null = semua kelas
+   * (admin saja); guru hanya kelasnya sendiri. Galat: not_found | forbidden.
+   */
+  analysisDataset(classId: string | null): Promise<AnalysisDataset>;
+  /** Catat ekspor di log audit (FR-55); tanpa data pribadi. */
+  logExport(classId: string | null, format: string): Promise<void>;
 }
 
 export interface SaveResponseInput {

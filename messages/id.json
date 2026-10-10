@@ -447,7 +447,8 @@
         "on": "Aktif",
         "off": "Tidak aktif",
         "error": "Pengaturan belum tersimpan. Coba lagi."
-      }
+      },
+      "resultsLink": "Lihat hasil kelas"
     },
     "import": {
       "title": "Impor daftar siswa",
@@ -521,7 +522,8 @@
         "no_test": "Bank soal belum dimuat di server. Hubungi peneliti.",
         "unknown": "Pengaturan tes belum tersimpan. Coba lagi."
       }
-    }
+    },
+    "navResearch": "Riset"
   },
   "viewer": {
     "open3d": "Buka 3D",
@@ -666,6 +668,194 @@
         "allow": "Izinkan kamera",
         "skip": "Lewati, pakai 3D saja"
       }
+    }
+  },
+  "hasil": {
+    "title": "Hasil kelas {name}",
+    "metaTitle": "Hasil kelas",
+    "lead": "Profil konsepsi dari tes diagnostik awal dan akhir. Siswa tidak melihat halaman ini.",
+    "back": "Kembali ke kelas",
+    "interpretation": "Desain satu kelompok tanpa pembanding: hasil menggambarkan perubahan yang teramati, bukan bukti sebab-akibat.",
+    "interpretationTitle": "Cara membaca",
+    "learnOnly": "Kelas Belajar saja tidak menyimpan tes diagnostik, jadi tidak ada hasil untuk ditampilkan.",
+    "empty": {
+      "title": "Belum ada hasil",
+      "body": "Hasil muncul setelah siswa yang persetujuannya diberikan menyelesaikan tes awal. Buka tes dari halaman kelas."
+    },
+    "phase": {
+      "pre": "Tes awal",
+      "post": "Tes akhir"
+    },
+    "population": {
+      "paired": "Dianalisis: {n, plural, other {# siswa}} yang menyelesaikan tes awal dan tes akhir.",
+      "per_phase": "Belum ada siswa yang menyelesaikan keduanya. Tes awal: {pre, plural, other {# siswa}}; tes akhir: {post, plural, other {# siswa}}.",
+      "excludedTitle": "Tidak ikut dianalisis",
+      "excluded": {
+        "consent_withdrawn": "Persetujuan ditarik: {n}",
+        "consent_pending": "Persetujuan belum diberikan: {n}",
+        "pre_incomplete": "Tes awal belum selesai: {n}",
+        "post_incomplete": "Tes akhir belum selesai: {n}"
+      },
+      "noneExcluded": "Tidak ada."
+    },
+    "summary": {
+      "title": "Ringkasan",
+      "n": "Siswa dianalisis",
+      "pre": "Rata-rata skor tes awal",
+      "post": "Rata-rata skor tes akhir",
+      "ngain": "Rata-rata N-Gain",
+      "ngainCi": "CI 95%: {lower}–{upper}",
+      "scoreNote": "Skor = persentase butir berkategori SC (konsepsi ilmiah).",
+      "scoreNoteTier1": "Skor = persentase butir dengan jawaban tier 1 sesuai kunci.",
+      "na": "—"
+    },
+    "ngainCategory": {
+      "tinggi": "tinggi",
+      "sedang": "sedang",
+      "rendah": "rendah"
+    },
+    "category": {
+      "SC": "Konsepsi ilmiah",
+      "M": "Miskonsepsi",
+      "E": "Error",
+      "LK": "Kurang pengetahuan",
+      "LC": "Kurang yakin"
+    },
+    "pattern": {
+      "retention": "Retensi",
+      "revision": "Revisi",
+      "construction": "Konstruksi",
+      "static": "Statis",
+      "other": "Lainnya"
+    },
+    "profile": {
+      "title": "Profil konsepsi kelas",
+      "lead": "Persentase respons per kategori pada tiap domain. Angka n = jumlah respons (siswa × butir).",
+      "legend": "Keterangan kategori",
+      "nResponses": "n = {n}",
+      "inconsistent": "Sebagian respons hilang; persentase memakai respons yang ada.",
+      "asTable": "Lihat sebagai tabel",
+      "domain": "Domain",
+      "phase": "Tes",
+      "barLabel": "{domain}, {phase}: {parts}"
+    },
+    "discuss": {
+      "title": "Yang perlu dibahas",
+      "lead": "Tiga butir dengan miskonsepsi terbanyak pada {phase}.",
+      "none": "Belum ada miskonsepsi yang tercatat.",
+      "item": "Butir {code}",
+      "mCount": "{n, plural, other {# siswa}} miskonsepsi ({pct})",
+      "alternative": "Konsepsi alternatif yang disasar",
+      "scientific": "Konsep ilmiah",
+      "cardsLater": "Kartu diskusi terkait menyusul (M8)."
+    },
+    "itemMap": {
+      "title": "Peta butir",
+      "lead": "Butir diurutkan dari miskonsepsi terbanyak.",
+      "switchLabel": "Pilih tes",
+      "code": "Butir",
+      "domain": "Domain",
+      "target": "Miskonsepsi yang disasar",
+      "m": "Miskonsepsi",
+      "topTier1": "Jawaban terbanyak",
+      "topReason": "Alasan terbanyak",
+      "count": "{key} · {n} siswa ({pct})",
+      "noData": "Belum ada data untuk tes ini.",
+      "categories": "Sebaran kategori"
+    },
+    "students": {
+      "title": "Profil per siswa",
+      "lead": "Kategori dominan per domain, tes awal → tes akhir, dan polanya.",
+      "code": "Siswa",
+      "pre": "Skor awal",
+      "post": "Skor akhir",
+      "ngain": "N-Gain",
+      "details": "Rincian butir {code}",
+      "item": "Butir",
+      "transition": "{pre} → {post}",
+      "notYet": "belum",
+      "detailsShort": "Rincian butir"
+    },
+    "export": {
+      "title": "Unduh data",
+      "lead": "Hanya kode samaran (student_pseudo_id); tanpa nama dan kode siswa. Siswa tanpa persetujuan tidak ikut.",
+      "long": "CSV respons (format panjang)",
+      "wide": "CSV skor (format lebar)",
+      "xlsx": "Excel (semua tabel)",
+      "json": "JSON mentah"
+    },
+    "pValue": "p = {p}",
+    "pLess": "p < 0,001"
+  },
+  "riset": {
+    "metaTitle": "Riset",
+    "title": "Statistik dan transisi",
+    "lead": "Untuk peneliti: statistik berpasangan, diagram transisi per domain, dan ekspor data.",
+    "adminOnly": "Halaman ini hanya untuk akun peneliti.",
+    "filters": {
+      "title": "Pengaturan analisis",
+      "scope": "Kelas",
+      "all": "Semua kelas penelitian",
+      "score": "Skor",
+      "score_sc": "score_sc — butir SC",
+      "score_tier1": "score_tier1 — tier 1 sesuai kunci",
+      "transition": "Transisi",
+      "per_butir": "Per butir (siswa × butir)",
+      "modus": "Kategori dominan per siswa",
+      "apply": "Terapkan"
+    },
+    "config": "Aturan {ruleSet} · tes {test} versi {version}",
+    "stats": {
+      "title": "Statistik",
+      "ngain": "N-Gain (Hake)",
+      "ngainValue": "{mean} (SD {sd})",
+      "ci": "CI 95% {lower} sampai {upper}",
+      "ngainExcluded": "{n, plural, =0 {Tidak ada siswa dengan skor awal 100.} other {# siswa dengan skor awal 100 dikeluarkan (N-Gain tidak terdefinisi).}}",
+      "ngainCats": "Tinggi {tinggi} · sedang {sedang} · rendah {rendah}",
+      "ttest": "Uji-t berpasangan",
+      "ttestValue": "t({df}) = {t}",
+      "meanDiff": "Selisih rata-rata {d} (CI 95% {lower} sampai {upper})",
+      "wilcoxon": "Wilcoxon signed-rank",
+      "wilcoxonValue": "W = {w}, z = {z}",
+      "effect": "Ukuran efek",
+      "effectValue": "Hedges g_z = {g}",
+      "wilcoxonR": "r = {r}",
+      "shapiro": "Shapiro–Wilk (selisih)",
+      "shapiroValue": "W = {w}",
+      "kr20": "KR-20",
+      "kr20Value": "Awal {pre} · akhir {post}",
+      "kr20Note": "Reliabilitas data kelas ini, bukan pengganti KR-20 uji coba instrumen.",
+      "descriptive": "Skor (rata-rata ± SD)",
+      "descriptiveValue": "Awal {pre} ± {preSd} · akhir {post} ± {postSd}",
+      "unavailable": "Belum bisa dihitung (data belum cukup).",
+      "n": "n berpasangan = {n}",
+      "method": {
+        "exact": "distribusi eksak",
+        "permutation": "uji permutasi eksak",
+        "asymptotic": "pendekatan normal"
+      }
+    },
+    "transitions": {
+      "title": "Transisi konsepsi per domain",
+      "lead": "Kiri: kategori tes awal. Kanan: kategori tes akhir. Tebal pita = jumlah.",
+      "unit_per_butir": "Unit: siswa × butir ({n})",
+      "unit_modus": "Unit: siswa ({n})",
+      "patterns": "Pola",
+      "matrix": "Tabel transisi",
+      "pre": "Awal",
+      "post": "Akhir",
+      "total": "Jumlah",
+      "invariant": "Jumlah semua pola = jumlah unit",
+      "diagramLabel": "Diagram transisi {domain}: {summary}",
+      "members": "Kode samaran per sel",
+      "none": "Belum ada pasangan tes awal dan akhir."
+    },
+    "distribution": {
+      "title": "Distribusi kategori per domain"
+    },
+    "export": {
+      "title": "Ekspor",
+      "lead": "Ekspor tercatat di log audit. Isi: hanya student_pseudo_id; siswa dengan persetujuan ditarik atau belum diberikan tidak ikut."
     }
   }
 }

@@ -273,3 +273,36 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 - Satu butir per layar, "Soal n dari 20", bilah kemajuan, kembali ke butir sebelumnya, layar periksa dengan nomor butir, layar penutup netral tanpa hasil. Opsi diacak per siswa (FR-35) dengan benih tetap (id percobaan + butir) dan diberi huruf A–D sesuai posisi tampil; urutan yang dilihat tersimpan di `option_order`. Butir `fixed_order` tidak diacak.
 - Keadaan biasa (tes belum dibuka, belum ada persetujuan, belum masuk) dijawab API sebagai 200 + `blocked`, bukan status galat, agar konsol bersih.
 - **Belum:** pembatasan laju endpoint tes (PRD §12.4) dan pengatur waktu lembut (FR-31 opsional) → M8.
+
+## D-054 · Populasi dasbor dan analisis
+- **Keputusan:** hanya siswa dengan persetujuan `granted`. Bila sudah ada siswa yang menyelesaikan tes awal **dan** akhir, semua tampilan kelas (distribusi, peta butir, ringkasan) memakai kelompok berpasangan itu; siswa lain dilaporkan dengan alasan (ditarik, belum diberikan, tes awal/akhir belum selesai). Bila belum ada pasangan, tiap fase memakai siswa yang sudah menyelesaikan fase itu, agar profil tes awal bisa dibaca sebelum tes akhir.
+- **Peta butir (FR-43):** urut jumlah M menurun, seri → nomor butir; opsi terbanyak seri → kunci terkecil. **Yang perlu dibahas (FR-45):** tiga teratas peta butir pada fase terakhir yang ada datanya (butir tanpa M tidak ditampilkan). Teks konsepsi alternatif/konsep ilmiah diambil dari `meta` di `data/items.json` (bukan dikarang). Kartu diskusi terkait → M8.
+- **Profil siswa (FR-44):** guru melihat kode + nama panggilan (kelasnya sendiri); kategori dominan per domain memakai `modus` (seri: M > E > LK > LC > SC) agar ada satu nilai per domain.
+- **Urutan domain di layar** mengikuti urutan butir instrumen; di pustaka dan ekspor diurutkan menurut id (stabil untuk analisis ulang).
+
+## D-055 · Bentuk ekspor (PRD §7.4)
+- `item_id` = kode butir (B01…B20), stabil lintas basis data; UUID tidak berguna untuk analisis ulang.
+- `confidence_level` dipecah menjadi `confidence_a_level` dan `confidence_r_level` (label tingkat, mis. "Yakin") karena instrumen four-tier punya dua tingkat keyakinan; kolom `confident` tetap (gabungan).
+- `answered_at` = cap waktu klien jawaban terakhir (bukan waktu simpan pertama).
+- `scores_wide.transition_{domain}` = pola dari kategori dominan (modus) pre → post, karena mode `per_butir` tidak menghasilkan satu nilai per siswa. Sheet `transitions` memakai mode yang dipilih (bawaan `per_butir`, D-034/analysis.json).
+- CSV: RFC 4180, koma, CRLF, UTF-8 **tanpa** BOM (pandas/R membaca langsung; pengguna Excel memakai XLSX). Sel teks yang diawali `= + - @` (bukan angka) diberi awalan `'` (penangkal injeksi formula).
+- Hanya `student_pseudo_id`; siswa `withdrawn`/`pending` tidak ikut (FR-61). Pemetaan pseudo → nama (dengan konfirmasi admin) belum dibuat → M8.
+
+## D-056 · Penulis XLSX sendiri, tanpa dependensi
+- **Keputusan:** `lib/analysis/xlsx.ts` (~150 baris) menulis SpreadsheetML minimal (inline string, angka, boolean, baris judul tebal & dibekukan) dan ZIP dengan `node:zlib` (deflate + crc32), keluaran deterministik.
+- **Alasan:** SheetJS di npm usang dan punya kerentanan yang diketahui; exceljs berat untuk kebutuhan enam tabel. Diverifikasi: dibaca ulang oleh uji (unzip + XML) dan secara manual oleh pandas/openpyxl (isi sama dengan CSV).
+
+## D-057 · Akses data analisis
+- **Keputusan:** fungsi DB `analysis_dataset(kelas)` (SECURITY DEFINER): guru hanya kelasnya, admin semua kelas penelitian (`null`). Hanya percobaan yang sudah selesai, dengan klasifikasi aturan milik tes. Isi butir (berisi kunci) **tidak** ikut; server membacanya dengan service role, sehingga RPC langsung dari peramban tidak membocorkan kunci. `log_export` mencatat setiap ekspor (FR-55) tanpa data pribadi.
+- Ekspor `/api/riset/ekspor`: guru boleh untuk kelasnya sendiri (PRD §3 peran Guru: "ekspor"); semua kelas hanya admin. Halaman `/riset` hanya admin; guru melihat pesan.
+- Statistik selalu dihitung di server dari data mentah (lib/analysis → lib/stats), tidak disimpan, sehingga perubahan aturan/skor langsung tercermin.
+
+## D-058 · Bukti "hasil aplikasi = hitungan rujukan" (kriteria M7)
+- `tests/fixtures/generate_analysis_reference.py` membuat dataset **sintetis** (32 siswa, 2 kelas, kasus tepi: skor awal 100, persetujuan ditarik/belum, tes akhir belum selesai) lalu menghitung ulang **secara independen** dengan pandas/NumPy/SciPy dari PRD dan berkas data: klasifikasi pedoman-v1, distribusi, peta butir, skor, N-Gain + CI-t, uji-t, Wilcoxon, Shapiro, d_z/Hedges, KR-20, transisi per butir & modus, baris ekspor panjang/lebar.
+- `lib/analysis/analysis.test.ts` membandingkan semuanya (dua cakupan × dua metode skor × dua mode transisi). Uji mutasi: mengubah satu angka rujukan membuat uji gagal.
+- Backend memori memuat dataset yang sama sebagai kelas contoh "6A/6B (sintetis)" (guru `guru3@contoh.id`, peneliti `peneliti@contoh.id`), sehingga e2e membandingkan angka di layar dan API dengan rujukan.
+
+## D-059 · Tampilan hasil (PRD §7.3)
+- Batang bertumpuk 100% dengan **pola isian** per kategori (SC polos, M garis miring, E titik, LK garis datar, LC arsir), ikon, kode, dan angka tertulis di bawah tiap batang; tabel padanan. Diagram transisi = pita kiri→kanan (SVG) + tabel transisi + daftar kode samaran per sel (admin).
+- Tabel lebar bisa digulir dan dapat difokus (axe `scrollable-region-focusable`). Teks persentase tidak berwarna merah agar kontras di mode gelap.
+- Ditunda: PDF ringkasan kelas (FR-53), `POST /api/riset/reklasifikasi`, editor bank soal/aturan (FR-54) → M8.

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
-import { Users } from "lucide-react";
+import { BarChart3, Users } from "lucide-react";
+import { LinkButton } from "@/components/ui/Button";
 import { FreeExploreToggle } from "@/components/guru/FreeExploreToggle";
 import { ImportPanel } from "@/components/guru/ImportPanel";
 import { TestControl } from "@/components/guru/TestControl";
@@ -44,6 +45,13 @@ async function ClassDetail({ params }: { params: PageProps<"/guru/kelas/[id]">["
           {cls.joinCode}
         </span>
       </div>
+      {cls.mode === "research" ? (
+        <div className="mb-6">
+          <LinkButton href={`/guru/kelas/${cls.id}/hasil`} variant="kedua" size="kecil" icon={<BarChart3 aria-hidden="true" className="size-5" />}>
+            {t("class.resultsLink")}
+          </LinkButton>
+        </div>
+      ) : null}
       <TestControl classId={cls.id} mode={cls.mode} initial={tests} />
       <FreeExploreToggle classId={cls.id} initial={cls.freeExplore} />
       <div className="grid grid-cols-[minmax(0,1fr)] gap-8 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] xl:items-start">

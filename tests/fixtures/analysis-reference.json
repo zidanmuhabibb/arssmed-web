@@ -1,0 +1,6008 @@
+{
+ "generated_with": {
+  "python": "3",
+  "pandas": "3.0.5",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1"
+ },
+ "rule_set_id": "pedoman-v1",
+ "scopes": {
+  "all": {
+   "n_scope": 32,
+   "paired": [
+    "syn-class-a-s01",
+    "syn-class-a-s02",
+    "syn-class-a-s03",
+    "syn-class-a-s04",
+    "syn-class-a-s05",
+    "syn-class-a-s06",
+    "syn-class-a-s07",
+    "syn-class-a-s08",
+    "syn-class-a-s09",
+    "syn-class-a-s10",
+    "syn-class-a-s11",
+    "syn-class-a-s12",
+    "syn-class-a-s13",
+    "syn-class-a-s14",
+    "syn-class-a-s15",
+    "syn-class-a-s16",
+    "syn-class-a-s17",
+    "syn-class-b-s01",
+    "syn-class-b-s02",
+    "syn-class-b-s03",
+    "syn-class-b-s04",
+    "syn-class-b-s05",
+    "syn-class-b-s06",
+    "syn-class-b-s07",
+    "syn-class-b-s08",
+    "syn-class-b-s09",
+    "syn-class-b-s10",
+    "syn-class-b-s11"
+   ],
+   "excluded_by_reason": {
+    "consent_withdrawn": 1,
+    "consent_pending": 1,
+    "pre_incomplete": 0,
+    "post_incomplete": 2
+   },
+   "distribution": {
+    "pre": [
+     {
+      "domain": "benda_langit",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 17,
+       "M": 42,
+       "E": 62,
+       "LK": 12,
+       "LC": 7
+      },
+      "percent": {
+       "SC": 12.142857142857142,
+       "M": 30.0,
+       "E": 44.285714285714285,
+       "LK": 8.571428571428571,
+       "LC": 5.0
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 45,
+       "M": 40,
+       "E": 32,
+       "LK": 15,
+       "LC": 8
+      },
+      "percent": {
+       "SC": 32.142857142857146,
+       "M": 28.57142857142857,
+       "E": 22.857142857142858,
+       "LK": 10.714285714285714,
+       "LC": 5.714285714285714
+      }
+     },
+     {
+      "domain": "planet",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 33,
+       "M": 29,
+       "E": 50,
+       "LK": 18,
+       "LC": 10
+      },
+      "percent": {
+       "SC": 23.57142857142857,
+       "M": 20.714285714285715,
+       "E": 35.714285714285715,
+       "LK": 12.857142857142856,
+       "LC": 7.142857142857142
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 17,
+       "M": 51,
+       "E": 44,
+       "LK": 24,
+       "LC": 4
+      },
+      "percent": {
+       "SC": 12.142857142857142,
+       "M": 36.42857142857142,
+       "E": 31.428571428571427,
+       "LK": 17.142857142857142,
+       "LC": 2.857142857142857
+      }
+     }
+    ],
+    "post": [
+     {
+      "domain": "benda_langit",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 73,
+       "M": 18,
+       "E": 20,
+       "LK": 6,
+       "LC": 23
+      },
+      "percent": {
+       "SC": 52.142857142857146,
+       "M": 12.857142857142856,
+       "E": 14.285714285714285,
+       "LK": 4.285714285714286,
+       "LC": 16.428571428571427
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 74,
+       "M": 14,
+       "E": 15,
+       "LK": 4,
+       "LC": 33
+      },
+      "percent": {
+       "SC": 52.85714285714286,
+       "M": 10.0,
+       "E": 10.714285714285714,
+       "LK": 2.857142857142857,
+       "LC": 23.57142857142857
+      }
+     },
+     {
+      "domain": "planet",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 65,
+       "M": 16,
+       "E": 21,
+       "LK": 5,
+       "LC": 33
+      },
+      "percent": {
+       "SC": 46.42857142857143,
+       "M": 11.428571428571429,
+       "E": 15.0,
+       "LK": 3.571428571428571,
+       "LC": 23.57142857142857
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_responses": 140,
+      "n_students": 28,
+      "n_items": 5,
+      "counts": {
+       "SC": 66,
+       "M": 23,
+       "E": 22,
+       "LK": 9,
+       "LC": 20
+      },
+      "percent": {
+       "SC": 47.14285714285714,
+       "M": 16.428571428571427,
+       "E": 15.714285714285714,
+       "LK": 6.428571428571428,
+       "LC": 14.285714285714285
+      }
+     }
+    ]
+   },
+   "item_map": {
+    "pre": [
+     {
+      "item_order": 13,
+      "n": 28,
+      "m_count": 13,
+      "counts": {
+       "SC": 1,
+       "M": 13,
+       "E": 10,
+       "LK": 4,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 17
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 26
+      }
+     },
+     {
+      "item_order": 4,
+      "n": 28,
+      "m_count": 12,
+      "counts": {
+       "SC": 3,
+       "M": 12,
+       "E": 11,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 15
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 18
+      }
+     },
+     {
+      "item_order": 14,
+      "n": 28,
+      "m_count": 12,
+      "counts": {
+       "SC": 2,
+       "M": 12,
+       "E": 8,
+       "LK": 6,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 16
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 20
+      }
+     },
+     {
+      "item_order": 10,
+      "n": 28,
+      "m_count": 11,
+      "counts": {
+       "SC": 1,
+       "M": 11,
+       "E": 13,
+       "LK": 3,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 15
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 20
+      }
+     },
+     {
+      "item_order": 17,
+      "n": 28,
+      "m_count": 11,
+      "counts": {
+       "SC": 11,
+       "M": 11,
+       "E": 4,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 20,
+      "n": 28,
+      "m_count": 11,
+      "counts": {
+       "SC": 8,
+       "M": 11,
+       "E": 5,
+       "LK": 3,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 15
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 11,
+      "n": 28,
+      "m_count": 10,
+      "counts": {
+       "SC": 5,
+       "M": 10,
+       "E": 11,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 11
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 10
+      }
+     },
+     {
+      "item_order": 3,
+      "n": 28,
+      "m_count": 9,
+      "counts": {
+       "SC": 4,
+       "M": 9,
+       "E": 11,
+       "LK": 3,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 17
+      }
+     },
+     {
+      "item_order": 5,
+      "n": 28,
+      "m_count": 9,
+      "counts": {
+       "SC": 1,
+       "M": 9,
+       "E": 12,
+       "LK": 4,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 16
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 17
+      }
+     },
+     {
+      "item_order": 2,
+      "n": 28,
+      "m_count": 8,
+      "counts": {
+       "SC": 3,
+       "M": 8,
+       "E": 14,
+       "LK": 2,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 20
+      }
+     },
+     {
+      "item_order": 12,
+      "n": 28,
+      "m_count": 8,
+      "counts": {
+       "SC": 3,
+       "M": 8,
+       "E": 7,
+       "LK": 8,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 10
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 18
+      }
+     },
+     {
+      "item_order": 15,
+      "n": 28,
+      "m_count": 8,
+      "counts": {
+       "SC": 6,
+       "M": 8,
+       "E": 8,
+       "LK": 5,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 8,
+      "n": 28,
+      "m_count": 7,
+      "counts": {
+       "SC": 2,
+       "M": 7,
+       "E": 13,
+       "LK": 6,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 20
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 19,
+      "n": 28,
+      "m_count": 7,
+      "counts": {
+       "SC": 4,
+       "M": 7,
+       "E": 14,
+       "LK": 3,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 16
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 9,
+      "n": 28,
+      "m_count": 6,
+      "counts": {
+       "SC": 6,
+       "M": 6,
+       "E": 11,
+       "LK": 3,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 17
+      }
+     },
+     {
+      "item_order": 18,
+      "n": 28,
+      "m_count": 6,
+      "counts": {
+       "SC": 12,
+       "M": 6,
+       "E": 3,
+       "LK": 3,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 17
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 22
+      }
+     },
+     {
+      "item_order": 6,
+      "n": 28,
+      "m_count": 5,
+      "counts": {
+       "SC": 8,
+       "M": 5,
+       "E": 6,
+       "LK": 5,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 18
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 16,
+      "n": 28,
+      "m_count": 5,
+      "counts": {
+       "SC": 10,
+       "M": 5,
+       "E": 6,
+       "LK": 5,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 16
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 12
+      }
+     },
+     {
+      "item_order": 1,
+      "n": 28,
+      "m_count": 4,
+      "counts": {
+       "SC": 6,
+       "M": 4,
+       "E": 14,
+       "LK": 2,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 14
+      }
+     },
+     {
+      "item_order": 7,
+      "n": 28,
+      "m_count": 0,
+      "counts": {
+       "SC": 16,
+       "M": 0,
+       "E": 7,
+       "LK": 1,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 22
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 23
+      }
+     }
+    ],
+    "post": [
+     {
+      "item_order": 8,
+      "n": 28,
+      "m_count": 7,
+      "counts": {
+       "SC": 7,
+       "M": 7,
+       "E": 7,
+       "LK": 2,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 18
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 14,
+      "n": 28,
+      "m_count": 7,
+      "counts": {
+       "SC": 13,
+       "M": 7,
+       "E": 3,
+       "LK": 2,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 17
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 19
+      }
+     },
+     {
+      "item_order": 2,
+      "n": 28,
+      "m_count": 6,
+      "counts": {
+       "SC": 9,
+       "M": 6,
+       "E": 6,
+       "LK": 2,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 17
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 10,
+      "n": 28,
+      "m_count": 6,
+      "counts": {
+       "SC": 7,
+       "M": 6,
+       "E": 6,
+       "LK": 3,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 16
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 12,
+      "n": 28,
+      "m_count": 6,
+      "counts": {
+       "SC": 14,
+       "M": 6,
+       "E": 6,
+       "LK": 0,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 18
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 18
+      }
+     },
+     {
+      "item_order": 19,
+      "n": 28,
+      "m_count": 6,
+      "counts": {
+       "SC": 8,
+       "M": 6,
+       "E": 5,
+       "LK": 3,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 14
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 17
+      }
+     },
+     {
+      "item_order": 15,
+      "n": 28,
+      "m_count": 5,
+      "counts": {
+       "SC": 16,
+       "M": 5,
+       "E": 1,
+       "LK": 1,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 21
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 27
+      }
+     },
+     {
+      "item_order": 3,
+      "n": 28,
+      "m_count": 4,
+      "counts": {
+       "SC": 13,
+       "M": 4,
+       "E": 6,
+       "LK": 0,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 20
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 23
+      }
+     },
+     {
+      "item_order": 5,
+      "n": 28,
+      "m_count": 4,
+      "counts": {
+       "SC": 17,
+       "M": 4,
+       "E": 3,
+       "LK": 1,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 21
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 22
+      }
+     },
+     {
+      "item_order": 20,
+      "n": 28,
+      "m_count": 4,
+      "counts": {
+       "SC": 17,
+       "M": 4,
+       "E": 1,
+       "LK": 0,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 23
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 27
+      }
+     },
+     {
+      "item_order": 13,
+      "n": 28,
+      "m_count": 3,
+      "counts": {
+       "SC": 7,
+       "M": 3,
+       "E": 7,
+       "LK": 6,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 16
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 16,
+      "n": 28,
+      "m_count": 3,
+      "counts": {
+       "SC": 17,
+       "M": 3,
+       "E": 3,
+       "LK": 0,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 22
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 26
+      }
+     },
+     {
+      "item_order": 1,
+      "n": 28,
+      "m_count": 2,
+      "counts": {
+       "SC": 17,
+       "M": 2,
+       "E": 4,
+       "LK": 1,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 24
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 22
+      }
+     },
+     {
+      "item_order": 4,
+      "n": 28,
+      "m_count": 2,
+      "counts": {
+       "SC": 17,
+       "M": 2,
+       "E": 1,
+       "LK": 2,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 24
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 23
+      }
+     },
+     {
+      "item_order": 11,
+      "n": 28,
+      "m_count": 2,
+      "counts": {
+       "SC": 16,
+       "M": 2,
+       "E": 5,
+       "LK": 0,
+       "LC": 5
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 22
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 24
+      }
+     },
+     {
+      "item_order": 6,
+      "n": 28,
+      "m_count": 1,
+      "counts": {
+       "SC": 18,
+       "M": 1,
+       "E": 1,
+       "LK": 0,
+       "LC": 8
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 26
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 26
+      }
+     },
+     {
+      "item_order": 7,
+      "n": 28,
+      "m_count": 1,
+      "counts": {
+       "SC": 19,
+       "M": 1,
+       "E": 0,
+       "LK": 0,
+       "LC": 8
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 28
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 27
+      }
+     },
+     {
+      "item_order": 9,
+      "n": 28,
+      "m_count": 1,
+      "counts": {
+       "SC": 14,
+       "M": 1,
+       "E": 7,
+       "LK": 0,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 21
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 22
+      }
+     },
+     {
+      "item_order": 18,
+      "n": 28,
+      "m_count": 1,
+      "counts": {
+       "SC": 14,
+       "M": 1,
+       "E": 3,
+       "LK": 0,
+       "LC": 10
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 24
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 25
+      }
+     },
+     {
+      "item_order": 17,
+      "n": 28,
+      "m_count": 0,
+      "counts": {
+       "SC": 18,
+       "M": 0,
+       "E": 3,
+       "LK": 1,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 24
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 26
+      }
+     }
+    ]
+   },
+   "stats": {
+    "score_sc": {
+     "students": [
+      {
+       "id": "syn-class-a-s01",
+       "pre": 30.0,
+       "post": 40.0,
+       "n_gain": 0.14285714285714285
+      },
+      {
+       "id": "syn-class-a-s02",
+       "pre": 15.0,
+       "post": 45.0,
+       "n_gain": 0.35294117647058826
+      },
+      {
+       "id": "syn-class-a-s03",
+       "pre": 20.0,
+       "post": 55.00000000000001,
+       "n_gain": 0.4375000000000001
+      },
+      {
+       "id": "syn-class-a-s04",
+       "pre": 60.0,
+       "post": 55.00000000000001,
+       "n_gain": -0.12499999999999982
+      },
+      {
+       "id": "syn-class-a-s05",
+       "pre": 100.0,
+       "post": 65.0,
+       "n_gain": null
+      },
+      {
+       "id": "syn-class-a-s06",
+       "pre": 10.0,
+       "post": 35.0,
+       "n_gain": 0.2777777777777778
+      },
+      {
+       "id": "syn-class-a-s07",
+       "pre": 5.0,
+       "post": 60.0,
+       "n_gain": 0.5789473684210527
+      },
+      {
+       "id": "syn-class-a-s08",
+       "pre": 25.0,
+       "post": 50.0,
+       "n_gain": 0.3333333333333333
+      },
+      {
+       "id": "syn-class-a-s09",
+       "pre": 5.0,
+       "post": 55.00000000000001,
+       "n_gain": 0.5263157894736843
+      },
+      {
+       "id": "syn-class-a-s10",
+       "pre": 40.0,
+       "post": 65.0,
+       "n_gain": 0.4166666666666667
+      },
+      {
+       "id": "syn-class-a-s11",
+       "pre": 0.0,
+       "post": 25.0,
+       "n_gain": 0.25
+      },
+      {
+       "id": "syn-class-a-s12",
+       "pre": 10.0,
+       "post": 60.0,
+       "n_gain": 0.5555555555555556
+      },
+      {
+       "id": "syn-class-a-s13",
+       "pre": 5.0,
+       "post": 80.0,
+       "n_gain": 0.7894736842105263
+      },
+      {
+       "id": "syn-class-a-s14",
+       "pre": 15.0,
+       "post": 35.0,
+       "n_gain": 0.23529411764705882
+      },
+      {
+       "id": "syn-class-a-s15",
+       "pre": 20.0,
+       "post": 45.0,
+       "n_gain": 0.3125
+      },
+      {
+       "id": "syn-class-a-s16",
+       "pre": 5.0,
+       "post": 60.0,
+       "n_gain": 0.5789473684210527
+      },
+      {
+       "id": "syn-class-a-s17",
+       "pre": 5.0,
+       "post": 5.0,
+       "n_gain": 0.0
+      },
+      {
+       "id": "syn-class-b-s01",
+       "pre": 25.0,
+       "post": 50.0,
+       "n_gain": 0.3333333333333333
+      },
+      {
+       "id": "syn-class-b-s02",
+       "pre": 10.0,
+       "post": 60.0,
+       "n_gain": 0.5555555555555556
+      },
+      {
+       "id": "syn-class-b-s03",
+       "pre": 40.0,
+       "post": 60.0,
+       "n_gain": 0.3333333333333333
+      },
+      {
+       "id": "syn-class-b-s04",
+       "pre": 5.0,
+       "post": 30.0,
+       "n_gain": 0.2631578947368421
+      },
+      {
+       "id": "syn-class-b-s05",
+       "pre": 20.0,
+       "post": 55.00000000000001,
+       "n_gain": 0.4375000000000001
+      },
+      {
+       "id": "syn-class-b-s06",
+       "pre": 5.0,
+       "post": 50.0,
+       "n_gain": 0.47368421052631576
+      },
+      {
+       "id": "syn-class-b-s07",
+       "pre": 10.0,
+       "post": 50.0,
+       "n_gain": 0.4444444444444444
+      },
+      {
+       "id": "syn-class-b-s08",
+       "pre": 20.0,
+       "post": 20.0,
+       "n_gain": 0.0
+      },
+      {
+       "id": "syn-class-b-s09",
+       "pre": 35.0,
+       "post": 65.0,
+       "n_gain": 0.46153846153846156
+      },
+      {
+       "id": "syn-class-b-s10",
+       "pre": 20.0,
+       "post": 75.0,
+       "n_gain": 0.6875
+      },
+      {
+       "id": "syn-class-b-s11",
+       "pre": 0.0,
+       "post": 40.0,
+       "n_gain": 0.4
+      }
+     ],
+     "pre_mean": 20.0,
+     "pre_sd": 21.081851067789195,
+     "post_mean": 49.642857142857146,
+     "post_sd": 16.607036183306484,
+     "ngain": {
+      "mean": 0.3723391560852861,
+      "sd": 0.20797635946372728,
+      "n": 27,
+      "excluded_pre_max": 1,
+      "ci_low": 0.29006644838885143,
+      "ci_high": 0.4546118637817208,
+      "category": "sedang",
+      "categories": {
+       "tinggi": 1,
+       "sedang": 18,
+       "rendah": 8
+      }
+     },
+     "ttest": {
+      "t": 6.989860944852107,
+      "p": 1.633847965857658e-07,
+      "df": 27,
+      "ci_low": 20.941379479531932,
+      "ci_high": 38.34433480618235,
+      "mean_diff": 29.642857142857142,
+      "sd_diff": 22.44039724629287,
+      "cohen_dz": 1.3209595542144028,
+      "hedges_gz": 1.2839233050308214
+     },
+     "wilcoxon": {
+      "W": 15.0,
+      "p": 4.367991595231779e-05,
+      "z": -4.087099849867078,
+      "n_zero": 2
+     },
+     "shapiro": {
+      "W": 0.9479186522479075,
+      "p": 0.17559346412101573
+     },
+     "kr20_pre": {
+      "kr20": 0.881578947368421,
+      "k": 20,
+      "n": 28
+     },
+     "kr20_post": {
+      "kr20": 0.5982582355168496,
+      "k": 20,
+      "n": 28
+     }
+    },
+    "score_tier1": {
+     "students": [
+      {
+       "id": "syn-class-a-s01",
+       "pre": 50.0,
+       "post": 95.0,
+       "n_gain": 0.9
+      },
+      {
+       "id": "syn-class-a-s02",
+       "pre": 20.0,
+       "post": 65.0,
+       "n_gain": 0.5625
+      },
+      {
+       "id": "syn-class-a-s03",
+       "pre": 45.0,
+       "post": 85.0,
+       "n_gain": 0.7272727272727273
+      },
+      {
+       "id": "syn-class-a-s04",
+       "pre": 70.0,
+       "post": 85.0,
+       "n_gain": 0.5
+      },
+      {
+       "id": "syn-class-a-s05",
+       "pre": 100.0,
+       "post": 100.0,
+       "n_gain": null
+      },
+      {
+       "id": "syn-class-a-s06",
+       "pre": 15.0,
+       "post": 50.0,
+       "n_gain": 0.4117647058823529
+      },
+      {
+       "id": "syn-class-a-s07",
+       "pre": 15.0,
+       "post": 65.0,
+       "n_gain": 0.5882352941176471
+      },
+      {
+       "id": "syn-class-a-s08",
+       "pre": 55.00000000000001,
+       "post": 80.0,
+       "n_gain": 0.5555555555555555
+      },
+      {
+       "id": "syn-class-a-s09",
+       "pre": 45.0,
+       "post": 75.0,
+       "n_gain": 0.5454545454545454
+      },
+      {
+       "id": "syn-class-a-s10",
+       "pre": 70.0,
+       "post": 95.0,
+       "n_gain": 0.8333333333333334
+      },
+      {
+       "id": "syn-class-a-s11",
+       "pre": 0.0,
+       "post": 45.0,
+       "n_gain": 0.45
+      },
+      {
+       "id": "syn-class-a-s12",
+       "pre": 40.0,
+       "post": 80.0,
+       "n_gain": 0.6666666666666666
+      },
+      {
+       "id": "syn-class-a-s13",
+       "pre": 35.0,
+       "post": 95.0,
+       "n_gain": 0.9230769230769231
+      },
+      {
+       "id": "syn-class-a-s14",
+       "pre": 30.0,
+       "post": 60.0,
+       "n_gain": 0.42857142857142855
+      },
+      {
+       "id": "syn-class-a-s15",
+       "pre": 35.0,
+       "post": 60.0,
+       "n_gain": 0.38461538461538464
+      },
+      {
+       "id": "syn-class-a-s16",
+       "pre": 25.0,
+       "post": 70.0,
+       "n_gain": 0.6
+      },
+      {
+       "id": "syn-class-a-s17",
+       "pre": 10.0,
+       "post": 25.0,
+       "n_gain": 0.16666666666666666
+      },
+      {
+       "id": "syn-class-b-s01",
+       "pre": 30.0,
+       "post": 85.0,
+       "n_gain": 0.7857142857142857
+      },
+      {
+       "id": "syn-class-b-s02",
+       "pre": 40.0,
+       "post": 80.0,
+       "n_gain": 0.6666666666666666
+      },
+      {
+       "id": "syn-class-b-s03",
+       "pre": 55.00000000000001,
+       "post": 100.0,
+       "n_gain": 1.0
+      },
+      {
+       "id": "syn-class-b-s04",
+       "pre": 15.0,
+       "post": 45.0,
+       "n_gain": 0.35294117647058826
+      },
+      {
+       "id": "syn-class-b-s05",
+       "pre": 35.0,
+       "post": 95.0,
+       "n_gain": 0.9230769230769231
+      },
+      {
+       "id": "syn-class-b-s06",
+       "pre": 25.0,
+       "post": 70.0,
+       "n_gain": 0.6
+      },
+      {
+       "id": "syn-class-b-s07",
+       "pre": 30.0,
+       "post": 75.0,
+       "n_gain": 0.6428571428571429
+      },
+      {
+       "id": "syn-class-b-s08",
+       "pre": 55.00000000000001,
+       "post": 65.0,
+       "n_gain": 0.2222222222222221
+      },
+      {
+       "id": "syn-class-b-s09",
+       "pre": 50.0,
+       "post": 90.0,
+       "n_gain": 0.8
+      },
+      {
+       "id": "syn-class-b-s10",
+       "pre": 35.0,
+       "post": 90.0,
+       "n_gain": 0.8461538461538461
+      },
+      {
+       "id": "syn-class-b-s11",
+       "pre": 20.0,
+       "post": 55.00000000000001,
+       "n_gain": 0.4375000000000001
+      }
+     ],
+     "pre_mean": 37.5,
+     "pre_sd": 21.235016504018215,
+     "post_mean": 74.28571428571429,
+     "post_sd": 19.037695827853284,
+     "ngain": {
+      "mean": 0.6118831664583299,
+      "sd": 0.21834506825931088,
+      "n": 27,
+      "excluded_pre_max": 1,
+      "ci_low": 0.5255087341710419,
+      "ci_high": 0.6982575987456178,
+      "category": "sedang",
+      "categories": {
+       "tinggi": 9,
+       "sedang": 16,
+       "rendah": 2
+      }
+     },
+     "ttest": {
+      "t": 13.045990225451144,
+      "p": 3.581760920927808e-13,
+      "df": 27,
+      "ci_low": 31.00017789962189,
+      "ci_high": 42.57125067180668,
+      "mean_diff": 36.785714285714285,
+      "sd_diff": 14.920423841803144,
+      "cohen_dz": 2.4654604102230855,
+      "hedges_gz": 2.3963353519925317
+     },
+     "wilcoxon": {
+      "W": 0.0,
+      "p": 5.379102718181191e-06,
+      "z": -4.549431551589889,
+      "n_zero": 1
+     },
+     "shapiro": {
+      "W": 0.9508560799459984,
+      "p": 0.20817622906290034
+     },
+     "kr20_pre": {
+      "kr20": 0.8071513485973661,
+      "k": 20,
+      "n": 28
+     },
+     "kr20_post": {
+      "kr20": 0.7904341144832885,
+      "k": 20,
+      "n": 28
+     }
+    }
+   },
+   "transitions": {
+    "per_butir": [
+     {
+      "domain": "benda_langit",
+      "n_units": 140,
+      "pattern_counts": {
+       "retention": 8,
+       "revision": 69,
+       "construction": 5,
+       "static": 13,
+       "other": 45
+      },
+      "matrix": {
+       "SC": {
+        "SC": 8,
+        "M": 1,
+        "E": 0,
+        "LK": 0,
+        "LC": 8
+       },
+       "M": {
+        "SC": 18,
+        "M": 5,
+        "E": 8,
+        "LK": 4,
+        "LC": 7
+       },
+       "E": {
+        "SC": 36,
+        "M": 10,
+        "E": 8,
+        "LK": 1,
+        "LC": 7
+       },
+       "LK": {
+        "SC": 5,
+        "M": 2,
+        "E": 4,
+        "LK": 1,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 6,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       }
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_units": 140,
+      "pattern_counts": {
+       "retention": 25,
+       "revision": 47,
+       "construction": 6,
+       "static": 14,
+       "other": 48
+      },
+      "matrix": {
+       "SC": {
+        "SC": 25,
+        "M": 2,
+        "E": 3,
+        "LK": 0,
+        "LC": 15
+       },
+       "M": {
+        "SC": 27,
+        "M": 3,
+        "E": 3,
+        "LK": 2,
+        "LC": 5
+       },
+       "E": {
+        "SC": 12,
+        "M": 5,
+        "E": 8,
+        "LK": 2,
+        "LC": 5
+       },
+       "LK": {
+        "SC": 6,
+        "M": 4,
+        "E": 1,
+        "LK": 0,
+        "LC": 4
+       },
+       "LC": {
+        "SC": 4,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 4
+       }
+      }
+     },
+     {
+      "domain": "planet",
+      "n_units": 140,
+      "pattern_counts": {
+       "retention": 18,
+       "revision": 40,
+       "construction": 9,
+       "static": 17,
+       "other": 56
+      },
+      "matrix": {
+       "SC": {
+        "SC": 18,
+        "M": 1,
+        "E": 1,
+        "LK": 0,
+        "LC": 13
+       },
+       "M": {
+        "SC": 12,
+        "M": 7,
+        "E": 6,
+        "LK": 0,
+        "LC": 4
+       },
+       "E": {
+        "SC": 18,
+        "M": 6,
+        "E": 9,
+        "LK": 3,
+        "LC": 14
+       },
+       "LK": {
+        "SC": 9,
+        "M": 1,
+        "E": 5,
+        "LK": 2,
+        "LC": 1
+       },
+       "LC": {
+        "SC": 8,
+        "M": 1,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       }
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_units": 140,
+      "pattern_counts": {
+       "retention": 8,
+       "revision": 56,
+       "construction": 12,
+       "static": 19,
+       "other": 45
+      },
+      "matrix": {
+       "SC": {
+        "SC": 8,
+        "M": 2,
+        "E": 2,
+        "LK": 0,
+        "LC": 5
+       },
+       "M": {
+        "SC": 24,
+        "M": 9,
+        "E": 8,
+        "LK": 5,
+        "LC": 5
+       },
+       "E": {
+        "SC": 19,
+        "M": 8,
+        "E": 8,
+        "LK": 2,
+        "LC": 7
+       },
+       "LK": {
+        "SC": 12,
+        "M": 4,
+        "E": 4,
+        "LK": 2,
+        "LC": 2
+       },
+       "LC": {
+        "SC": 3,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       }
+      }
+     }
+    ],
+    "modus": [
+     {
+      "domain": "benda_langit",
+      "n_units": 28,
+      "pattern_counts": {
+       "retention": 1,
+       "revision": 19,
+       "construction": 0,
+       "static": 2,
+       "other": 6
+      },
+      "matrix": {
+       "SC": {
+        "SC": 1,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       },
+       "M": {
+        "SC": 6,
+        "M": 1,
+        "E": 3,
+        "LK": 0,
+        "LC": 0
+       },
+       "E": {
+        "SC": 10,
+        "M": 3,
+        "E": 1,
+        "LK": 1,
+        "LC": 1
+       },
+       "LK": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_units": 28,
+      "pattern_counts": {
+       "retention": 3,
+       "revision": 13,
+       "construction": 1,
+       "static": 3,
+       "other": 8
+      },
+      "matrix": {
+       "SC": {
+        "SC": 3,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 4
+       },
+       "M": {
+        "SC": 7,
+        "M": 1,
+        "E": 1,
+        "LK": 0,
+        "LC": 2
+       },
+       "E": {
+        "SC": 3,
+        "M": 0,
+        "E": 2,
+        "LK": 0,
+        "LC": 2
+       },
+       "LK": {
+        "SC": 1,
+        "M": 1,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     },
+     {
+      "domain": "planet",
+      "n_units": 28,
+      "pattern_counts": {
+       "retention": 1,
+       "revision": 11,
+       "construction": 1,
+       "static": 2,
+       "other": 13
+      },
+      "matrix": {
+       "SC": {
+        "SC": 1,
+        "M": 1,
+        "E": 0,
+        "LK": 0,
+        "LC": 2
+       },
+       "M": {
+        "SC": 5,
+        "M": 1,
+        "E": 0,
+        "LK": 1,
+        "LC": 0
+       },
+       "E": {
+        "SC": 6,
+        "M": 2,
+        "E": 1,
+        "LK": 0,
+        "LC": 5
+       },
+       "LK": {
+        "SC": 1,
+        "M": 0,
+        "E": 2,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_units": 28,
+      "pattern_counts": {
+       "retention": 2,
+       "revision": 14,
+       "construction": 1,
+       "static": 5,
+       "other": 6
+      },
+      "matrix": {
+       "SC": {
+        "SC": 2,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       },
+       "M": {
+        "SC": 8,
+        "M": 3,
+        "E": 1,
+        "LK": 0,
+        "LC": 2
+       },
+       "E": {
+        "SC": 3,
+        "M": 4,
+        "E": 2,
+        "LK": 0,
+        "LC": 0
+       },
+       "LK": {
+        "SC": 1,
+        "M": 0,
+        "E": 1,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     }
+    ]
+   },
+   "export": {
+    "long_count": 1160,
+    "long_keys": [
+     "P-3843Z8CT|pre|B01|E|true|false|false",
+     "P-3843Z8CT|pre|B02|E|false|false|false",
+     "P-3843Z8CT|pre|B03|SC|true|true|true",
+     "P-3843Z8CT|pre|B04|M|false|false|true",
+     "P-3843Z8CT|pre|B05|LC|true|true|false",
+     "P-3843Z8CT|pre|B06|M|false|false|true",
+     "P-3843Z8CT|pre|B07|SC|true|true|true",
+     "P-3843Z8CT|pre|B08|LK|false|false|false",
+     "P-3843Z8CT|pre|B09|M|false|false|true",
+     "P-3843Z8CT|pre|B10|M|false|true|true",
+     "P-3843Z8CT|pre|B11|LC|true|true|false",
+     "P-3843Z8CT|pre|B12|LK|false|false|false",
+     "P-3843Z8CT|pre|B13|LK|false|false|false",
+     "P-3843Z8CT|pre|B14|LK|false|false|false",
+     "P-3843Z8CT|pre|B15|E|false|true|false",
+     "P-3843Z8CT|pre|B16|LC|true|true|false",
+     "P-3843Z8CT|pre|B17|SC|true|true|true",
+     "P-3843Z8CT|pre|B18|SC|true|true|true",
+     "P-3843Z8CT|pre|B19|M|false|false|true",
+     "P-3843Z8CT|pre|B20|E|true|false|false",
+     "P-3843Z8CT|post|B01|LC|true|true|false",
+     "P-3843Z8CT|post|B02|SC|true|true|true",
+     "P-3843Z8CT|post|B03|LC|true|true|false",
+     "P-3843Z8CT|post|B04|SC|true|true|true",
+     "P-3843Z8CT|post|B05|SC|true|true|true",
+     "P-3843Z8CT|post|B06|SC|true|true|true",
+     "P-3843Z8CT|post|B07|SC|true|true|true",
+     "P-3843Z8CT|post|B08|E|true|false|false",
+     "P-3843Z8CT|post|B09|SC|true|true|true",
+     "P-3843Z8CT|post|B10|SC|true|true|true",
+     "P-3843Z8CT|post|B11|LC|true|true|false",
+     "P-3843Z8CT|post|B12|SC|true|true|true",
+     "P-3843Z8CT|post|B13|SC|true|true|true",
+     "P-3843Z8CT|post|B14|SC|true|true|true",
+     "P-3843Z8CT|post|B15|M|false|true|true",
+     "P-3843Z8CT|post|B16|LC|true|true|false",
+     "P-3843Z8CT|post|B17|LC|true|true|false",
+     "P-3843Z8CT|post|B18|E|false|false|false",
+     "P-3843Z8CT|post|B19|SC|true|true|true",
+     "P-3843Z8CT|post|B20|M|false|true|true",
+     "P-3A92QBHE|pre|B01|SC|true|true|true",
+     "P-3A92QBHE|pre|B02|SC|true|true|true",
+     "P-3A92QBHE|pre|B03|M|false|false|true",
+     "P-3A92QBHE|pre|B04|SC|true|true|true",
+     "P-3A92QBHE|pre|B05|LC|true|true|false",
+     "P-3A92QBHE|pre|B06|LK|false|true|false",
+     "P-3A92QBHE|pre|B07|E|false|true|false",
+     "P-3A92QBHE|pre|B08|M|false|false|true",
+     "P-3A92QBHE|pre|B09|SC|true|true|true",
+     "P-3A92QBHE|pre|B10|E|true|false|false",
+     "P-3A92QBHE|pre|B11|M|true|false|true",
+     "P-3A92QBHE|pre|B12|E|false|false|false",
+     "P-3A92QBHE|pre|B13|LK|false|false|false",
+     "P-3A92QBHE|pre|B14|LK|false|false|false",
+     "P-3A92QBHE|pre|B15|M|false|true|true",
+     "P-3A92QBHE|pre|B16|E|false|false|false",
+     "P-3A92QBHE|pre|B17|SC|true|true|true",
+     "P-3A92QBHE|pre|B18|SC|true|true|true",
+     "P-3A92QBHE|pre|B19|SC|true|true|true",
+     "P-3A92QBHE|pre|B20|SC|true|true|true",
+     "P-3A92QBHE|post|B01|LC|true|true|false",
+     "P-3A92QBHE|post|B02|LC|true|true|false",
+     "P-3A92QBHE|post|B03|LC|true|true|false",
+     "P-3A92QBHE|post|B04|SC|true|true|true",
+     "P-3A92QBHE|post|B05|SC|true|true|true",
+     "P-3A92QBHE|post|B06|SC|true|true|true",
+     "P-3A92QBHE|post|B07|SC|true|true|true",
+     "P-3A92QBHE|post|B08|SC|true|true|true",
+     "P-3A92QBHE|post|B09|SC|true|true|true",
+     "P-3A92QBHE|post|B10|SC|true|true|true",
+     "P-3A92QBHE|post|B11|SC|true|true|true",
+     "P-3A92QBHE|post|B12|LC|true|true|false",
+     "P-3A92QBHE|post|B13|LC|true|true|false",
+     "P-3A92QBHE|post|B14|LC|true|true|false",
+     "P-3A92QBHE|post|B15|SC|true|true|true",
+     "P-3A92QBHE|post|B16|SC|true|true|true",
+     "P-3A92QBHE|post|B17|LC|true|true|false",
+     "P-3A92QBHE|post|B18|SC|true|true|true",
+     "P-3A92QBHE|post|B19|LC|true|true|false",
+     "P-3A92QBHE|post|B20|SC|true|true|true",
+     "P-4XGC8MVF|pre|B01|E|false|false|false",
+     "P-4XGC8MVF|pre|B02|E|true|false|false",
+     "P-4XGC8MVF|pre|B03|E|false|false|false",
+     "P-4XGC8MVF|pre|B04|M|true|false|true",
+     "P-4XGC8MVF|pre|B05|M|false|true|true",
+     "P-4XGC8MVF|pre|B06|LK|true|false|false",
+     "P-4XGC8MVF|pre|B07|LC|true|true|false",
+     "P-4XGC8MVF|pre|B08|M|false|false|true",
+     "P-4XGC8MVF|pre|B09|E|false|false|false",
+     "P-4XGC8MVF|pre|B10|M|false|false|true",
+     "P-4XGC8MVF|pre|B11|M|false|false|true",
+     "P-4XGC8MVF|pre|B12|E|false|false|false",
+     "P-4XGC8MVF|pre|B13|M|false|false|true",
+     "P-4XGC8MVF|pre|B14|M|false|false|true",
+     "P-4XGC8MVF|pre|B15|M|true|false|true",
+     "P-4XGC8MVF|pre|B16|SC|true|true|true",
+     "P-4XGC8MVF|pre|B17|M|false|false|true",
+     "P-4XGC8MVF|pre|B18|M|false|true|true",
+     "P-4XGC8MVF|pre|B19|E|true|false|false",
+     "P-4XGC8MVF|pre|B20|SC|true|true|true",
+     "P-4XGC8MVF|post|B01|SC|true|true|true",
+     "P-4XGC8MVF|post|B02|SC|true|true|true",
+     "P-4XGC8MVF|post|B03|E|false|true|false",
+     "P-4XGC8MVF|post|B04|LK|false|false|false",
+     "P-4XGC8MVF|post|B05|SC|true|true|true",
+     "P-4XGC8MVF|post|B06|SC|true|true|true",
+     "P-4XGC8MVF|post|B07|SC|true|true|true",
+     "P-4XGC8MVF|post|B08|M|false|false|true",
+     "P-4XGC8MVF|post|B09|LC|true|true|false",
+     "P-4XGC8MVF|post|B10|E|false|true|false",
+     "P-4XGC8MVF|post|B11|SC|true|true|true",
+     "P-4XGC8MVF|post|B12|LC|true|true|false",
+     "P-4XGC8MVF|post|B13|E|true|false|false",
+     "P-4XGC8MVF|post|B14|SC|true|true|true",
+     "P-4XGC8MVF|post|B15|SC|true|true|true",
+     "P-4XGC8MVF|post|B16|SC|true|true|true",
+     "P-4XGC8MVF|post|B17|SC|true|true|true",
+     "P-4XGC8MVF|post|B18|SC|true|true|true",
+     "P-4XGC8MVF|post|B19|SC|true|true|true",
+     "P-4XGC8MVF|post|B20|LC|true|true|false",
+     "P-52ZDHM9F|pre|B01|SC|true|true|true",
+     "P-52ZDHM9F|pre|B02|E|true|false|false",
+     "P-52ZDHM9F|pre|B03|LK|false|false|false",
+     "P-52ZDHM9F|pre|B04|E|false|false|false",
+     "P-52ZDHM9F|pre|B05|M|false|true|true",
+     "P-52ZDHM9F|pre|B06|SC|true|true|true",
+     "P-52ZDHM9F|pre|B07|SC|true|true|true",
+     "P-52ZDHM9F|pre|B08|LK|false|false|false",
+     "P-52ZDHM9F|pre|B09|LK|false|false|false",
+     "P-52ZDHM9F|pre|B10|M|false|false|true",
+     "P-52ZDHM9F|pre|B11|E|false|false|false",
+     "P-52ZDHM9F|pre|B12|E|false|false|false",
+     "P-52ZDHM9F|pre|B13|M|false|false|true",
+     "P-52ZDHM9F|pre|B14|M|false|false|true",
+     "P-52ZDHM9F|pre|B15|E|false|false|false",
+     "P-52ZDHM9F|pre|B16|E|false|false|false",
+     "P-52ZDHM9F|pre|B17|E|false|true|false",
+     "P-52ZDHM9F|pre|B18|LK|false|false|false",
+     "P-52ZDHM9F|pre|B19|M|false|false|true",
+     "P-52ZDHM9F|pre|B20|E|false|false|false",
+     "P-52ZDHM9F|post|B01|SC|true|true|true",
+     "P-52ZDHM9F|post|B02|SC|true|true|true",
+     "P-52ZDHM9F|post|B03|M|false|true|true",
+     "P-52ZDHM9F|post|B04|SC|true|true|true",
+     "P-52ZDHM9F|post|B05|SC|true|true|true",
+     "P-52ZDHM9F|post|B06|LC|true|true|false",
+     "P-52ZDHM9F|post|B07|SC|true|true|true",
+     "P-52ZDHM9F|post|B08|E|false|true|false",
+     "P-52ZDHM9F|post|B09|LC|true|true|false",
+     "P-52ZDHM9F|post|B10|E|false|false|false",
+     "P-52ZDHM9F|post|B11|SC|true|true|true",
+     "P-52ZDHM9F|post|B12|E|false|true|false",
+     "P-52ZDHM9F|post|B13|LK|false|false|false",
+     "P-52ZDHM9F|post|B14|E|false|true|false",
+     "P-52ZDHM9F|post|B15|LC|true|true|false",
+     "P-52ZDHM9F|post|B16|LC|true|true|false",
+     "P-52ZDHM9F|post|B17|SC|true|true|true",
+     "P-52ZDHM9F|post|B18|M|false|true|true",
+     "P-52ZDHM9F|post|B19|SC|true|true|true",
+     "P-52ZDHM9F|post|B20|SC|true|true|true",
+     "P-6KFJ872M|pre|B01|E|false|false|false",
+     "P-6KFJ872M|pre|B02|LK|false|false|false",
+     "P-6KFJ872M|pre|B03|LK|true|false|false",
+     "P-6KFJ872M|pre|B04|M|true|false|true",
+     "P-6KFJ872M|pre|B05|E|false|false|false",
+     "P-6KFJ872M|pre|B06|M|true|false|true",
+     "P-6KFJ872M|pre|B07|E|false|false|false",
+     "P-6KFJ872M|pre|B08|E|false|false|false",
+     "P-6KFJ872M|pre|B09|LC|true|true|false",
+     "P-6KFJ872M|pre|B10|M|true|false|true",
+     "P-6KFJ872M|pre|B11|SC|true|true|true",
+     "P-6KFJ872M|pre|B12|E|true|false|false",
+     "P-6KFJ872M|pre|B13|M|true|false|true",
+     "P-6KFJ872M|pre|B14|E|false|false|false",
+     "P-6KFJ872M|pre|B15|SC|true|true|true",
+     "P-6KFJ872M|pre|B16|E|false|false|false",
+     "P-6KFJ872M|pre|B17|E|false|false|false",
+     "P-6KFJ872M|pre|B18|SC|true|true|true",
+     "P-6KFJ872M|pre|B19|LK|false|false|false",
+     "P-6KFJ872M|pre|B20|SC|true|true|true",
+     "P-6KFJ872M|post|B01|E|true|false|false",
+     "P-6KFJ872M|post|B02|E|false|false|false",
+     "P-6KFJ872M|post|B03|E|false|true|false",
+     "P-6KFJ872M|post|B04|LC|true|true|false",
+     "P-6KFJ872M|post|B05|LC|true|true|false",
+     "P-6KFJ872M|post|B06|LC|true|true|false",
+     "P-6KFJ872M|post|B07|SC|true|true|true",
+     "P-6KFJ872M|post|B08|E|true|false|false",
+     "P-6KFJ872M|post|B09|M|false|true|true",
+     "P-6KFJ872M|post|B10|SC|true|true|true",
+     "P-6KFJ872M|post|B11|E|false|false|false",
+     "P-6KFJ872M|post|B12|M|false|false|true",
+     "P-6KFJ872M|post|B13|M|true|false|true",
+     "P-6KFJ872M|post|B14|SC|true|true|true",
+     "P-6KFJ872M|post|B15|M|false|true|true",
+     "P-6KFJ872M|post|B16|SC|true|true|true",
+     "P-6KFJ872M|post|B17|LC|true|true|false",
+     "P-6KFJ872M|post|B18|LC|true|true|false",
+     "P-6KFJ872M|post|B19|LC|true|true|false",
+     "P-6KFJ872M|post|B20|M|false|true|true",
+     "P-73CXJZYT|pre|B01|SC|true|true|true",
+     "P-73CXJZYT|pre|B02|LC|true|true|false",
+     "P-73CXJZYT|pre|B03|M|false|true|true",
+     "P-73CXJZYT|pre|B04|M|true|false|true",
+     "P-73CXJZYT|pre|B05|LK|false|true|false",
+     "P-73CXJZYT|pre|B06|SC|true|true|true",
+     "P-73CXJZYT|pre|B07|SC|true|true|true",
+     "P-73CXJZYT|pre|B08|E|false|false|false",
+     "P-73CXJZYT|pre|B09|SC|true|true|true",
+     "P-73CXJZYT|pre|B10|M|true|false|true",
+     "P-73CXJZYT|pre|B11|SC|true|true|true",
+     "P-73CXJZYT|pre|B12|M|false|true|true",
+     "P-73CXJZYT|pre|B13|M|true|false|true",
+     "P-73CXJZYT|pre|B14|M|true|false|true",
+     "P-73CXJZYT|pre|B15|M|false|true|true",
+     "P-73CXJZYT|pre|B16|SC|true|true|true",
+     "P-73CXJZYT|pre|B17|M|false|true|true",
+     "P-73CXJZYT|pre|B18|LC|true|true|false",
+     "P-73CXJZYT|pre|B19|SC|true|true|true",
+     "P-73CXJZYT|pre|B20|SC|true|true|true",
+     "P-73CXJZYT|post|B01|SC|true|true|true",
+     "P-73CXJZYT|post|B02|LC|true|true|false",
+     "P-73CXJZYT|post|B03|SC|true|true|true",
+     "P-73CXJZYT|post|B04|LC|true|true|false",
+     "P-73CXJZYT|post|B05|SC|true|true|true",
+     "P-73CXJZYT|post|B06|SC|true|true|true",
+     "P-73CXJZYT|post|B07|LC|true|true|false",
+     "P-73CXJZYT|post|B08|SC|true|true|true",
+     "P-73CXJZYT|post|B09|SC|true|true|true",
+     "P-73CXJZYT|post|B10|SC|true|true|true",
+     "P-73CXJZYT|post|B11|SC|true|true|true",
+     "P-73CXJZYT|post|B12|SC|true|true|true",
+     "P-73CXJZYT|post|B13|SC|true|true|true",
+     "P-73CXJZYT|post|B14|SC|true|true|true",
+     "P-73CXJZYT|post|B15|SC|true|true|true",
+     "P-73CXJZYT|post|B16|SC|true|true|true",
+     "P-73CXJZYT|post|B17|E|false|false|false",
+     "P-73CXJZYT|post|B18|LC|true|true|false",
+     "P-73CXJZYT|post|B19|LC|true|true|false",
+     "P-73CXJZYT|post|B20|LC|true|true|false",
+     "P-7DPWSNVU|pre|B01|M|false|false|true",
+     "P-7DPWSNVU|pre|B02|LK|false|false|false",
+     "P-7DPWSNVU|pre|B03|E|false|false|false",
+     "P-7DPWSNVU|pre|B04|M|false|false|true",
+     "P-7DPWSNVU|pre|B05|E|false|false|false",
+     "P-7DPWSNVU|pre|B06|E|false|false|false",
+     "P-7DPWSNVU|pre|B07|E|true|false|false",
+     "P-7DPWSNVU|pre|B08|M|false|false|true",
+     "P-7DPWSNVU|pre|B09|SC|true|true|true",
+     "P-7DPWSNVU|pre|B10|E|false|false|false",
+     "P-7DPWSNVU|pre|B11|E|false|false|false",
+     "P-7DPWSNVU|pre|B12|M|false|false|true",
+     "P-7DPWSNVU|pre|B13|E|false|false|false",
+     "P-7DPWSNVU|pre|B14|M|false|false|true",
+     "P-7DPWSNVU|pre|B15|LK|false|false|false",
+     "P-7DPWSNVU|pre|B16|LK|false|false|false",
+     "P-7DPWSNVU|pre|B17|M|false|false|true",
+     "P-7DPWSNVU|pre|B18|E|false|false|false",
+     "P-7DPWSNVU|pre|B19|E|false|false|false",
+     "P-7DPWSNVU|pre|B20|E|false|false|false",
+     "P-7DPWSNVU|post|B01|E|true|false|false",
+     "P-7DPWSNVU|post|B02|E|false|false|false",
+     "P-7DPWSNVU|post|B03|E|false|false|false",
+     "P-7DPWSNVU|post|B04|E|false|false|false",
+     "P-7DPWSNVU|post|B05|M|false|false|true",
+     "P-7DPWSNVU|post|B06|E|false|false|false",
+     "P-7DPWSNVU|post|B07|M|true|false|true",
+     "P-7DPWSNVU|post|B08|M|true|false|true",
+     "P-7DPWSNVU|post|B09|E|false|false|false",
+     "P-7DPWSNVU|post|B10|LK|false|false|false",
+     "P-7DPWSNVU|post|B11|M|false|false|true",
+     "P-7DPWSNVU|post|B12|M|true|false|true",
+     "P-7DPWSNVU|post|B13|LK|false|false|false",
+     "P-7DPWSNVU|post|B14|M|false|false|true",
+     "P-7DPWSNVU|post|B15|LK|false|false|false",
+     "P-7DPWSNVU|post|B16|SC|true|true|true",
+     "P-7DPWSNVU|post|B17|E|false|true|false",
+     "P-7DPWSNVU|post|B18|E|false|false|false",
+     "P-7DPWSNVU|post|B19|E|false|false|false",
+     "P-7DPWSNVU|post|B20|E|false|false|false",
+     "P-7VM29HXW|pre|B01|E|false|false|false",
+     "P-7VM29HXW|pre|B02|M|false|false|true",
+     "P-7VM29HXW|pre|B03|E|false|false|false",
+     "P-7VM29HXW|pre|B04|E|false|false|false",
+     "P-7VM29HXW|pre|B05|E|true|false|false",
+     "P-7VM29HXW|pre|B06|M|true|false|true",
+     "P-7VM29HXW|pre|B07|E|false|true|false",
+     "P-7VM29HXW|pre|B08|LK|false|false|false",
+     "P-7VM29HXW|pre|B09|E|false|false|false",
+     "P-7VM29HXW|pre|B10|M|false|false|true",
+     "P-7VM29HXW|pre|B11|M|true|false|true",
+     "P-7VM29HXW|pre|B12|M|false|false|true",
+     "P-7VM29HXW|pre|B13|E|false|false|false",
+     "P-7VM29HXW|pre|B14|LK|false|false|false",
+     "P-7VM29HXW|pre|B15|LK|true|false|false",
+     "P-7VM29HXW|pre|B16|M|true|false|true",
+     "P-7VM29HXW|pre|B17|SC|true|true|true",
+     "P-7VM29HXW|pre|B18|E|true|false|false",
+     "P-7VM29HXW|pre|B19|E|false|false|false",
+     "P-7VM29HXW|pre|B20|SC|true|true|true",
+     "P-7VM29HXW|post|B01|SC|true|true|true",
+     "P-7VM29HXW|post|B02|M|false|false|true",
+     "P-7VM29HXW|post|B03|SC|true|true|true",
+     "P-7VM29HXW|post|B04|SC|true|true|true",
+     "P-7VM29HXW|post|B05|SC|true|true|true",
+     "P-7VM29HXW|post|B06|SC|true|true|true",
+     "P-7VM29HXW|post|B07|SC|true|true|true",
+     "P-7VM29HXW|post|B08|E|true|false|false",
+     "P-7VM29HXW|post|B09|SC|true|true|true",
+     "P-7VM29HXW|post|B10|LC|true|true|false",
+     "P-7VM29HXW|post|B11|SC|true|true|true",
+     "P-7VM29HXW|post|B12|SC|true|true|true",
+     "P-7VM29HXW|post|B13|LK|false|false|false",
+     "P-7VM29HXW|post|B14|M|false|true|true",
+     "P-7VM29HXW|post|B15|SC|true|true|true",
+     "P-7VM29HXW|post|B16|SC|true|true|true",
+     "P-7VM29HXW|post|B17|LC|true|true|false",
+     "P-7VM29HXW|post|B18|LC|true|true|false",
+     "P-7VM29HXW|post|B19|LK|false|true|false",
+     "P-7VM29HXW|post|B20|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B01|E|true|false|false",
+     "P-8QSQ3ZFZ|pre|B02|E|true|false|false",
+     "P-8QSQ3ZFZ|pre|B03|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B04|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B05|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B06|LC|true|true|false",
+     "P-8QSQ3ZFZ|pre|B07|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B08|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B09|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B10|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B11|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B12|LK|false|false|false",
+     "P-8QSQ3ZFZ|pre|B13|M|false|false|true",
+     "P-8QSQ3ZFZ|pre|B14|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B15|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B16|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B17|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B18|SC|true|true|true",
+     "P-8QSQ3ZFZ|pre|B19|E|false|false|false",
+     "P-8QSQ3ZFZ|pre|B20|E|false|false|false",
+     "P-8QSQ3ZFZ|post|B01|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B02|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B03|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B04|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B05|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B06|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B07|LC|true|true|false",
+     "P-8QSQ3ZFZ|post|B08|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B09|LC|true|true|false",
+     "P-8QSQ3ZFZ|post|B10|M|false|true|true",
+     "P-8QSQ3ZFZ|post|B11|LC|true|true|false",
+     "P-8QSQ3ZFZ|post|B12|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B13|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B14|LC|true|true|false",
+     "P-8QSQ3ZFZ|post|B15|M|false|true|true",
+     "P-8QSQ3ZFZ|post|B16|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B17|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B18|SC|true|true|true",
+     "P-8QSQ3ZFZ|post|B19|LC|true|true|false",
+     "P-8QSQ3ZFZ|post|B20|SC|true|true|true",
+     "P-8VZE9288|pre|B01|LC|true|true|false",
+     "P-8VZE9288|pre|B02|E|true|false|false",
+     "P-8VZE9288|pre|B03|E|false|false|false",
+     "P-8VZE9288|pre|B04|LK|false|false|false",
+     "P-8VZE9288|pre|B05|E|false|false|false",
+     "P-8VZE9288|pre|B06|LK|true|false|false",
+     "P-8VZE9288|pre|B07|E|false|false|false",
+     "P-8VZE9288|pre|B08|M|true|false|true",
+     "P-8VZE9288|pre|B09|E|false|false|false",
+     "P-8VZE9288|pre|B10|LK|false|false|false",
+     "P-8VZE9288|pre|B11|E|true|false|false",
+     "P-8VZE9288|pre|B12|LC|true|true|false",
+     "P-8VZE9288|pre|B13|M|false|false|true",
+     "P-8VZE9288|pre|B14|LK|false|false|false",
+     "P-8VZE9288|pre|B15|M|false|false|true",
+     "P-8VZE9288|pre|B16|SC|true|true|true",
+     "P-8VZE9288|pre|B17|E|false|false|false",
+     "P-8VZE9288|pre|B18|LC|true|true|false",
+     "P-8VZE9288|pre|B19|E|false|false|false",
+     "P-8VZE9288|pre|B20|M|true|false|true",
+     "P-8VZE9288|post|B01|SC|true|true|true",
+     "P-8VZE9288|post|B02|M|true|false|true",
+     "P-8VZE9288|post|B03|SC|true|true|true",
+     "P-8VZE9288|post|B04|SC|true|true|true",
+     "P-8VZE9288|post|B05|SC|true|true|true",
+     "P-8VZE9288|post|B06|SC|true|true|true",
+     "P-8VZE9288|post|B07|LC|true|true|false",
+     "P-8VZE9288|post|B08|M|false|true|true",
+     "P-8VZE9288|post|B09|LC|true|true|false",
+     "P-8VZE9288|post|B10|SC|true|true|true",
+     "P-8VZE9288|post|B11|SC|true|true|true",
+     "P-8VZE9288|post|B12|SC|true|true|true",
+     "P-8VZE9288|post|B13|LK|false|false|false",
+     "P-8VZE9288|post|B14|SC|true|true|true",
+     "P-8VZE9288|post|B15|E|false|true|false",
+     "P-8VZE9288|post|B16|SC|true|true|true",
+     "P-8VZE9288|post|B17|E|false|true|false",
+     "P-8VZE9288|post|B18|LC|true|true|false",
+     "P-8VZE9288|post|B19|E|false|false|false",
+     "P-8VZE9288|post|B20|SC|true|true|true",
+     "P-A9PYAX9F|pre|B01|E|false|false|false",
+     "P-A9PYAX9F|pre|B02|E|false|false|false",
+     "P-A9PYAX9F|pre|B03|M|false|true|true",
+     "P-A9PYAX9F|pre|B04|M|false|false|true",
+     "P-A9PYAX9F|pre|B05|LK|false|false|false",
+     "P-A9PYAX9F|pre|B06|SC|true|true|true",
+     "P-A9PYAX9F|pre|B07|SC|true|true|true",
+     "P-A9PYAX9F|pre|B08|M|true|false|true",
+     "P-A9PYAX9F|pre|B09|LC|true|true|false",
+     "P-A9PYAX9F|pre|B10|E|false|false|false",
+     "P-A9PYAX9F|pre|B11|M|true|false|true",
+     "P-A9PYAX9F|pre|B12|M|true|false|true",
+     "P-A9PYAX9F|pre|B13|M|true|false|true",
+     "P-A9PYAX9F|pre|B14|LK|false|false|false",
+     "P-A9PYAX9F|pre|B15|SC|true|true|true",
+     "P-A9PYAX9F|pre|B16|SC|true|true|true",
+     "P-A9PYAX9F|pre|B17|M|false|true|true",
+     "P-A9PYAX9F|pre|B18|SC|true|true|true",
+     "P-A9PYAX9F|pre|B19|E|false|false|false",
+     "P-A9PYAX9F|pre|B20|M|true|false|true",
+     "P-A9PYAX9F|post|B01|SC|true|true|true",
+     "P-A9PYAX9F|post|B02|SC|true|true|true",
+     "P-A9PYAX9F|post|B03|LC|true|true|false",
+     "P-A9PYAX9F|post|B04|SC|true|true|true",
+     "P-A9PYAX9F|post|B05|E|false|true|false",
+     "P-A9PYAX9F|post|B06|LC|true|true|false",
+     "P-A9PYAX9F|post|B07|SC|true|true|true",
+     "P-A9PYAX9F|post|B08|M|true|false|true",
+     "P-A9PYAX9F|post|B09|LC|true|true|false",
+     "P-A9PYAX9F|post|B10|E|false|true|false",
+     "P-A9PYAX9F|post|B11|SC|true|true|true",
+     "P-A9PYAX9F|post|B12|E|false|true|false",
+     "P-A9PYAX9F|post|B13|SC|true|true|true",
+     "P-A9PYAX9F|post|B14|M|false|false|true",
+     "P-A9PYAX9F|post|B15|SC|true|true|true",
+     "P-A9PYAX9F|post|B16|LC|true|true|false",
+     "P-A9PYAX9F|post|B17|LC|true|true|false",
+     "P-A9PYAX9F|post|B18|SC|true|true|true",
+     "P-A9PYAX9F|post|B19|SC|true|true|true",
+     "P-A9PYAX9F|post|B20|SC|true|true|true",
+     "P-AT8BCGV3|pre|B01|SC|true|true|true",
+     "P-AT8BCGV3|pre|B02|M|false|false|true",
+     "P-AT8BCGV3|pre|B03|M|false|false|true",
+     "P-AT8BCGV3|pre|B04|E|false|false|false",
+     "P-AT8BCGV3|pre|B05|E|false|false|false",
+     "P-AT8BCGV3|pre|B06|E|false|false|false",
+     "P-AT8BCGV3|pre|B07|E|true|false|false",
+     "P-AT8BCGV3|pre|B08|E|false|false|false",
+     "P-AT8BCGV3|pre|B09|M|false|false|true",
+     "P-AT8BCGV3|pre|B10|LK|false|false|false",
+     "P-AT8BCGV3|pre|B11|M|false|true|true",
+     "P-AT8BCGV3|pre|B12|LK|false|false|false",
+     "P-AT8BCGV3|pre|B13|E|false|false|false",
+     "P-AT8BCGV3|pre|B14|E|false|false|false",
+     "P-AT8BCGV3|pre|B15|E|true|false|false",
+     "P-AT8BCGV3|pre|B16|LK|false|false|false",
+     "P-AT8BCGV3|pre|B17|M|false|false|true",
+     "P-AT8BCGV3|pre|B18|M|false|false|true",
+     "P-AT8BCGV3|pre|B19|E|false|false|false",
+     "P-AT8BCGV3|pre|B20|M|false|false|true",
+     "P-AT8BCGV3|post|B01|M|false|true|true",
+     "P-AT8BCGV3|post|B02|E|false|false|false",
+     "P-AT8BCGV3|post|B03|SC|true|true|true",
+     "P-AT8BCGV3|post|B04|LC|true|true|false",
+     "P-AT8BCGV3|post|B05|E|false|false|false",
+     "P-AT8BCGV3|post|B06|SC|true|true|true",
+     "P-AT8BCGV3|post|B07|SC|true|true|true",
+     "P-AT8BCGV3|post|B08|SC|true|true|true",
+     "P-AT8BCGV3|post|B09|SC|true|true|true",
+     "P-AT8BCGV3|post|B10|E|false|false|false",
+     "P-AT8BCGV3|post|B11|SC|true|true|true",
+     "P-AT8BCGV3|post|B12|E|false|false|false",
+     "P-AT8BCGV3|post|B13|E|false|false|false",
+     "P-AT8BCGV3|post|B14|SC|true|true|true",
+     "P-AT8BCGV3|post|B15|SC|true|true|true",
+     "P-AT8BCGV3|post|B16|SC|true|true|true",
+     "P-AT8BCGV3|post|B17|SC|true|true|true",
+     "P-AT8BCGV3|post|B18|SC|true|true|true",
+     "P-AT8BCGV3|post|B19|M|false|false|true",
+     "P-AT8BCGV3|post|B20|SC|true|true|true",
+     "P-CDG9E96P|pre|B01|SC|true|true|true",
+     "P-CDG9E96P|pre|B02|E|false|false|false",
+     "P-CDG9E96P|pre|B03|E|false|false|false",
+     "P-CDG9E96P|pre|B04|LC|true|true|false",
+     "P-CDG9E96P|pre|B05|E|true|false|false",
+     "P-CDG9E96P|pre|B06|SC|true|true|true",
+     "P-CDG9E96P|pre|B07|SC|true|true|true",
+     "P-CDG9E96P|pre|B08|E|false|false|false",
+     "P-CDG9E96P|pre|B09|E|false|false|false",
+     "P-CDG9E96P|pre|B10|E|true|false|false",
+     "P-CDG9E96P|pre|B11|M|false|true|true",
+     "P-CDG9E96P|pre|B12|E|false|false|false",
+     "P-CDG9E96P|pre|B13|M|false|false|true",
+     "P-CDG9E96P|pre|B14|M|true|false|true",
+     "P-CDG9E96P|pre|B15|M|false|false|true",
+     "P-CDG9E96P|pre|B16|SC|true|true|true",
+     "P-CDG9E96P|pre|B17|SC|true|true|true",
+     "P-CDG9E96P|pre|B18|SC|true|true|true",
+     "P-CDG9E96P|pre|B19|E|false|false|false",
+     "P-CDG9E96P|pre|B20|M|false|false|true",
+     "P-CDG9E96P|post|B01|LC|true|true|false",
+     "P-CDG9E96P|post|B02|LC|true|true|false",
+     "P-CDG9E96P|post|B03|LC|true|true|false",
+     "P-CDG9E96P|post|B04|SC|true|true|true",
+     "P-CDG9E96P|post|B05|LC|true|true|false",
+     "P-CDG9E96P|post|B06|SC|true|true|true",
+     "P-CDG9E96P|post|B07|LC|true|true|false",
+     "P-CDG9E96P|post|B08|LC|true|true|false",
+     "P-CDG9E96P|post|B09|SC|true|true|true",
+     "P-CDG9E96P|post|B10|M|false|false|true",
+     "P-CDG9E96P|post|B11|SC|true|true|true",
+     "P-CDG9E96P|post|B12|SC|true|true|true",
+     "P-CDG9E96P|post|B13|E|true|false|false",
+     "P-CDG9E96P|post|B14|SC|true|true|true",
+     "P-CDG9E96P|post|B15|LC|true|true|false",
+     "P-CDG9E96P|post|B16|SC|true|true|true",
+     "P-CDG9E96P|post|B17|SC|true|true|true",
+     "P-CDG9E96P|post|B18|LC|true|true|false",
+     "P-CDG9E96P|post|B19|LC|true|true|false",
+     "P-CDG9E96P|post|B20|LC|true|true|false",
+     "P-DEVTZ96K|pre|B01|E|false|false|false",
+     "P-DEVTZ96K|pre|B02|M|false|false|true",
+     "P-DEVTZ96K|pre|B03|E|false|false|false",
+     "P-DEVTZ96K|pre|B04|E|false|false|false",
+     "P-DEVTZ96K|pre|B05|E|false|false|false",
+     "P-DEVTZ96K|pre|B06|E|true|false|false",
+     "P-DEVTZ96K|pre|B07|LC|true|true|false",
+     "P-DEVTZ96K|pre|B08|M|false|false|true",
+     "P-DEVTZ96K|pre|B09|E|false|false|false",
+     "P-DEVTZ96K|pre|B10|M|false|false|true",
+     "P-DEVTZ96K|pre|B11|E|false|false|false",
+     "P-DEVTZ96K|pre|B12|SC|true|true|true",
+     "P-DEVTZ96K|pre|B13|E|false|false|false",
+     "P-DEVTZ96K|pre|B14|E|false|false|false",
+     "P-DEVTZ96K|pre|B15|E|true|false|false",
+     "P-DEVTZ96K|pre|B16|LC|true|true|false",
+     "P-DEVTZ96K|pre|B17|M|false|false|true",
+     "P-DEVTZ96K|pre|B18|M|false|true|true",
+     "P-DEVTZ96K|pre|B19|M|false|false|true",
+     "P-DEVTZ96K|pre|B20|M|false|true|true",
+     "P-DEVTZ96K|post|B01|SC|true|true|true",
+     "P-DEVTZ96K|post|B02|E|false|true|false",
+     "P-DEVTZ96K|post|B03|SC|true|true|true",
+     "P-DEVTZ96K|post|B04|SC|true|true|true",
+     "P-DEVTZ96K|post|B05|M|false|true|true",
+     "P-DEVTZ96K|post|B06|M|false|false|true",
+     "P-DEVTZ96K|post|B07|SC|true|true|true",
+     "P-DEVTZ96K|post|B08|LC|true|true|false",
+     "P-DEVTZ96K|post|B09|E|false|false|false",
+     "P-DEVTZ96K|post|B10|M|true|false|true",
+     "P-DEVTZ96K|post|B11|SC|true|true|true",
+     "P-DEVTZ96K|post|B12|SC|true|true|true",
+     "P-DEVTZ96K|post|B13|M|false|true|true",
+     "P-DEVTZ96K|post|B14|E|false|true|false",
+     "P-DEVTZ96K|post|B15|SC|true|true|true",
+     "P-DEVTZ96K|post|B16|SC|true|true|true",
+     "P-DEVTZ96K|post|B17|SC|true|true|true",
+     "P-DEVTZ96K|post|B18|SC|true|true|true",
+     "P-DEVTZ96K|post|B19|SC|true|true|true",
+     "P-DEVTZ96K|post|B20|SC|true|true|true",
+     "P-ETMEE5DT|pre|B01|LK|false|false|false",
+     "P-ETMEE5DT|pre|B02|E|false|false|false",
+     "P-ETMEE5DT|pre|B03|E|false|false|false",
+     "P-ETMEE5DT|pre|B04|M|false|false|true",
+     "P-ETMEE5DT|pre|B05|M|true|false|true",
+     "P-ETMEE5DT|pre|B06|M|false|false|true",
+     "P-ETMEE5DT|pre|B07|E|false|true|false",
+     "P-ETMEE5DT|pre|B08|M|false|false|true",
+     "P-ETMEE5DT|pre|B09|E|false|false|false",
+     "P-ETMEE5DT|pre|B10|M|false|false|true",
+     "P-ETMEE5DT|pre|B11|M|false|false|true",
+     "P-ETMEE5DT|pre|B12|M|false|false|true",
+     "P-ETMEE5DT|pre|B13|E|false|false|false",
+     "P-ETMEE5DT|pre|B14|E|false|false|false",
+     "P-ETMEE5DT|pre|B15|E|true|false|false",
+     "P-ETMEE5DT|pre|B16|M|false|false|true",
+     "P-ETMEE5DT|pre|B17|M|false|false|true",
+     "P-ETMEE5DT|pre|B18|LK|false|true|false",
+     "P-ETMEE5DT|pre|B19|E|true|false|false",
+     "P-ETMEE5DT|pre|B20|M|true|false|true",
+     "P-ETMEE5DT|post|B01|M|false|false|true",
+     "P-ETMEE5DT|post|B02|SC|true|true|true",
+     "P-ETMEE5DT|post|B03|E|false|true|false",
+     "P-ETMEE5DT|post|B04|M|false|false|true",
+     "P-ETMEE5DT|post|B05|SC|true|true|true",
+     "P-ETMEE5DT|post|B06|SC|true|true|true",
+     "P-ETMEE5DT|post|B07|SC|true|true|true",
+     "P-ETMEE5DT|post|B08|E|false|true|false",
+     "P-ETMEE5DT|post|B09|SC|true|true|true",
+     "P-ETMEE5DT|post|B10|M|false|false|true",
+     "P-ETMEE5DT|post|B11|E|false|true|false",
+     "P-ETMEE5DT|post|B12|M|false|false|true",
+     "P-ETMEE5DT|post|B13|LC|true|true|false",
+     "P-ETMEE5DT|post|B14|M|false|false|true",
+     "P-ETMEE5DT|post|B15|SC|true|true|true",
+     "P-ETMEE5DT|post|B16|SC|true|true|true",
+     "P-ETMEE5DT|post|B17|SC|true|true|true",
+     "P-ETMEE5DT|post|B18|LC|true|true|false",
+     "P-ETMEE5DT|post|B19|E|false|false|false",
+     "P-ETMEE5DT|post|B20|LC|true|true|false",
+     "P-GFHCBN7M|pre|B01|LC|true|true|false",
+     "P-GFHCBN7M|pre|B02|E|false|true|false",
+     "P-GFHCBN7M|pre|B03|M|false|false|true",
+     "P-GFHCBN7M|pre|B04|E|false|false|false",
+     "P-GFHCBN7M|pre|B05|M|true|false|true",
+     "P-GFHCBN7M|pre|B06|SC|true|true|true",
+     "P-GFHCBN7M|pre|B07|SC|true|true|true",
+     "P-GFHCBN7M|pre|B08|E|false|false|false",
+     "P-GFHCBN7M|pre|B09|E|false|false|false",
+     "P-GFHCBN7M|pre|B10|M|false|false|true",
+     "P-GFHCBN7M|pre|B11|E|false|false|false",
+     "P-GFHCBN7M|pre|B12|LK|false|true|false",
+     "P-GFHCBN7M|pre|B13|M|false|false|true",
+     "P-GFHCBN7M|pre|B14|E|false|false|false",
+     "P-GFHCBN7M|pre|B15|M|false|false|true",
+     "P-GFHCBN7M|pre|B16|SC|true|true|true",
+     "P-GFHCBN7M|pre|B17|SC|true|true|true",
+     "P-GFHCBN7M|pre|B18|LC|true|true|false",
+     "P-GFHCBN7M|pre|B19|E|false|false|false",
+     "P-GFHCBN7M|pre|B20|E|false|false|false",
+     "P-GFHCBN7M|post|B01|SC|true|true|true",
+     "P-GFHCBN7M|post|B02|SC|true|true|true",
+     "P-GFHCBN7M|post|B03|SC|true|true|true",
+     "P-GFHCBN7M|post|B04|SC|true|true|true",
+     "P-GFHCBN7M|post|B05|SC|true|true|true",
+     "P-GFHCBN7M|post|B06|LC|true|true|false",
+     "P-GFHCBN7M|post|B07|SC|true|true|true",
+     "P-GFHCBN7M|post|B08|LK|false|false|false",
+     "P-GFHCBN7M|post|B09|SC|true|true|true",
+     "P-GFHCBN7M|post|B10|SC|true|true|true",
+     "P-GFHCBN7M|post|B11|SC|true|true|true",
+     "P-GFHCBN7M|post|B12|SC|true|true|true",
+     "P-GFHCBN7M|post|B13|LC|true|true|false",
+     "P-GFHCBN7M|post|B14|SC|true|true|true",
+     "P-GFHCBN7M|post|B15|SC|true|true|true",
+     "P-GFHCBN7M|post|B16|SC|true|true|true",
+     "P-GFHCBN7M|post|B17|SC|true|true|true",
+     "P-GFHCBN7M|post|B18|LC|true|true|false",
+     "P-GFHCBN7M|post|B19|M|false|false|true",
+     "P-GFHCBN7M|post|B20|SC|true|true|true",
+     "P-HEB2B2NV|pre|B01|E|false|false|false",
+     "P-HEB2B2NV|pre|B02|E|false|false|false",
+     "P-HEB2B2NV|pre|B03|LC|true|true|false",
+     "P-HEB2B2NV|pre|B04|E|false|false|false",
+     "P-HEB2B2NV|pre|B05|M|false|false|true",
+     "P-HEB2B2NV|pre|B06|SC|true|true|true",
+     "P-HEB2B2NV|pre|B07|SC|true|true|true",
+     "P-HEB2B2NV|pre|B08|E|false|false|false",
+     "P-HEB2B2NV|pre|B09|LK|false|false|false",
+     "P-HEB2B2NV|pre|B10|E|false|false|false",
+     "P-HEB2B2NV|pre|B11|E|false|false|false",
+     "P-HEB2B2NV|pre|B12|LK|false|false|false",
+     "P-HEB2B2NV|pre|B13|M|false|false|true",
+     "P-HEB2B2NV|pre|B14|M|false|false|true",
+     "P-HEB2B2NV|pre|B15|M|false|true|true",
+     "P-HEB2B2NV|pre|B16|SC|true|true|true",
+     "P-HEB2B2NV|pre|B17|SC|true|true|true",
+     "P-HEB2B2NV|pre|B18|LK|false|true|false",
+     "P-HEB2B2NV|pre|B19|LK|true|false|false",
+     "P-HEB2B2NV|pre|B20|M|true|false|true",
+     "P-HEB2B2NV|post|B01|SC|true|true|true",
+     "P-HEB2B2NV|post|B02|SC|true|true|true",
+     "P-HEB2B2NV|post|B03|SC|true|true|true",
+     "P-HEB2B2NV|post|B04|SC|true|true|true",
+     "P-HEB2B2NV|post|B05|SC|true|true|true",
+     "P-HEB2B2NV|post|B06|LC|true|true|false",
+     "P-HEB2B2NV|post|B07|SC|true|true|true",
+     "P-HEB2B2NV|post|B08|LC|true|true|false",
+     "P-HEB2B2NV|post|B09|SC|true|true|true",
+     "P-HEB2B2NV|post|B10|SC|true|true|true",
+     "P-HEB2B2NV|post|B11|SC|true|true|true",
+     "P-HEB2B2NV|post|B12|SC|true|true|true",
+     "P-HEB2B2NV|post|B13|M|true|false|true",
+     "P-HEB2B2NV|post|B14|M|false|false|true",
+     "P-HEB2B2NV|post|B15|LC|true|true|false",
+     "P-HEB2B2NV|post|B16|LC|true|true|false",
+     "P-HEB2B2NV|post|B17|LC|true|true|false",
+     "P-HEB2B2NV|post|B18|LC|true|true|false",
+     "P-HEB2B2NV|post|B19|SC|true|true|true",
+     "P-HEB2B2NV|post|B20|LC|true|true|false",
+     "P-JSQBSJ36|pre|B01|E|false|false|false",
+     "P-JSQBSJ36|pre|B02|M|false|false|true",
+     "P-JSQBSJ36|pre|B03|E|false|false|false",
+     "P-JSQBSJ36|pre|B04|E|false|false|false",
+     "P-JSQBSJ36|pre|B05|M|true|false|true",
+     "P-JSQBSJ36|pre|B06|LC|true|true|false",
+     "P-JSQBSJ36|pre|B07|SC|true|true|true",
+     "P-JSQBSJ36|pre|B08|E|false|false|false",
+     "P-JSQBSJ36|pre|B09|LK|false|false|false",
+     "P-JSQBSJ36|pre|B10|E|false|false|false",
+     "P-JSQBSJ36|pre|B11|M|false|true|true",
+     "P-JSQBSJ36|pre|B12|E|true|false|false",
+     "P-JSQBSJ36|pre|B13|E|false|false|false",
+     "P-JSQBSJ36|pre|B14|M|false|false|true",
+     "P-JSQBSJ36|pre|B15|E|false|false|false",
+     "P-JSQBSJ36|pre|B16|LK|false|false|false",
+     "P-JSQBSJ36|pre|B17|SC|true|true|true",
+     "P-JSQBSJ36|pre|B18|M|false|true|true",
+     "P-JSQBSJ36|pre|B19|E|false|false|false",
+     "P-JSQBSJ36|pre|B20|LC|true|true|false",
+     "P-JSQBSJ36|post|B01|SC|true|true|true",
+     "P-JSQBSJ36|post|B02|LK|false|false|false",
+     "P-JSQBSJ36|post|B03|M|false|false|true",
+     "P-JSQBSJ36|post|B04|M|true|false|true",
+     "P-JSQBSJ36|post|B05|SC|true|true|true",
+     "P-JSQBSJ36|post|B06|SC|true|true|true",
+     "P-JSQBSJ36|post|B07|SC|true|true|true",
+     "P-JSQBSJ36|post|B08|LC|true|true|false",
+     "P-JSQBSJ36|post|B09|E|false|false|false",
+     "P-JSQBSJ36|post|B10|LC|true|true|false",
+     "P-JSQBSJ36|post|B11|LC|true|true|false",
+     "P-JSQBSJ36|post|B12|E|false|false|false",
+     "P-JSQBSJ36|post|B13|E|false|false|false",
+     "P-JSQBSJ36|post|B14|M|true|false|true",
+     "P-JSQBSJ36|post|B15|SC|true|true|true",
+     "P-JSQBSJ36|post|B16|SC|true|true|true",
+     "P-JSQBSJ36|post|B17|SC|true|true|true",
+     "P-JSQBSJ36|post|B18|SC|true|true|true",
+     "P-JSQBSJ36|post|B19|SC|true|true|true",
+     "P-JSQBSJ36|post|B20|SC|true|true|true",
+     "P-JY45PMTC|pre|B01|E|true|false|false",
+     "P-JY45PMTC|pre|B02|E|false|false|false",
+     "P-JY45PMTC|pre|B03|E|true|false|false",
+     "P-JY45PMTC|pre|B04|LK|false|false|false",
+     "P-JY45PMTC|pre|B05|LK|false|false|false",
+     "P-JY45PMTC|pre|B06|LC|true|true|false",
+     "P-JY45PMTC|pre|B07|SC|true|true|true",
+     "P-JY45PMTC|pre|B08|E|false|false|false",
+     "P-JY45PMTC|pre|B09|SC|true|true|true",
+     "P-JY45PMTC|pre|B10|SC|true|true|true",
+     "P-JY45PMTC|pre|B11|E|false|false|false",
+     "P-JY45PMTC|pre|B12|SC|true|true|true",
+     "P-JY45PMTC|pre|B13|E|false|false|false",
+     "P-JY45PMTC|pre|B14|E|false|false|false",
+     "P-JY45PMTC|pre|B15|E|false|false|false",
+     "P-JY45PMTC|pre|B16|E|false|false|false",
+     "P-JY45PMTC|pre|B17|SC|true|true|true",
+     "P-JY45PMTC|pre|B18|SC|true|true|true",
+     "P-JY45PMTC|pre|B19|M|false|true|true",
+     "P-JY45PMTC|pre|B20|E|false|false|false",
+     "P-MC34S26P|pre|B01|E|false|false|false",
+     "P-MC34S26P|pre|B02|E|false|false|false",
+     "P-MC34S26P|pre|B03|M|false|false|true",
+     "P-MC34S26P|pre|B04|E|false|false|false",
+     "P-MC34S26P|pre|B05|M|false|false|true",
+     "P-MC34S26P|pre|B06|LC|true|true|false",
+     "P-MC34S26P|pre|B07|SC|true|true|true",
+     "P-MC34S26P|pre|B08|E|false|false|false",
+     "P-MC34S26P|pre|B09|E|false|false|false",
+     "P-MC34S26P|pre|B10|E|false|false|false",
+     "P-MC34S26P|pre|B11|LK|false|false|false",
+     "P-MC34S26P|pre|B12|LK|false|false|false",
+     "P-MC34S26P|pre|B13|M|false|false|true",
+     "P-MC34S26P|pre|B14|M|false|false|true",
+     "P-MC34S26P|pre|B15|LK|false|false|false",
+     "P-MC34S26P|pre|B16|LK|true|false|false",
+     "P-MC34S26P|pre|B17|M|false|false|true",
+     "P-MC34S26P|pre|B18|M|false|true|true",
+     "P-MC34S26P|pre|B19|LK|false|false|false",
+     "P-MC34S26P|pre|B20|LK|false|false|false",
+     "P-MC34S26P|post|B01|E|false|false|false",
+     "P-MC34S26P|post|B02|M|false|false|true",
+     "P-MC34S26P|post|B03|SC|true|true|true",
+     "P-MC34S26P|post|B04|LC|true|true|false",
+     "P-MC34S26P|post|B05|M|false|false|true",
+     "P-MC34S26P|post|B06|SC|true|true|true",
+     "P-MC34S26P|post|B07|SC|true|true|true",
+     "P-MC34S26P|post|B08|M|false|false|true",
+     "P-MC34S26P|post|B09|E|true|false|false",
+     "P-MC34S26P|post|B10|M|true|false|true",
+     "P-MC34S26P|post|B11|E|false|false|false",
+     "P-MC34S26P|post|B12|E|false|false|false",
+     "P-MC34S26P|post|B13|E|false|false|false",
+     "P-MC34S26P|post|B14|SC|true|true|true",
+     "P-MC34S26P|post|B15|M|false|true|true",
+     "P-MC34S26P|post|B16|M|false|true|true",
+     "P-MC34S26P|post|B17|SC|true|true|true",
+     "P-MC34S26P|post|B18|SC|true|true|true",
+     "P-MC34S26P|post|B19|E|false|false|false",
+     "P-MC34S26P|post|B20|M|false|true|true",
+     "P-PAUQBHP3|pre|B01|LK|false|false|false",
+     "P-PAUQBHP3|pre|B02|E|false|false|false",
+     "P-PAUQBHP3|pre|B03|M|false|false|true",
+     "P-PAUQBHP3|pre|B04|M|false|false|true",
+     "P-PAUQBHP3|pre|B05|M|false|false|true",
+     "P-PAUQBHP3|pre|B06|M|true|false|true",
+     "P-PAUQBHP3|pre|B07|SC|true|true|true",
+     "P-PAUQBHP3|pre|B08|LK|false|false|false",
+     "P-PAUQBHP3|pre|B09|M|false|false|true",
+     "P-PAUQBHP3|pre|B10|E|false|false|false",
+     "P-PAUQBHP3|pre|B11|M|false|false|true",
+     "P-PAUQBHP3|pre|B12|M|true|false|true",
+     "P-PAUQBHP3|pre|B13|LK|false|false|false",
+     "P-PAUQBHP3|pre|B14|E|false|false|false",
+     "P-PAUQBHP3|pre|B15|SC|true|true|true",
+     "P-PAUQBHP3|pre|B16|M|false|false|true",
+     "P-PAUQBHP3|pre|B17|M|true|false|true",
+     "P-PAUQBHP3|pre|B18|SC|true|true|true",
+     "P-PAUQBHP3|pre|B19|E|false|false|false",
+     "P-PAUQBHP3|pre|B20|LK|false|false|false",
+     "P-PAUQBHP3|post|B01|LK|false|false|false",
+     "P-PAUQBHP3|post|B02|SC|true|true|true",
+     "P-PAUQBHP3|post|B03|E|false|false|false",
+     "P-PAUQBHP3|post|B04|LC|true|true|false",
+     "P-PAUQBHP3|post|B05|E|false|false|false",
+     "P-PAUQBHP3|post|B06|SC|true|true|true",
+     "P-PAUQBHP3|post|B07|LC|true|true|false",
+     "P-PAUQBHP3|post|B08|LK|false|false|false",
+     "P-PAUQBHP3|post|B09|E|false|true|false",
+     "P-PAUQBHP3|post|B10|LK|false|false|false",
+     "P-PAUQBHP3|post|B11|SC|true|true|true",
+     "P-PAUQBHP3|post|B12|SC|true|true|true",
+     "P-PAUQBHP3|post|B13|LK|false|false|false",
+     "P-PAUQBHP3|post|B14|SC|true|true|true",
+     "P-PAUQBHP3|post|B15|LC|true|true|false",
+     "P-PAUQBHP3|post|B16|SC|true|true|true",
+     "P-PAUQBHP3|post|B17|SC|true|true|true",
+     "P-PAUQBHP3|post|B18|LC|true|true|false",
+     "P-PAUQBHP3|post|B19|M|false|false|true",
+     "P-PAUQBHP3|post|B20|LC|true|true|false",
+     "P-QCW4HFVU|pre|B01|M|true|false|true",
+     "P-QCW4HFVU|pre|B02|M|false|false|true",
+     "P-QCW4HFVU|pre|B03|SC|true|true|true",
+     "P-QCW4HFVU|pre|B04|M|false|true|true",
+     "P-QCW4HFVU|pre|B05|LK|false|false|false",
+     "P-QCW4HFVU|pre|B06|E|false|true|false",
+     "P-QCW4HFVU|pre|B07|SC|true|true|true",
+     "P-QCW4HFVU|pre|B08|LK|false|false|false",
+     "P-QCW4HFVU|pre|B09|E|false|false|false",
+     "P-QCW4HFVU|pre|B10|E|false|false|false",
+     "P-QCW4HFVU|pre|B11|E|false|false|false",
+     "P-QCW4HFVU|pre|B12|LK|false|false|false",
+     "P-QCW4HFVU|pre|B13|E|false|false|false",
+     "P-QCW4HFVU|pre|B14|M|false|false|true",
+     "P-QCW4HFVU|pre|B15|M|false|true|true",
+     "P-QCW4HFVU|pre|B16|SC|true|true|true",
+     "P-QCW4HFVU|pre|B17|SC|true|true|true",
+     "P-QCW4HFVU|pre|B18|SC|true|true|true",
+     "P-QCW4HFVU|pre|B19|M|false|true|true",
+     "P-QCW4HFVU|pre|B20|M|false|false|true",
+     "P-QCW4HFVU|post|B01|LC|true|true|false",
+     "P-QCW4HFVU|post|B02|LK|false|false|false",
+     "P-QCW4HFVU|post|B03|SC|true|true|true",
+     "P-QCW4HFVU|post|B04|SC|true|true|true",
+     "P-QCW4HFVU|post|B05|SC|true|true|true",
+     "P-QCW4HFVU|post|B06|LC|true|true|false",
+     "P-QCW4HFVU|post|B07|LC|true|true|false",
+     "P-QCW4HFVU|post|B08|SC|true|true|true",
+     "P-QCW4HFVU|post|B09|SC|true|true|true",
+     "P-QCW4HFVU|post|B10|LC|true|true|false",
+     "P-QCW4HFVU|post|B11|LC|true|true|false",
+     "P-QCW4HFVU|post|B12|SC|true|true|true",
+     "P-QCW4HFVU|post|B13|LC|true|true|false",
+     "P-QCW4HFVU|post|B14|SC|true|true|true",
+     "P-QCW4HFVU|post|B15|LC|true|true|false",
+     "P-QCW4HFVU|post|B16|E|false|false|false",
+     "P-QCW4HFVU|post|B17|SC|true|true|true",
+     "P-QCW4HFVU|post|B18|SC|true|true|true",
+     "P-QCW4HFVU|post|B19|M|false|false|true",
+     "P-QCW4HFVU|post|B20|SC|true|true|true",
+     "P-R93EKU2B|pre|B01|SC|true|true|true",
+     "P-R93EKU2B|pre|B02|E|false|true|false",
+     "P-R93EKU2B|pre|B03|SC|true|true|true",
+     "P-R93EKU2B|pre|B04|E|false|false|false",
+     "P-R93EKU2B|pre|B05|SC|true|true|true",
+     "P-R93EKU2B|pre|B06|E|false|false|false",
+     "P-R93EKU2B|pre|B07|SC|true|true|true",
+     "P-R93EKU2B|pre|B08|E|false|false|false",
+     "P-R93EKU2B|pre|B09|SC|true|true|true",
+     "P-R93EKU2B|pre|B10|SC|true|true|true",
+     "P-R93EKU2B|pre|B11|SC|true|true|true",
+     "P-R93EKU2B|pre|B12|E|false|false|false",
+     "P-R93EKU2B|pre|B13|LK|false|false|false",
+     "P-R93EKU2B|pre|B14|LK|false|false|false",
+     "P-R93EKU2B|pre|B15|M|false|true|true",
+     "P-R93EKU2B|pre|B16|LK|false|false|false",
+     "P-R93EKU2B|pre|B17|E|false|false|false",
+     "P-R93EKU2B|pre|B18|E|false|false|false",
+     "P-R93EKU2B|pre|B19|E|false|false|false",
+     "P-R93EKU2B|pre|B20|SC|true|true|true",
+     "P-RRJ5JDMF|pre|B01|E|false|false|false",
+     "P-RRJ5JDMF|pre|B02|M|false|false|true",
+     "P-RRJ5JDMF|pre|B03|E|false|false|false",
+     "P-RRJ5JDMF|pre|B04|M|false|false|true",
+     "P-RRJ5JDMF|pre|B05|E|false|false|false",
+     "P-RRJ5JDMF|pre|B06|E|false|false|false",
+     "P-RRJ5JDMF|pre|B07|LC|true|true|false",
+     "P-RRJ5JDMF|pre|B08|E|false|false|false",
+     "P-RRJ5JDMF|pre|B09|E|false|false|false",
+     "P-RRJ5JDMF|pre|B10|E|false|false|false",
+     "P-RRJ5JDMF|pre|B11|E|false|false|false",
+     "P-RRJ5JDMF|pre|B12|E|false|false|false",
+     "P-RRJ5JDMF|pre|B13|M|false|false|true",
+     "P-RRJ5JDMF|pre|B14|E|false|false|false",
+     "P-RRJ5JDMF|pre|B15|E|false|false|false",
+     "P-RRJ5JDMF|pre|B16|LK|false|false|false",
+     "P-RRJ5JDMF|pre|B17|E|false|false|false",
+     "P-RRJ5JDMF|pre|B18|SC|true|true|true",
+     "P-RRJ5JDMF|pre|B19|SC|true|true|true",
+     "P-RRJ5JDMF|pre|B20|LK|false|false|false",
+     "P-RRJ5JDMF|post|B01|SC|true|true|true",
+     "P-RRJ5JDMF|post|B02|E|false|false|false",
+     "P-RRJ5JDMF|post|B03|M|true|false|true",
+     "P-RRJ5JDMF|post|B04|LK|false|false|false",
+     "P-RRJ5JDMF|post|B05|LK|false|false|false",
+     "P-RRJ5JDMF|post|B06|LC|true|true|false",
+     "P-RRJ5JDMF|post|B07|SC|true|true|true",
+     "P-RRJ5JDMF|post|B08|E|false|false|false",
+     "P-RRJ5JDMF|post|B09|E|false|false|false",
+     "P-RRJ5JDMF|post|B10|LC|true|true|false",
+     "P-RRJ5JDMF|post|B11|SC|true|true|true",
+     "P-RRJ5JDMF|post|B12|M|false|false|true",
+     "P-RRJ5JDMF|post|B13|SC|true|true|true",
+     "P-RRJ5JDMF|post|B14|E|false|false|false",
+     "P-RRJ5JDMF|post|B15|M|false|true|true",
+     "P-RRJ5JDMF|post|B16|M|false|false|true",
+     "P-RRJ5JDMF|post|B17|SC|true|true|true",
+     "P-RRJ5JDMF|post|B18|SC|true|true|true",
+     "P-RRJ5JDMF|post|B19|M|false|false|true",
+     "P-RRJ5JDMF|post|B20|SC|true|true|true",
+     "P-SRA79NV3|pre|B01|E|false|false|false",
+     "P-SRA79NV3|pre|B02|E|true|false|false",
+     "P-SRA79NV3|pre|B03|M|false|false|true",
+     "P-SRA79NV3|pre|B04|M|true|false|true",
+     "P-SRA79NV3|pre|B05|E|false|false|false",
+     "P-SRA79NV3|pre|B06|LK|false|true|false",
+     "P-SRA79NV3|pre|B07|LC|true|true|false",
+     "P-SRA79NV3|pre|B08|E|false|false|false",
+     "P-SRA79NV3|pre|B09|M|false|false|true",
+     "P-SRA79NV3|pre|B10|LK|false|false|false",
+     "P-SRA79NV3|pre|B11|E|false|false|false",
+     "P-SRA79NV3|pre|B12|LK|false|false|false",
+     "P-SRA79NV3|pre|B13|M|false|false|true",
+     "P-SRA79NV3|pre|B14|E|false|false|false",
+     "P-SRA79NV3|pre|B15|SC|true|true|true",
+     "P-SRA79NV3|pre|B16|M|true|false|true",
+     "P-SRA79NV3|pre|B17|LK|false|false|false",
+     "P-SRA79NV3|pre|B18|M|false|false|true",
+     "P-SRA79NV3|pre|B19|E|false|false|false",
+     "P-SRA79NV3|pre|B20|M|false|false|true",
+     "P-SRA79NV3|post|B01|SC|true|true|true",
+     "P-SRA79NV3|post|B02|M|false|false|true",
+     "P-SRA79NV3|post|B03|SC|true|true|true",
+     "P-SRA79NV3|post|B04|LC|true|true|false",
+     "P-SRA79NV3|post|B05|SC|true|true|true",
+     "P-SRA79NV3|post|B06|SC|true|true|true",
+     "P-SRA79NV3|post|B07|SC|true|true|true",
+     "P-SRA79NV3|post|B08|E|true|false|false",
+     "P-SRA79NV3|post|B09|LC|true|true|false",
+     "P-SRA79NV3|post|B10|LK|true|false|false",
+     "P-SRA79NV3|post|B11|SC|true|true|true",
+     "P-SRA79NV3|post|B12|M|false|false|true",
+     "P-SRA79NV3|post|B13|LK|false|false|false",
+     "P-SRA79NV3|post|B14|M|false|false|true",
+     "P-SRA79NV3|post|B15|SC|true|true|true",
+     "P-SRA79NV3|post|B16|E|false|true|false",
+     "P-SRA79NV3|post|B17|SC|true|true|true",
+     "P-SRA79NV3|post|B18|SC|true|true|true",
+     "P-SRA79NV3|post|B19|LK|false|true|false",
+     "P-SRA79NV3|post|B20|SC|true|true|true",
+     "P-UYXUBG4U|pre|B01|E|false|false|false",
+     "P-UYXUBG4U|pre|B02|E|false|false|false",
+     "P-UYXUBG4U|pre|B03|E|false|false|false",
+     "P-UYXUBG4U|pre|B04|E|false|false|false",
+     "P-UYXUBG4U|pre|B05|E|false|false|false",
+     "P-UYXUBG4U|pre|B06|LK|false|false|false",
+     "P-UYXUBG4U|pre|B07|LK|false|false|false",
+     "P-UYXUBG4U|pre|B08|LK|false|false|false",
+     "P-UYXUBG4U|pre|B09|M|false|false|true",
+     "P-UYXUBG4U|pre|B10|M|false|false|true",
+     "P-UYXUBG4U|pre|B11|M|false|false|true",
+     "P-UYXUBG4U|pre|B12|M|false|false|true",
+     "P-UYXUBG4U|pre|B13|E|false|false|false",
+     "P-UYXUBG4U|pre|B14|M|false|false|true",
+     "P-UYXUBG4U|pre|B15|E|false|false|false",
+     "P-UYXUBG4U|pre|B16|E|false|false|false",
+     "P-UYXUBG4U|pre|B17|M|false|false|true",
+     "P-UYXUBG4U|pre|B18|E|false|false|false",
+     "P-UYXUBG4U|pre|B19|M|false|false|true",
+     "P-UYXUBG4U|pre|B20|M|false|false|true",
+     "P-UYXUBG4U|post|B01|E|true|false|false",
+     "P-UYXUBG4U|post|B02|M|false|false|true",
+     "P-UYXUBG4U|post|B03|E|true|false|false",
+     "P-UYXUBG4U|post|B04|SC|true|true|true",
+     "P-UYXUBG4U|post|B05|M|true|false|true",
+     "P-UYXUBG4U|post|B06|SC|true|true|true",
+     "P-UYXUBG4U|post|B07|SC|true|true|true",
+     "P-UYXUBG4U|post|B08|M|false|false|true",
+     "P-UYXUBG4U|post|B09|E|false|false|false",
+     "P-UYXUBG4U|post|B10|E|false|false|false",
+     "P-UYXUBG4U|post|B11|M|true|false|true",
+     "P-UYXUBG4U|post|B12|M|false|false|true",
+     "P-UYXUBG4U|post|B13|E|false|false|false",
+     "P-UYXUBG4U|post|B14|LK|false|false|false",
+     "P-UYXUBG4U|post|B15|SC|true|true|true",
+     "P-UYXUBG4U|post|B16|M|false|true|true",
+     "P-UYXUBG4U|post|B17|LK|false|false|false",
+     "P-UYXUBG4U|post|B18|SC|true|true|true",
+     "P-UYXUBG4U|post|B19|LK|false|false|false",
+     "P-UYXUBG4U|post|B20|M|false|true|true",
+     "P-V9RKMXKD|pre|B01|M|false|false|true",
+     "P-V9RKMXKD|pre|B02|M|false|false|true",
+     "P-V9RKMXKD|pre|B03|LK|false|false|false",
+     "P-V9RKMXKD|pre|B04|M|false|true|true",
+     "P-V9RKMXKD|pre|B05|LK|false|false|false",
+     "P-V9RKMXKD|pre|B06|LC|true|true|false",
+     "P-V9RKMXKD|pre|B07|SC|true|true|true",
+     "P-V9RKMXKD|pre|B08|E|false|false|false",
+     "P-V9RKMXKD|pre|B09|M|false|false|true",
+     "P-V9RKMXKD|pre|B10|E|false|false|false",
+     "P-V9RKMXKD|pre|B11|E|true|false|false",
+     "P-V9RKMXKD|pre|B12|LC|true|true|false",
+     "P-V9RKMXKD|pre|B13|E|false|false|false",
+     "P-V9RKMXKD|pre|B14|M|false|false|true",
+     "P-V9RKMXKD|pre|B15|LK|false|true|false",
+     "P-V9RKMXKD|pre|B16|M|false|false|true",
+     "P-V9RKMXKD|pre|B17|LC|true|true|false",
+     "P-V9RKMXKD|pre|B18|LC|true|true|false",
+     "P-V9RKMXKD|pre|B19|E|false|false|false",
+     "P-V9RKMXKD|pre|B20|M|true|false|true",
+     "P-V9RKMXKD|post|B01|SC|true|true|true",
+     "P-V9RKMXKD|post|B02|E|true|false|false",
+     "P-V9RKMXKD|post|B03|SC|true|true|true",
+     "P-V9RKMXKD|post|B04|SC|true|true|true",
+     "P-V9RKMXKD|post|B05|SC|true|true|true",
+     "P-V9RKMXKD|post|B06|SC|true|true|true",
+     "P-V9RKMXKD|post|B07|SC|true|true|true",
+     "P-V9RKMXKD|post|B08|SC|true|true|true",
+     "P-V9RKMXKD|post|B09|SC|true|true|true",
+     "P-V9RKMXKD|post|B10|LC|true|true|false",
+     "P-V9RKMXKD|post|B11|LC|true|true|false",
+     "P-V9RKMXKD|post|B12|SC|true|true|true",
+     "P-V9RKMXKD|post|B13|SC|true|true|true",
+     "P-V9RKMXKD|post|B14|SC|true|true|true",
+     "P-V9RKMXKD|post|B15|SC|true|true|true",
+     "P-V9RKMXKD|post|B16|SC|true|true|true",
+     "P-V9RKMXKD|post|B17|SC|true|true|true",
+     "P-V9RKMXKD|post|B18|SC|true|true|true",
+     "P-V9RKMXKD|post|B19|E|false|false|false",
+     "P-V9RKMXKD|post|B20|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B01|E|false|false|false",
+     "P-XQ4C5M9B|pre|B02|M|false|false|true",
+     "P-XQ4C5M9B|pre|B03|M|true|false|true",
+     "P-XQ4C5M9B|pre|B04|E|false|false|false",
+     "P-XQ4C5M9B|pre|B05|E|false|false|false",
+     "P-XQ4C5M9B|pre|B06|E|false|true|false",
+     "P-XQ4C5M9B|pre|B07|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B08|E|false|false|false",
+     "P-XQ4C5M9B|pre|B09|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B10|E|false|false|false",
+     "P-XQ4C5M9B|pre|B11|E|false|false|false",
+     "P-XQ4C5M9B|pre|B12|M|true|false|true",
+     "P-XQ4C5M9B|pre|B13|LK|false|false|false",
+     "P-XQ4C5M9B|pre|B14|M|false|false|true",
+     "P-XQ4C5M9B|pre|B15|LK|false|false|false",
+     "P-XQ4C5M9B|pre|B16|E|true|false|false",
+     "P-XQ4C5M9B|pre|B17|M|false|false|true",
+     "P-XQ4C5M9B|pre|B18|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B19|M|false|false|true",
+     "P-XQ4C5M9B|pre|B20|SC|true|true|true",
+     "P-XQ4C5M9B|post|B01|SC|true|true|true",
+     "P-XQ4C5M9B|post|B02|M|true|false|true",
+     "P-XQ4C5M9B|post|B03|M|false|true|true",
+     "P-XQ4C5M9B|post|B04|SC|true|true|true",
+     "P-XQ4C5M9B|post|B05|SC|true|true|true",
+     "P-XQ4C5M9B|post|B06|LC|true|true|false",
+     "P-XQ4C5M9B|post|B07|SC|true|true|true",
+     "P-XQ4C5M9B|post|B08|SC|true|true|true",
+     "P-XQ4C5M9B|post|B09|SC|true|true|true",
+     "P-XQ4C5M9B|post|B10|E|false|false|false",
+     "P-XQ4C5M9B|post|B11|E|false|true|false",
+     "P-XQ4C5M9B|post|B12|E|true|false|false",
+     "P-XQ4C5M9B|post|B13|E|false|false|false",
+     "P-XQ4C5M9B|post|B14|LK|false|false|false",
+     "P-XQ4C5M9B|post|B15|SC|true|true|true",
+     "P-XQ4C5M9B|post|B16|E|false|true|false",
+     "P-XQ4C5M9B|post|B17|SC|true|true|true",
+     "P-XQ4C5M9B|post|B18|E|false|false|false",
+     "P-XQ4C5M9B|post|B19|M|false|true|true",
+     "P-XQ4C5M9B|post|B20|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B01|M|true|false|true",
+     "P-ZNDCRKNH|pre|B02|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B03|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B04|E|false|false|false",
+     "P-ZNDCRKNH|pre|B05|M|false|true|true",
+     "P-ZNDCRKNH|pre|B06|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B07|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B08|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B09|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B10|M|false|true|true",
+     "P-ZNDCRKNH|pre|B11|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B12|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B13|E|false|false|false",
+     "P-ZNDCRKNH|pre|B14|LK|false|false|false",
+     "P-ZNDCRKNH|pre|B15|LC|true|true|false",
+     "P-ZNDCRKNH|pre|B16|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B17|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B18|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B19|M|false|false|true",
+     "P-ZNDCRKNH|pre|B20|SC|true|true|true",
+     "P-ZNDCRKNH|post|B01|SC|true|true|true",
+     "P-ZNDCRKNH|post|B02|LC|true|true|false",
+     "P-ZNDCRKNH|post|B03|LC|true|true|false",
+     "P-ZNDCRKNH|post|B04|SC|true|true|true",
+     "P-ZNDCRKNH|post|B05|SC|true|true|true",
+     "P-ZNDCRKNH|post|B06|SC|true|true|true",
+     "P-ZNDCRKNH|post|B07|LC|true|true|false",
+     "P-ZNDCRKNH|post|B08|M|false|false|true",
+     "P-ZNDCRKNH|post|B09|SC|true|true|true",
+     "P-ZNDCRKNH|post|B10|M|false|false|true",
+     "P-ZNDCRKNH|post|B11|E|false|true|false",
+     "P-ZNDCRKNH|post|B12|SC|true|true|true",
+     "P-ZNDCRKNH|post|B13|SC|true|true|true",
+     "P-ZNDCRKNH|post|B14|SC|true|true|true",
+     "P-ZNDCRKNH|post|B15|SC|true|true|true",
+     "P-ZNDCRKNH|post|B16|LC|true|true|false",
+     "P-ZNDCRKNH|post|B17|SC|true|true|true",
+     "P-ZNDCRKNH|post|B18|LC|true|true|false",
+     "P-ZNDCRKNH|post|B19|LC|true|true|false",
+     "P-ZNDCRKNH|post|B20|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B01|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B02|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B03|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B04|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B05|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B06|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B07|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B08|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B09|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B10|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B11|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B12|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B13|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B14|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B15|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B16|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B17|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B18|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B19|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B20|SC|true|true|true",
+     "P-ZSMBSX9V|post|B01|SC|true|true|true",
+     "P-ZSMBSX9V|post|B02|LC|true|true|false",
+     "P-ZSMBSX9V|post|B03|SC|true|true|true",
+     "P-ZSMBSX9V|post|B04|SC|true|true|true",
+     "P-ZSMBSX9V|post|B05|LC|true|true|false",
+     "P-ZSMBSX9V|post|B06|SC|true|true|true",
+     "P-ZSMBSX9V|post|B07|LC|true|true|false",
+     "P-ZSMBSX9V|post|B08|LC|true|true|false",
+     "P-ZSMBSX9V|post|B09|SC|true|true|true",
+     "P-ZSMBSX9V|post|B10|LC|true|true|false",
+     "P-ZSMBSX9V|post|B11|SC|true|true|true",
+     "P-ZSMBSX9V|post|B12|SC|true|true|true",
+     "P-ZSMBSX9V|post|B13|LC|true|true|false",
+     "P-ZSMBSX9V|post|B14|LC|true|true|false",
+     "P-ZSMBSX9V|post|B15|SC|true|true|true",
+     "P-ZSMBSX9V|post|B16|SC|true|true|true",
+     "P-ZSMBSX9V|post|B17|SC|true|true|true",
+     "P-ZSMBSX9V|post|B18|SC|true|true|true",
+     "P-ZSMBSX9V|post|B19|SC|true|true|true",
+     "P-ZSMBSX9V|post|B20|SC|true|true|true"
+    ],
+    "wide": [
+     {
+      "student_pseudo_id": "P-3843Z8CT",
+      "score_pre": 20.0,
+      "score_post": 55.00000000000001,
+      "delta": 35.00000000000001,
+      "n_gain": 0.4375000000000001,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "construction"
+     },
+     {
+      "student_pseudo_id": "P-3A92QBHE",
+      "score_pre": 40.0,
+      "score_post": 60.0,
+      "delta": 20.0,
+      "n_gain": 0.3333333333333333,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "retention",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-4XGC8MVF",
+      "score_pre": 10.0,
+      "score_post": 60.0,
+      "delta": 50.0,
+      "n_gain": 0.5555555555555556,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-52ZDHM9F",
+      "score_pre": 15.0,
+      "score_post": 45.0,
+      "delta": 30.0,
+      "n_gain": 0.35294117647058826,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-6KFJ872M",
+      "score_pre": 20.0,
+      "score_post": 20.0,
+      "delta": 0.0,
+      "n_gain": 0.0,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "static",
+      "transition_gerhana": "other",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-73CXJZYT",
+      "score_pre": 40.0,
+      "score_post": 65.0,
+      "delta": 25.0,
+      "n_gain": 0.4166666666666667,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "retention",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-7DPWSNVU",
+      "score_pre": 5.0,
+      "score_post": 5.0,
+      "delta": 0.0,
+      "n_gain": 0.0,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "static",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-7VM29HXW",
+      "score_pre": 10.0,
+      "score_post": 60.0,
+      "delta": 50.0,
+      "n_gain": 0.5555555555555556,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-8QSQ3ZFZ",
+      "score_pre": 35.0,
+      "score_post": 65.0,
+      "delta": 30.0,
+      "n_gain": 0.46153846153846156,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-8VZE9288",
+      "score_pre": 5.0,
+      "score_post": 55.00000000000001,
+      "delta": 50.00000000000001,
+      "n_gain": 0.5263157894736843,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "static",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-A9PYAX9F",
+      "score_pre": 25.0,
+      "score_post": 50.0,
+      "delta": 25.0,
+      "n_gain": 0.3333333333333333,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-AT8BCGV3",
+      "score_pre": 5.0,
+      "score_post": 60.0,
+      "delta": 55.0,
+      "n_gain": 0.5789473684210527,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-CDG9E96P",
+      "score_pre": 30.0,
+      "score_post": 40.0,
+      "delta": 10.0,
+      "n_gain": 0.14285714285714285,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "other",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-DEVTZ96K",
+      "score_pre": 5.0,
+      "score_post": 60.0,
+      "delta": 55.0,
+      "n_gain": 0.5789473684210527,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "static",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-ETMEE5DT",
+      "score_pre": 0.0,
+      "score_post": 40.0,
+      "delta": 40.0,
+      "n_gain": 0.4,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "static",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-GFHCBN7M",
+      "score_pre": 20.0,
+      "score_post": 75.0,
+      "delta": 55.0,
+      "n_gain": 0.6875,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-HEB2B2NV",
+      "score_pre": 20.0,
+      "score_post": 55.00000000000001,
+      "delta": 35.00000000000001,
+      "n_gain": 0.4375000000000001,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-JSQBSJ36",
+      "score_pre": 10.0,
+      "score_post": 50.0,
+      "delta": 40.0,
+      "n_gain": 0.4444444444444444,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-JY45PMTC",
+      "score_pre": 30.0,
+      "score_post": null,
+      "delta": null,
+      "n_gain": null,
+      "n_gain_category": null,
+      "transition_benda_langit": null,
+      "transition_gerhana": null,
+      "transition_planet": null,
+      "transition_rotasi_revolusi": null
+     },
+     {
+      "student_pseudo_id": "P-MC34S26P",
+      "score_pre": 5.0,
+      "score_post": 30.0,
+      "delta": 25.0,
+      "n_gain": 0.2631578947368421,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "other",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-PAUQBHP3",
+      "score_pre": 15.0,
+      "score_post": 35.0,
+      "delta": 20.0,
+      "n_gain": 0.23529411764705882,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-QCW4HFVU",
+      "score_pre": 25.0,
+      "score_post": 50.0,
+      "delta": 25.0,
+      "n_gain": 0.3333333333333333,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "retention",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-R93EKU2B",
+      "score_pre": 40.0,
+      "score_post": null,
+      "delta": null,
+      "n_gain": null,
+      "n_gain_category": null,
+      "transition_benda_langit": null,
+      "transition_gerhana": null,
+      "transition_planet": null,
+      "transition_rotasi_revolusi": null
+     },
+     {
+      "student_pseudo_id": "P-RRJ5JDMF",
+      "score_pre": 10.0,
+      "score_post": 35.0,
+      "delta": 25.0,
+      "n_gain": 0.2777777777777778,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "construction",
+      "transition_planet": "static",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-SRA79NV3",
+      "score_pre": 5.0,
+      "score_post": 50.0,
+      "delta": 45.0,
+      "n_gain": 0.47368421052631576,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "construction",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-UYXUBG4U",
+      "score_pre": 0.0,
+      "score_post": 25.0,
+      "delta": 25.0,
+      "n_gain": 0.25,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "static",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-V9RKMXKD",
+      "score_pre": 5.0,
+      "score_post": 80.0,
+      "delta": 75.0,
+      "n_gain": 0.7894736842105263,
+      "n_gain_category": "tinggi",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-XQ4C5M9B",
+      "score_pre": 20.0,
+      "score_post": 45.0,
+      "delta": 25.0,
+      "n_gain": 0.3125,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-ZNDCRKNH",
+      "score_pre": 60.0,
+      "score_post": 55.00000000000001,
+      "delta": -4.999999999999993,
+      "n_gain": -0.12499999999999982,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "retention"
+     },
+     {
+      "student_pseudo_id": "P-ZSMBSX9V",
+      "score_pre": 100.0,
+      "score_post": 65.0,
+      "delta": -35.0,
+      "n_gain": null,
+      "n_gain_category": null,
+      "transition_benda_langit": "retention",
+      "transition_gerhana": "retention",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "retention"
+     }
+    ]
+   }
+  },
+  "syn-class-a": {
+   "n_scope": 20,
+   "paired": [
+    "syn-class-a-s01",
+    "syn-class-a-s02",
+    "syn-class-a-s03",
+    "syn-class-a-s04",
+    "syn-class-a-s05",
+    "syn-class-a-s06",
+    "syn-class-a-s07",
+    "syn-class-a-s08",
+    "syn-class-a-s09",
+    "syn-class-a-s10",
+    "syn-class-a-s11",
+    "syn-class-a-s12",
+    "syn-class-a-s13",
+    "syn-class-a-s14",
+    "syn-class-a-s15",
+    "syn-class-a-s16",
+    "syn-class-a-s17"
+   ],
+   "excluded_by_reason": {
+    "consent_withdrawn": 1,
+    "consent_pending": 1,
+    "pre_incomplete": 0,
+    "post_incomplete": 1
+   },
+   "distribution": {
+    "pre": [
+     {
+      "domain": "benda_langit",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 12,
+       "M": 24,
+       "E": 37,
+       "LK": 8,
+       "LC": 4
+      },
+      "percent": {
+       "SC": 14.117647058823529,
+       "M": 28.235294117647058,
+       "E": 43.529411764705884,
+       "LK": 9.411764705882353,
+       "LC": 4.705882352941177
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 27,
+       "M": 26,
+       "E": 20,
+       "LK": 6,
+       "LC": 6
+      },
+      "percent": {
+       "SC": 31.76470588235294,
+       "M": 30.58823529411765,
+       "E": 23.52941176470588,
+       "LK": 7.0588235294117645,
+       "LC": 7.0588235294117645
+      }
+     },
+     {
+      "domain": "planet",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 24,
+       "M": 19,
+       "E": 27,
+       "LK": 11,
+       "LC": 4
+      },
+      "percent": {
+       "SC": 28.235294117647058,
+       "M": 22.35294117647059,
+       "E": 31.76470588235294,
+       "LK": 12.941176470588237,
+       "LC": 4.705882352941177
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 11,
+       "M": 29,
+       "E": 27,
+       "LK": 14,
+       "LC": 4
+      },
+      "percent": {
+       "SC": 12.941176470588237,
+       "M": 34.11764705882353,
+       "E": 31.76470588235294,
+       "LK": 16.470588235294116,
+       "LC": 4.705882352941177
+      }
+     }
+    ],
+    "post": [
+     {
+      "domain": "benda_langit",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 42,
+       "M": 11,
+       "E": 14,
+       "LK": 3,
+       "LC": 15
+      },
+      "percent": {
+       "SC": 49.411764705882355,
+       "M": 12.941176470588237,
+       "E": 16.470588235294116,
+       "LK": 3.5294117647058822,
+       "LC": 17.647058823529413
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 43,
+       "M": 9,
+       "E": 11,
+       "LK": 3,
+       "LC": 19
+      },
+      "percent": {
+       "SC": 50.588235294117645,
+       "M": 10.588235294117647,
+       "E": 12.941176470588237,
+       "LK": 3.5294117647058822,
+       "LC": 22.35294117647059
+      }
+     },
+     {
+      "domain": "planet",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 37,
+       "M": 10,
+       "E": 15,
+       "LK": 3,
+       "LC": 20
+      },
+      "percent": {
+       "SC": 43.529411764705884,
+       "M": 11.76470588235294,
+       "E": 17.647058823529413,
+       "LK": 3.5294117647058822,
+       "LC": 23.52941176470588
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_responses": 85,
+      "n_students": 17,
+      "n_items": 5,
+      "counts": {
+       "SC": 45,
+       "M": 11,
+       "E": 14,
+       "LK": 8,
+       "LC": 7
+      },
+      "percent": {
+       "SC": 52.94117647058824,
+       "M": 12.941176470588237,
+       "E": 16.470588235294116,
+       "LK": 9.411764705882353,
+       "LC": 8.235294117647058
+      }
+     }
+    ]
+   },
+   "item_map": {
+    "pre": [
+     {
+      "item_order": 17,
+      "n": 17,
+      "m_count": 8,
+      "counts": {
+       "SC": 5,
+       "M": 8,
+       "E": 3,
+       "LK": 0,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 7
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 9
+      }
+     },
+     {
+      "item_order": 4,
+      "n": 17,
+      "m_count": 7,
+      "counts": {
+       "SC": 1,
+       "M": 7,
+       "E": 7,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 10
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 10,
+      "n": 17,
+      "m_count": 7,
+      "counts": {
+       "SC": 1,
+       "M": 7,
+       "E": 7,
+       "LK": 2,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 11
+      }
+     },
+     {
+      "item_order": 12,
+      "n": 17,
+      "m_count": 7,
+      "counts": {
+       "SC": 3,
+       "M": 7,
+       "E": 3,
+       "LK": 2,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 9
+      }
+     },
+     {
+      "item_order": 14,
+      "n": 17,
+      "m_count": 7,
+      "counts": {
+       "SC": 1,
+       "M": 7,
+       "E": 4,
+       "LK": 5,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 10
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 20,
+      "n": 17,
+      "m_count": 7,
+      "counts": {
+       "SC": 5,
+       "M": 7,
+       "E": 3,
+       "LK": 2,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 9
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 8
+      }
+     },
+     {
+      "item_order": 2,
+      "n": 17,
+      "m_count": 6,
+      "counts": {
+       "SC": 2,
+       "M": 6,
+       "E": 7,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 7
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 12
+      }
+     },
+     {
+      "item_order": 11,
+      "n": 17,
+      "m_count": 6,
+      "counts": {
+       "SC": 3,
+       "M": 6,
+       "E": 7,
+       "LK": 0,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 6
+      }
+     },
+     {
+      "item_order": 13,
+      "n": 17,
+      "m_count": 6,
+      "counts": {
+       "SC": 1,
+       "M": 6,
+       "E": 7,
+       "LK": 3,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 11
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 19,
+      "n": 17,
+      "m_count": 6,
+      "counts": {
+       "SC": 3,
+       "M": 6,
+       "E": 8,
+       "LK": 0,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 10
+      }
+     },
+     {
+      "item_order": 3,
+      "n": 17,
+      "m_count": 5,
+      "counts": {
+       "SC": 3,
+       "M": 5,
+       "E": 7,
+       "LK": 2,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 8
+      }
+     },
+     {
+      "item_order": 9,
+      "n": 17,
+      "m_count": 5,
+      "counts": {
+       "SC": 5,
+       "M": 5,
+       "E": 5,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 6
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 10
+      }
+     },
+     {
+      "item_order": 8,
+      "n": 17,
+      "m_count": 4,
+      "counts": {
+       "SC": 2,
+       "M": 4,
+       "E": 6,
+       "LK": 5,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 10
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 10
+      }
+     },
+     {
+      "item_order": 1,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 5,
+       "M": 3,
+       "E": 7,
+       "LK": 1,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 7
+      }
+     },
+     {
+      "item_order": 5,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 1,
+       "M": 3,
+       "E": 9,
+       "LK": 3,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 9
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 10
+      }
+     },
+     {
+      "item_order": 6,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 6,
+       "M": 3,
+       "E": 5,
+       "LK": 2,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 11
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 8
+      }
+     },
+     {
+      "item_order": 15,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 3,
+       "M": 3,
+       "E": 6,
+       "LK": 4,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 7
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 9
+      }
+     },
+     {
+      "item_order": 16,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 6,
+       "M": 3,
+       "E": 3,
+       "LK": 3,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 10
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 8
+      }
+     },
+     {
+      "item_order": 18,
+      "n": 17,
+      "m_count": 2,
+      "counts": {
+       "SC": 8,
+       "M": 2,
+       "E": 3,
+       "LK": 1,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 12
+      }
+     },
+     {
+      "item_order": 7,
+      "n": 17,
+      "m_count": 0,
+      "counts": {
+       "SC": 10,
+       "M": 0,
+       "E": 4,
+       "LK": 1,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 14
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 13
+      }
+     }
+    ],
+    "post": [
+     {
+      "item_order": 8,
+      "n": 17,
+      "m_count": 5,
+      "counts": {
+       "SC": 4,
+       "M": 5,
+       "E": 4,
+       "LK": 1,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 11
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 9
+      }
+     },
+     {
+      "item_order": 2,
+      "n": 17,
+      "m_count": 4,
+      "counts": {
+       "SC": 4,
+       "M": 4,
+       "E": 5,
+       "LK": 0,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 11
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 9
+      }
+     },
+     {
+      "item_order": 19,
+      "n": 17,
+      "m_count": 4,
+      "counts": {
+       "SC": 5,
+       "M": 4,
+       "E": 3,
+       "LK": 2,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 10
+      }
+     },
+     {
+      "item_order": 3,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 7,
+       "M": 3,
+       "E": 3,
+       "LK": 0,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 5,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 8,
+       "M": 3,
+       "E": 3,
+       "LK": 1,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 11
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 12
+      }
+     },
+     {
+      "item_order": 10,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 3,
+       "M": 3,
+       "E": 5,
+       "LK": 2,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 8
+      }
+     },
+     {
+      "item_order": 12,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 10,
+       "M": 3,
+       "E": 4,
+       "LK": 0,
+       "LC": 0
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 12
+      }
+     },
+     {
+      "item_order": 14,
+      "n": 17,
+      "m_count": 3,
+      "counts": {
+       "SC": 8,
+       "M": 3,
+       "E": 3,
+       "LK": 2,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "A",
+       "count": 9
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 12
+      }
+     },
+     {
+      "item_order": 11,
+      "n": 17,
+      "m_count": 2,
+      "counts": {
+       "SC": 11,
+       "M": 2,
+       "E": 2,
+       "LK": 0,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 14
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 15,
+      "n": 17,
+      "m_count": 2,
+      "counts": {
+       "SC": 10,
+       "M": 2,
+       "E": 1,
+       "LK": 1,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 16,
+      "n": 17,
+      "m_count": 2,
+      "counts": {
+       "SC": 10,
+       "M": 2,
+       "E": 1,
+       "LK": 0,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 14
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 20,
+      "n": 17,
+      "m_count": 2,
+      "counts": {
+       "SC": 11,
+       "M": 2,
+       "E": 1,
+       "LK": 0,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 14
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 1,
+      "n": 17,
+      "m_count": 1,
+      "counts": {
+       "SC": 11,
+       "M": 1,
+       "E": 2,
+       "LK": 1,
+       "LC": 2
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 15
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 14
+      }
+     },
+     {
+      "item_order": 6,
+      "n": 17,
+      "m_count": 1,
+      "counts": {
+       "SC": 11,
+       "M": 1,
+       "E": 1,
+       "LK": 0,
+       "LC": 4
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 15
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 7,
+      "n": 17,
+      "m_count": 1,
+      "counts": {
+       "SC": 10,
+       "M": 1,
+       "E": 0,
+       "LK": 0,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 17
+      },
+      "top_reason": {
+       "key": "C",
+       "count": 16
+      }
+     },
+     {
+      "item_order": 13,
+      "n": 17,
+      "m_count": 1,
+      "counts": {
+       "SC": 6,
+       "M": 1,
+       "E": 4,
+       "LK": 5,
+       "LC": 1
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 8
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 8
+      }
+     },
+     {
+      "item_order": 18,
+      "n": 17,
+      "m_count": 1,
+      "counts": {
+       "SC": 7,
+       "M": 1,
+       "E": 3,
+       "LK": 0,
+       "LC": 6
+      },
+      "top_tier1": {
+       "key": "C",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "B",
+       "count": 14
+      }
+     },
+     {
+      "item_order": 4,
+      "n": 17,
+      "m_count": 0,
+      "counts": {
+       "SC": 12,
+       "M": 0,
+       "E": 1,
+       "LK": 1,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 15
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 15
+      }
+     },
+     {
+      "item_order": 9,
+      "n": 17,
+      "m_count": 0,
+      "counts": {
+       "SC": 9,
+       "M": 0,
+       "E": 5,
+       "LK": 0,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "B",
+       "count": 12
+      },
+      "top_reason": {
+       "key": "D",
+       "count": 13
+      }
+     },
+     {
+      "item_order": 17,
+      "n": 17,
+      "m_count": 0,
+      "counts": {
+       "SC": 10,
+       "M": 0,
+       "E": 3,
+       "LK": 1,
+       "LC": 3
+      },
+      "top_tier1": {
+       "key": "D",
+       "count": 13
+      },
+      "top_reason": {
+       "key": "A",
+       "count": 15
+      }
+     }
+    ]
+   },
+   "stats": {
+    "score_sc": {
+     "students": [
+      {
+       "id": "syn-class-a-s01",
+       "pre": 30.0,
+       "post": 40.0,
+       "n_gain": 0.14285714285714285
+      },
+      {
+       "id": "syn-class-a-s02",
+       "pre": 15.0,
+       "post": 45.0,
+       "n_gain": 0.35294117647058826
+      },
+      {
+       "id": "syn-class-a-s03",
+       "pre": 20.0,
+       "post": 55.00000000000001,
+       "n_gain": 0.4375000000000001
+      },
+      {
+       "id": "syn-class-a-s04",
+       "pre": 60.0,
+       "post": 55.00000000000001,
+       "n_gain": -0.12499999999999982
+      },
+      {
+       "id": "syn-class-a-s05",
+       "pre": 100.0,
+       "post": 65.0,
+       "n_gain": null
+      },
+      {
+       "id": "syn-class-a-s06",
+       "pre": 10.0,
+       "post": 35.0,
+       "n_gain": 0.2777777777777778
+      },
+      {
+       "id": "syn-class-a-s07",
+       "pre": 5.0,
+       "post": 60.0,
+       "n_gain": 0.5789473684210527
+      },
+      {
+       "id": "syn-class-a-s08",
+       "pre": 25.0,
+       "post": 50.0,
+       "n_gain": 0.3333333333333333
+      },
+      {
+       "id": "syn-class-a-s09",
+       "pre": 5.0,
+       "post": 55.00000000000001,
+       "n_gain": 0.5263157894736843
+      },
+      {
+       "id": "syn-class-a-s10",
+       "pre": 40.0,
+       "post": 65.0,
+       "n_gain": 0.4166666666666667
+      },
+      {
+       "id": "syn-class-a-s11",
+       "pre": 0.0,
+       "post": 25.0,
+       "n_gain": 0.25
+      },
+      {
+       "id": "syn-class-a-s12",
+       "pre": 10.0,
+       "post": 60.0,
+       "n_gain": 0.5555555555555556
+      },
+      {
+       "id": "syn-class-a-s13",
+       "pre": 5.0,
+       "post": 80.0,
+       "n_gain": 0.7894736842105263
+      },
+      {
+       "id": "syn-class-a-s14",
+       "pre": 15.0,
+       "post": 35.0,
+       "n_gain": 0.23529411764705882
+      },
+      {
+       "id": "syn-class-a-s15",
+       "pre": 20.0,
+       "post": 45.0,
+       "n_gain": 0.3125
+      },
+      {
+       "id": "syn-class-a-s16",
+       "pre": 5.0,
+       "post": 60.0,
+       "n_gain": 0.5789473684210527
+      },
+      {
+       "id": "syn-class-a-s17",
+       "pre": 5.0,
+       "post": 5.0,
+       "n_gain": 0.0
+      }
+     ],
+     "pre_mean": 21.764705882352942,
+     "pre_sd": 25.306939294797942,
+     "post_mean": 49.11764705882353,
+     "post_sd": 17.609948725582566,
+     "ngain": {
+      "mean": 0.3539443738021525,
+      "sd": 0.23155450814664064,
+      "n": 16,
+      "excluded_pre_max": 1,
+      "ci_low": 0.23055768601178384,
+      "ci_high": 0.47733106159252114,
+      "category": "sedang",
+      "categories": {
+       "tinggi": 1,
+       "sedang": 9,
+       "rendah": 6
+      }
+     },
+     "ttest": {
+      "t": 4.3098762809443825,
+      "p": 0.0005394446524112166,
+      "df": 16,
+      "ci_low": 13.898809046120569,
+      "ci_high": 40.807073306820605,
+      "mean_diff": 27.352941176470587,
+      "sd_diff": 26.16758771952095,
+      "cohen_dz": 1.0452985376281119,
+      "hedges_gz": 0.9955224167886779
+     },
+     "wilcoxon": {
+      "W": 11.0,
+      "p": 0.0030984501066419878,
+      "z": -2.9577980839159896,
+      "n_zero": 1
+     },
+     "shapiro": {
+      "W": 0.9540331715604824,
+      "p": 0.5233287041858167
+     },
+     "kr20_pre": {
+      "kr20": 0.922110097286845,
+      "k": 20,
+      "n": 17
+     },
+     "kr20_post": {
+      "kr20": 0.6464293513867657,
+      "k": 20,
+      "n": 17
+     }
+    },
+    "score_tier1": {
+     "students": [
+      {
+       "id": "syn-class-a-s01",
+       "pre": 50.0,
+       "post": 95.0,
+       "n_gain": 0.9
+      },
+      {
+       "id": "syn-class-a-s02",
+       "pre": 20.0,
+       "post": 65.0,
+       "n_gain": 0.5625
+      },
+      {
+       "id": "syn-class-a-s03",
+       "pre": 45.0,
+       "post": 85.0,
+       "n_gain": 0.7272727272727273
+      },
+      {
+       "id": "syn-class-a-s04",
+       "pre": 70.0,
+       "post": 85.0,
+       "n_gain": 0.5
+      },
+      {
+       "id": "syn-class-a-s05",
+       "pre": 100.0,
+       "post": 100.0,
+       "n_gain": null
+      },
+      {
+       "id": "syn-class-a-s06",
+       "pre": 15.0,
+       "post": 50.0,
+       "n_gain": 0.4117647058823529
+      },
+      {
+       "id": "syn-class-a-s07",
+       "pre": 15.0,
+       "post": 65.0,
+       "n_gain": 0.5882352941176471
+      },
+      {
+       "id": "syn-class-a-s08",
+       "pre": 55.00000000000001,
+       "post": 80.0,
+       "n_gain": 0.5555555555555555
+      },
+      {
+       "id": "syn-class-a-s09",
+       "pre": 45.0,
+       "post": 75.0,
+       "n_gain": 0.5454545454545454
+      },
+      {
+       "id": "syn-class-a-s10",
+       "pre": 70.0,
+       "post": 95.0,
+       "n_gain": 0.8333333333333334
+      },
+      {
+       "id": "syn-class-a-s11",
+       "pre": 0.0,
+       "post": 45.0,
+       "n_gain": 0.45
+      },
+      {
+       "id": "syn-class-a-s12",
+       "pre": 40.0,
+       "post": 80.0,
+       "n_gain": 0.6666666666666666
+      },
+      {
+       "id": "syn-class-a-s13",
+       "pre": 35.0,
+       "post": 95.0,
+       "n_gain": 0.9230769230769231
+      },
+      {
+       "id": "syn-class-a-s14",
+       "pre": 30.0,
+       "post": 60.0,
+       "n_gain": 0.42857142857142855
+      },
+      {
+       "id": "syn-class-a-s15",
+       "pre": 35.0,
+       "post": 60.0,
+       "n_gain": 0.38461538461538464
+      },
+      {
+       "id": "syn-class-a-s16",
+       "pre": 25.0,
+       "post": 70.0,
+       "n_gain": 0.6
+      },
+      {
+       "id": "syn-class-a-s17",
+       "pre": 10.0,
+       "post": 25.0,
+       "n_gain": 0.16666666666666666
+      }
+     ],
+     "pre_mean": 38.8235294117647,
+     "pre_sd": 25.343232070213656,
+     "post_mean": 72.3529411764706,
+     "post_sd": 20.39589779977394,
+     "ngain": {
+      "mean": 0.577732076950827,
+      "sd": 0.19991930585516998,
+      "n": 16,
+      "excluded_pre_max": 1,
+      "ci_low": 0.47120259854741997,
+      "ci_high": 0.6842615553542339,
+      "category": "sedang",
+      "categories": {
+       "tinggi": 4,
+       "sedang": 11,
+       "rendah": 1
+      }
+     },
+     "ttest": {
+      "t": 9.16779714251144,
+      "p": 9.07242860123365e-08,
+      "df": 16,
+      "ci_low": 25.776275806867712,
+      "ci_high": 41.28254772254405,
+      "mean_diff": 33.529411764705884,
+      "sd_diff": 15.079446471351426,
+      "cohen_dz": 2.2235174101653192,
+      "hedges_gz": 2.117635628728875
+     },
+     "wilcoxon": {
+      "W": 0.0,
+      "p": 0.0004243602206665983,
+      "z": -3.5244516694347405,
+      "n_zero": 1
+     },
+     "shapiro": {
+      "W": 0.9635399788551556,
+      "p": 0.6986634446085775
+     },
+     "kr20_pre": {
+      "kr20": 0.8781972102551743,
+      "k": 20,
+      "n": 17
+     },
+     "kr20_post": {
+      "kr20": 0.8130799823243482,
+      "k": 20,
+      "n": 17
+     }
+    }
+   },
+   "transitions": {
+    "per_butir": [
+     {
+      "domain": "benda_langit",
+      "n_units": 85,
+      "pattern_counts": {
+       "retention": 5,
+       "revision": 41,
+       "construction": 4,
+       "static": 7,
+       "other": 28
+      },
+      "matrix": {
+       "SC": {
+        "SC": 5,
+        "M": 1,
+        "E": 0,
+        "LK": 0,
+        "LC": 6
+       },
+       "M": {
+        "SC": 9,
+        "M": 3,
+        "E": 8,
+        "LK": 1,
+        "LC": 3
+       },
+       "E": {
+        "SC": 21,
+        "M": 6,
+        "E": 4,
+        "LK": 1,
+        "LC": 5
+       },
+       "LK": {
+        "SC": 4,
+        "M": 1,
+        "E": 2,
+        "LK": 1,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 3,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       }
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_units": 85,
+      "pattern_counts": {
+       "retention": 15,
+       "revision": 27,
+       "construction": 3,
+       "static": 11,
+       "other": 29
+      },
+      "matrix": {
+       "SC": {
+        "SC": 15,
+        "M": 1,
+        "E": 2,
+        "LK": 0,
+        "LC": 9
+       },
+       "M": {
+        "SC": 17,
+        "M": 2,
+        "E": 2,
+        "LK": 2,
+        "LC": 3
+       },
+       "E": {
+        "SC": 5,
+        "M": 4,
+        "E": 7,
+        "LK": 1,
+        "LC": 3
+       },
+       "LK": {
+        "SC": 3,
+        "M": 2,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       },
+       "LC": {
+        "SC": 3,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 3
+       }
+      }
+     },
+     {
+      "domain": "planet",
+      "n_units": 85,
+      "pattern_counts": {
+       "retention": 13,
+       "revision": 23,
+       "construction": 4,
+       "static": 12,
+       "other": 33
+      },
+      "matrix": {
+       "SC": {
+        "SC": 13,
+        "M": 1,
+        "E": 1,
+        "LK": 0,
+        "LC": 9
+       },
+       "M": {
+        "SC": 8,
+        "M": 5,
+        "E": 4,
+        "LK": 0,
+        "LC": 2
+       },
+       "E": {
+        "SC": 9,
+        "M": 3,
+        "E": 6,
+        "LK": 2,
+        "LC": 7
+       },
+       "LK": {
+        "SC": 4,
+        "M": 1,
+        "E": 4,
+        "LK": 1,
+        "LC": 1
+       },
+       "LC": {
+        "SC": 3,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       }
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_units": 85,
+      "pattern_counts": {
+       "retention": 7,
+       "revision": 33,
+       "construction": 8,
+       "static": 11,
+       "other": 26
+      },
+      "matrix": {
+       "SC": {
+        "SC": 7,
+        "M": 0,
+        "E": 1,
+        "LK": 0,
+        "LC": 3
+       },
+       "M": {
+        "SC": 15,
+        "M": 4,
+        "E": 5,
+        "LK": 4,
+        "LC": 1
+       },
+       "E": {
+        "SC": 12,
+        "M": 5,
+        "E": 6,
+        "LK": 2,
+        "LC": 2
+       },
+       "LK": {
+        "SC": 8,
+        "M": 2,
+        "E": 2,
+        "LK": 2,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 3,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 1
+       }
+      }
+     }
+    ],
+    "modus": [
+     {
+      "domain": "benda_langit",
+      "n_units": 17,
+      "pattern_counts": {
+       "retention": 1,
+       "revision": 13,
+       "construction": 0,
+       "static": 0,
+       "other": 3
+      },
+      "matrix": {
+       "SC": {
+        "SC": 1,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       },
+       "M": {
+        "SC": 4,
+        "M": 0,
+        "E": 3,
+        "LK": 0,
+        "LC": 0
+       },
+       "E": {
+        "SC": 6,
+        "M": 1,
+        "E": 0,
+        "LK": 1,
+        "LC": 1
+       },
+       "LK": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     },
+     {
+      "domain": "gerhana",
+      "n_units": 17,
+      "pattern_counts": {
+       "retention": 1,
+       "revision": 7,
+       "construction": 1,
+       "static": 3,
+       "other": 5
+      },
+      "matrix": {
+       "SC": {
+        "SC": 1,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 4
+       },
+       "M": {
+        "SC": 4,
+        "M": 1,
+        "E": 1,
+        "LK": 0,
+        "LC": 1
+       },
+       "E": {
+        "SC": 1,
+        "M": 0,
+        "E": 2,
+        "LK": 0,
+        "LC": 1
+       },
+       "LK": {
+        "SC": 1,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     },
+     {
+      "domain": "planet",
+      "n_units": 17,
+      "pattern_counts": {
+       "retention": 1,
+       "revision": 5,
+       "construction": 0,
+       "static": 2,
+       "other": 9
+      },
+      "matrix": {
+       "SC": {
+        "SC": 1,
+        "M": 1,
+        "E": 0,
+        "LK": 0,
+        "LC": 2
+       },
+       "M": {
+        "SC": 2,
+        "M": 1,
+        "E": 0,
+        "LK": 1,
+        "LC": 0
+       },
+       "E": {
+        "SC": 3,
+        "M": 1,
+        "E": 1,
+        "LK": 0,
+        "LC": 2
+       },
+       "LK": {
+        "SC": 0,
+        "M": 0,
+        "E": 2,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     },
+     {
+      "domain": "rotasi_revolusi",
+      "n_units": 17,
+      "pattern_counts": {
+       "retention": 2,
+       "revision": 10,
+       "construction": 1,
+       "static": 3,
+       "other": 1
+      },
+      "matrix": {
+       "SC": {
+        "SC": 2,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       },
+       "M": {
+        "SC": 6,
+        "M": 2,
+        "E": 1,
+        "LK": 0,
+        "LC": 0
+       },
+       "E": {
+        "SC": 3,
+        "M": 1,
+        "E": 1,
+        "LK": 0,
+        "LC": 0
+       },
+       "LK": {
+        "SC": 1,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       },
+       "LC": {
+        "SC": 0,
+        "M": 0,
+        "E": 0,
+        "LK": 0,
+        "LC": 0
+       }
+      }
+     }
+    ]
+   },
+   "export": {
+    "long_count": 700,
+    "long_keys": [
+     "P-3843Z8CT|pre|B01|E|true|false|false",
+     "P-3843Z8CT|pre|B02|E|false|false|false",
+     "P-3843Z8CT|pre|B03|SC|true|true|true",
+     "P-3843Z8CT|pre|B04|M|false|false|true",
+     "P-3843Z8CT|pre|B05|LC|true|true|false",
+     "P-3843Z8CT|pre|B06|M|false|false|true",
+     "P-3843Z8CT|pre|B07|SC|true|true|true",
+     "P-3843Z8CT|pre|B08|LK|false|false|false",
+     "P-3843Z8CT|pre|B09|M|false|false|true",
+     "P-3843Z8CT|pre|B10|M|false|true|true",
+     "P-3843Z8CT|pre|B11|LC|true|true|false",
+     "P-3843Z8CT|pre|B12|LK|false|false|false",
+     "P-3843Z8CT|pre|B13|LK|false|false|false",
+     "P-3843Z8CT|pre|B14|LK|false|false|false",
+     "P-3843Z8CT|pre|B15|E|false|true|false",
+     "P-3843Z8CT|pre|B16|LC|true|true|false",
+     "P-3843Z8CT|pre|B17|SC|true|true|true",
+     "P-3843Z8CT|pre|B18|SC|true|true|true",
+     "P-3843Z8CT|pre|B19|M|false|false|true",
+     "P-3843Z8CT|pre|B20|E|true|false|false",
+     "P-3843Z8CT|post|B01|LC|true|true|false",
+     "P-3843Z8CT|post|B02|SC|true|true|true",
+     "P-3843Z8CT|post|B03|LC|true|true|false",
+     "P-3843Z8CT|post|B04|SC|true|true|true",
+     "P-3843Z8CT|post|B05|SC|true|true|true",
+     "P-3843Z8CT|post|B06|SC|true|true|true",
+     "P-3843Z8CT|post|B07|SC|true|true|true",
+     "P-3843Z8CT|post|B08|E|true|false|false",
+     "P-3843Z8CT|post|B09|SC|true|true|true",
+     "P-3843Z8CT|post|B10|SC|true|true|true",
+     "P-3843Z8CT|post|B11|LC|true|true|false",
+     "P-3843Z8CT|post|B12|SC|true|true|true",
+     "P-3843Z8CT|post|B13|SC|true|true|true",
+     "P-3843Z8CT|post|B14|SC|true|true|true",
+     "P-3843Z8CT|post|B15|M|false|true|true",
+     "P-3843Z8CT|post|B16|LC|true|true|false",
+     "P-3843Z8CT|post|B17|LC|true|true|false",
+     "P-3843Z8CT|post|B18|E|false|false|false",
+     "P-3843Z8CT|post|B19|SC|true|true|true",
+     "P-3843Z8CT|post|B20|M|false|true|true",
+     "P-52ZDHM9F|pre|B01|SC|true|true|true",
+     "P-52ZDHM9F|pre|B02|E|true|false|false",
+     "P-52ZDHM9F|pre|B03|LK|false|false|false",
+     "P-52ZDHM9F|pre|B04|E|false|false|false",
+     "P-52ZDHM9F|pre|B05|M|false|true|true",
+     "P-52ZDHM9F|pre|B06|SC|true|true|true",
+     "P-52ZDHM9F|pre|B07|SC|true|true|true",
+     "P-52ZDHM9F|pre|B08|LK|false|false|false",
+     "P-52ZDHM9F|pre|B09|LK|false|false|false",
+     "P-52ZDHM9F|pre|B10|M|false|false|true",
+     "P-52ZDHM9F|pre|B11|E|false|false|false",
+     "P-52ZDHM9F|pre|B12|E|false|false|false",
+     "P-52ZDHM9F|pre|B13|M|false|false|true",
+     "P-52ZDHM9F|pre|B14|M|false|false|true",
+     "P-52ZDHM9F|pre|B15|E|false|false|false",
+     "P-52ZDHM9F|pre|B16|E|false|false|false",
+     "P-52ZDHM9F|pre|B17|E|false|true|false",
+     "P-52ZDHM9F|pre|B18|LK|false|false|false",
+     "P-52ZDHM9F|pre|B19|M|false|false|true",
+     "P-52ZDHM9F|pre|B20|E|false|false|false",
+     "P-52ZDHM9F|post|B01|SC|true|true|true",
+     "P-52ZDHM9F|post|B02|SC|true|true|true",
+     "P-52ZDHM9F|post|B03|M|false|true|true",
+     "P-52ZDHM9F|post|B04|SC|true|true|true",
+     "P-52ZDHM9F|post|B05|SC|true|true|true",
+     "P-52ZDHM9F|post|B06|LC|true|true|false",
+     "P-52ZDHM9F|post|B07|SC|true|true|true",
+     "P-52ZDHM9F|post|B08|E|false|true|false",
+     "P-52ZDHM9F|post|B09|LC|true|true|false",
+     "P-52ZDHM9F|post|B10|E|false|false|false",
+     "P-52ZDHM9F|post|B11|SC|true|true|true",
+     "P-52ZDHM9F|post|B12|E|false|true|false",
+     "P-52ZDHM9F|post|B13|LK|false|false|false",
+     "P-52ZDHM9F|post|B14|E|false|true|false",
+     "P-52ZDHM9F|post|B15|LC|true|true|false",
+     "P-52ZDHM9F|post|B16|LC|true|true|false",
+     "P-52ZDHM9F|post|B17|SC|true|true|true",
+     "P-52ZDHM9F|post|B18|M|false|true|true",
+     "P-52ZDHM9F|post|B19|SC|true|true|true",
+     "P-52ZDHM9F|post|B20|SC|true|true|true",
+     "P-73CXJZYT|pre|B01|SC|true|true|true",
+     "P-73CXJZYT|pre|B02|LC|true|true|false",
+     "P-73CXJZYT|pre|B03|M|false|true|true",
+     "P-73CXJZYT|pre|B04|M|true|false|true",
+     "P-73CXJZYT|pre|B05|LK|false|true|false",
+     "P-73CXJZYT|pre|B06|SC|true|true|true",
+     "P-73CXJZYT|pre|B07|SC|true|true|true",
+     "P-73CXJZYT|pre|B08|E|false|false|false",
+     "P-73CXJZYT|pre|B09|SC|true|true|true",
+     "P-73CXJZYT|pre|B10|M|true|false|true",
+     "P-73CXJZYT|pre|B11|SC|true|true|true",
+     "P-73CXJZYT|pre|B12|M|false|true|true",
+     "P-73CXJZYT|pre|B13|M|true|false|true",
+     "P-73CXJZYT|pre|B14|M|true|false|true",
+     "P-73CXJZYT|pre|B15|M|false|true|true",
+     "P-73CXJZYT|pre|B16|SC|true|true|true",
+     "P-73CXJZYT|pre|B17|M|false|true|true",
+     "P-73CXJZYT|pre|B18|LC|true|true|false",
+     "P-73CXJZYT|pre|B19|SC|true|true|true",
+     "P-73CXJZYT|pre|B20|SC|true|true|true",
+     "P-73CXJZYT|post|B01|SC|true|true|true",
+     "P-73CXJZYT|post|B02|LC|true|true|false",
+     "P-73CXJZYT|post|B03|SC|true|true|true",
+     "P-73CXJZYT|post|B04|LC|true|true|false",
+     "P-73CXJZYT|post|B05|SC|true|true|true",
+     "P-73CXJZYT|post|B06|SC|true|true|true",
+     "P-73CXJZYT|post|B07|LC|true|true|false",
+     "P-73CXJZYT|post|B08|SC|true|true|true",
+     "P-73CXJZYT|post|B09|SC|true|true|true",
+     "P-73CXJZYT|post|B10|SC|true|true|true",
+     "P-73CXJZYT|post|B11|SC|true|true|true",
+     "P-73CXJZYT|post|B12|SC|true|true|true",
+     "P-73CXJZYT|post|B13|SC|true|true|true",
+     "P-73CXJZYT|post|B14|SC|true|true|true",
+     "P-73CXJZYT|post|B15|SC|true|true|true",
+     "P-73CXJZYT|post|B16|SC|true|true|true",
+     "P-73CXJZYT|post|B17|E|false|false|false",
+     "P-73CXJZYT|post|B18|LC|true|true|false",
+     "P-73CXJZYT|post|B19|LC|true|true|false",
+     "P-73CXJZYT|post|B20|LC|true|true|false",
+     "P-7DPWSNVU|pre|B01|M|false|false|true",
+     "P-7DPWSNVU|pre|B02|LK|false|false|false",
+     "P-7DPWSNVU|pre|B03|E|false|false|false",
+     "P-7DPWSNVU|pre|B04|M|false|false|true",
+     "P-7DPWSNVU|pre|B05|E|false|false|false",
+     "P-7DPWSNVU|pre|B06|E|false|false|false",
+     "P-7DPWSNVU|pre|B07|E|true|false|false",
+     "P-7DPWSNVU|pre|B08|M|false|false|true",
+     "P-7DPWSNVU|pre|B09|SC|true|true|true",
+     "P-7DPWSNVU|pre|B10|E|false|false|false",
+     "P-7DPWSNVU|pre|B11|E|false|false|false",
+     "P-7DPWSNVU|pre|B12|M|false|false|true",
+     "P-7DPWSNVU|pre|B13|E|false|false|false",
+     "P-7DPWSNVU|pre|B14|M|false|false|true",
+     "P-7DPWSNVU|pre|B15|LK|false|false|false",
+     "P-7DPWSNVU|pre|B16|LK|false|false|false",
+     "P-7DPWSNVU|pre|B17|M|false|false|true",
+     "P-7DPWSNVU|pre|B18|E|false|false|false",
+     "P-7DPWSNVU|pre|B19|E|false|false|false",
+     "P-7DPWSNVU|pre|B20|E|false|false|false",
+     "P-7DPWSNVU|post|B01|E|true|false|false",
+     "P-7DPWSNVU|post|B02|E|false|false|false",
+     "P-7DPWSNVU|post|B03|E|false|false|false",
+     "P-7DPWSNVU|post|B04|E|false|false|false",
+     "P-7DPWSNVU|post|B05|M|false|false|true",
+     "P-7DPWSNVU|post|B06|E|false|false|false",
+     "P-7DPWSNVU|post|B07|M|true|false|true",
+     "P-7DPWSNVU|post|B08|M|true|false|true",
+     "P-7DPWSNVU|post|B09|E|false|false|false",
+     "P-7DPWSNVU|post|B10|LK|false|false|false",
+     "P-7DPWSNVU|post|B11|M|false|false|true",
+     "P-7DPWSNVU|post|B12|M|true|false|true",
+     "P-7DPWSNVU|post|B13|LK|false|false|false",
+     "P-7DPWSNVU|post|B14|M|false|false|true",
+     "P-7DPWSNVU|post|B15|LK|false|false|false",
+     "P-7DPWSNVU|post|B16|SC|true|true|true",
+     "P-7DPWSNVU|post|B17|E|false|true|false",
+     "P-7DPWSNVU|post|B18|E|false|false|false",
+     "P-7DPWSNVU|post|B19|E|false|false|false",
+     "P-7DPWSNVU|post|B20|E|false|false|false",
+     "P-7VM29HXW|pre|B01|E|false|false|false",
+     "P-7VM29HXW|pre|B02|M|false|false|true",
+     "P-7VM29HXW|pre|B03|E|false|false|false",
+     "P-7VM29HXW|pre|B04|E|false|false|false",
+     "P-7VM29HXW|pre|B05|E|true|false|false",
+     "P-7VM29HXW|pre|B06|M|true|false|true",
+     "P-7VM29HXW|pre|B07|E|false|true|false",
+     "P-7VM29HXW|pre|B08|LK|false|false|false",
+     "P-7VM29HXW|pre|B09|E|false|false|false",
+     "P-7VM29HXW|pre|B10|M|false|false|true",
+     "P-7VM29HXW|pre|B11|M|true|false|true",
+     "P-7VM29HXW|pre|B12|M|false|false|true",
+     "P-7VM29HXW|pre|B13|E|false|false|false",
+     "P-7VM29HXW|pre|B14|LK|false|false|false",
+     "P-7VM29HXW|pre|B15|LK|true|false|false",
+     "P-7VM29HXW|pre|B16|M|true|false|true",
+     "P-7VM29HXW|pre|B17|SC|true|true|true",
+     "P-7VM29HXW|pre|B18|E|true|false|false",
+     "P-7VM29HXW|pre|B19|E|false|false|false",
+     "P-7VM29HXW|pre|B20|SC|true|true|true",
+     "P-7VM29HXW|post|B01|SC|true|true|true",
+     "P-7VM29HXW|post|B02|M|false|false|true",
+     "P-7VM29HXW|post|B03|SC|true|true|true",
+     "P-7VM29HXW|post|B04|SC|true|true|true",
+     "P-7VM29HXW|post|B05|SC|true|true|true",
+     "P-7VM29HXW|post|B06|SC|true|true|true",
+     "P-7VM29HXW|post|B07|SC|true|true|true",
+     "P-7VM29HXW|post|B08|E|true|false|false",
+     "P-7VM29HXW|post|B09|SC|true|true|true",
+     "P-7VM29HXW|post|B10|LC|true|true|false",
+     "P-7VM29HXW|post|B11|SC|true|true|true",
+     "P-7VM29HXW|post|B12|SC|true|true|true",
+     "P-7VM29HXW|post|B13|LK|false|false|false",
+     "P-7VM29HXW|post|B14|M|false|true|true",
+     "P-7VM29HXW|post|B15|SC|true|true|true",
+     "P-7VM29HXW|post|B16|SC|true|true|true",
+     "P-7VM29HXW|post|B17|LC|true|true|false",
+     "P-7VM29HXW|post|B18|LC|true|true|false",
+     "P-7VM29HXW|post|B19|LK|false|true|false",
+     "P-7VM29HXW|post|B20|SC|true|true|true",
+     "P-8VZE9288|pre|B01|LC|true|true|false",
+     "P-8VZE9288|pre|B02|E|true|false|false",
+     "P-8VZE9288|pre|B03|E|false|false|false",
+     "P-8VZE9288|pre|B04|LK|false|false|false",
+     "P-8VZE9288|pre|B05|E|false|false|false",
+     "P-8VZE9288|pre|B06|LK|true|false|false",
+     "P-8VZE9288|pre|B07|E|false|false|false",
+     "P-8VZE9288|pre|B08|M|true|false|true",
+     "P-8VZE9288|pre|B09|E|false|false|false",
+     "P-8VZE9288|pre|B10|LK|false|false|false",
+     "P-8VZE9288|pre|B11|E|true|false|false",
+     "P-8VZE9288|pre|B12|LC|true|true|false",
+     "P-8VZE9288|pre|B13|M|false|false|true",
+     "P-8VZE9288|pre|B14|LK|false|false|false",
+     "P-8VZE9288|pre|B15|M|false|false|true",
+     "P-8VZE9288|pre|B16|SC|true|true|true",
+     "P-8VZE9288|pre|B17|E|false|false|false",
+     "P-8VZE9288|pre|B18|LC|true|true|false",
+     "P-8VZE9288|pre|B19|E|false|false|false",
+     "P-8VZE9288|pre|B20|M|true|false|true",
+     "P-8VZE9288|post|B01|SC|true|true|true",
+     "P-8VZE9288|post|B02|M|true|false|true",
+     "P-8VZE9288|post|B03|SC|true|true|true",
+     "P-8VZE9288|post|B04|SC|true|true|true",
+     "P-8VZE9288|post|B05|SC|true|true|true",
+     "P-8VZE9288|post|B06|SC|true|true|true",
+     "P-8VZE9288|post|B07|LC|true|true|false",
+     "P-8VZE9288|post|B08|M|false|true|true",
+     "P-8VZE9288|post|B09|LC|true|true|false",
+     "P-8VZE9288|post|B10|SC|true|true|true",
+     "P-8VZE9288|post|B11|SC|true|true|true",
+     "P-8VZE9288|post|B12|SC|true|true|true",
+     "P-8VZE9288|post|B13|LK|false|false|false",
+     "P-8VZE9288|post|B14|SC|true|true|true",
+     "P-8VZE9288|post|B15|E|false|true|false",
+     "P-8VZE9288|post|B16|SC|true|true|true",
+     "P-8VZE9288|post|B17|E|false|true|false",
+     "P-8VZE9288|post|B18|LC|true|true|false",
+     "P-8VZE9288|post|B19|E|false|false|false",
+     "P-8VZE9288|post|B20|SC|true|true|true",
+     "P-A9PYAX9F|pre|B01|E|false|false|false",
+     "P-A9PYAX9F|pre|B02|E|false|false|false",
+     "P-A9PYAX9F|pre|B03|M|false|true|true",
+     "P-A9PYAX9F|pre|B04|M|false|false|true",
+     "P-A9PYAX9F|pre|B05|LK|false|false|false",
+     "P-A9PYAX9F|pre|B06|SC|true|true|true",
+     "P-A9PYAX9F|pre|B07|SC|true|true|true",
+     "P-A9PYAX9F|pre|B08|M|true|false|true",
+     "P-A9PYAX9F|pre|B09|LC|true|true|false",
+     "P-A9PYAX9F|pre|B10|E|false|false|false",
+     "P-A9PYAX9F|pre|B11|M|true|false|true",
+     "P-A9PYAX9F|pre|B12|M|true|false|true",
+     "P-A9PYAX9F|pre|B13|M|true|false|true",
+     "P-A9PYAX9F|pre|B14|LK|false|false|false",
+     "P-A9PYAX9F|pre|B15|SC|true|true|true",
+     "P-A9PYAX9F|pre|B16|SC|true|true|true",
+     "P-A9PYAX9F|pre|B17|M|false|true|true",
+     "P-A9PYAX9F|pre|B18|SC|true|true|true",
+     "P-A9PYAX9F|pre|B19|E|false|false|false",
+     "P-A9PYAX9F|pre|B20|M|true|false|true",
+     "P-A9PYAX9F|post|B01|SC|true|true|true",
+     "P-A9PYAX9F|post|B02|SC|true|true|true",
+     "P-A9PYAX9F|post|B03|LC|true|true|false",
+     "P-A9PYAX9F|post|B04|SC|true|true|true",
+     "P-A9PYAX9F|post|B05|E|false|true|false",
+     "P-A9PYAX9F|post|B06|LC|true|true|false",
+     "P-A9PYAX9F|post|B07|SC|true|true|true",
+     "P-A9PYAX9F|post|B08|M|true|false|true",
+     "P-A9PYAX9F|post|B09|LC|true|true|false",
+     "P-A9PYAX9F|post|B10|E|false|true|false",
+     "P-A9PYAX9F|post|B11|SC|true|true|true",
+     "P-A9PYAX9F|post|B12|E|false|true|false",
+     "P-A9PYAX9F|post|B13|SC|true|true|true",
+     "P-A9PYAX9F|post|B14|M|false|false|true",
+     "P-A9PYAX9F|post|B15|SC|true|true|true",
+     "P-A9PYAX9F|post|B16|LC|true|true|false",
+     "P-A9PYAX9F|post|B17|LC|true|true|false",
+     "P-A9PYAX9F|post|B18|SC|true|true|true",
+     "P-A9PYAX9F|post|B19|SC|true|true|true",
+     "P-A9PYAX9F|post|B20|SC|true|true|true",
+     "P-AT8BCGV3|pre|B01|SC|true|true|true",
+     "P-AT8BCGV3|pre|B02|M|false|false|true",
+     "P-AT8BCGV3|pre|B03|M|false|false|true",
+     "P-AT8BCGV3|pre|B04|E|false|false|false",
+     "P-AT8BCGV3|pre|B05|E|false|false|false",
+     "P-AT8BCGV3|pre|B06|E|false|false|false",
+     "P-AT8BCGV3|pre|B07|E|true|false|false",
+     "P-AT8BCGV3|pre|B08|E|false|false|false",
+     "P-AT8BCGV3|pre|B09|M|false|false|true",
+     "P-AT8BCGV3|pre|B10|LK|false|false|false",
+     "P-AT8BCGV3|pre|B11|M|false|true|true",
+     "P-AT8BCGV3|pre|B12|LK|false|false|false",
+     "P-AT8BCGV3|pre|B13|E|false|false|false",
+     "P-AT8BCGV3|pre|B14|E|false|false|false",
+     "P-AT8BCGV3|pre|B15|E|true|false|false",
+     "P-AT8BCGV3|pre|B16|LK|false|false|false",
+     "P-AT8BCGV3|pre|B17|M|false|false|true",
+     "P-AT8BCGV3|pre|B18|M|false|false|true",
+     "P-AT8BCGV3|pre|B19|E|false|false|false",
+     "P-AT8BCGV3|pre|B20|M|false|false|true",
+     "P-AT8BCGV3|post|B01|M|false|true|true",
+     "P-AT8BCGV3|post|B02|E|false|false|false",
+     "P-AT8BCGV3|post|B03|SC|true|true|true",
+     "P-AT8BCGV3|post|B04|LC|true|true|false",
+     "P-AT8BCGV3|post|B05|E|false|false|false",
+     "P-AT8BCGV3|post|B06|SC|true|true|true",
+     "P-AT8BCGV3|post|B07|SC|true|true|true",
+     "P-AT8BCGV3|post|B08|SC|true|true|true",
+     "P-AT8BCGV3|post|B09|SC|true|true|true",
+     "P-AT8BCGV3|post|B10|E|false|false|false",
+     "P-AT8BCGV3|post|B11|SC|true|true|true",
+     "P-AT8BCGV3|post|B12|E|false|false|false",
+     "P-AT8BCGV3|post|B13|E|false|false|false",
+     "P-AT8BCGV3|post|B14|SC|true|true|true",
+     "P-AT8BCGV3|post|B15|SC|true|true|true",
+     "P-AT8BCGV3|post|B16|SC|true|true|true",
+     "P-AT8BCGV3|post|B17|SC|true|true|true",
+     "P-AT8BCGV3|post|B18|SC|true|true|true",
+     "P-AT8BCGV3|post|B19|M|false|false|true",
+     "P-AT8BCGV3|post|B20|SC|true|true|true",
+     "P-CDG9E96P|pre|B01|SC|true|true|true",
+     "P-CDG9E96P|pre|B02|E|false|false|false",
+     "P-CDG9E96P|pre|B03|E|false|false|false",
+     "P-CDG9E96P|pre|B04|LC|true|true|false",
+     "P-CDG9E96P|pre|B05|E|true|false|false",
+     "P-CDG9E96P|pre|B06|SC|true|true|true",
+     "P-CDG9E96P|pre|B07|SC|true|true|true",
+     "P-CDG9E96P|pre|B08|E|false|false|false",
+     "P-CDG9E96P|pre|B09|E|false|false|false",
+     "P-CDG9E96P|pre|B10|E|true|false|false",
+     "P-CDG9E96P|pre|B11|M|false|true|true",
+     "P-CDG9E96P|pre|B12|E|false|false|false",
+     "P-CDG9E96P|pre|B13|M|false|false|true",
+     "P-CDG9E96P|pre|B14|M|true|false|true",
+     "P-CDG9E96P|pre|B15|M|false|false|true",
+     "P-CDG9E96P|pre|B16|SC|true|true|true",
+     "P-CDG9E96P|pre|B17|SC|true|true|true",
+     "P-CDG9E96P|pre|B18|SC|true|true|true",
+     "P-CDG9E96P|pre|B19|E|false|false|false",
+     "P-CDG9E96P|pre|B20|M|false|false|true",
+     "P-CDG9E96P|post|B01|LC|true|true|false",
+     "P-CDG9E96P|post|B02|LC|true|true|false",
+     "P-CDG9E96P|post|B03|LC|true|true|false",
+     "P-CDG9E96P|post|B04|SC|true|true|true",
+     "P-CDG9E96P|post|B05|LC|true|true|false",
+     "P-CDG9E96P|post|B06|SC|true|true|true",
+     "P-CDG9E96P|post|B07|LC|true|true|false",
+     "P-CDG9E96P|post|B08|LC|true|true|false",
+     "P-CDG9E96P|post|B09|SC|true|true|true",
+     "P-CDG9E96P|post|B10|M|false|false|true",
+     "P-CDG9E96P|post|B11|SC|true|true|true",
+     "P-CDG9E96P|post|B12|SC|true|true|true",
+     "P-CDG9E96P|post|B13|E|true|false|false",
+     "P-CDG9E96P|post|B14|SC|true|true|true",
+     "P-CDG9E96P|post|B15|LC|true|true|false",
+     "P-CDG9E96P|post|B16|SC|true|true|true",
+     "P-CDG9E96P|post|B17|SC|true|true|true",
+     "P-CDG9E96P|post|B18|LC|true|true|false",
+     "P-CDG9E96P|post|B19|LC|true|true|false",
+     "P-CDG9E96P|post|B20|LC|true|true|false",
+     "P-DEVTZ96K|pre|B01|E|false|false|false",
+     "P-DEVTZ96K|pre|B02|M|false|false|true",
+     "P-DEVTZ96K|pre|B03|E|false|false|false",
+     "P-DEVTZ96K|pre|B04|E|false|false|false",
+     "P-DEVTZ96K|pre|B05|E|false|false|false",
+     "P-DEVTZ96K|pre|B06|E|true|false|false",
+     "P-DEVTZ96K|pre|B07|LC|true|true|false",
+     "P-DEVTZ96K|pre|B08|M|false|false|true",
+     "P-DEVTZ96K|pre|B09|E|false|false|false",
+     "P-DEVTZ96K|pre|B10|M|false|false|true",
+     "P-DEVTZ96K|pre|B11|E|false|false|false",
+     "P-DEVTZ96K|pre|B12|SC|true|true|true",
+     "P-DEVTZ96K|pre|B13|E|false|false|false",
+     "P-DEVTZ96K|pre|B14|E|false|false|false",
+     "P-DEVTZ96K|pre|B15|E|true|false|false",
+     "P-DEVTZ96K|pre|B16|LC|true|true|false",
+     "P-DEVTZ96K|pre|B17|M|false|false|true",
+     "P-DEVTZ96K|pre|B18|M|false|true|true",
+     "P-DEVTZ96K|pre|B19|M|false|false|true",
+     "P-DEVTZ96K|pre|B20|M|false|true|true",
+     "P-DEVTZ96K|post|B01|SC|true|true|true",
+     "P-DEVTZ96K|post|B02|E|false|true|false",
+     "P-DEVTZ96K|post|B03|SC|true|true|true",
+     "P-DEVTZ96K|post|B04|SC|true|true|true",
+     "P-DEVTZ96K|post|B05|M|false|true|true",
+     "P-DEVTZ96K|post|B06|M|false|false|true",
+     "P-DEVTZ96K|post|B07|SC|true|true|true",
+     "P-DEVTZ96K|post|B08|LC|true|true|false",
+     "P-DEVTZ96K|post|B09|E|false|false|false",
+     "P-DEVTZ96K|post|B10|M|true|false|true",
+     "P-DEVTZ96K|post|B11|SC|true|true|true",
+     "P-DEVTZ96K|post|B12|SC|true|true|true",
+     "P-DEVTZ96K|post|B13|M|false|true|true",
+     "P-DEVTZ96K|post|B14|E|false|true|false",
+     "P-DEVTZ96K|post|B15|SC|true|true|true",
+     "P-DEVTZ96K|post|B16|SC|true|true|true",
+     "P-DEVTZ96K|post|B17|SC|true|true|true",
+     "P-DEVTZ96K|post|B18|SC|true|true|true",
+     "P-DEVTZ96K|post|B19|SC|true|true|true",
+     "P-DEVTZ96K|post|B20|SC|true|true|true",
+     "P-PAUQBHP3|pre|B01|LK|false|false|false",
+     "P-PAUQBHP3|pre|B02|E|false|false|false",
+     "P-PAUQBHP3|pre|B03|M|false|false|true",
+     "P-PAUQBHP3|pre|B04|M|false|false|true",
+     "P-PAUQBHP3|pre|B05|M|false|false|true",
+     "P-PAUQBHP3|pre|B06|M|true|false|true",
+     "P-PAUQBHP3|pre|B07|SC|true|true|true",
+     "P-PAUQBHP3|pre|B08|LK|false|false|false",
+     "P-PAUQBHP3|pre|B09|M|false|false|true",
+     "P-PAUQBHP3|pre|B10|E|false|false|false",
+     "P-PAUQBHP3|pre|B11|M|false|false|true",
+     "P-PAUQBHP3|pre|B12|M|true|false|true",
+     "P-PAUQBHP3|pre|B13|LK|false|false|false",
+     "P-PAUQBHP3|pre|B14|E|false|false|false",
+     "P-PAUQBHP3|pre|B15|SC|true|true|true",
+     "P-PAUQBHP3|pre|B16|M|false|false|true",
+     "P-PAUQBHP3|pre|B17|M|true|false|true",
+     "P-PAUQBHP3|pre|B18|SC|true|true|true",
+     "P-PAUQBHP3|pre|B19|E|false|false|false",
+     "P-PAUQBHP3|pre|B20|LK|false|false|false",
+     "P-PAUQBHP3|post|B01|LK|false|false|false",
+     "P-PAUQBHP3|post|B02|SC|true|true|true",
+     "P-PAUQBHP3|post|B03|E|false|false|false",
+     "P-PAUQBHP3|post|B04|LC|true|true|false",
+     "P-PAUQBHP3|post|B05|E|false|false|false",
+     "P-PAUQBHP3|post|B06|SC|true|true|true",
+     "P-PAUQBHP3|post|B07|LC|true|true|false",
+     "P-PAUQBHP3|post|B08|LK|false|false|false",
+     "P-PAUQBHP3|post|B09|E|false|true|false",
+     "P-PAUQBHP3|post|B10|LK|false|false|false",
+     "P-PAUQBHP3|post|B11|SC|true|true|true",
+     "P-PAUQBHP3|post|B12|SC|true|true|true",
+     "P-PAUQBHP3|post|B13|LK|false|false|false",
+     "P-PAUQBHP3|post|B14|SC|true|true|true",
+     "P-PAUQBHP3|post|B15|LC|true|true|false",
+     "P-PAUQBHP3|post|B16|SC|true|true|true",
+     "P-PAUQBHP3|post|B17|SC|true|true|true",
+     "P-PAUQBHP3|post|B18|LC|true|true|false",
+     "P-PAUQBHP3|post|B19|M|false|false|true",
+     "P-PAUQBHP3|post|B20|LC|true|true|false",
+     "P-R93EKU2B|pre|B01|SC|true|true|true",
+     "P-R93EKU2B|pre|B02|E|false|true|false",
+     "P-R93EKU2B|pre|B03|SC|true|true|true",
+     "P-R93EKU2B|pre|B04|E|false|false|false",
+     "P-R93EKU2B|pre|B05|SC|true|true|true",
+     "P-R93EKU2B|pre|B06|E|false|false|false",
+     "P-R93EKU2B|pre|B07|SC|true|true|true",
+     "P-R93EKU2B|pre|B08|E|false|false|false",
+     "P-R93EKU2B|pre|B09|SC|true|true|true",
+     "P-R93EKU2B|pre|B10|SC|true|true|true",
+     "P-R93EKU2B|pre|B11|SC|true|true|true",
+     "P-R93EKU2B|pre|B12|E|false|false|false",
+     "P-R93EKU2B|pre|B13|LK|false|false|false",
+     "P-R93EKU2B|pre|B14|LK|false|false|false",
+     "P-R93EKU2B|pre|B15|M|false|true|true",
+     "P-R93EKU2B|pre|B16|LK|false|false|false",
+     "P-R93EKU2B|pre|B17|E|false|false|false",
+     "P-R93EKU2B|pre|B18|E|false|false|false",
+     "P-R93EKU2B|pre|B19|E|false|false|false",
+     "P-R93EKU2B|pre|B20|SC|true|true|true",
+     "P-RRJ5JDMF|pre|B01|E|false|false|false",
+     "P-RRJ5JDMF|pre|B02|M|false|false|true",
+     "P-RRJ5JDMF|pre|B03|E|false|false|false",
+     "P-RRJ5JDMF|pre|B04|M|false|false|true",
+     "P-RRJ5JDMF|pre|B05|E|false|false|false",
+     "P-RRJ5JDMF|pre|B06|E|false|false|false",
+     "P-RRJ5JDMF|pre|B07|LC|true|true|false",
+     "P-RRJ5JDMF|pre|B08|E|false|false|false",
+     "P-RRJ5JDMF|pre|B09|E|false|false|false",
+     "P-RRJ5JDMF|pre|B10|E|false|false|false",
+     "P-RRJ5JDMF|pre|B11|E|false|false|false",
+     "P-RRJ5JDMF|pre|B12|E|false|false|false",
+     "P-RRJ5JDMF|pre|B13|M|false|false|true",
+     "P-RRJ5JDMF|pre|B14|E|false|false|false",
+     "P-RRJ5JDMF|pre|B15|E|false|false|false",
+     "P-RRJ5JDMF|pre|B16|LK|false|false|false",
+     "P-RRJ5JDMF|pre|B17|E|false|false|false",
+     "P-RRJ5JDMF|pre|B18|SC|true|true|true",
+     "P-RRJ5JDMF|pre|B19|SC|true|true|true",
+     "P-RRJ5JDMF|pre|B20|LK|false|false|false",
+     "P-RRJ5JDMF|post|B01|SC|true|true|true",
+     "P-RRJ5JDMF|post|B02|E|false|false|false",
+     "P-RRJ5JDMF|post|B03|M|true|false|true",
+     "P-RRJ5JDMF|post|B04|LK|false|false|false",
+     "P-RRJ5JDMF|post|B05|LK|false|false|false",
+     "P-RRJ5JDMF|post|B06|LC|true|true|false",
+     "P-RRJ5JDMF|post|B07|SC|true|true|true",
+     "P-RRJ5JDMF|post|B08|E|false|false|false",
+     "P-RRJ5JDMF|post|B09|E|false|false|false",
+     "P-RRJ5JDMF|post|B10|LC|true|true|false",
+     "P-RRJ5JDMF|post|B11|SC|true|true|true",
+     "P-RRJ5JDMF|post|B12|M|false|false|true",
+     "P-RRJ5JDMF|post|B13|SC|true|true|true",
+     "P-RRJ5JDMF|post|B14|E|false|false|false",
+     "P-RRJ5JDMF|post|B15|M|false|true|true",
+     "P-RRJ5JDMF|post|B16|M|false|false|true",
+     "P-RRJ5JDMF|post|B17|SC|true|true|true",
+     "P-RRJ5JDMF|post|B18|SC|true|true|true",
+     "P-RRJ5JDMF|post|B19|M|false|false|true",
+     "P-RRJ5JDMF|post|B20|SC|true|true|true",
+     "P-UYXUBG4U|pre|B01|E|false|false|false",
+     "P-UYXUBG4U|pre|B02|E|false|false|false",
+     "P-UYXUBG4U|pre|B03|E|false|false|false",
+     "P-UYXUBG4U|pre|B04|E|false|false|false",
+     "P-UYXUBG4U|pre|B05|E|false|false|false",
+     "P-UYXUBG4U|pre|B06|LK|false|false|false",
+     "P-UYXUBG4U|pre|B07|LK|false|false|false",
+     "P-UYXUBG4U|pre|B08|LK|false|false|false",
+     "P-UYXUBG4U|pre|B09|M|false|false|true",
+     "P-UYXUBG4U|pre|B10|M|false|false|true",
+     "P-UYXUBG4U|pre|B11|M|false|false|true",
+     "P-UYXUBG4U|pre|B12|M|false|false|true",
+     "P-UYXUBG4U|pre|B13|E|false|false|false",
+     "P-UYXUBG4U|pre|B14|M|false|false|true",
+     "P-UYXUBG4U|pre|B15|E|false|false|false",
+     "P-UYXUBG4U|pre|B16|E|false|false|false",
+     "P-UYXUBG4U|pre|B17|M|false|false|true",
+     "P-UYXUBG4U|pre|B18|E|false|false|false",
+     "P-UYXUBG4U|pre|B19|M|false|false|true",
+     "P-UYXUBG4U|pre|B20|M|false|false|true",
+     "P-UYXUBG4U|post|B01|E|true|false|false",
+     "P-UYXUBG4U|post|B02|M|false|false|true",
+     "P-UYXUBG4U|post|B03|E|true|false|false",
+     "P-UYXUBG4U|post|B04|SC|true|true|true",
+     "P-UYXUBG4U|post|B05|M|true|false|true",
+     "P-UYXUBG4U|post|B06|SC|true|true|true",
+     "P-UYXUBG4U|post|B07|SC|true|true|true",
+     "P-UYXUBG4U|post|B08|M|false|false|true",
+     "P-UYXUBG4U|post|B09|E|false|false|false",
+     "P-UYXUBG4U|post|B10|E|false|false|false",
+     "P-UYXUBG4U|post|B11|M|true|false|true",
+     "P-UYXUBG4U|post|B12|M|false|false|true",
+     "P-UYXUBG4U|post|B13|E|false|false|false",
+     "P-UYXUBG4U|post|B14|LK|false|false|false",
+     "P-UYXUBG4U|post|B15|SC|true|true|true",
+     "P-UYXUBG4U|post|B16|M|false|true|true",
+     "P-UYXUBG4U|post|B17|LK|false|false|false",
+     "P-UYXUBG4U|post|B18|SC|true|true|true",
+     "P-UYXUBG4U|post|B19|LK|false|false|false",
+     "P-UYXUBG4U|post|B20|M|false|true|true",
+     "P-V9RKMXKD|pre|B01|M|false|false|true",
+     "P-V9RKMXKD|pre|B02|M|false|false|true",
+     "P-V9RKMXKD|pre|B03|LK|false|false|false",
+     "P-V9RKMXKD|pre|B04|M|false|true|true",
+     "P-V9RKMXKD|pre|B05|LK|false|false|false",
+     "P-V9RKMXKD|pre|B06|LC|true|true|false",
+     "P-V9RKMXKD|pre|B07|SC|true|true|true",
+     "P-V9RKMXKD|pre|B08|E|false|false|false",
+     "P-V9RKMXKD|pre|B09|M|false|false|true",
+     "P-V9RKMXKD|pre|B10|E|false|false|false",
+     "P-V9RKMXKD|pre|B11|E|true|false|false",
+     "P-V9RKMXKD|pre|B12|LC|true|true|false",
+     "P-V9RKMXKD|pre|B13|E|false|false|false",
+     "P-V9RKMXKD|pre|B14|M|false|false|true",
+     "P-V9RKMXKD|pre|B15|LK|false|true|false",
+     "P-V9RKMXKD|pre|B16|M|false|false|true",
+     "P-V9RKMXKD|pre|B17|LC|true|true|false",
+     "P-V9RKMXKD|pre|B18|LC|true|true|false",
+     "P-V9RKMXKD|pre|B19|E|false|false|false",
+     "P-V9RKMXKD|pre|B20|M|true|false|true",
+     "P-V9RKMXKD|post|B01|SC|true|true|true",
+     "P-V9RKMXKD|post|B02|E|true|false|false",
+     "P-V9RKMXKD|post|B03|SC|true|true|true",
+     "P-V9RKMXKD|post|B04|SC|true|true|true",
+     "P-V9RKMXKD|post|B05|SC|true|true|true",
+     "P-V9RKMXKD|post|B06|SC|true|true|true",
+     "P-V9RKMXKD|post|B07|SC|true|true|true",
+     "P-V9RKMXKD|post|B08|SC|true|true|true",
+     "P-V9RKMXKD|post|B09|SC|true|true|true",
+     "P-V9RKMXKD|post|B10|LC|true|true|false",
+     "P-V9RKMXKD|post|B11|LC|true|true|false",
+     "P-V9RKMXKD|post|B12|SC|true|true|true",
+     "P-V9RKMXKD|post|B13|SC|true|true|true",
+     "P-V9RKMXKD|post|B14|SC|true|true|true",
+     "P-V9RKMXKD|post|B15|SC|true|true|true",
+     "P-V9RKMXKD|post|B16|SC|true|true|true",
+     "P-V9RKMXKD|post|B17|SC|true|true|true",
+     "P-V9RKMXKD|post|B18|SC|true|true|true",
+     "P-V9RKMXKD|post|B19|E|false|false|false",
+     "P-V9RKMXKD|post|B20|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B01|E|false|false|false",
+     "P-XQ4C5M9B|pre|B02|M|false|false|true",
+     "P-XQ4C5M9B|pre|B03|M|true|false|true",
+     "P-XQ4C5M9B|pre|B04|E|false|false|false",
+     "P-XQ4C5M9B|pre|B05|E|false|false|false",
+     "P-XQ4C5M9B|pre|B06|E|false|true|false",
+     "P-XQ4C5M9B|pre|B07|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B08|E|false|false|false",
+     "P-XQ4C5M9B|pre|B09|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B10|E|false|false|false",
+     "P-XQ4C5M9B|pre|B11|E|false|false|false",
+     "P-XQ4C5M9B|pre|B12|M|true|false|true",
+     "P-XQ4C5M9B|pre|B13|LK|false|false|false",
+     "P-XQ4C5M9B|pre|B14|M|false|false|true",
+     "P-XQ4C5M9B|pre|B15|LK|false|false|false",
+     "P-XQ4C5M9B|pre|B16|E|true|false|false",
+     "P-XQ4C5M9B|pre|B17|M|false|false|true",
+     "P-XQ4C5M9B|pre|B18|SC|true|true|true",
+     "P-XQ4C5M9B|pre|B19|M|false|false|true",
+     "P-XQ4C5M9B|pre|B20|SC|true|true|true",
+     "P-XQ4C5M9B|post|B01|SC|true|true|true",
+     "P-XQ4C5M9B|post|B02|M|true|false|true",
+     "P-XQ4C5M9B|post|B03|M|false|true|true",
+     "P-XQ4C5M9B|post|B04|SC|true|true|true",
+     "P-XQ4C5M9B|post|B05|SC|true|true|true",
+     "P-XQ4C5M9B|post|B06|LC|true|true|false",
+     "P-XQ4C5M9B|post|B07|SC|true|true|true",
+     "P-XQ4C5M9B|post|B08|SC|true|true|true",
+     "P-XQ4C5M9B|post|B09|SC|true|true|true",
+     "P-XQ4C5M9B|post|B10|E|false|false|false",
+     "P-XQ4C5M9B|post|B11|E|false|true|false",
+     "P-XQ4C5M9B|post|B12|E|true|false|false",
+     "P-XQ4C5M9B|post|B13|E|false|false|false",
+     "P-XQ4C5M9B|post|B14|LK|false|false|false",
+     "P-XQ4C5M9B|post|B15|SC|true|true|true",
+     "P-XQ4C5M9B|post|B16|E|false|true|false",
+     "P-XQ4C5M9B|post|B17|SC|true|true|true",
+     "P-XQ4C5M9B|post|B18|E|false|false|false",
+     "P-XQ4C5M9B|post|B19|M|false|true|true",
+     "P-XQ4C5M9B|post|B20|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B01|M|true|false|true",
+     "P-ZNDCRKNH|pre|B02|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B03|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B04|E|false|false|false",
+     "P-ZNDCRKNH|pre|B05|M|false|true|true",
+     "P-ZNDCRKNH|pre|B06|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B07|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B08|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B09|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B10|M|false|true|true",
+     "P-ZNDCRKNH|pre|B11|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B12|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B13|E|false|false|false",
+     "P-ZNDCRKNH|pre|B14|LK|false|false|false",
+     "P-ZNDCRKNH|pre|B15|LC|true|true|false",
+     "P-ZNDCRKNH|pre|B16|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B17|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B18|SC|true|true|true",
+     "P-ZNDCRKNH|pre|B19|M|false|false|true",
+     "P-ZNDCRKNH|pre|B20|SC|true|true|true",
+     "P-ZNDCRKNH|post|B01|SC|true|true|true",
+     "P-ZNDCRKNH|post|B02|LC|true|true|false",
+     "P-ZNDCRKNH|post|B03|LC|true|true|false",
+     "P-ZNDCRKNH|post|B04|SC|true|true|true",
+     "P-ZNDCRKNH|post|B05|SC|true|true|true",
+     "P-ZNDCRKNH|post|B06|SC|true|true|true",
+     "P-ZNDCRKNH|post|B07|LC|true|true|false",
+     "P-ZNDCRKNH|post|B08|M|false|false|true",
+     "P-ZNDCRKNH|post|B09|SC|true|true|true",
+     "P-ZNDCRKNH|post|B10|M|false|false|true",
+     "P-ZNDCRKNH|post|B11|E|false|true|false",
+     "P-ZNDCRKNH|post|B12|SC|true|true|true",
+     "P-ZNDCRKNH|post|B13|SC|true|true|true",
+     "P-ZNDCRKNH|post|B14|SC|true|true|true",
+     "P-ZNDCRKNH|post|B15|SC|true|true|true",
+     "P-ZNDCRKNH|post|B16|LC|true|true|false",
+     "P-ZNDCRKNH|post|B17|SC|true|true|true",
+     "P-ZNDCRKNH|post|B18|LC|true|true|false",
+     "P-ZNDCRKNH|post|B19|LC|true|true|false",
+     "P-ZNDCRKNH|post|B20|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B01|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B02|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B03|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B04|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B05|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B06|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B07|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B08|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B09|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B10|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B11|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B12|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B13|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B14|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B15|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B16|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B17|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B18|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B19|SC|true|true|true",
+     "P-ZSMBSX9V|pre|B20|SC|true|true|true",
+     "P-ZSMBSX9V|post|B01|SC|true|true|true",
+     "P-ZSMBSX9V|post|B02|LC|true|true|false",
+     "P-ZSMBSX9V|post|B03|SC|true|true|true",
+     "P-ZSMBSX9V|post|B04|SC|true|true|true",
+     "P-ZSMBSX9V|post|B05|LC|true|true|false",
+     "P-ZSMBSX9V|post|B06|SC|true|true|true",
+     "P-ZSMBSX9V|post|B07|LC|true|true|false",
+     "P-ZSMBSX9V|post|B08|LC|true|true|false",
+     "P-ZSMBSX9V|post|B09|SC|true|true|true",
+     "P-ZSMBSX9V|post|B10|LC|true|true|false",
+     "P-ZSMBSX9V|post|B11|SC|true|true|true",
+     "P-ZSMBSX9V|post|B12|SC|true|true|true",
+     "P-ZSMBSX9V|post|B13|LC|true|true|false",
+     "P-ZSMBSX9V|post|B14|LC|true|true|false",
+     "P-ZSMBSX9V|post|B15|SC|true|true|true",
+     "P-ZSMBSX9V|post|B16|SC|true|true|true",
+     "P-ZSMBSX9V|post|B17|SC|true|true|true",
+     "P-ZSMBSX9V|post|B18|SC|true|true|true",
+     "P-ZSMBSX9V|post|B19|SC|true|true|true",
+     "P-ZSMBSX9V|post|B20|SC|true|true|true"
+    ],
+    "wide": [
+     {
+      "student_pseudo_id": "P-3843Z8CT",
+      "score_pre": 20.0,
+      "score_post": 55.00000000000001,
+      "delta": 35.00000000000001,
+      "n_gain": 0.4375000000000001,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "construction"
+     },
+     {
+      "student_pseudo_id": "P-52ZDHM9F",
+      "score_pre": 15.0,
+      "score_post": 45.0,
+      "delta": 30.0,
+      "n_gain": 0.35294117647058826,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-73CXJZYT",
+      "score_pre": 40.0,
+      "score_post": 65.0,
+      "delta": 25.0,
+      "n_gain": 0.4166666666666667,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "retention",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-7DPWSNVU",
+      "score_pre": 5.0,
+      "score_post": 5.0,
+      "delta": 0.0,
+      "n_gain": 0.0,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "static",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-7VM29HXW",
+      "score_pre": 10.0,
+      "score_post": 60.0,
+      "delta": 50.0,
+      "n_gain": 0.5555555555555556,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-8VZE9288",
+      "score_pre": 5.0,
+      "score_post": 55.00000000000001,
+      "delta": 50.00000000000001,
+      "n_gain": 0.5263157894736843,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "static",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-A9PYAX9F",
+      "score_pre": 25.0,
+      "score_post": 50.0,
+      "delta": 25.0,
+      "n_gain": 0.3333333333333333,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-AT8BCGV3",
+      "score_pre": 5.0,
+      "score_post": 60.0,
+      "delta": 55.0,
+      "n_gain": 0.5789473684210527,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-CDG9E96P",
+      "score_pre": 30.0,
+      "score_post": 40.0,
+      "delta": 10.0,
+      "n_gain": 0.14285714285714285,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "other",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-DEVTZ96K",
+      "score_pre": 5.0,
+      "score_post": 60.0,
+      "delta": 55.0,
+      "n_gain": 0.5789473684210527,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "static",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-PAUQBHP3",
+      "score_pre": 15.0,
+      "score_post": 35.0,
+      "delta": 20.0,
+      "n_gain": 0.23529411764705882,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-R93EKU2B",
+      "score_pre": 40.0,
+      "score_post": null,
+      "delta": null,
+      "n_gain": null,
+      "n_gain_category": null,
+      "transition_benda_langit": null,
+      "transition_gerhana": null,
+      "transition_planet": null,
+      "transition_rotasi_revolusi": null
+     },
+     {
+      "student_pseudo_id": "P-RRJ5JDMF",
+      "score_pre": 10.0,
+      "score_post": 35.0,
+      "delta": 25.0,
+      "n_gain": 0.2777777777777778,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "construction",
+      "transition_planet": "static",
+      "transition_rotasi_revolusi": "other"
+     },
+     {
+      "student_pseudo_id": "P-UYXUBG4U",
+      "score_pre": 0.0,
+      "score_post": 25.0,
+      "delta": 25.0,
+      "n_gain": 0.25,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "other",
+      "transition_gerhana": "static",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "static"
+     },
+     {
+      "student_pseudo_id": "P-V9RKMXKD",
+      "score_pre": 5.0,
+      "score_post": 80.0,
+      "delta": 75.0,
+      "n_gain": 0.7894736842105263,
+      "n_gain_category": "tinggi",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-XQ4C5M9B",
+      "score_pre": 20.0,
+      "score_post": 45.0,
+      "delta": 25.0,
+      "n_gain": 0.3125,
+      "n_gain_category": "sedang",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "revision",
+      "transition_planet": "revision",
+      "transition_rotasi_revolusi": "revision"
+     },
+     {
+      "student_pseudo_id": "P-ZNDCRKNH",
+      "score_pre": 60.0,
+      "score_post": 55.00000000000001,
+      "delta": -4.999999999999993,
+      "n_gain": -0.12499999999999982,
+      "n_gain_category": "rendah",
+      "transition_benda_langit": "revision",
+      "transition_gerhana": "other",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "retention"
+     },
+     {
+      "student_pseudo_id": "P-ZSMBSX9V",
+      "score_pre": 100.0,
+      "score_post": 65.0,
+      "delta": -35.0,
+      "n_gain": null,
+      "n_gain_category": null,
+      "transition_benda_langit": "retention",
+      "transition_gerhana": "retention",
+      "transition_planet": "other",
+      "transition_rotasi_revolusi": "retention"
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,5 +1,32 @@
 # PROGRESS.md
 
+## M7 · Dasbor dan statistik — selesai (10 Oktober 2026)
+
+### Selesai
+- **Pustaka `lib/analysis`** (murni): populasi berpasangan + alasan dikeluarkan, distribusi per domain, peta butir, "yang perlu dibahas", profil siswa, statistik (deskriptif, N-Gain + CI-t, uji-t berpasangan, Wilcoxon, Shapiro–Wilk selisih, d_z/Hedges g_z, KR-20 awal/akhir), transisi per domain (per butir / modus), ekspor `responses_long`, `scores_wide`, `domain_distribution`, `transitions`, `stats`, `README`; CSV dan XLSX (penulis sendiri, D-056).
+- **Guru — `/guru/kelas/[id]/hasil`** (tombol "Lihat hasil kelas"): catatan interpretasi (FR-46), siapa dianalisis/dikeluarkan, ringkasan skor & N-Gain, yang perlu dibahas (FR-45), profil konsepsi batang bertumpuk berpola (FR-42), peta butir awal/akhir (FR-43), profil per siswa (FR-44), unduh CSV/XLSX kelasnya.
+- **Peneliti — `/riset`** (admin): pilih kelas/semua, metode skor, mode transisi; kartu statistik (FR-51), diagram transisi per domain + tabel + pola dengan invarian (FR-52), distribusi, ekspor CSV/XLSX/JSON (FR-53).
+- **API:** `GET /api/riset/statistik?kelas=&skor=&transisi=`, `GET /api/riset/ekspor?format=csv|xlsx|json&tabel=` — hanya kode samaran, tanpa siswa withdrawn/pending (FR-61), tercatat di audit (FR-55).
+- **DB:** migrasi `*_analysis.sql` — `analysis_dataset` (guru: kelasnya; admin: semua; tanpa kunci jawaban) dan `log_export`.
+- **Dataset sintetis + rujukan independen** (pandas/SciPy) — kriteria M7 (D-058). Backend memori memuat kelas contoh dari dataset ini.
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan DB) | 543/543 lulus — 21 uji kesetaraan dengan rujukan pandas/SciPy (distribusi, peta butir, 2 metode skor, statistik, 2 mode transisi, ekspor, privasi, CSV, XLSX), 5 uji DB analisis (kepemilikan, admin, tanpa kunci, withdrawn, audit ekspor) |
+| `pnpm e2e` (Pixel 5, iPhone 13*, desktop) | 201 lulus, 12 dilewati sesuai perangkat (213 total) — termasuk angka layar & API = rujukan, ekspor CSV/XLSX/JSON, akses guru lain/tamu ditolak, axe terang & gelap |
+
+### Belum / catatan
+- PDF ringkasan kelas, reklasifikasi dengan aturan lain, editor bank soal/aturan, pemetaan pseudo → nama (admin) → M8.
+- Jalur Supabase sungguhan belum diuji end-to-end (fungsi DB diuji di Postgres; aplikasi diuji dengan backend memori).
+- Halaman notFound di rute yang dialirkan mengembalikan HTTP 200 dengan isi 404 (perilaku PPR); API mengembalikan 404 yang sebenarnya.
+
+### Perlu dari Anda
+- Akun peneliti di Supabase: ubah `profiles.role` menjadi `admin` untuk akun Anda dan pembimbing.
+- Tinjau teks "konsepsi alternatif" dan "konsep ilmiah" di `data/items.json` (tampil di kartu Yang perlu dibahas).
+
+---
 ## M6 · Mesin tes diagnostik — selesai (8 Oktober 2026)
 
 ### Selesai

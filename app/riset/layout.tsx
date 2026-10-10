@@ -1,5 +1,5 @@
 import { StaffShell } from "@/components/guru/StaffShell";
 
-export default function GuruLayout({ children }: LayoutProps<"/guru">) {
+export default function RisetLayout({ children }: LayoutProps<"/riset">) {
   return <StaffShell>{children}</StaffShell>;
 }

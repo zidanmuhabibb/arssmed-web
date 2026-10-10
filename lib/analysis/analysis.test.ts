@@ -205,3 +205,23 @@ describe("ekspor: privasi dan format berkas", () => {
     expect(buildXlsx(tables).equals(buf)).toBe(true);
   });
 });
+
+describe("PDF ringkasan kelas (FR-53)", () => {
+  it("dibuat tanpa galat, tanpa kode samaran/kode siswa, teks aman WinAnsi", async () => {
+    const { buildClassSummaryPdf, pdfSafe } = await import("./pdf");
+    const msgs = (await import("@/messages/id.json")).default.hasil.pdf as Record<string, unknown>;
+    const tr = (key: string, v: Record<string, string | number> = {}) => {
+      const raw = key.split(".").reduce<unknown>((o, k) => (o as Record<string, unknown>)[k], msgs) as string;
+      return raw.replace(/\{(\w+)\}/g, (_, k) => String(v[k]));
+    };
+    const a = analyze(full, OPTS);
+    const pdf = Buffer.from(await buildClassSummaryPdf(full, a, { appVersion: "t", exportedAt: "2026-10-10T00:00:00Z", scope: "all", title: "Ringkasan" }, tr));
+    expect(pdf.subarray(0, 5).toString()).toBe("%PDF-");
+    const text = pdf.toString("latin1");
+    for (const s of full.students) {
+      expect(text).not.toContain(s.pseudoId);
+      expect(text).not.toContain(s.id);
+    }
+    expect(pdfSafe("a → b ≥ 1 × 2")).toBe("a -> b >= 1 x 2");
+  });
+});

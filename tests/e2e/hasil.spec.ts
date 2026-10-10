@@ -185,4 +185,26 @@ test.describe("Dasbor dan statistik (M7)", () => {
     await expectNoA11yViolations(dark);
     await ctx.close();
   });
+
+  test("ringkasan PDF kelas (FR-53) dan reklasifikasi dengan aturan lain (admin, PRD §11)", async ({ page }) => {
+    await signIn(page, "guru3@contoh.id");
+    const pdf = await page.request.get("/api/riset/ekspor?kelas=syn-class-a&format=pdf");
+    expect(pdf.status()).toBe(200);
+    expect(pdf.headers()["content-type"]).toBe("application/pdf");
+    expect((await pdf.body()).subarray(0, 5).toString()).toBe("%PDF-");
+    // Guru tidak boleh menghitung ulang klasifikasi
+    expect((await page.request.post("/api/riset/reklasifikasi", { data: { aturan: "default-v1", kelas: "syn-class-b" } })).status()).toBe(401);
+
+    await signIn(page, "peneliti@contoh.id");
+    await page.goto("/riset?kelas=syn-class-b&aturan=default-v1");
+    const form = page.getByTestId("reclassify");
+    await expect(form).toBeVisible();
+    await form.getByRole("button", { name: "Hitung ulang klasifikasi" }).click();
+    await expect(page).toHaveURL(/aturan=default-v1.*reklasifikasi=\d+/);
+    await expect(page.getByTestId("reclassified")).toContainText("dengan aturan default-v1");
+    await expect(page.getByTestId("reclassify")).toContainText("bukan aturan tes");
+    const api = await (await page.request.get("/api/riset/statistik?kelas=syn-class-b&aturan=default-v1")).json();
+    expect(api.test.rule_set_id).toBe("default-v1");
+    expect(api.statistics.n).toBe(11);
+  });
 });

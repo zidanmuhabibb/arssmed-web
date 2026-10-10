@@ -85,7 +85,7 @@ export function TebakForm({ unit, questions }: { unit: string; questions: Q[] })
 
       {allSaved ? <p className="text-[0.9rem] text-tinta-2">{t("tebak.alreadySaved")}</p> : null}
       {error ? (
-        <p role="alert" className="font-semibold text-m">
+        <p role="alert" className="font-semibold text-m-teks">
           {error}
         </p>
       ) : null}

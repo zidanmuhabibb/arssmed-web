@@ -103,7 +103,7 @@ export function StudentTable({ students, className, joinCode }: { students: Stud
                   type="button"
                   onClick={() => setConfirm({ kind: "delete", student: s })}
                   title={t("delete")}
-                  className="inline-flex min-h-12 items-center gap-1.5 rounded-kontrol px-3 font-semibold text-m active:bg-kertas"
+                  className="inline-flex min-h-12 items-center gap-1.5 rounded-kontrol px-3 font-semibold text-m-teks active:bg-kertas"
                 >
                   <Trash2 aria-hidden="true" className="size-5" />
                   <span className="sr-only 2xl:not-sr-only">{t("delete")}</span>

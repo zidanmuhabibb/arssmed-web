@@ -1,0 +1,58 @@
+{
+  "$comment": "Kartu diskusi untuk guru (FR-25): 2–3 pertanyaan pemantik per unit dan catatan miskonsepsi umum (kode MK-U* dari content/learning.json, konsepsi alternatif dari meta butir data/items.json). `items` = butir tes yang terkait unit, dipakai untuk menautkan kartu dari \"Yang perlu dibahas\" (FR-45). Pertanyaan disusun dari konten unit; status needs_review sampai ditinjau guru/ahli.",
+  "review_status": "needs_review",
+  "units": {
+    "u1": {
+      "items": ["B01", "B02", "B03"],
+      "misconceptions": ["MK-U1-A", "MK-U1-B"],
+      "questions": [
+        "Kalau Matahari adalah bintang, mengapa bintang lain di langit malam tampak sangat kecil?",
+        "Bulan tampak terang di malam hari. Dari mana cahayanya? Bagaimana kita bisa menunjukkannya dengan senter dan bola?",
+        "Ekor komet selalu mengarah menjauhi Matahari. Menurut kalian, apa yang mendorong ekor itu?"
+      ]
+    },
+    "u2": {
+      "items": ["B06", "B07", "B08"],
+      "misconceptions": ["MK-U2-A"],
+      "questions": [
+        "Merkurius paling dekat dengan Matahari, tetapi Venus yang paling panas. Apa yang membuat Venus lebih panas?",
+        "Saturnus punya cincin yang besar. Apakah planet bercincin pasti planet terbesar? Bandingkan dengan Jupiter.",
+        "Bagaimana cara kalian mengingat urutan planet dari yang terdekat dengan Matahari?"
+      ]
+    },
+    "u3": {
+      "items": ["B09", "B10"],
+      "misconceptions": ["MK-U3-A", "MK-U3-B"],
+      "questions": [
+        "Mengapa kita tidak bisa berdiri di permukaan Jupiter seperti di Bumi?",
+        "Di mana letak sabuk asteroid? Planet apa yang berada tepat di kedua sisinya?"
+      ]
+    },
+    "u4": {
+      "items": ["B04", "B05"],
+      "misconceptions": ["MK-U4-A"],
+      "questions": [
+        "Satu batu bisa punya tiga nama: meteoroid, meteor, meteorit. Kapan namanya berubah?",
+        "Mengapa sebagian besar batuan angkasa tidak pernah sampai ke tanah?"
+      ]
+    },
+    "u5": {
+      "items": ["B11", "B12", "B13", "B14", "B15"],
+      "misconceptions": ["MK-U5-A", "MK-U5-B"],
+      "questions": [
+        "Ketika di Indonesia siang hari, apakah di seluruh dunia juga siang? Mengapa?",
+        "Matahari tampak bergerak dari timur ke barat. Apakah Matahari yang bergerak, atau Bumi?",
+        "Ada yang berpendapat musim terjadi karena Bumi kadang lebih dekat ke Matahari. Setujukah kalian? Apa buktinya?"
+      ]
+    },
+    "u6": {
+      "items": ["B16", "B17", "B18", "B19", "B20"],
+      "misconceptions": ["MK-U6-A", "MK-U6-B"],
+      "questions": [
+        "Saat gerhana Matahari, benda langit apa yang berada di tengah? Bagaimana saat gerhana Bulan?",
+        "Bulan mengelilingi Bumi setiap bulan. Mengapa gerhana tidak terjadi setiap bulan?",
+        "Bagaimana cara aman mengamati gerhana Matahari? Mengapa kacamata hitam biasa tidak cukup?"
+      ]
+    }
+  }
+}

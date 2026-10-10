@@ -25,7 +25,8 @@ export async function POST(request: Request) {
   const str = (v: unknown) => (typeof v === "string" ? v : "");
   try {
     await getBackend().signInStudent(str(body.joinCode), str(body.studentCode), str(body.pin));
-    if (isForm) return NextResponse.redirect(new URL("/belajar", request.url), { status: 303, headers });
+    // Location relatif: request.url bisa memakai host lain di belakang proksi (CSP form-action).
+    if (isForm) return new Response(null, { status: 303, headers: { ...Object.fromEntries(new Headers(headers)), Location: "/belajar" } });
     return NextResponse.json({ ok: true, redirect: "/belajar" }, { headers });
   } catch (e) {
     if (isForm) {
@@ -45,9 +46,9 @@ export async function POST(request: Request) {
   }
 }
 
-function back(request: Request, code: string, minutes?: number) {
-  const url = new URL("/masuk", request.url);
-  url.searchParams.set("galat", code);
-  if (minutes) url.searchParams.set("menit", String(minutes));
-  return NextResponse.redirect(url, { status: 303, headers: { "Cache-Control": "no-store" } });
+function back(_request: Request, code: string, minutes?: number) {
+  const q = new URLSearchParams({ galat: code });
+  if (minutes) q.set("menit", String(minutes));
+  // Location relatif (lihat atas).
+  return new Response(null, { status: 303, headers: { "Cache-Control": "no-store", Location: `/masuk?${q}` } });
 }

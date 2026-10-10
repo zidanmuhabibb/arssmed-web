@@ -178,6 +178,11 @@ export const learning = {
     update((s) => ({ ...s, viewed: { ...s.viewed, [unit]: addUnique(s.viewed[unit], object) } }));
     void send({ kind: "view", unit, object, mode: "ar_surface" });
   },
+  /** AR penanda (FR-15): kartu dikenali dan benda tampil → tampilan "ar_marker". */
+  markerView(unit: string, object: string) {
+    update((s) => ({ ...s, viewed: { ...s.viewed, [unit]: addUnique(s.viewed[unit], object) } }));
+    void send({ kind: "view", unit, object, mode: "ar_marker" });
+  },
   /** Mengembalikan galat server (mis. "locked") bila ada, agar UI bisa menjelaskan. */
   async complete(unit: string, step: Step): Promise<string | null> {
     update((s) => ({ ...s, steps: { ...s.steps, [unit]: STEPS.filter((x) => addUnique(s.steps[unit], step).includes(x)) } }));

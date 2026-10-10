@@ -5,7 +5,7 @@ import { MAX_NICKNAME, MAX_STUDENTS, STUDENT_CODE_RE } from "@/lib/students/csv"
 import { unitObjects } from "@/lib/content/celestial";
 import { findPrediction, unitLearning } from "@/lib/learning/content";
 import { blockingStep, canFinishObserve, predictionsComplete, STEPS, type Step } from "@/lib/learning/flow";
-import { PEDOMAN_V1_RULE_SET, getRuleSet } from "@/lib/classification";
+import { PEDOMAN_V1_RULE_SET, RULE_SETS, getRuleSet } from "@/lib/classification";
 import { classifyAttempt, deliverItems, itemShape, type ClassificationRow, type StoredItem } from "@/lib/tes/deliver";
 import { ITEMS } from "@/lib/tes/items-sql-data";
 import { EMPTY_ANSWER, isComplete, validateAnswer, type Answer } from "@/lib/tes/session";
@@ -13,7 +13,7 @@ import type { ClassTestStatus, Phase, StudentTestStatus } from "@/lib/tes/types"
 import { analysisItems, domainLabels, type AnalysisDataset, type AnalysisResponse } from "@/lib/analysis";
 import { SYNTHETIC_RAW } from "@/lib/analysis/synthetic";
 import { loginStudent, studentAuthEmail } from "./student-login";
-import { BackendError, type Backend, type ClassMode, type ConsentStatus, type CreatedStudent, type LearningSnapshot, type Viewer } from "./types";
+import { BackendError, RATE_LIMITS, type Backend, type ClassMode, type ConsentStatus, type CreatedStudent, type LearningSnapshot, type Viewer } from "./types";
 
 /**
  * Backend di memori untuk uji e2e dan demo lokal TANPA Supabase (DECISIONS D-026).
@@ -46,10 +46,12 @@ function seed() {
   const other: MemTeacher = { id: "mem-teacher-2", email: "guru2@contoh.id", password: "rahasia123", role: "teacher", fullName: "Pak Arif" };
   const dataTeacher: MemTeacher = { id: "mem-teacher-3", email: "guru3@contoh.id", password: "rahasia123", role: "teacher", fullName: "Bu Sari" };
   const researcher: MemTeacher = { id: "mem-admin-1", email: "peneliti@contoh.id", password: "rahasia123", role: "admin", fullName: "Peneliti" };
+  // Akun kedua khusus uji pembatasan laju (tidak berbagi kuota dengan uji lain).
+  const researcher2: MemTeacher = { id: "mem-admin-2", email: "peneliti2@contoh.id", password: "rahasia123", role: "admin", fullName: "Peneliti 2" };
   const cls: MemClass = { id: "mem-class-6a", teacherId: teacher.id, name: "6A", joinCode: "K7M2QX", mode: "research", academicYear: "2026/2027", createdAt: 1 };
   const otherCls: MemClass = { id: "mem-class-6b", teacherId: other.id, name: "6B", joinCode: "P3RT9W", mode: "learn_only", academicYear: null, createdAt: 2 };
   const s = {
-    teachers: [teacher, other, dataTeacher, researcher],
+    teachers: [teacher, other, dataTeacher, researcher, researcher2],
     classes: [cls, otherCls],
     students: [
       { id: "mem-stu-1", classId: cls.id, code: "S01", nickname: "Raka", pin: "1234", pseudoId: "P-RAKA0001", consent: "granted" },
@@ -65,6 +67,9 @@ function seed() {
     classifications: {} as Record<string, ClassificationRow[]>,
     itemsFrozen: false,
     audit: [] as { actor: string; action: string; classId: string | null; format: string; at: number }[],
+    rate: {} as Record<string, number>,
+    /** Klasifikasi hasil reklasifikasi: aturan → percobaan → baris. */
+    reclass: {} as Record<string, Record<string, ClassificationRow[]>>,
   };
   seedSynthetic(s, dataTeacher.id);
   return s;
@@ -520,8 +525,11 @@ export const memoryBackend: Backend = {
 
   // ---------------------------------------------------------------- dasbor & statistik (M7)
 
-  async analysisDataset(classId) {
+  async analysisDataset(classId, ruleSetId = null) {
     const t = await requireStaff();
+    const rs = ruleSetId ?? MEM_RULE_SET.rule_set_id;
+    if (!RULE_SETS[rs]) throw new BackendError("not_found", "Aturan klasifikasi tidak dikenal.");
+    const rows = (attemptId: string) => (rs === MEM_RULE_SET.rule_set_id ? store().classifications[attemptId] : store().reclass[rs]?.[attemptId]);
     let classes: MemClass[];
     if (classId === null) {
       if (t.role !== "admin") throw new BackendError("forbidden", "Hanya peneliti yang bisa melihat semua kelas.");
@@ -535,8 +543,11 @@ export const memoryBackend: Backend = {
     const students = store().students.filter((s) => classIds.has(s.classId));
     const attempts = store().testAttempts.filter((a) => a.submittedAt && students.some((s) => s.id === a.studentId));
     const responses: AnalysisResponse[] = [];
+    let unclassified = 0;
     for (const a of attempts) {
-      for (const c of store().classifications[a.id] ?? []) {
+      const cls = rows(a.id);
+      if (!cls) unclassified += answeredCount(a.id);
+      for (const c of cls ?? []) {
         const r = store().responses[rkey(a.id, c.item_id)]!;
         responses.push({
           studentId: a.studentId,
@@ -561,7 +572,9 @@ export const memoryBackend: Backend = {
     const ds: AnalysisDataset = {
       testName: ITEMS.test_name,
       testVersion: ITEMS.test_version,
-      ruleSetId: MEM_RULE_SET.rule_set_id,
+      ruleSetId: rs,
+      testRuleSetId: MEM_RULE_SET.rule_set_id,
+      unclassified,
       classes: classes.map((c) => ({ id: c.id, name: c.name })),
       domains: domainLabels(items, ITEMS),
       items,
@@ -575,5 +588,55 @@ export const memoryBackend: Backend = {
     const t = await requireStaff();
     if (classId === null ? t.role !== "admin" : !ownsClass(t, classId)) throw new BackendError("forbidden");
     store().audit.push({ actor: t.id, action: "export", classId, format, at: Date.now() });
+  },
+
+  async reclassify(ruleSetId, classId) {
+    const t = await requireStaff();
+    if (t.role !== "admin") throw new BackendError("forbidden", "Hanya peneliti yang bisa menghitung ulang klasifikasi.");
+    const ruleSet = RULE_SETS[ruleSetId];
+    if (!ruleSet) throw new BackendError("not_found", "Aturan klasifikasi tidak dikenal.");
+    store().audit.push({ actor: t.id, action: "rule_set.reclassify", classId, format: ruleSetId, at: Date.now() });
+    const classIds = new Set(store().classes.filter((c) => c.mode === "research" && (!classId || c.id === classId)).map((c) => c.id));
+    const target = (store().reclass[ruleSetId] ??= {});
+    let attempts = 0;
+    let responses = 0;
+    for (const a of store().testAttempts.filter((x) => x.submittedAt && classIds.has(x.classId))) {
+      const rows = classifyAttempt(MEM_ITEMS, answersOf(a.id), ruleSet);
+      if (ruleSetId === MEM_RULE_SET.rule_set_id) store().classifications[a.id] = rows;
+      else target[a.id] = rows;
+      attempts += 1;
+      responses += rows.length;
+    }
+    return { attempts, responses };
+  },
+
+  // ---------------------------------------------------------------- keamanan (M8)
+
+  async rateLimit(scope) {
+    const sess = await readSession();
+    const { windowSeconds } = RATE_LIMITS[scope];
+    // Uji e2e menjalankan ratusan permintaan dari akun contoh yang sama: batas boleh diperbesar.
+    const max = RATE_LIMITS[scope].max * Number(process.env.ARSSMED_RATE_LIMIT_SCALE ?? 1);
+    const now = Date.now();
+    const start = Math.floor(now / (windowSeconds * 1000));
+    const key = `${scope}:${sess ? `${sess.kind}:${sess.id}` : "anon"}:${start}`;
+    const hits = (store().rate[key] ?? 0) + 1;
+    store().rate[key] = hits;
+    if (hits > max) throw new BackendError("rate_limited", "Terlalu banyak permintaan. Tunggu sebentar lalu coba lagi.");
+  },
+
+  async researchNameMap(classId) {
+    const t = await requireStaff();
+    if (t.role !== "admin") throw new BackendError("forbidden", "Hanya peneliti yang bisa mengunduh pemetaan nama.");
+    store().audit.push({ actor: t.id, action: "export.name_map", classId, format: "csv", at: Date.now() });
+    const classes = store().classes.filter((c) => c.mode === "research" && (!classId || c.id === classId));
+    return classes
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .flatMap((c) =>
+        store()
+          .students.filter((s) => s.classId === c.id)
+          .sort((a, b) => a.code.localeCompare(b.code))
+          .map((s) => ({ pseudoId: s.pseudoId, className: c.name, studentCode: s.code, nickname: s.nickname, consent: s.consent })),
+      );
   },
 };

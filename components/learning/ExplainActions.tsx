@@ -46,7 +46,7 @@ export function ExplainActions({ unit, number, nextUnit }: { unit: string; numbe
   return (
     <div className="flex flex-col gap-2">
       {error ? (
-        <p role="alert" className="font-semibold text-m">
+        <p role="alert" className="font-semibold text-m-teks">
           {error}
         </p>
       ) : null}

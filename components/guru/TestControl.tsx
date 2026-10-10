@@ -64,7 +64,7 @@ export function TestControl({ classId, mode, initial }: { classId: string; mode:
         {t("title")}
       </h2>
       {error ? (
-        <p role="alert" className="font-semibold text-m">
+        <p role="alert" className="font-semibold text-m-teks">
           {error}
         </p>
       ) : null}

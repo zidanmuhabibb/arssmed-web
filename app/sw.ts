@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 import { defaultCache } from "@serwist/turbopack/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
-import { Serwist } from "serwist";
+import { CacheFirst, ExpirationPlugin, Serwist } from "serwist";
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
@@ -14,7 +14,7 @@ declare const self: ServiceWorkerGlobalScope & { __SW_MANIFEST: (PrecacheEntry |
 /*
  * Service worker ARSSMED (PRD §12.3, DECISIONS.md D-007).
  * M0: shell + halaman offline + strategi cache bawaan Next.
- * M3/M5: cache aset 3D per unit. M6: antrean jawaban tes tetap di IndexedDB
+ * M8: aset 3D/AR (model, tekstur, kartu penanda, MindAR) CacheFirst. M6: antrean jawaban tes tetap di IndexedDB
  * (bukan di SW), agar logika sinkron dapat diuji tanpa browser.
  */
 const serwist = new Serwist({
@@ -22,7 +22,17 @@ const serwist = new Serwist({
   skipWaiting: true,
   clientsClaim: true,
   navigationPreload: true,
-  runtimeCaching: defaultCache,
+  runtimeCaching: [
+    // PRD §12.3: setelah unit dibuka sekali, aset 3D/AR-nya (model, tekstur, kartu penanda, MindAR) tersedia luring.
+    {
+      matcher: ({ url, sameOrigin }) => sameOrigin && /^\/(models|textures|markers|vendor)\//.test(url.pathname),
+      handler: new CacheFirst({
+        cacheName: "arssmed-aset-3d",
+        plugins: [new ExpirationPlugin({ maxEntries: 150, maxAgeSeconds: 60 * 60 * 24 * 60 })],
+      }),
+    },
+    ...defaultCache,
+  ],
   fallbacks: {
     entries: [
       {

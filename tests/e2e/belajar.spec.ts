@@ -166,6 +166,7 @@ test.describe("Alur belajar (FR-20 … FR-24)", () => {
 test.describe("Viewer U3–U6 (FR-13)", () => {
   test("meteor: langkah animasi menggerakkan Rel Orbit meteoroid → meteor → meteorit", async ({ page, consoleErrors }) => {
     void consoleErrors;
+    test.slow(); // adegan 3D penuh di GPU emulasi
     await page.goto("/belajar/u4/viewer");
     await expect(page.getByRole("heading", { level: 1, name: "Meteoroid" })).toBeVisible();
     const controls = page.getByRole("group", { name: "Kontrol animasi" });
@@ -174,7 +175,7 @@ test.describe("Viewer U3–U6 (FR-13)", () => {
     await expect(page.getByText("Meteor: batuan masuk atmosfer, terbakar, dan bercahaya terang.")).toBeVisible();
     await controls.getByRole("button", { name: "Langkah berikutnya" }).click();
     await expect(page.getByRole("heading", { level: 1, name: "Meteorit" })).toBeVisible();
-    await expect(rail(page).getByText("Semua sudah dilihat")).toBeVisible();
+    await expect(rail(page).getByText("Semua sudah dilihat")).toBeVisible({ timeout: 20_000 });
     await rail(page).getByRole("button", { name: /Meteoroid$/ }).click();
     await expect(page.getByText("Meteoroid: batuan kecil melayang di luar angkasa menuju Bumi.")).toBeVisible();
     await page.getByRole("checkbox", { name: "Tampilkan atmosfer" }).uncheck();

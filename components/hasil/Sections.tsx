@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { Download, Info } from "lucide-react";
+import { Download, Info, MessagesSquare } from "lucide-react";
 import { CATEGORIES } from "@/lib/classification";
 import type { ClassAnalysis, ItemMapRow } from "@/lib/analysis";
 import type { Phase } from "@/lib/tes/types";
+import { unitForItem } from "@/lib/learning/extras";
 import { buttonClass } from "@/components/ui/Button";
 import { CategoryIcon, Swatch } from "./CategoryBars";
 import { fmt, fmtPct } from "./format";
@@ -39,6 +40,8 @@ export async function ParticipationNote({ a }: { a: ClassAnalysis }) {
 /** FR-45: tiga butir dengan miskonsepsi terbanyak. */
 export async function DiscussList({ a }: { a: ClassAnalysis }) {
   const t = await getTranslations("hasil");
+  const tu = await getTranslations("units");
+  const unitLabel = (slug: string) => tu(`${slug}.title` as "u1.title");
   const d = a.discuss;
   if (!d) return null;
   return (
@@ -70,6 +73,12 @@ export async function DiscussList({ a }: { a: ClassAnalysis }) {
                   <span className="text-tinta-2">{t("discuss.scientific")}: </span>
                   {r.item.scientificConcept}
                 </p>
+              ) : null}
+              {unitForItem(r.item.code) ? (
+                <Link href={`/guru/kartu-diskusi#${unitForItem(r.item.code)}`} className="mt-auto inline-flex min-h-12 items-center gap-2 font-semibold text-laut-teks">
+                  <MessagesSquare aria-hidden="true" className="size-5" />
+                  {t("discuss.card", { unit: unitLabel(unitForItem(r.item.code)!) })}
+                </Link>
               ) : null}
             </li>
           ))}
@@ -246,11 +255,13 @@ export async function StudentProfiles({ a, domains: order }: { a: ClassAnalysis;
 /** Tautan unduh (rute /api/riset/ekspor; otorisasi di server). */
 export async function ExportLinks({ classId, json = false, query = "" }: { classId: string | null; json?: boolean; query?: string }) {
   const t = await getTranslations("hasil.export");
+  const tp = await getTranslations("hasil.pdf");
   const q = (extra: string) => `/api/riset/ekspor?${classId ? `kelas=${encodeURIComponent(classId)}&` : ""}${query ? `${query}&` : ""}${extra}`;
   const links: [string, string][] = [
     [q("format=csv&tabel=responses_long"), t("long")],
     [q("format=csv&tabel=scores_wide"), t("wide")],
     [q("format=xlsx"), t("xlsx")],
+    [q("format=pdf"), tp("link")],
     ...(json ? ([[q("format=json"), t("json")]] as [string, string][]) : []),
   ];
   return (

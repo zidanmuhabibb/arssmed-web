@@ -24,7 +24,8 @@
     "content:sql": "node scripts/build-content-sql.mjs",
     "assets:build": "node scripts/build-ar-models.mjs",
     "seed:items": "node scripts/seed-items.mjs",
-    "analysis:reference": "python3 tests/fixtures/generate_analysis_reference.py"
+    "analysis:reference": "python3 tests/fixtures/generate_analysis_reference.py",
+    "markers:build": "node scripts/build-markers.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lexend": "^5.3.0",

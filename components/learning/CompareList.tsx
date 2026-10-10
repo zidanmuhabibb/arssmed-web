@@ -58,7 +58,7 @@ export function CompareList({ unit, items }: { unit: string; items: Item[] }) {
         );
       })}
       {error ? (
-        <p role="alert" className="font-semibold text-m">
+        <p role="alert" className="font-semibold text-m-teks">
           {error}
         </p>
       ) : null}

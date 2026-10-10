@@ -26,6 +26,7 @@ test.describe("Masuk siswa", () => {
   test("PIN belum cocok lalu dibatasi setelah 5 percobaan", async ({ page }) => {
     await page.goto("/masuk");
     await page.waitForLoadState("networkidle"); // tunggu skrip siap agar setiap kiriman lewat JSON
+    await page.locator("form[data-ready]").waitFor();
     const code = `X${rand()}`;
     for (let i = 0; i < 5; i++) {
       await page.getByLabel("Kode kelas").fill("K7M2QX");

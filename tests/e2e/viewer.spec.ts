@@ -39,11 +39,13 @@ test.describe("Viewer 3D (FR-10 … FR-13)", () => {
   });
 
   test("titik info di kanvas bisa ditekan", async ({ page }) => {
+    // WebGL dirender CPU (SwiftShader); di mesin uji yang sibuk bingkai pertama bisa lambat.
+    test.slow();
+    // Tanpa rotasi otomatis (preferensi gerak dikurangi), titik diam sehingga uji tidak bergantung kecepatan mesin.
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/belajar/u1/viewer");
     const marker = page.getByRole("button", { name: /^Titik info 1:/ });
-    await expect(marker).toBeVisible();
-    // Seperti siswa: sentuh kanvas dulu → rotasi otomatis berhenti, titik diam, lalu ketuk titik.
-    await page.getByRole("group", { name: /Tampilan 3D Matahari/ }).click({ position: { x: 8, y: 8 } });
+    await expect(marker).not.toHaveAttribute("inert", { timeout: 45_000 });
     await marker.click();
     await expect(page.getByRole("dialog", { name: "Matahari adalah bintang" })).toBeVisible();
   });

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { Orbit } from "lucide-react";
+import { ListChecks, Orbit } from "lucide-react";
 import { UnitSteps } from "@/components/learning/UnitSteps";
 import { LinkButton } from "@/components/ui/Button";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -52,6 +52,9 @@ export default async function UnitPage({ params }: PageProps<"/belajar/[unit]">)
           </section>
           <LinkButton href={`/belajar/${unit.slug}/viewer`} variant="kedua" icon={<Orbit aria-hidden="true" className="size-5" />}>
             {t("belajar.free3d")}
+          </LinkButton>
+          <LinkButton href={`/belajar/${unit.slug}/kuis`} variant="kedua" icon={<ListChecks aria-hidden="true" className="size-5" />}>
+            {t("belajar.quiz.open")}
           </LinkButton>
         </aside>
       </div>

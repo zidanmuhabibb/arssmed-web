@@ -47,6 +47,7 @@ export default async function PembuatPage() {
             <li>{t("pembuat.textures")}</li>
             <li>{t("pembuat.science")}</li>
             <li>{t("pembuat.threeCredit")}</li>
+            <li>{t("pembuat.arCredit")}</li>
             <li>{t("pembuat.fontsCredit")}</li>
             <li>{t("pembuat.iconsCredit")}</li>
           </ul>

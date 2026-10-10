@@ -14,14 +14,17 @@ export async function StaffShell({ children, extraMessages = [] }: { children: R
   return (
     <div className="min-h-dvh">
       <header className="sticky top-0 z-30 border-b border-garis bg-permukaan">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6">
+        <div className="mx-auto flex min-h-16 max-w-6xl flex-wrap items-center gap-x-4 px-4 sm:flex-nowrap sm:px-6">
           <Link href="/guru/kelas" className="flex min-h-12 items-center gap-2 rounded-kontrol text-tinta no-underline">
             <LogoMark size={30} />
             <span className="font-judul text-[1.2rem] font-extrabold leading-none">{t("brand")}</span>
           </Link>
-          <nav aria-label={t("brand")} className="ml-2 hidden sm:block">
-            <Link href="/guru/kelas" className="inline-flex min-h-12 items-center rounded-kontrol px-3 font-semibold text-tinta no-underline">
+          <nav aria-label={t("brand")} className="order-last -mx-2 flex w-full gap-1 overflow-x-auto sm:order-none sm:mx-0 sm:ml-2 sm:w-auto">
+            <Link href="/guru/kelas" className="inline-flex min-h-12 shrink-0 items-center rounded-kontrol px-3 font-semibold text-tinta no-underline">
               {t("navClasses")}
+            </Link>
+            <Link href="/guru/kartu-diskusi" className="inline-flex min-h-12 shrink-0 items-center rounded-kontrol px-3 font-semibold text-tinta no-underline">
+              {t("navDiscussion")}
             </Link>
             <Suspense fallback={null}>
               <ResearchLink label={t("navResearch")} />
@@ -45,7 +48,7 @@ async function ResearchLink({ label }: { label: string }) {
   const viewer = await getViewer().catch(() => ({ kind: "anon" as const }));
   if (viewer.kind !== "staff" || viewer.role !== "admin") return null;
   return (
-    <Link href="/riset" className="inline-flex min-h-12 items-center rounded-kontrol px-3 font-semibold text-tinta no-underline">
+    <Link href="/riset" className="inline-flex min-h-12 shrink-0 items-center rounded-kontrol px-3 font-semibold text-tinta no-underline">
       {label}
     </Link>
   );

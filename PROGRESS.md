@@ -1,5 +1,36 @@
 # PROGRESS.md
 
+## M8 · AR penanda + polesan — selesai (10 Oktober 2026)
+
+### Selesai
+- **AR dengan kartu (FR-15, P1):** halaman `/belajar/[unit]/penanda` (tombol "AR dengan kartu" di Viewer) dengan layar penjelasan kamera (FR-16), pelacakan gambar MindAR di perangkat, benda GLB tampil di atas kartu, kamera mati saat selesai, cadangan 3D bila ditolak/tidak didukung. Kartu penanda 6 unit + PDF A4 (`pnpm markers:build`, tautan di Panduan). Terbukti mengenali kartu lewat kamera palsu di uji e2e.
+- **Kartu diskusi guru (FR-25):** `/guru/kartu-diskusi` (menu guru, bisa dicetak) — pertanyaan pemantik, miskonsepsi umum, butir terkait; ditautkan dari "Yang perlu dibahas" (FR-45).
+- **Kuis latihan (FR-26):** `/belajar/[unit]/kuis` — 3–4 soal per unit, umpan balik langsung, tidak disimpan/dinilai, bank soal terpisah dari tes (diuji).
+- **Keamanan:** CSP + header lengkap; pembatasan laju endpoint tes & riset (DB + pemicu); pemetaan nama khusus admin dengan konfirmasi & audit; penghapusan data siswa withdrawn; pentest dasar otomatis (`SECURITY.md`); `pnpm audit --prod` bersih.
+- **Tunda dari M7:** reklasifikasi dengan aturan lain (`POST /api/riset/reklasifikasi`, pilihan aturan di `/riset`), PDF ringkasan kelas (guru & peneliti).
+- **Aksesibilitas & kinerja:** teks peringatan merah memakai token `--m-teks` yang lolos kontras di mode gelap; menu guru tampil di HP; uji papan ketik kuis & AR; aset 3D/AR (model, tekstur, kartu, MindAR) disimpan service worker untuk luring; header cache aset.
+
+### Hasil verifikasi
+| Pemeriksaan | Hasil |
+|---|---|
+| `pnpm lint` / `pnpm typecheck` | lulus |
+| `pnpm test` (dengan DB) | 563/563 lulus — termasuk 4 uji DB keamanan (batas laju, pemetaan nama, penghapusan), uji reklasifikasi (hasil = aturan baru, aturan lama utuh), konten kuis/kartu, tata letak kamera AR, PDF |
+| `pnpm e2e` (Pixel 5, iPhone 13*, desktop + proyek kamera palsu) | 248 lulus, 14 dilewati sesuai perangkat (262 total) — termasuk kartu penanda dikenali lewat kamera palsu, pentest dasar, kuis & kartu diskusi, PDF, reklasifikasi, uji papan ketik |
+| Lighthouse (agen, mobile) | Aksesibilitas 100 & Best Practices 100 di Beranda, Kuis, Panduan, AR kartu, Viewer. Kinerja Beranda 77–85, Kuis 78, Panduan 77, AR kartu 82, Viewer 54–57 (SwiftShader) — tanpa regresi terhadap M7 di mesin yang sama (D-066) |
+| axe (e2e) | 0 pelanggaran di semua halaman yang diuji, terang & gelap |
+
+### Belum / catatan
+- AR penanda dan AR permukaan belum diuji di HP nyata (Android, iPhone; cahaya kelas). Di iPhone, bila pelacakan tidak stabil, siswa tetap bisa memakai Quick Look/3D.
+- Kinerja ≥ 85 harus dibuktikan di HP uji & hosting produksi (M9).
+- Belum: editor bank soal/aturan (FR-54) dan manajemen konten 3D (FR-56) — P1, diusulkan setelah pilot; tombol "Siapkan untuk offline" untuk guru (PRD §12.3).
+- Jalur Supabase sungguhan untuk fitur baru diuji di Postgres (fungsi DB), aplikasi dengan backend memori.
+
+### Perlu dari Anda
+- Cetak `public/markers/kartu-penanda.pdf` (skala 100%) dan coba AR dengan kartu di HP kelas.
+- Tinjau kuis latihan (`content/practice.json`) dan kartu diskusi (`content/discussion.json`) bersama guru/ahli materi.
+- Di Supabase produksi: jadwalkan `purge_withdrawn_research_data` (contoh di SECURITY.md) sesuai ketentuan komite etik.
+
+---
 ## M7 · Dasbor dan statistik — selesai (10 Oktober 2026)
 
 ### Selesai

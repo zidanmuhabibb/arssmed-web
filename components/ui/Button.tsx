@@ -17,7 +17,7 @@ const variants: Record<Variant, string> = {
   utama: "bg-matahari text-matahari-tinta active:bg-matahari-tekan",
   kedua: "border-2 border-garis bg-permukaan text-tinta active:bg-kertas",
   teks: "text-laut-teks active:bg-kertas",
-  bahaya: "border-2 border-m text-m bg-permukaan active:bg-kertas",
+  bahaya: "border-2 border-m text-m-teks bg-permukaan active:bg-kertas",
 };
 
 export function buttonClass({ variant = "utama", size = "besar", block = true }: { variant?: Variant; size?: Size; block?: boolean } = {}) {

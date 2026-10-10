@@ -11,6 +11,8 @@ export const light = {
   matahari: "#f5a623",
   laut: "#2a7fba",
   "laut-teks": "#1f6aa0",
+  /** Teks peringatan/bahaya (merah) yang lolos kontras AA. */
+  "m-teks": "#b3263b",
   panggung: "#0b1626",
   "panggung-tinta": "#e4ecf2",
   "panggung-tinta-2": "#9fb2c4",
@@ -24,6 +26,7 @@ export const dark = {
   garis: "#263a51",
   laut: "#6cb4e8",
   "laut-teks": "#6cb4e8",
+  "m-teks": "#f2939f",
 } as const;
 
 export const category = {

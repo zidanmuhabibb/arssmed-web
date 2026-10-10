@@ -24,6 +24,7 @@
   --laut: #2a7fba;
   /* Varian teks tautan: --laut hanya 3,88:1 di atas --kertas (lihat D-010) */
   --laut-teks: #1f6aa0;
+  --m-teks: #b3263b;
   --panggung: #0b1626;
   --panggung-tinta: #e4ecf2;
   --panggung-tinta-2: #9fb2c4;
@@ -69,6 +70,7 @@
     --garis: #263a51;
     --laut: #6cb4e8;
     --laut-teks: #6cb4e8;
+    --m-teks: #f2939f;
     color-scheme: dark;
   }
 }
@@ -81,6 +83,7 @@
   --garis: #263a51;
   --laut: #6cb4e8;
   --laut-teks: #6cb4e8;
+  --m-teks: #f2939f;
   color-scheme: dark;
 }
 
@@ -95,6 +98,7 @@
   --color-matahari-tinta: var(--matahari-tinta);
   --color-laut: var(--laut);
   --color-laut-teks: var(--laut-teks);
+  --color-m-teks: var(--m-teks);
   --color-panggung: var(--panggung);
   --color-panggung-tinta: var(--panggung-tinta);
   --color-panggung-tinta-2: var(--panggung-tinta-2);

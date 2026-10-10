@@ -306,3 +306,38 @@ Format: keputusan · alasan · alternatif yang dipertimbangkan. Terbaru di bawah
 - Batang bertumpuk 100% dengan **pola isian** per kategori (SC polos, M garis miring, E titik, LK garis datar, LC arsir), ikon, kode, dan angka tertulis di bawah tiap batang; tabel padanan. Diagram transisi = pita kiri→kanan (SVG) + tabel transisi + daftar kode samaran per sel (admin).
 - Tabel lebar bisa digulir dan dapat difokus (axe `scrollable-region-focusable`). Teks persentase tidak berwarna merah agar kontras di mode gelap.
 - Ditunda: PDF ringkasan kelas (FR-53), `POST /api/riset/reklasifikasi`, editor bank soal/aturan (FR-54) → M8.
+
+## D-060 · AR penanda dengan MindAR (inti saja) + three.js kita
+- **Keputusan:** FR-15 memakai MindAR 1.2.5 (pelacakan gambar, MIT). Hanya modul inti `mindar-image.prod.js` (+ potongan controller berisi TF.js, Apache-2.0) disalin ke `public/vendor/mindar-1.2.5/` beserta lisensinya; tidak lewat npm karena paket `mind-ar` menarik `canvas` (modul native yang sering gagal dipasang di Windows) dan integrasi three.js-nya memakai API three lama (`sRGBEncoding`) yang tidak ada di three 0.186. Penataan kamera (fov/near/far, video `cover`) diport ke `lib/ar/marker.ts` (murni, teruji); render memakai three.js + GLB AR yang sudah ada.
+- Pustaka (±2,2 MB) hanya dimuat setelah siswa menekan "Izinkan kamera" di halaman `/belajar/[unit]/penanda`; halaman lain tidak terpengaruh. Kamera dimatikan saat "Selesai"/keluar halaman. Ditolak/tidak ada kamera/galat → pesan ramah + tombol 3D.
+- **Kartu penanda:** `pnpm markers:build` menggambar pola kontras kaya fitur (benih per unit + angka unit + bingkai), mengompilasinya menjadi `.mind` di Chromium tanpa layar, dan membuat PDF A4 (`public/markers/kartu-penanda.pdf`, tautan di Panduan dan layar AR). Satu kartu per unit; benda yang tampil = benda yang dipilih di Viewer (`?objek=`).
+- **Bukti:** e2e memakai kamera palsu Chromium yang memutar foto kartu Unit 2 di meja (`tests/fixtures/fake-camera-marker-u2.mjpeg`); kartu harus dikenali dan benda tampil. Uji di HP nyata (Android & iPhone, cahaya kelas) tetap wajib (PRD §12.2, §14).
+- **Alternatif:** AR.js (penanda hiro/pola, kurang cocok untuk gambar bebas), 8th Wall (berbayar, pihak ketiga).
+
+## D-061 · Content-Security-Policy
+- `default-src 'self'`; `script-src 'self' 'unsafe-inline'` (tanpa `unsafe-eval` di produksi); `style-src 'self' 'unsafe-inline'`; `img-src 'self' data: blob:`; `connect-src 'self'` + asal Supabase (https & wss); `media-src`/`worker-src 'self' blob:` (video kamera, worker MindAR); `object-src 'none'`; `base-uri 'self'`; `form-action 'self'`; `frame-ancestors 'none'`. Ditambah `Cross-Origin-Opener-Policy: same-origin`.
+- **Kenapa `unsafe-inline`:** Next.js menyisipkan skrip hidrasi inline; nonce mengharuskan semua halaman dirender per permintaan dan mematikan prarender parsial (kinerja HP murah). Risiko dikurangi: tanpa asal luar, tanpa eval, React meng-escape keluaran (uji XSS tersimpan).
+- **Temuan saat uji:** redirect 303 yang dibangun dari `request.url` bisa memakai host lain (mis. `localhost` saat dibuka lewat IP), sehingga diblokir `form-action`. Semua redirect formulir kini memakai `Location` relatif.
+
+## D-062 · Pembatasan laju
+- Batas ditentukan di DB (`consume_rate_limit(scope)`, jendela tetap, kunci = cakupan + pengguna); pemanggil tidak bisa mengubahnya. Dipanggil server sebelum: mulai tes 30/mnt, simpan jawaban 300/mnt, selesai 20/mnt, baca riset 60/mnt, ekspor & reklasifikasi 20/10 mnt, pemetaan nama 5/10 mnt. Pemicu di `item_responses` (400/mnt per percobaan) menahan pemanggilan RPC langsung. Melebihi batas → 429 + `Retry-After`; antrean jawaban siswa menganggap 429 sebagai "coba lagi nanti" (jawaban tidak hilang).
+- Backend memori meniru batas yang sama; uji e2e memperbesar batas ×10 (`ARSSMED_RATE_LIMIT_SCALE`) karena ratusan uji memakai akun contoh yang sama, dan memakai akun `peneliti2@contoh.id` khusus untuk membuktikan 429.
+
+## D-063 · Pemetaan nama, penghapusan, reklasifikasi
+- **Pemetaan pseudo → kode/nama panggilan (PRD §7.4):** admin saja, harus mengetik kalimat "SAYA MENJAGA KERAHASIAAN DATA", berkas terpisah bernama `…_RAHASIA_….csv`, tercatat `export.name_map`.
+- **Penghapusan (PRD §12.4, FR-61):** `purge_withdrawn_research_data(interval)` menghapus percobaan tes (jawaban, klasifikasi, riwayat) siswa yang menarik persetujuan lebih lama dari ambang; siswanya tetap ada untuk belajar. Bisa dijadwalkan dengan pg_cron (contoh di SECURITY.md).
+- **Reklasifikasi (PRD §6.2, §11):** `POST /api/riset/reklasifikasi` (admin) menghitung ulang klasifikasi percobaan selesai dengan aturan lain dari jawaban mentah dan menyimpannya berdampingan (unik per respons × aturan); aturan bawaan tes tidak berubah. `/riset` dan API menerima `?aturan=`; bila ada respons yang belum diklasifikasi untuk aturan itu, halaman meminta hitung ulang. Uji DB membuktikan hasil tersimpan = klasifikasi aturan baru dan aturan lama utuh.
+
+## D-064 · Kuis latihan dan kartu diskusi
+- **Kuis (FR-26):** `content/practice.json`, 3–4 soal per unit, setiap soal merujuk anotasi bersumber di `content/celestial.json` (divalidasi). Diuji tidak mirip (Jaccard kata < 0,6) dengan 20 butir tes dan pertanyaan Tebak — dua soal awal diganti karena terlalu mirip butir B02/B18/B20. Umpan balik langsung "Tepat." / "Belum tepat." + penjelasan; tidak disimpan, tidak dikirim ke server, tidak masuk analisis. Halaman statis, bisa tanpa akun.
+- **Kartu diskusi (FR-25):** `content/discussion.json` — 2–3 pertanyaan pemantik per unit, miskonsepsi MK-U* (dari learning.json) dan butir tes terkait (konsepsi alternatif dari instrumen). Setiap butir B01–B20 dipetakan ke tepat satu unit, sehingga "Yang perlu dibahas" (FR-45) menautkan kartu yang relevan. Status draf sampai ditinjau guru/ahli.
+
+## D-065 · PDF ringkasan kelas (FR-53)
+- Dibuat di server dengan pdf-lib (sudah dipakai kartu masuk): angka agregat, batang distribusi berwarna + angka tertulis, statistik, tiga butir yang perlu dibahas, pola transisi, catatan interpretasi. Tanpa nama/kode siswa. Font standar PDF (WinAnsi) → karakter di luar himpunan itu diganti (`→` jadi `->`).
+
+## D-066 · Lighthouse di lingkungan agen (M8)
+- Mesin agen kali ini lebih lambat (benchmarkIndex ±1.400 vs ±2.000 sebelumnya). Uji A/B bergantian M7 vs M8 di mesin yang sama: Beranda 73/85/79 (M7) vs 85/77/81 (M8) → tidak ada regresi; variasi berasal dari mesin. Aksesibilitas 100 dan Best Practices 100 di semua halaman yang diukur. Viewer 54–57 karena WebGL dirender CPU (SwiftShader), sama seperti D-044.
+- Target PRD (≥ 85 kinerja di HP) harus dibuktikan di HP uji nyata dan hosting produksi (pilot M9).
+
+## D-067 · Uji e2e di mesin lambat
+- Mesin agen M8 lebih lambat; tiga uji yang bergantung waktu menjadi tidak stabil dan diperbaiki tanpa melonggarkan maksudnya: (1) formulir masuk siswa kini memberi penanda `data-ready` setelah hidrasi, dan uji pembatasan PIN menunggunya (sebelumnya kadang terkirim sebagai formulir biasa); (2) uji titik info di kanvas memakai preferensi "gerak dikurangi" agar titik tidak berputar ke sisi belakang sebelum diketuk; (3) uji animasi meteor diberi waktu lebih (`test.slow`).

@@ -19,6 +19,7 @@ export async function PUT(request: Request, ctx: RouteContext<"/api/tes/attempt/
   try {
     const parsed = Body.safeParse(await request.json().catch(() => null));
     if (!parsed.success) throw new BackendError("invalid_input", "Jawaban tidak valid.");
+    await getBackend().rateLimit("tes_save");
     const status = await getBackend().saveResponse(id, parsed.data);
     return NextResponse.json({ status }, { headers: NO_STORE });
   } catch (e) {

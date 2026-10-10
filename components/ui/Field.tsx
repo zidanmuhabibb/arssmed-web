@@ -39,7 +39,7 @@ export function Field({ id, name, label, hint, error, trailing, inputClassName =
         </p>
       ) : null}
       {error ? (
-        <p id={errId} className="text-[0.9rem] font-semibold text-m">
+        <p id={errId} className="text-[0.9rem] font-semibold text-m-teks">
           {error}
         </p>
       ) : null}
@@ -51,7 +51,7 @@ export function Field({ id, name, label, hint, error, trailing, inputClassName =
 export function FormAlert({ children }: { children: ReactNode }) {
   if (!children) return null;
   return (
-    <div role="alert" className="rounded-kontrol border-2 border-m bg-permukaan px-4 py-3 font-semibold text-m">
+    <div role="alert" className="rounded-kontrol border-2 border-m bg-permukaan px-4 py-3 font-semibold text-m-teks">
       {children}
     </div>
   );

@@ -26,6 +26,8 @@ export function StudentLoginForm() {
   const error = submitted ? ownError : (ownError ?? urlError);
   const [fields, setFields] = useState<string[]>([]);
   const alertRef = useRef<HTMLDivElement>(null);
+  // Penanda klien siap (setelah hidrasi): kiriman berikutnya lewat JSON, bukan formulir biasa.
+  const ready = useSyncExternalStore(() => () => {}, () => true, () => false);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -67,7 +69,7 @@ export function StudentLoginForm() {
 
   return (
     // action/method: tetap aman bila ditekan sebelum skrip siap (tanpa PIN di alamat halaman).
-    <form action="/api/auth/siswa" method="post" onSubmit={onSubmit} noValidate className="flex flex-col gap-5" aria-busy={pending}>
+    <form action="/api/auth/siswa" method="post" onSubmit={onSubmit} noValidate className="flex flex-col gap-5" aria-busy={pending} data-ready={ready ? "" : undefined}>
       <div ref={alertRef} tabIndex={-1} className="outline-none">
         {error ? <FormAlert>{t(`errors.${error.code}`, { minutes: error.minutes ?? 10 })}</FormAlert> : null}
       </div>

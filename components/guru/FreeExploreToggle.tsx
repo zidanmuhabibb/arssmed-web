@@ -49,7 +49,7 @@ export function FreeExploreToggle({ classId, initial }: { classId: string; initi
         </label>
       </div>
       {error ? (
-        <p role="alert" className="mt-2 font-semibold text-m">
+        <p role="alert" className="mt-2 font-semibold text-m-teks">
           {t("error")}
         </p>
       ) : null}

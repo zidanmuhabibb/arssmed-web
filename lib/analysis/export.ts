@@ -175,6 +175,7 @@ export function readmeTable(ds: AnalysisDataset, a: ClassAnalysis, meta: ExportM
       ["test_name", ds.testName],
       ["test_version", ds.testVersion],
       ["rule_set_id", ds.ruleSetId],
+      ["test_rule_set_id", ds.testRuleSetId],
       ["score_method", a.options.scoreMethod],
       ["transition_mode", a.options.transitionMode],
       ["domain_taxonomy", a.options.taxonomy],

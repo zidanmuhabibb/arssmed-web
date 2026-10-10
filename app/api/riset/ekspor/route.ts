@@ -3,10 +3,12 @@ import { z } from "zod";
 import { allTables, responsesLong, scoresWide, toCsv, type Table } from "@/lib/analysis";
 import { APP_VERSION, loadAnalysis } from "@/lib/analysis/server";
 import { buildXlsx } from "@/lib/analysis/xlsx";
+import { buildClassSummaryPdf } from "@/lib/analysis/pdf";
+import { getTranslations } from "next-intl/server";
 import { errorResponse, NO_STORE } from "@/lib/tes/http";
 
 const Query = z.object({
-  format: z.enum(["csv", "xlsx", "json"]).default("csv"),
+  format: z.enum(["csv", "xlsx", "json", "pdf"]).default("csv"),
   tabel: z.enum(["responses_long", "scores_wide"]).default("responses_long"),
 });
 
@@ -21,7 +23,7 @@ export async function GET(request: Request) {
     const url = new URL(request.url);
     const q = Query.safeParse(Object.fromEntries(url.searchParams));
     if (!q.success) return NextResponse.json({ error: "invalid_input", message: "Format ekspor tidak dikenal." }, { status: 400, headers: NO_STORE });
-    const { backend, classId, ds, analysis } = await loadAnalysis(url);
+    const { backend, classId, ds, analysis } = await loadAnalysis(url, "riset_export");
     const exportedAt = new Date().toISOString();
     const scope = classId ?? "semua";
     const meta = { appVersion: APP_VERSION, exportedAt, scope };
@@ -33,6 +35,13 @@ export async function GET(request: Request) {
     if (format === "csv") {
       const t: Table = tabel === "responses_long" ? responsesLong(ds) : scoresWide(ds, analysis.options);
       return new Response(toCsv(t), { headers: headers("text/csv; charset=utf-8", `${base}_${tabel}.csv`) });
+    }
+    if (format === "pdf") {
+      const t = await getTranslations("hasil.pdf");
+      const tr = (key: string, values?: Record<string, string | number>) => t(key as "title", values as never);
+      const title = t("title", { scope: classId ? (ds.classes[0]?.name ?? classId) : t("allClasses") });
+      const pdf = await buildClassSummaryPdf(ds, analysis, { ...meta, title }, tr);
+      return new Response(new Uint8Array(pdf), { headers: headers("application/pdf", `${base}_ringkasan.pdf`) });
     }
     const tables = allTables(ds, analysis, meta);
     if (format === "xlsx") {

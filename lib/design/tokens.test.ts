@@ -46,6 +46,10 @@ describe("kontras teks WCAG AA (≥ 4,5:1)", () => {
     ["gelap: tinta-2 di kertas", dark["tinta-2"], dark.kertas],
     ["gelap: tinta-2 di permukaan", dark["tinta-2"], dark.permukaan],
     ["gelap: laut-teks di kertas", dark["laut-teks"], dark.kertas],
+    ["m-teks di permukaan", light["m-teks"], light.permukaan],
+    ["m-teks di kertas", light["m-teks"], light.kertas],
+    ["gelap: m-teks di permukaan", dark["m-teks"], dark.permukaan],
+    ["gelap: m-teks di kertas", dark["m-teks"], dark.kertas],
   ])("%s", (_label, fg, bg) => {
     expect(contrastRatio(fg, bg)).toBeGreaterThanOrEqual(AA);
   });

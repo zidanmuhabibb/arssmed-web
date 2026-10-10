@@ -59,6 +59,10 @@ export interface AnalysisDataset {
   testName: string;
   testVersion: number;
   ruleSetId: string;
+  /** Aturan bawaan tes; berbeda dari ruleSetId bila analisis memakai hasil reklasifikasi. */
+  testRuleSetId: string;
+  /** Respons percobaan selesai yang belum diklasifikasi dengan `ruleSetId` (perlu reklasifikasi). */
+  unclassified: number;
   classes: { id: string; name: string }[];
   domains: { id: string; label: string }[];
   items: AnalysisItem[];

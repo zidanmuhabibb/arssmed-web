@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = Number(process.env.PORT ?? 3100);
@@ -13,6 +14,14 @@ const iphone = executablePath
   ? { ...devices["iPhone 13"], browserName: "chromium" as const, defaultBrowserType: "chromium" as const, ...chromiumLaunch }
   : devices["iPhone 13"];
 
+// AR penanda (FR-15): kamera palsu Chromium yang "melihat" kartu Unit 2 di meja.
+const fakeCamera = [
+  "--use-fake-ui-for-media-stream",
+  "--use-fake-device-for-media-stream",
+  `--use-file-for-fake-video-capture=${resolve("tests/fixtures/fake-camera-marker-u2.mjpeg")}`,
+];
+const CAMERA_SPEC = /penanda-kamera\.spec\.ts/;
+
 export default defineConfig({
   testDir: "tests/e2e",
   fullyParallel: true,
@@ -26,16 +35,21 @@ export default defineConfig({
     timezoneId: "Asia/Jakarta",
   },
   projects: [
-    { name: "pixel-5", use: { ...devices["Pixel 5"], ...chromiumLaunch } },
-    { name: "iphone-13", use: iphone },
-    { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 800 }, ...chromiumLaunch } },
+    { name: "pixel-5", testIgnore: CAMERA_SPEC, use: { ...devices["Pixel 5"], ...chromiumLaunch } },
+    { name: "iphone-13", testIgnore: CAMERA_SPEC, use: iphone },
+    { name: "desktop", testIgnore: CAMERA_SPEC, use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 800 }, ...chromiumLaunch } },
+    {
+      name: "ar-kamera",
+      testMatch: CAMERA_SPEC,
+      use: { ...devices["Pixel 5"], launchOptions: { args: [...glArgs, ...fakeCamera], ...(executablePath ? { executablePath } : {}) } },
+    },
   ],
   webServer: process.env.E2E_BASE_URL
     ? undefined
     : {
         command: `pnpm build && pnpm start --port ${PORT}`,
         // Uji e2e memakai backend memori (tanpa Supabase) — DECISIONS D-026.
-        env: { ARSSMED_BACKEND: "memory", ARSSMED_ALLOW_MEMORY_BACKEND: "1" },
+        env: { ARSSMED_BACKEND: "memory", ARSSMED_ALLOW_MEMORY_BACKEND: "1", ARSSMED_RATE_LIMIT_SCALE: "10" },
         url: BASE_URL,
         reuseExistingServer: !process.env.CI,
         timeout: 240_000,

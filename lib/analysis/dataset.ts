@@ -90,6 +90,8 @@ export function datasetFromRaw(raw: SyntheticRaw, stored: readonly StoredItem[],
     testName: raw.test_name,
     testVersion: raw.test_version,
     ruleSetId: ruleSet.rule_set_id,
+    testRuleSetId: ruleSet.rule_set_id,
+    unclassified: 0,
     classes: raw.classes,
     domains: domainLabels(items, file),
     items,
@@ -112,6 +114,8 @@ export type DatasetRpcRow = {
   test_name: string;
   test_version: number;
   rule_set_id: string;
+  test_rule_set_id?: string;
+  unclassified?: number;
   classes: { id: string; name: string }[];
   students: { id: string; pseudo_id: string; code: string; nickname: string | null; class_id: string; consent: ConsentStatus; pre_submitted: boolean; post_submitted: boolean }[];
   responses: {
@@ -140,6 +144,8 @@ export function datasetFromRpc(d: DatasetRpcRow, stored: readonly StoredItem[], 
     testName: d.test_name,
     testVersion: d.test_version,
     ruleSetId: d.rule_set_id,
+    testRuleSetId: d.test_rule_set_id ?? d.rule_set_id,
+    unclassified: Number(d.unclassified ?? 0),
     classes: d.classes,
     domains: domainLabels(items, file && d.test_name === file.test_name ? file : null),
     items,

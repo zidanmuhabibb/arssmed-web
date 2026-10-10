@@ -82,7 +82,8 @@ run("basis data: dataset analisis (M7)", () => {
   }, 120_000);
   afterAll(async () => db?.close());
 
-  const dataset = async (sub: string, cls: string | null) => (await db.as(as(sub), (c) => c.query("select public.analysis_dataset($1) d", [cls]))).rows[0].d as DatasetRpcRow;
+  const dataset = async (sub: string, cls: string | null, rs: string | null = null) =>
+    (await db.as(as(sub), (c) => c.query("select public.analysis_dataset($1, $2) d", [cls, rs]))).rows[0].d as DatasetRpcRow;
 
   it("guru melihat kelasnya: hanya percobaan selesai, klasifikasi aturan tes, tanpa kunci jawaban", async () => {
     const d = await dataset(ID.teacher, F.cls!);
@@ -136,5 +137,41 @@ run("basis data: dataset analisis (M7)", () => {
       { actor_id: ID.teacher, entity_id: F.cls, meta: { format: "csv:responses_long" } },
       { actor_id: ID.admin, entity_id: null, meta: { format: "xlsx" } },
     ]);
+  });
+
+  it("reklasifikasi (PRD §14): hasil tersimpan = aturan baru; aturan lama & jawaban mentah utuh; admin + audit", async () => {
+    const before = await dataset(ID.admin, null, "default-v1");
+    expect(before.rule_set_id).toBe("default-v1");
+    expect(before.test_rule_set_id).toBe("pedoman-v1");
+    expect(before.responses).toHaveLength(0);
+    expect(before.unclassified).toBe(20 * 7);
+    const pedomanBefore = (await dataset(ID.admin, null)).responses;
+
+    expect((await pgError(db.as(as(ID.teacher), (c) => c.query("select public.log_reclassify('default-v1', null)")))).code).toBe("42501");
+    expect((await pgError(db.as(as(ID.admin), (c) => c.query("select public.log_reclassify('ngawur', null)")))).detail).toBe("not_found");
+    await db.as(as(ID.admin), (c) => c.query("select public.log_reclassify('default-v1', null)"), commit);
+
+    // Yang dilakukan server: klasifikasi ulang dari jawaban mentah, simpan via service role.
+    const rs = getRuleSet("default-v1");
+    const expected = new Map<string, string>();
+    const atts = (await db.sql("select id from public.test_attempts where submitted_at is not null")).rows as { id: string }[];
+    for (const a of atts) {
+      const resp = (await db.sql("select item_id, tier1_key, confidence_a, reason_key, confidence_r from public.item_responses where attempt_id = $1", [a.id])).rows;
+      const answers = Object.fromEntries(resp.map((r) => [r.item_id, { tier1: r.tier1_key, confidenceA: r.confidence_a, reason: r.reason_key, confidenceR: r.confidence_r }]));
+      const rows = classifyAttempt(stored(), answers, rs);
+      for (const r of rows) expected.set(`${a.id}:${r.item_id}`, r.category);
+      await db.as({ role: "service_role" }, (c) => c.query("select public.store_classifications($1, 'default-v1', $2::jsonb)", [a.id, JSON.stringify(rows)]), commit);
+    }
+    const after = await dataset(ID.admin, null, "default-v1");
+    expect(after.unclassified).toBe(0);
+    expect(after.responses).toHaveLength(20 * 7);
+    const got = (await db.sql(
+      "select r.attempt_id || ':' || r.item_id k, k.category from public.classifications k join public.item_responses r on r.id = k.item_response_id join public.rule_sets s on s.id = k.rule_set_id where s.rule_set_id = 'default-v1'",
+    )).rows;
+    expect(Object.fromEntries(got.map((r) => [r.k, r.category]))).toEqual(Object.fromEntries(expected));
+    // Aturan bawaan tidak berubah; kedua aturan memang berbeda pada data ini.
+    expect((await dataset(ID.admin, null)).responses).toEqual(pedomanBefore);
+    expect(after.responses.map((r) => r.category)).not.toEqual(pedomanBefore.map((r) => r.category));
+    expect((await db.sql("select count(*)::int n from public.audit_log where action = 'rule_set.reclassify'")).rows[0].n).toBe(1);
   });
 });

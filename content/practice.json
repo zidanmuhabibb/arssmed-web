@@ -1,0 +1,480 @@
+{
+  "$comment": "Kuis latihan per unit (FR-26). Bank soal TERPISAH dari 20 butir tes diagnostik (data/items.json) dan dari pertanyaan Tebak; tidak disimpan dan tidak masuk analisis penelitian. Setiap soal merujuk fakta di content/celestial.json (source_ref = objek/anotasi) yang sumbernya tercatat. Status needs_review sampai ditinjau ahli materi.",
+  "review_status": "needs_review",
+  "units": {
+    "u1": [
+      {
+        "key": "u1-q1",
+        "stem": "Mengapa Matahari digolongkan sebagai bintang?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Karena ukurannya paling besar di langit."
+          },
+          {
+            "key": "B",
+            "text": "Karena membuat cahaya dan panasnya sendiri."
+          },
+          {
+            "key": "C",
+            "text": "Karena hanya tampak pada siang hari."
+          }
+        ],
+        "correct": "B",
+        "feedback": "Bintang membuat cahaya dan panasnya sendiri. Matahari tampak jauh lebih besar daripada bintang lain hanya karena letaknya jauh lebih dekat.",
+        "source_ref": "u1/matahari/Matahari adalah bintang"
+      },
+      {
+        "key": "u1-q2",
+        "stem": "Jika dibandingkan dengan Bumi, seberapa lebar Bulan?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kurang dari sepertiga lebar Bumi"
+          },
+          {
+            "key": "B",
+            "text": "Dua kali lebar Bumi"
+          },
+          {
+            "key": "C",
+            "text": "Sama lebar dengan Bumi"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Bulan jauh lebih kecil daripada Bumi: lebarnya kurang dari sepertiga lebar Bumi.",
+        "source_ref": "u1/bulan/Lebih kecil dari Bumi"
+      },
+      {
+        "key": "u1-q3",
+        "stem": "Sejak 2006, Pluto digolongkan sebagai apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Planet kesembilan"
+          },
+          {
+            "key": "B",
+            "text": "Komet"
+          },
+          {
+            "key": "C",
+            "text": "Planet kerdil"
+          }
+        ],
+        "correct": "C",
+        "feedback": "Pluto bulat dan mengelilingi Matahari, tetapi jalur orbitnya masih dipenuhi benda langit lain. Karena itu Pluto disebut planet kerdil.",
+        "source_ref": "u1/pluto/Planet kerdil"
+      },
+      {
+        "key": "u1-q4",
+        "stem": "Komet terutama tersusun dari bahan apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Gas panas seperti Matahari"
+          },
+          {
+            "key": "B",
+            "text": "Es, batu, dan debu"
+          },
+          {
+            "key": "C",
+            "text": "Logam cair"
+          }
+        ],
+        "correct": "B",
+        "feedback": "Komet adalah bola es, batu, dan debu. Saat dekat Matahari, esnya menguap dan membentuk ekor.",
+        "source_ref": "u1/komet/Bola salju angkasa"
+      }
+    ],
+    "u2": [
+      {
+        "key": "u2-q1",
+        "stem": "Planet manakah yang paling kecil?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Merkurius"
+          },
+          {
+            "key": "B",
+            "text": "Mars"
+          },
+          {
+            "key": "C",
+            "text": "Bumi"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Diameter Merkurius 4.879 km, paling kecil di antara delapan planet.",
+        "source_ref": "u2/merkurius/Ukuran"
+      },
+      {
+        "key": "u2-q2",
+        "stem": "Atmosfer Venus sangat tebal. Apa akibatnya bagi suhu Venus?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Venus menjadi dingin karena cahaya terhalang."
+          },
+          {
+            "key": "B",
+            "text": "Suhunya sama dengan Bumi."
+          },
+          {
+            "key": "C",
+            "text": "Panas terperangkap sehingga Venus sangat panas."
+          }
+        ],
+        "correct": "C",
+        "feedback": "Atmosfer tebal Venus menahan panas agar tidak keluar (efek rumah kaca). Suhu rata-ratanya 464 °C.",
+        "source_ref": "u2/venus/Panas terperangkap"
+      },
+      {
+        "key": "u2-q3",
+        "stem": "Diameter Mars kira-kira berapa kali diameter Bumi?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Dua kali"
+          },
+          {
+            "key": "B",
+            "text": "Setengah"
+          },
+          {
+            "key": "C",
+            "text": "Sama besar"
+          }
+        ],
+        "correct": "B",
+        "feedback": "Diameter Mars 6.792 km, kira-kira setengah diameter Bumi (12.756 km).",
+        "source_ref": "u2/mars/Ukuran"
+      },
+      {
+        "key": "u2-q4",
+        "stem": "Planet manakah yang paling jauh dari Matahari?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Uranus"
+          },
+          {
+            "key": "B",
+            "text": "Saturnus"
+          },
+          {
+            "key": "C",
+            "text": "Neptunus"
+          }
+        ],
+        "correct": "C",
+        "feedback": "Neptunus adalah planet terjauh, sekitar 4.515 juta km dari Matahari.",
+        "source_ref": "u2/neptunus/Planet terjauh"
+      }
+    ],
+    "u3": [
+      {
+        "key": "u3-q1",
+        "stem": "Planet dalam memiliki permukaan seperti apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Padat dari batuan"
+          },
+          {
+            "key": "B",
+            "text": "Gas tanpa permukaan"
+          },
+          {
+            "key": "C",
+            "text": "Seluruhnya air"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Merkurius, Venus, Bumi, dan Mars adalah planet berbatu dengan permukaan padat.",
+        "source_ref": "u3/zona-dalam/Planet berbatu"
+      },
+      {
+        "key": "u3-q2",
+        "stem": "Uranus dan Neptunus disebut apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Planet berbatu"
+          },
+          {
+            "key": "B",
+            "text": "Raksasa es"
+          },
+          {
+            "key": "C",
+            "text": "Planet kerdil"
+          }
+        ],
+        "correct": "B",
+        "feedback": "Uranus dan Neptunus disebut raksasa es. Keduanya tidak punya permukaan keras.",
+        "source_ref": "u3/zona-luar/Raksasa es"
+      },
+      {
+        "key": "u3-q3",
+        "stem": "Planet dalam manakah yang paling besar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mars"
+          },
+          {
+            "key": "B",
+            "text": "Venus"
+          },
+          {
+            "key": "C",
+            "text": "Bumi"
+          }
+        ],
+        "correct": "C",
+        "feedback": "Bumi adalah planet dalam yang paling besar, tetapi tetap jauh lebih kecil daripada planet luar.",
+        "source_ref": "u3/zona-dalam/Lebih kecil"
+      },
+      {
+        "key": "u3-q4",
+        "stem": "Apa yang memisahkan kelompok planet dalam dan planet luar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Sabuk asteroid"
+          },
+          {
+            "key": "B",
+            "text": "Bulan"
+          },
+          {
+            "key": "C",
+            "text": "Ekor komet"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Sabuk asteroid ada di antara orbit Mars dan Jupiter, memisahkan planet dalam dan planet luar.",
+        "source_ref": "u3/sabuk-asteroid/Pembatas dua kelompok"
+      }
+    ],
+    "u4": [
+      {
+        "key": "u4-q1",
+        "stem": "Apa nama batuan angkasa selama masih berada di luar angkasa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Meteor"
+          },
+          {
+            "key": "B",
+            "text": "Meteoroid"
+          },
+          {
+            "key": "C",
+            "text": "Meteorit"
+          }
+        ],
+        "correct": "B",
+        "feedback": "Selama masih di luar angkasa, batuan itu disebut meteoroid.",
+        "source_ref": "u4/meteoroid/Masih di luar angkasa"
+      },
+      {
+        "key": "u4-q2",
+        "stem": "Cahaya \"bintang jatuh\" sebenarnya berasal dari apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Bintang yang jatuh ke Bumi"
+          },
+          {
+            "key": "B",
+            "text": "Pantulan cahaya Bulan"
+          },
+          {
+            "key": "C",
+            "text": "Batuan kecil yang terbakar di atmosfer"
+          }
+        ],
+        "correct": "C",
+        "feedback": "Cahaya itu adalah meteor: batuan kecil yang terbakar saat masuk atmosfer dengan sangat cepat, bukan bintang.",
+        "source_ref": "u4/meteor/Bukan bintang"
+      },
+      {
+        "key": "u4-q3",
+        "stem": "Lapisan udara yang menyelimuti Bumi disebut apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Atmosfer"
+          },
+          {
+            "key": "B",
+            "text": "Orbit"
+          },
+          {
+            "key": "C",
+            "text": "Sumbu"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Bumi diselimuti lapisan udara yang disebut atmosfer. Di sinilah meteoroid terbakar.",
+        "source_ref": "u4/meteoroid/Lapisan udara Bumi"
+      }
+    ],
+    "u5": [
+      {
+        "key": "u5-q1",
+        "stem": "Berapa lama Bumi berotasi satu kali?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Sekitar 24 jam"
+          },
+          {
+            "key": "B",
+            "text": "Sekitar 30 hari"
+          },
+          {
+            "key": "C",
+            "text": "Sekitar 365¼ hari"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Satu kali rotasi Bumi memerlukan sekitar 24 jam, yaitu satu hari.",
+        "source_ref": "u5/rotasi/Sumbu Bumi"
+      },
+      {
+        "key": "u5-q2",
+        "stem": "Berapa lama Bumi mengelilingi Matahari satu kali (revolusi)?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Sekitar 24 jam"
+          },
+          {
+            "key": "B",
+            "text": "Sekitar 365¼ hari"
+          },
+          {
+            "key": "C",
+            "text": "Sekitar 30 hari"
+          }
+        ],
+        "correct": "B",
+        "feedback": "Satu kali revolusi Bumi memerlukan sekitar 365¼ hari, yaitu satu tahun.",
+        "source_ref": "u5/revolusi/Satu tahun"
+      },
+      {
+        "key": "u5-q3",
+        "stem": "Mengapa sisi Bumi yang membelakangi Matahari mengalami malam?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Karena Matahari sedang padam."
+          },
+          {
+            "key": "B",
+            "text": "Karena sisi itu tidak mendapat cahaya Matahari."
+          },
+          {
+            "key": "C",
+            "text": "Karena tertutup awan."
+          }
+        ],
+        "correct": "B",
+        "feedback": "Sisi yang membelakangi Matahari tidak mendapat cahaya. Karena Bumi berputar, setiap tempat bergantian mengalami siang dan malam.",
+        "source_ref": "u5/rotasi/Sisi malam"
+      },
+      {
+        "key": "u5-q4",
+        "stem": "Apa penyebab pergantian musim di Bumi?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kemiringan sumbu Bumi"
+          },
+          {
+            "key": "B",
+            "text": "Jarak Bumi ke Matahari yang sangat berubah"
+          },
+          {
+            "key": "C",
+            "text": "Rotasi Bumi"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Sumbu Bumi miring ke arah yang sama sepanjang tahun, sehingga belahan utara dan selatan bergantian lebih condong ke Matahari. Jarak Bumi ke Matahari hanya sedikit berubah.",
+        "source_ref": "u5/revolusi/Penyebab musim"
+      }
+    ],
+    "u6": [
+      {
+        "key": "u6-q1",
+        "stem": "Saat gerhana Bulan, benda langit apa yang berada di tengah?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Matahari"
+          },
+          {
+            "key": "B",
+            "text": "Bulan"
+          },
+          {
+            "key": "C",
+            "text": "Bumi"
+          }
+        ],
+        "correct": "C",
+        "feedback": "Saat gerhana Bulan, urutannya Matahari, Bumi, lalu Bulan. Bayangan Bumi jatuh ke Bulan.",
+        "source_ref": "u6/gerhana-bulan/Bumi di tengah"
+      },
+      {
+        "key": "u6-q2",
+        "stem": "Mengapa hanya orang di daerah tertentu yang dapat melihat Matahari tertutup Bulan?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Karena awan menutupi daerah lain."
+          },
+          {
+            "key": "B",
+            "text": "Karena bayangan Bulan hanya jatuh ke sebagian kecil permukaan Bumi."
+          },
+          {
+            "key": "C",
+            "text": "Karena Matahari hanya terbit di daerah itu."
+          }
+        ],
+        "correct": "B",
+        "feedback": "Bulan jauh lebih kecil daripada Bumi, jadi bayangannya hanya menutupi sebagian kecil permukaan Bumi. Orang di daerah itu yang melihat Matahari tertutup.",
+        "source_ref": "u6/gerhana-matahari/Bayangan Bulan"
+      },
+      {
+        "key": "u6-q3",
+        "stem": "Saat gerhana Bulan, Bulan bisa tampak berwarna apa?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kemerahan"
+          },
+          {
+            "key": "B",
+            "text": "Hijau terang"
+          },
+          {
+            "key": "C",
+            "text": "Putih lebih terang dari biasa"
+          }
+        ],
+        "correct": "A",
+        "feedback": "Bulan masuk ke bayangan Bumi sehingga menjadi gelap dan bisa tampak kemerahan.",
+        "source_ref": "u6/gerhana-bulan/Bulan masuk bayangan Bumi"
+      }
+    ]
+  }
+}

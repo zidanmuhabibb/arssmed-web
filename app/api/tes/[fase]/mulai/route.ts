@@ -11,6 +11,7 @@ export async function GET(request: Request, ctx: RouteContext<"/api/tes/[fase]/m
   try {
     const viewer = await getViewer();
     if (viewer.kind !== "student") throw new BackendError("forbidden", "Masuk sebagai siswa untuk mengerjakan tes.");
+    await getBackend().rateLimit("tes_start");
     const h = request.headers;
     const device = deviceKind({ userAgent: h.get("user-agent") ?? "", uaDataPlatform: h.get("sec-ch-ua-platform")?.replace(/"/g, ""), uaDataMobile: h.get("sec-ch-ua-mobile") === "?1" });
     return NextResponse.json(await getBackend().startAttempt(fase, device), { headers: NO_STORE });

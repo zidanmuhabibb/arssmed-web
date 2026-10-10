@@ -496,6 +496,123 @@
       "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
       "attribution": "Model ilustratif ARSSMED",
       "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u1-png",
+      "kind": "marker",
+      "file": "public/markers/u1.png",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u1-mind",
+      "kind": "marker",
+      "file": "public/markers/u1.mind",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u2-png",
+      "kind": "marker",
+      "file": "public/markers/u2.png",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u2-mind",
+      "kind": "marker",
+      "file": "public/markers/u2.mind",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u3-png",
+      "kind": "marker",
+      "file": "public/markers/u3.png",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u3-mind",
+      "kind": "marker",
+      "file": "public/markers/u3.mind",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u4-png",
+      "kind": "marker",
+      "file": "public/markers/u4.png",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u4-mind",
+      "kind": "marker",
+      "file": "public/markers/u4.mind",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u5-png",
+      "kind": "marker",
+      "file": "public/markers/u5.png",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u5-mind",
+      "kind": "marker",
+      "file": "public/markers/u5.mind",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u6-png",
+      "kind": "marker",
+      "file": "public/markers/u6.png",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-u6-mind",
+      "kind": "marker",
+      "file": "public/markers/u6.mind",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "marker-pdf",
+      "kind": "marker",
+      "file": "public/markers/kartu-penanda.pdf",
+      "license": "Karya sendiri — pola prosedural oleh scripts/build-markers.mjs",
+      "source_url": "https://github.com/zidanmuhabibb/arssmed-web",
+      "attribution": "Kartu penanda ARSSMED",
+      "review_status": "reviewed"
     }
   ],
   "thirdPartyUi": [
@@ -519,6 +636,20 @@
       "license": "OFL-1.1",
       "source_url": "https://github.com/googlefonts/lexend",
       "attribution": "Huruf Lexend (SIL Open Font License 1.1)"
+    },
+    {
+      "name": "MindAR 1.2.5",
+      "package": "mind-ar",
+      "license": "MIT",
+      "source_url": "https://github.com/hiukim/mind-ar-js",
+      "attribution": "AR dengan kartu: MindAR oleh HiuKim Yuen (lisensi MIT), disalin di public/vendor/mindar-1.2.5"
+    },
+    {
+      "name": "TensorFlow.js",
+      "package": "@tensorflow/tfjs",
+      "license": "Apache-2.0",
+      "source_url": "https://github.com/tensorflow/tfjs",
+      "attribution": "TensorFlow.js oleh Google LLC (Apache License 2.0), bagian dari berkas MindAR"
     }
   ]
 }

@@ -124,7 +124,7 @@ export function TestRunner({ phase }: { phase: Phase }) {
         }),
       });
       if (res.ok) return "ok";
-      if (res.status >= 500 || res.status === 401) return "retry";
+      if (res.status >= 500 || res.status === 401 || res.status === 429) return "retry";
       return "drop";
     } catch {
       return "retry";
@@ -229,7 +229,7 @@ export function TestRunner({ phase }: { phase: Phase }) {
         return;
       }
       if (body.error === "closed") setNotice(t("runner.closedWhileWorking"));
-      setSubmitState(res.status >= 500 ? "waiting" : "idle");
+      setSubmitState(res.status >= 500 || res.status === 429 ? "waiting" : "idle");
     } catch {
       setSubmitState("waiting");
     }
@@ -323,7 +323,7 @@ export function TestRunner({ phase }: { phase: Phase }) {
                 <button
                   type="button"
                   onClick={() => goTo(i)}
-                  className={`tekan flex min-h-12 w-full items-center justify-center rounded-kontrol border-2 font-semibold tabular-nums ${ok ? "border-sc bg-permukaan" : "border-m bg-permukaan text-m"}`}
+                  className={`tekan flex min-h-12 w-full items-center justify-center rounded-kontrol border-2 font-semibold tabular-nums ${ok ? "border-sc bg-permukaan" : "border-m bg-permukaan text-m-teks"}`}
                   aria-label={t(ok ? "review.itemDone" : "review.itemTodo", { n: it.order })}
                 >
                   {it.order}
@@ -333,12 +333,12 @@ export function TestRunner({ phase }: { phase: Phase }) {
           })}
         </ol>
         {missing && missing.length ? (
-          <p role="alert" className="font-semibold text-m">
+          <p role="alert" className="font-semibold text-m-teks">
             {t("review.missing", { list: missing.join(", ") })}
           </p>
         ) : null}
         {notice ? (
-          <p role="alert" className="font-semibold text-m">
+          <p role="alert" className="font-semibold text-m-teks">
             {notice}
           </p>
         ) : null}
@@ -411,7 +411,7 @@ export function TestRunner({ phase }: { phase: Phase }) {
         {load.offlineCopy ? <p className="text-[0.85rem] text-tinta-2">{t("runner.offlineCopy")}</p> : null}
       </div>
       {notice ? (
-        <p role="alert" className="font-semibold text-m">
+        <p role="alert" className="font-semibold text-m-teks">
           {notice}
         </p>
       ) : null}

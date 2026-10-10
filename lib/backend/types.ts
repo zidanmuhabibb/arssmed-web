@@ -127,9 +127,39 @@ export interface Backend {
    * Data mentah percobaan yang SUDAH selesai + klasifikasinya. `classId` null = semua kelas
    * (admin saja); guru hanya kelasnya sendiri. Galat: not_found | forbidden.
    */
-  analysisDataset(classId: string | null): Promise<AnalysisDataset>;
+  analysisDataset(classId: string | null, ruleSetId?: string | null): Promise<AnalysisDataset>;
+  /**
+   * Hitung ulang klasifikasi percobaan selesai dengan aturan lain (admin; tercatat di audit).
+   * Jawaban mentah dan klasifikasi aturan lain tidak diubah.
+   */
+  reclassify(ruleSetId: string, classId: string | null): Promise<{ attempts: number; responses: number }>;
   /** Catat ekspor di log audit (FR-55); tanpa data pribadi. */
   logExport(classId: string | null, format: string): Promise<void>;
+
+  // Keamanan (M8).
+  /** Pembatasan laju per pengguna; galat `rate_limited` bila melewati batas (PRD §12.4). */
+  rateLimit(scope: RateScope): Promise<void>;
+  /** Pemetaan kode samaran → kode/nama panggilan (admin saja; tercatat di audit). */
+  researchNameMap(classId: string | null): Promise<NameMapRow[]>;
+}
+
+export type RateScope = "tes_start" | "tes_save" | "tes_submit" | "riset_read" | "riset_export" | "riset_name_map";
+/** Batas yang sama dengan fungsi DB consume_rate_limit (supabase/migrations/*_security.sql). */
+export const RATE_LIMITS: Record<RateScope, { max: number; windowSeconds: number }> = {
+  tes_start: { max: 30, windowSeconds: 60 },
+  tes_save: { max: 300, windowSeconds: 60 },
+  tes_submit: { max: 20, windowSeconds: 60 },
+  riset_read: { max: 60, windowSeconds: 60 },
+  riset_export: { max: 20, windowSeconds: 600 },
+  riset_name_map: { max: 5, windowSeconds: 600 },
+};
+
+export interface NameMapRow {
+  pseudoId: string;
+  className: string;
+  studentCode: string;
+  nickname: string | null;
+  consent: ConsentStatus;
 }
 
 export interface SaveResponseInput {

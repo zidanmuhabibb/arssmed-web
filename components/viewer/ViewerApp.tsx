@@ -18,6 +18,7 @@ import {
   RotateCcw,
   RotateCw,
   Ruler,
+  ScanLine,
   Undo2,
 } from "lucide-react";
 import type { CelestialObject } from "@/lib/content/celestial";
@@ -319,6 +320,13 @@ export function ViewerApp({
       <div className="flex flex-col gap-3 px-4 pt-4 sm:px-6 lg:border-l lg:border-garis lg:px-5 lg:pt-5">
         <RelOrbit objects={objects} currentId={currentId} viewed={viewed} progress={progress} onSelect={select} />
         <ArButton title={current.name} {...arModelUrls(current)} onLaunch={() => learning.arView(unitSlug, currentId)} />
+        <Link
+          href={`/belajar/${unitSlug}/penanda?objek=${encodeURIComponent(currentId)}`}
+          className="tekan inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-garis bg-permukaan px-5 font-semibold text-tinta no-underline active:bg-kertas"
+        >
+          <ScanLine aria-hidden="true" className="size-5" />
+          {t("marker.open")}
+        </Link>
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
           <button
             type="button"
@@ -375,7 +383,7 @@ export function ViewerApp({
                 <ArrowRight aria-hidden="true" className="size-5" />
               </button>
               {finishError ? (
-                <p role="alert" className="text-[0.9rem] text-m">
+                <p role="alert" className="text-[0.9rem] text-m-teks">
                   {finishError === "locked" ? t("flow.locked") : t("flow.error")}
                 </p>
               ) : null}

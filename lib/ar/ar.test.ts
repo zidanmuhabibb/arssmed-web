@@ -122,3 +122,40 @@ describe("berkas AR terbangun (pnpm assets:build)", () => {
     expect(Buffer.from(built.usdz).equals(readFileSync("public/models/asteroid.usdz"))).toBe(true);
   });
 });
+
+describe("AR penanda (FR-15): penataan kamera", async () => {
+  const { markerLayout, fitScale, cameraErrorKind, markerUrls } = await import("./marker");
+  // Matriks proyeksi MindAR untuk video 640×480 (fovy 45°, near 10, far 100000), dihitung seperti Controller.
+  function mindarProj(w: number, h: number) {
+    const near = 10, far = 100000, f = h / 2 / Math.tan((45 * Math.PI) / 360);
+    const m = new Array(16).fill(0);
+    m[0] = (2 * f) / w; m[5] = (2 * f) / h; m[10] = -(far + near) / (far - near); m[11] = -1; m[14] = (-2 * far * near) / (far - near);
+    return m as number[];
+  }
+  it("video menutupi kotak tanpa distorsi dan terpusat", () => {
+    const l = markerLayout(mindarProj(640, 480), 640, 480, 360, 640);
+    expect(l.video.height).toBe(640);
+    expect(l.video.width).toBeCloseTo(853.33, 2);
+    expect(l.video.left).toBeCloseTo(-(853.33 - 360) / 2, 1);
+    expect(l.video.top).toBeCloseTo(0, 9);
+    expect(l.aspect).toBeCloseTo(360 / 640);
+  });
+  it("near/far dan fov kembali ke nilai MindAR bila kotak = video", () => {
+    const l = markerLayout(mindarProj(640, 480), 640, 480, 640, 480);
+    expect(l.fov).toBeCloseTo(45, 6);
+    expect(l.near).toBeCloseTo(10, 6);
+    expect(l.far).toBeCloseTo(100000, 0);
+  });
+  it("galat kamera dipetakan ke status yang ramah", () => {
+    expect(cameraErrorKind({ name: "NotAllowedError" })).toBe("denied");
+    expect(cameraErrorKind({ name: "NotFoundError" })).toBe("unsupported");
+    expect(cameraErrorKind(new Error("x"))).toBe("error");
+    expect(fitScale(2, 0.6)).toBeCloseTo(0.3);
+    expect(markerUrls("u3")).toEqual({ mind: "/markers/u3.mind", png: "/markers/u3.png" });
+  });
+  it("setiap unit punya kartu penanda (.mind + .png) dan PDF cetak", async () => {
+    const { existsSync } = await import("node:fs");
+    for (const u of ["u1", "u2", "u3", "u4", "u5", "u6"]) for (const f of Object.values(markerUrls(u))) expect(existsSync(`public${f}`), f).toBe(true);
+    expect(existsSync("public/markers/kartu-penanda.pdf")).toBe(true);
+  });
+});

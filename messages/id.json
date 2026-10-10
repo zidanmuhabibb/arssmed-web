@@ -122,7 +122,19 @@
       "go": "Ke langkah {step}"
     },
     "saveError": "Belum tersimpan di server. Periksa sinyal, lalu coba lagi. Jawabanmu tetap tersimpan di perangkat ini.",
-    "loading": "Memuat kemajuanmu…"
+    "loading": "Memuat kemajuanmu…",
+    "quiz": {
+      "title": "Kuis latihan",
+      "open": "Kuis latihan",
+      "lead": "Latihan singkat tentang {unit}. Pilih jawaban, lalu baca penjelasannya. Hasilnya tidak disimpan dan tidak dinilai.",
+      "question": "Soal {number} dari {total}",
+      "right": "Tepat.",
+      "notYet": "Belum tepat.",
+      "progress": "Sudah dijawab {answered} dari {total} soal.",
+      "summary": "Selesai! {hits} dari {total} jawabanmu tepat.",
+      "note": "Kuis ini hanya latihan. Jawabanmu tidak dikirim ke guru.",
+      "again": "Ulangi kuis"
+    }
   },
   "units": {
     "u1": {
@@ -283,6 +295,11 @@
       "titik": "Titik info bernomor pada planet",
       "ar": "HP diarahkan ke meja, planet muncul di atasnya",
       "kamera": "Kamera dengan tanda izin"
+    },
+    "markers": {
+      "title": "Kartu penanda AR",
+      "body": "Cetak kartu penanda (A4, skala 100%), lalu buka unit dan pilih AR dengan kartu. Arahkan kamera ke kartu sampai benda muncul di atasnya.",
+      "download": "Unduh kartu penanda (PDF)"
     }
   },
   "materi": {
@@ -311,7 +328,8 @@
     "iconsCredit": "Ikon: Lucide (lisensi ISC)",
     "fontsCredit": "Huruf: Baloo 2 dan Lexend (SIL Open Font License)",
     "threeCredit": "Tampilan 3D: three.js dan React Three Fiber (lisensi MIT)",
-    "noCausal": "Aplikasi ini adalah alat bantu belajar dan alat pengumpul data penelitian. Hasilnya menggambarkan perubahan yang teramati, bukan bukti sebab-akibat."
+    "noCausal": "Aplikasi ini adalah alat bantu belajar dan alat pengumpul data penelitian. Hasilnya menggambarkan perubahan yang teramati, bukan bukti sebab-akibat.",
+    "arCredit": "AR dengan kartu: MindAR (lisensi MIT) dan TensorFlow.js (Apache 2.0), dijalankan di perangkat"
   },
   "privasi": {
     "title": "Privasi dan informasi penelitian",
@@ -523,7 +541,21 @@
         "unknown": "Pengaturan tes belum tersimpan. Coba lagi."
       }
     },
-    "navResearch": "Riset"
+    "navResearch": "Riset",
+    "navDiscussion": "Kartu diskusi",
+    "discussion": {
+      "title": "Kartu diskusi",
+      "lead": "Pertanyaan pemantik dan catatan miskonsepsi umum per unit, untuk langkah diskusi dan klarifikasi. Bisa dicetak.",
+      "draft": "Draf: pertanyaan dan catatan ini menunggu tinjauan guru dan ahli materi.",
+      "jump": "Lompat ke unit",
+      "questions": "Pertanyaan pemantik",
+      "misconceptions": "Miskonsepsi yang sering muncul",
+      "belief": "Anggapan siswa",
+      "scientific": "Konsep ilmiah",
+      "items": "Butir tes terkait ({n})",
+      "alternative": "Konsepsi alternatif",
+      "openCard": "Kartu diskusi {unit}"
+    }
   },
   "viewer": {
     "open3d": "Buka 3D",
@@ -668,6 +700,28 @@
         "allow": "Izinkan kamera",
         "skip": "Lewati, pakai 3D saja"
       }
+    },
+    "marker": {
+      "title": "AR dengan kartu",
+      "lead": "Arahkan kamera ke kartu penanda yang dicetak. Benda akan muncul di atas kartu.",
+      "open": "AR dengan kartu",
+      "consentTitle": "Sebelum mulai",
+      "print": "Siapkan kartu penanda Unit {unit} yang sudah dicetak, atau buka gambarnya di layar lain.",
+      "pdf": "Unduh kartu (PDF)",
+      "why": "Kamera dipakai untuk mengenali kartu dan menaruh benda di atasnya.",
+      "privacy": "Tidak ada foto atau video yang disimpan atau dikirim. Gambar kamera hanya diolah di perangkat ini.",
+      "allow": "Izinkan kamera",
+      "skip": "Lewati, pakai 3D saja",
+      "introStatus": "Kamera belum menyala. Siapkan kartu Unit {unit}.",
+      "starting": "Menyalakan kamera dan menyiapkan pengenal kartu…",
+      "scanning": "Arahkan kamera ke kartu Unit {unit} sampai seluruh gambar terlihat.",
+      "found": "Kartu dikenali: {name}. Gerakkan kartu atau HP untuk melihat dari sisi lain.",
+      "denied": "Izin kamera tidak diberikan.",
+      "unsupported": "Perangkat atau browser ini belum bisa memakai kamera untuk AR.",
+      "error": "AR dengan kartu belum bisa dimulai di perangkat ini.",
+      "fallback": "Tidak apa-apa. Kamu tetap bisa mengamati benda yang sama dalam 3D. Untuk mencoba lagi, izinkan kamera di pengaturan browser lalu muat ulang halaman ini.",
+      "open3d": "Buka 3D",
+      "stop": "Selesai"
     }
   },
   "hasil": {
@@ -747,7 +801,7 @@
       "mCount": "{n, plural, other {# siswa}} miskonsepsi ({pct})",
       "alternative": "Konsepsi alternatif yang disasar",
       "scientific": "Konsep ilmiah",
-      "cardsLater": "Kartu diskusi terkait menyusul (M8)."
+      "card": "Kartu diskusi: {unit}"
     },
     "itemMap": {
       "title": "Peta butir",
@@ -785,7 +839,65 @@
       "json": "JSON mentah"
     },
     "pValue": "p = {p}",
-    "pLess": "p < 0,001"
+    "pLess": "p < 0,001",
+    "pdf": {
+      "title": "Ringkasan hasil {scope}",
+      "allClasses": "semua kelas penelitian",
+      "brand": "ARSSMED Web · Ringkasan kelas",
+      "meta": "{test} versi {version} · aturan {ruleSet} · skor {score} · transisi {transition} · dibuat {date}",
+      "interpretation": "Desain satu kelompok tanpa pembanding: hasil menggambarkan perubahan yang teramati, bukan bukti sebab-akibat.",
+      "participation": "Siswa yang dianalisis",
+      "paired": "{n} siswa menyelesaikan tes awal dan tes akhir (persetujuan diberikan).",
+      "perPhase": "Belum ada pasangan tes awal-akhir. Tes awal: {pre} siswa; tes akhir: {post} siswa.",
+      "excluded": "Tidak ikut dianalisis",
+      "reason": {
+        "consent_withdrawn": "persetujuan ditarik",
+        "consent_pending": "persetujuan belum diberikan",
+        "pre_incomplete": "tes awal belum selesai",
+        "post_incomplete": "tes akhir belum selesai"
+      },
+      "stats": "Statistik berpasangan",
+      "scorePre": "Skor tes awal (rata-rata ± SD)",
+      "scorePost": "Skor tes akhir (rata-rata ± SD)",
+      "ngain": "N-Gain (Hake)",
+      "ngainValue": "{mean} (SD {sd}); CI 95% {lower} sampai {upper}; {category}; n = {n}",
+      "ngainCats": "Kategori N-Gain siswa",
+      "high": "tinggi",
+      "medium": "sedang",
+      "low": "rendah",
+      "ttest": "Uji-t berpasangan",
+      "meanDiff": "selisih rata-rata",
+      "effect": "Ukuran efek",
+      "wilcoxon": "Wilcoxon signed-rank",
+      "shapiro": "Shapiro-Wilk (selisih)",
+      "kr20": "KR-20",
+      "pre": "tes awal",
+      "post": "tes akhir",
+      "unavailable": "Statistik belum bisa dihitung (data belum cukup).",
+      "measure": "Ukuran",
+      "value": "Nilai",
+      "distribution": "Profil konsepsi per domain (% respons)",
+      "category": {
+        "SC": "konsepsi ilmiah",
+        "M": "miskonsepsi",
+        "E": "error",
+        "LK": "kurang pengetahuan",
+        "LC": "kurang yakin"
+      },
+      "discuss": "Yang perlu dibahas ({phase})",
+      "alternative": "Konsepsi alternatif",
+      "transitions": "Pola transisi per domain ({mode})",
+      "domain": "Domain",
+      "pattern": {
+        "retention": "Retensi",
+        "revision": "Revisi",
+        "construction": "Konstruksi",
+        "static": "Statis",
+        "other": "Lainnya"
+      },
+      "footer": "Dibuat oleh ARSSMED Web {version}. Tanpa nama atau kode siswa. Rincian per siswa ada di ekspor CSV/XLSX (kode samaran).",
+      "link": "Ringkasan (PDF)"
+    }
   },
   "riset": {
     "metaTitle": "Riset",
@@ -802,7 +914,9 @@
       "transition": "Transisi",
       "per_butir": "Per butir (siswa × butir)",
       "modus": "Kategori dominan per siswa",
-      "apply": "Terapkan"
+      "apply": "Terapkan",
+      "ruleSet": "Aturan klasifikasi",
+      "ruleSetDefault": "{id} (aturan tes)"
     },
     "config": "Aturan {ruleSet} · tes {test} versi {version}",
     "stats": {
@@ -856,6 +970,18 @@
     "export": {
       "title": "Ekspor",
       "lead": "Ekspor tercatat di log audit. Isi: hanya student_pseudo_id; siswa dengan persetujuan ditarik atau belum diberikan tidak ikut."
+    },
+    "nameMap": {
+      "title": "Pemetaan kode samaran ke nama (rahasia)",
+      "lead": "Berkas ini menghubungkan student_pseudo_id dengan kode siswa dan nama panggilan. Simpan terpisah dari data penelitian dan jangan dibagikan. Setiap unduhan tercatat di log audit.",
+      "confirmLabel": "Ketik \"{phrase}\" untuk melanjutkan",
+      "submit": "Unduh pemetaan"
+    },
+    "reclassify": {
+      "needed": "{n} respons belum diklasifikasi dengan aturan {ruleSet}. Hitung ulang dulu agar analisis lengkap.",
+      "again": "Analisis memakai aturan {ruleSet} (bukan aturan tes). Hitung ulang bila ada jawaban baru.",
+      "submit": "Hitung ulang klasifikasi",
+      "done": "Klasifikasi dihitung ulang dengan aturan {ruleSet}: {n} respons. Jawaban mentah tidak diubah."
     }
   }
 }

@@ -16,7 +16,7 @@ const Slug = z.string().regex(/^u[0-9]{1,2}$/);
 const Id = z.string().regex(/^[a-z0-9-]{1,60}$/);
 const Op = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("prediction"), key: Id, option: z.enum(["A", "B", "C"]) }),
-  z.object({ kind: z.literal("view"), unit: Slug, object: Id, mode: z.enum(["3d", "ar_surface"]).optional() }),
+  z.object({ kind: z.literal("view"), unit: Slug, object: Id, mode: z.enum(["3d", "ar_surface", "ar_marker"]).optional() }),
   z.object({ kind: z.literal("step"), unit: Slug, step: z.enum(STEPS) }),
   z.object({ kind: z.literal("discussed"), unit: Slug }),
 ]);
